@@ -1,5 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class SearchActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ObjectActivity.class);
+
+                context.startActivity(intent);
             }
         });
     }
