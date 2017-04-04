@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
-public enum HouseType {
+public enum AccommodationHouseType {
     KORRIDORSRUM, KOKVRÅ, KOVSKÅP, ETT_RUM, TVÅ_RUM, TRE_RUM, FYRA_RUM;
 
 

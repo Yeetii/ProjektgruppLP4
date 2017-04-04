@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-class AccomondationListViewHolder {
+class AccommodationListViewHolder {
     TextView txtAddress;
     TextView txtHouseType;
     TextView txtArea;

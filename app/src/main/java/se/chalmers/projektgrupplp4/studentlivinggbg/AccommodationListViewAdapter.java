@@ -12,13 +12,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> implements View.OnClickListener{
+public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> implements View.OnClickListener{
 
-    private ArrayList<Accomondation> dataSet;
+    private ArrayList<Accommodation> dataSet;
     Context mContext;
     private int lastPosition = -1;
 
-    public AccomondationListViewAdapter(ArrayList<Accomondation> data, Context context) {
+    public AccommodationListViewAdapter(ArrayList<Accommodation> data, Context context) {
         super(context, R.layout.row_item, data);
         this.dataSet = data;
         this.mContext=context;
@@ -33,7 +33,7 @@ public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> im
 
         int position=(Integer) v.getTag();
         Object object= getItem(position);
-        Accomondation dataModel=(Accomondation)object;
+        Accommodation dataModel=(Accommodation)object;
 
 
 
@@ -56,14 +56,14 @@ public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> im
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        Accomondation dataModel = getItem(position);
+        Accommodation dataModel = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
-        AccomondationListViewHolder viewHolder; // view lookup cache stored in tag
+        AccommodationListViewHolder viewHolder; // view lookup cache stored in tag
 
 
         if (convertView == null) {
 
-            viewHolder = new AccomondationListViewHolder();
+            viewHolder = new AccommodationListViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.row_item, parent, false);
 
@@ -78,7 +78,7 @@ public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> im
 
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (AccomondationListViewHolder) convertView.getTag();
+            viewHolder = (AccommodationListViewHolder) convertView.getTag();
         }
 
 
@@ -86,7 +86,7 @@ public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> im
 
 
         viewHolder.txtAddress.setText(dataModel.getAddress());
-        viewHolder.txtHouseType.setText(dataModel.getHouseType());
+        viewHolder.txtHouseType.setText(dataModel.getAccommodationHouseType());
         viewHolder.txtArea.setText(dataModel.getArea());
         viewHolder.txtPrice.setText(dataModel.getPrice());
         viewHolder.txtSearchers.setText(dataModel.getSearchers());

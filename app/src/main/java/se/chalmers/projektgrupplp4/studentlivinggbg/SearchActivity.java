@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -20,9 +18,9 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
-    ArrayList<Accomondation> dataModels;
+    ArrayList<Accommodation> dataModels;
     ListView listView;
-    private static AccomondationListViewAdapter adapter;
+    private static AccommodationListViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +34,24 @@ public class SearchActivity extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.list);
         //Examples of list objects
         dataModels= new ArrayList<>();
-        dataModels.add(new Accomondation("Lindholmsallén 37 Läg 101", HouseType.TVÅ_RUM, 3650, 16.4, 120, R.drawable.house_image1));
-        dataModels.add(new Accomondation("ViktorRydbersgatan 48 Läg 1208", HouseType.KORRIDORSRUM, 3650, 40, 0, R.drawable.house_image2));
-        dataModels.add(new Accomondation("Våxtorpsgatan 00 Läg 1337", HouseType.FYRA_RUM, 12345, 99, 1200, R.drawable.house_image3));
+        dataModels.add(new Accommodation("Lindholmsallén 37 Läg 101", AccommodationHouseType.TVÅ_RUM, 3650, 16.4, 120, R.drawable.house_image1));
+        dataModels.add(new Accommodation("ViktorRydbersgatan 48 Läg 1208", AccommodationHouseType.KORRIDORSRUM, 3650, 40, 0, R.drawable.house_image2));
+        dataModels.add(new Accommodation("Våxtorpsgatan 00 Läg 1337", AccommodationHouseType.FYRA_RUM, 12345, 99, 1200, R.drawable.house_image3));
 
-        adapter= new AccomondationListViewAdapter(dataModels,getApplicationContext());
+        adapter= new AccommodationListViewAdapter(dataModels,getApplicationContext());
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Accomondation dataModel= dataModels.get(position);
+                Accommodation dataModel= dataModels.get(position);
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ObjectActivity.class);
+                intent.putExtra("ARG_POSITION", position);
+
+                startActivity(intent);
 
 
                 //When tapping on a household object
@@ -65,14 +69,6 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent nextScreen = new Intent(getApplicationContext(), SearchWatcherActivity.class);
                 startActivity(nextScreen);
-
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-                Context context = view.getContext();
-                Intent intent = new Intent(context, ObjectActivity.class);
-
-                context.startActivity(intent);
             }
         });
     }

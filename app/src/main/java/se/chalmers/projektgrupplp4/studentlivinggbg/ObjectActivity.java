@@ -30,11 +30,11 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private ArrayList<Accomondation> accommodations = new ArrayList<>();
+    private ArrayList<Accommodation> accommodations = new ArrayList<>();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
-     * The {@link ViewPager} that will AccomondationHost the section contents.
+     * The {@link ViewPager} that will AccommodationHost the section contents.
      */
     private ViewPager mViewPager;
 
@@ -43,11 +43,11 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-        System.out.println(getIntent().getStringExtra("id"));
-        accommodations.add(new Accomondation("Gibraltargatan"));
-        accommodations.add(new Accomondation("Chalmers"));
-        accommodations.add(new Accomondation("Skåne"));
-        accommodations.add(new Accomondation("Ingenstans"));
+        System.out.println(getIntent().getStringExtra("ARG_POSITION"));
+        accommodations.add(new Accommodation("Gibraltargatan"));
+        accommodations.add(new Accommodation("Chalmers"));
+        accommodations.add(new Accommodation("Skåne"));
+        accommodations.add(new Accommodation("Ingenstans"));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,6 +59,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(this);
+        mViewPager.setCurrentItem(getIntent().getIntExtra("ARG_POSITION", 0));
 
 
         //Todo Implement favorites
@@ -135,16 +136,16 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(Accomondation a) {
+        public static PlaceholderFragment newInstance(Accommodation a) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
 
             args.putString(ARG_ADDRESS, a.getAddress());
             args.putString(ARG_DESCRIPTION, a.getDescription());
             args.putString(ARG_RENT, a.getPrice());
-            args.putString(ARG_TYPE, a.getHouseType());
+            args.putString(ARG_TYPE, a.getAccommodationHouseType());
             args.putString(ARG_AREA, a.getArea());
-            args.putString(ARG_HOST, a.getAccomondationHost());
+            args.putString(ARG_HOST, a.getAccommodationHost());
             fragment.setArguments(args);
             return fragment;
         }
