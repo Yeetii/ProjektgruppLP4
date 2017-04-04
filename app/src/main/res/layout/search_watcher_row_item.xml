@@ -58,7 +58,6 @@
     <ImageButton
         style="@style/AppTheme.SearchWatcherButton"
         android:id="@+id/searchButton"
-        android:onClick="init"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="#4169E1"

@@ -3,10 +3,12 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -37,6 +39,17 @@ public class SearchWatcherActivity extends FragmentActivity {
         ArrayAdapter<SearchWatcherItem> arrayAdapter = new SearchWatcherItemAdapter(this, your_array_list);
 
         FragmentManager fm = getFragmentManager();
+        ConstraintLayout searchWatcherBackground = (ConstraintLayout) findViewById(R.id.backgroundModal);
+
+        //This is super bad code, remove before submit!
+        ConstraintLayout searchWatcherContent = (ConstraintLayout) findViewById(R.id.constraintLayout);
+
+        searchWatcherContent.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("Don't do anything!");
+            }
+        });
+
 
         ImageButton imageButton = (ImageButton) findViewById(R.id.closeModalButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +57,13 @@ public class SearchWatcherActivity extends FragmentActivity {
                                                toggle();
                                            }
                                        });
+
+        searchWatcherBackground.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (v.getId() == R.id.backgroundModal) toggle();
+            }
+        });
+
 
         listView.setAdapter(arrayAdapter);
     }
