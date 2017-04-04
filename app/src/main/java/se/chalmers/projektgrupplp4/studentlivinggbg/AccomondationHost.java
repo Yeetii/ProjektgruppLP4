@@ -1,7 +1,17 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-/**
- * Created by Erik on 2017-04-03.
- */
 
-public enum accoHost {SGS, BOPLATS, CHALMERS};
+public enum AccomondationHost {
+        SGS, CHALMERS;
+
+        //Creating a nice toString() method
+        @Override
+        public String toString() {
+                switch(name()){
+                        case "SGS": return "SGS Studentbostäder";
+                        case "CHALMERS": return "Chalmers Studentbostäder";
+                }
+                return "ERROR";
+        }
+
+}

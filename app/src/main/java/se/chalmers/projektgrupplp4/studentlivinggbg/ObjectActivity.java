@@ -30,11 +30,11 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private ArrayList<Accomodation> accommodations = new ArrayList<>();
+    private ArrayList<Accomondation> accommodations = new ArrayList<>();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
-     * The {@link ViewPager} that will accoHost the section contents.
+     * The {@link ViewPager} that will AccomondationHost the section contents.
      */
     private ViewPager mViewPager;
 
@@ -44,10 +44,10 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         setContentView(R.layout.activity_object);
 
         System.out.println(getIntent().getStringExtra("id"));
-        accommodations.add(new Accomodation("Gibraltargatan"));
-        accommodations.add(new Accomodation("Chalmers"));
-        accommodations.add(new Accomodation("Skåne"));
-        accommodations.add(new Accomodation("Ingenstans"));
+        accommodations.add(new Accomondation("Gibraltargatan"));
+        accommodations.add(new Accomondation("Chalmers"));
+        accommodations.add(new Accomondation("Skåne"));
+        accommodations.add(new Accomondation("Ingenstans"));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -135,23 +135,16 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(Accomodation a) {
+        public static PlaceholderFragment newInstance(Accomondation a) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
 
-            String address = a.getAddress();
-            String description = a.getDescription();
-            int rent = a.getRent();
-            accoType type = a.getType();
-            int area = a.getArea();
-            accoHost host = a.getHost();
-
-            args.putString(ARG_ADDRESS, address);
-            args.putString(ARG_DESCRIPTION, description);
-            args.putString(ARG_RENT, String.valueOf(rent));
-            args.putString(ARG_TYPE, type.toString());
-            args.putString(ARG_AREA, String.valueOf(area));
-            args.putString(ARG_HOST, host.toString());
+            args.putString(ARG_ADDRESS, a.getAddress());
+            args.putString(ARG_DESCRIPTION, a.getDescription());
+            args.putString(ARG_RENT, a.getPrice());
+            args.putString(ARG_TYPE, a.getHouseType());
+            args.putString(ARG_AREA, a.getArea());
+            args.putString(ARG_HOST, a.getAccomondationHost());
             fragment.setArguments(args);
             return fragment;
         }

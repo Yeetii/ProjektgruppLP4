@@ -1,20 +1,24 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.design.widget.Snackbar;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
 
+public class SearchActivity extends AppCompatActivity {
 
     ArrayList<Accomondation> dataModels;
     ListView listView;
@@ -27,21 +31,10 @@ public class SearchActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         listView=(ListView)findViewById(R.id.list);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent nextScreen = new Intent(getApplicationContext(), SearchWatcherActivity.class);
-                startActivity(nextScreen);
-            }
-        });
-
-
-
-
-        //Examples of list objects. TODO: Fetch real data
+        //Examples of list objects
         dataModels= new ArrayList<>();
         dataModels.add(new Accomondation("Lindholmsallén 37 Läg 101", HouseType.TVÅ_RUM, 3650, 16.4, 120, R.drawable.house_image1));
         dataModels.add(new Accomondation("ViktorRydbersgatan 48 Läg 1208", HouseType.KORRIDORSRUM, 3650, 40, 0, R.drawable.house_image2));
@@ -65,7 +58,23 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent nextScreen = new Intent(getApplicationContext(), SearchWatcherActivity.class);
+                startActivity(nextScreen);
+
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ObjectActivity.class);
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
-
-//This class adapts an Accomondation-object so it works in a list of Accomondations
 public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> implements View.OnClickListener{
 
     private ArrayList<Accomondation> dataSet;
