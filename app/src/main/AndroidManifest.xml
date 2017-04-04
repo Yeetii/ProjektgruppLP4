@@ -19,6 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchWatcherActivity"></activity>
+        <activity
+            android:name=".ObjectActivity"
+            android:label="@string/title_activity_tabbed"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
