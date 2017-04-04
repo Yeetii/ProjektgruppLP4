@@ -13,6 +13,27 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.SearchWatcherButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="AppTheme.SearchWatcherTitle">
+        <item name="android:textColor">#008</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppTheme.SearchWatcherItemText">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

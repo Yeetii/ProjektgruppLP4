@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/AppTheme.SearchWatcherTitle"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Drömmen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <TextView
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:id="@+id/textViewTopRight"
+        android:layout_marginLeft="170dp"
+        android:text="Min: 20m^2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="34dp" />
+
+    <TextView
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:id="@+id/textViewBottomRight"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:text="Max: 4000kr"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="57dp" />
+
+    <TextView
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:id="@+id/textViewBottomLeft"
+        android:layout_marginLeft="10dp"
+        android:text="Område Centrum"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="57dp" />
+
+    <TextView
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:id="@+id/textViewTopLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Gibraltargatan"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="34dp" />
+
+    <ImageButton
+        style="@style/AppTheme.SearchWatcherButton"
+        android:id="@+id/searchButton"
+        android:onClick="init"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="#4169E1"
+        android:src="@drawable/search_icon"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp" />
+
+    <ImageButton
+        android:id="@+id/hamButton"
+        style="@style/AppTheme.SearchWatcherButton"
+        android:background="#aaa"
+        android:src="@drawable/ham_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
