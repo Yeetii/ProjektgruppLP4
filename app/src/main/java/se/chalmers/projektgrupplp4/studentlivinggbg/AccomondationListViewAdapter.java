@@ -1,4 +1,4 @@
-package com.journaldev.customlistview;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
 import android.support.design.widget.Snackbar;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 
 
+//This class adapts an Accomondation-object so it works in a list of Accomondations
 public class AccomondationListViewAdapter extends ArrayAdapter<Accomondation> implements View.OnClickListener{
 
     private ArrayList<Accomondation> dataSet;

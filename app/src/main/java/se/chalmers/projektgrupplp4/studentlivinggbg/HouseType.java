@@ -1,4 +1,4 @@
-package com.journaldev.customlistview;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
 public enum HouseType {

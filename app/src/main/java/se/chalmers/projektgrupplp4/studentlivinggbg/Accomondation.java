@@ -1,7 +1,7 @@
-package com.journaldev.customlistview;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
-
+//This is a PROTOTYPE of how the data of one accomondation may look like
 public class Accomondation {
 
     String address;
