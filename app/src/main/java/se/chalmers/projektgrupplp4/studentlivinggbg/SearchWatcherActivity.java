@@ -2,10 +2,14 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
@@ -20,10 +24,39 @@ import java.util.List;
  */
 
 public class SearchWatcherActivity extends FragmentActivity {
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_search:
+                    Intent search = new Intent(SearchWatcherActivity.this, MainSearchActivity.class);
+                    startActivity(search);
+                    return true;
+                case R.id.navigation_favorites:
+                    Intent favorites = new Intent(SearchWatcherActivity.this, FavoritesActivity.class);
+                    startActivity(favorites);
+                    return true;
+                case R.id.navigation_notifications:
+                    return true;
+                case R.id.navigation_settings:
+                    return true;
+            }
+            return false;
+        }
+
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_watcher);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_notifications);
         Log.d("Test", "Activity created!");
         ListView listView=(ListView)findViewById(R.id.listView);
 
