@@ -38,7 +38,7 @@ public class MainSearchActivity extends AppCompatActivity {
     private ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //Start advanced search activity
+            //TODO Start advanced search activity
             Intent intent = new Intent(MainSearchActivity.this, FavoritesActivity.class);
             startActivity(intent);
         }
@@ -77,6 +77,7 @@ public class MainSearchActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         ImageButton advancedSearch = (ImageButton) findViewById(R.id.advancedSearch);
         advancedSearch.setOnClickListener(onClickListener);
+        //TODO fix searchView
         //searchView = (SearchView) findViewById(R.id.searchField);
         //searchView.setOnClickListener(onClickListenerSearch);
 
