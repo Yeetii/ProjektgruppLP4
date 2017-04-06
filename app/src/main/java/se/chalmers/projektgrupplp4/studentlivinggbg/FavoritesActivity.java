@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+
 public class FavoritesActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -18,12 +20,14 @@ public class FavoritesActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_search:
                     Intent search = new Intent(FavoritesActivity.this, MainSearchActivity.class);
+                    search.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(search);
                     return true;
                 case R.id.navigation_favorites:
                     return true;
                 case R.id.navigation_notifications:
                     Intent searchWatcher = new Intent(FavoritesActivity.this, SearchWatcherActivity.class);
+                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(searchWatcher);
                     return true;
                 case R.id.navigation_settings:

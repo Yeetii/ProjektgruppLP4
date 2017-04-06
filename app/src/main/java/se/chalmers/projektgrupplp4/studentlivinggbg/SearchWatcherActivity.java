@@ -19,6 +19,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+
 /**
  * Created by PG on 03/04/2017.
  */
@@ -33,10 +35,12 @@ public class SearchWatcherActivity extends FragmentActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_search:
                     Intent search = new Intent(SearchWatcherActivity.this, MainSearchActivity.class);
+                    search.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(search);
                     return true;
                 case R.id.navigation_favorites:
                     Intent favorites = new Intent(SearchWatcherActivity.this, FavoritesActivity.class);
+                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(favorites);
                     return true;
                 case R.id.navigation_notifications:

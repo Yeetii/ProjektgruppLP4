@@ -17,6 +17,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+
 public class MainSearchActivity extends AppCompatActivity {
 
     private static SearchView searchView;
@@ -54,10 +56,12 @@ public class MainSearchActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_favorites:
                     Intent favorites = new Intent(MainSearchActivity.this, FavoritesActivity.class);
+                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(favorites);
                     return true;
                 case R.id.navigation_notifications:
                     Intent searchWatcher = new Intent(MainSearchActivity.this, SearchWatcherActivity.class);
+                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(searchWatcher);
                     return true;
                 case R.id.navigation_settings:
