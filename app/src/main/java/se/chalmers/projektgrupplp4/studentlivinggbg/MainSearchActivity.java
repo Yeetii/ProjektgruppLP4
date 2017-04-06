@@ -17,8 +17,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
-
 public class MainSearchActivity extends AppCompatActivity {
 
     private static SearchView searchView;
@@ -56,12 +54,10 @@ public class MainSearchActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_favorites:
                     Intent favorites = new Intent(MainSearchActivity.this, FavoritesActivity.class);
-                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(favorites);
                     return true;
                 case R.id.navigation_notifications:
                     Intent searchWatcher = new Intent(MainSearchActivity.this, SearchWatcherActivity.class);
-                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(searchWatcher);
                     return true;
                 case R.id.navigation_settings:
@@ -88,9 +84,9 @@ public class MainSearchActivity extends AppCompatActivity {
         listView=(ListView)findViewById(R.id.list);
         //Examples of list objects
         dataModels= new ArrayList<>();
-        dataModels.add(new Accommodation("Lindholmsallén 37 Läg 101", AccommodationHouseType.TVÅ_RUM, 3650, 16.4, 120, R.drawable.house_image1));
-        dataModels.add(new Accommodation("ViktorRydbersgatan 48 Läg 1208", AccommodationHouseType.KORRIDORSRUM, 3650, 40, 0, R.drawable.house_image2));
-        dataModels.add(new Accommodation("Våxtorpsgatan 00 Läg 1337", AccommodationHouseType.FYRA_RUM, 12345, 99, 1200, R.drawable.house_image3));
+        dataModels.add(new Accommodation("Lindholmsallén 37 Läg 101", AccommodationHouseType.TWO_ROOMS, 3650, 16.4, 120, R.drawable.house_image1));
+        dataModels.add(new Accommodation("ViktorRydbersgatan 48 Läg 1208", AccommodationHouseType.CORRIDOR, 3650, 40, 0, R.drawable.house_image2));
+        dataModels.add(new Accommodation("Våxtorpsgatan 00 Läg 1337", AccommodationHouseType.FOUR_ROOMS, 12345, 99, 1200, R.drawable.house_image3));
 
         adapter= new AccommodationListViewAdapter(dataModels,getApplicationContext());
 
