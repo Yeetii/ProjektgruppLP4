@@ -7,7 +7,7 @@ import android.os.Parcelable;
 public class Accommodation {
 
     private String address = "testgatangatan 999 läg 123";
-    private AccommodationHouseType accommodationHouseType = AccommodationHouseType.ETT_RUM;
+    private AccommodationHouseType accommodationHouseType = AccommodationHouseType.ONE_ROOM;
     private int price = 1000;
     private double area = 100;
     private int searchers = 10;
