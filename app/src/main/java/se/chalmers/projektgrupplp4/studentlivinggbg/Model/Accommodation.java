@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
-public class Accommodation {
+class Accommodation {
 
     private String address = "testgatangatan 999 läg 123";
     private AccommodationHouseType accommodationHouseType = AccommodationHouseType.ONE_ROOM;

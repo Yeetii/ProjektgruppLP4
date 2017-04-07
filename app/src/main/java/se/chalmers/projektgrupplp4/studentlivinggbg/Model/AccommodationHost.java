@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
-public enum AccommodationHost {
+enum AccommodationHost {
         SGS, CHALMERS;
 
         //Creating a nice toString() method

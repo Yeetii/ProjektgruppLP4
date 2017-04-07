@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
-public enum AccommodationHouseType {
+enum AccommodationHouseType {
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, THREE_ROOMS, FOUR_ROOMS;
 
 
