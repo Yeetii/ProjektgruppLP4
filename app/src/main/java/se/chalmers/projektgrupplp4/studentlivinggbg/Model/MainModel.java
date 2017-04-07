@@ -27,6 +27,6 @@ public class MainModel {
     }
 
     public void updateAccommodations () {
-
+        //TODO Use database to update accommodations
     }
 }
