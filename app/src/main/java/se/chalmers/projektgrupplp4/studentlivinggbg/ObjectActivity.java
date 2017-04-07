@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
     /**
