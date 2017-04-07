@@ -1,9 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Accommodation {
 
     private String address = "testgatangatan 999 läg 123";
