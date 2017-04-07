@@ -1,7 +1,9 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
-enum AccommodationHouseType {
+public enum AccommodationHouseType {
+    //TODO Change to package private when no longer neccessary for tesing
+
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, THREE_ROOMS, FOUR_ROOMS;
 
 

@@ -1,7 +1,8 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
-class Accommodation {
+public class Accommodation {
+    //TODO Change to package private when no longer neccessary for tesing
 
     private String address = "testgatangatan 999 läg 123";
     private AccommodationHouseType accommodationHouseType = AccommodationHouseType.ONE_ROOM;
