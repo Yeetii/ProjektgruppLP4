@@ -88,7 +88,7 @@ public class MainSearchActivity extends AppCompatActivity {
         //searchView.setOnClickListener(onClickListenerSearch);
 
 
-        adapter= new AccommodationListViewAdapter(MainModel.getAccommodations(),getApplicationContext());
+        adapter= new AccommodationListViewAdapter(MainModel.getReference().getAccommodations(),getApplicationContext());
 
         listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
@@ -96,7 +96,7 @@ public class MainSearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Accommodation dataModel= MainModel.getAccommodations().get(position);
+                Accommodation dataModel= MainModel.getReference().getAccommodations().get(position);
 
                 Context context = view.getContext();
                 Intent intent = new Intent(context, ObjectActivity.class);

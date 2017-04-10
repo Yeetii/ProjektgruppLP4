@@ -29,6 +29,16 @@ public class MainModel {
 
     }
 
+    public ArrayList<Accommodation> getFavorites() {
+        ArrayList<Accommodation> result = new ArrayList<>();
+        for (Accommodation accommodation: accommodations){
+            if(accommodation.getFavorite()) {
+                result.add(accommodation);
+            }
+        }
+        return result;
+    }
+
     public void updateAccommodations () {
         //TODO Use database to update accommodations
 
@@ -38,5 +48,5 @@ public class MainModel {
 
     }
 
-    static public ArrayList<Accommodation> getAccommodations(){return MainModel.getReference().accommodations;}
+    public ArrayList<Accommodation> getAccommodations(){return MainModel.getReference().accommodations;}
 }

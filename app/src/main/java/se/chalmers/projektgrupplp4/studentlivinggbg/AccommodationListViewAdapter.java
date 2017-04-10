@@ -44,32 +44,15 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         switch (v.getId())
         {
             case R.id.favourite:
-                //TODO Add to favourites code here
-
-
-                if(tappedAccomodation.getFavorite()){
-                    addAccomodationToFavorites(tappedAccomodation, v);
-                }
-                else {
-                    removeAccomodationFromFavorites(tappedAccomodation, v);
-                }
+                //Tapping on the favorite star results in the accommodation
+                // getting added to the list of favorites.
+                changeFavoriteStatus(tappedAccomodation, v);
                 break;
         }
 
 
     }
 
-    private void addAccomodationToFavorites(Accommodation tappedAccomodation, View v) {
-        tappedAccomodation.removeAsFavorite();
-        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_off);
-        Snackbar.make(v, tappedAccomodation.getAddress() + " removed from favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
-    }
-
-    private void removeAccomodationFromFavorites(Accommodation tappedAccomodation, View v) {
-        tappedAccomodation.addAsFavorite();
-        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_on);
-        Snackbar.make(v, tappedAccomodation.getAddress() + " added to favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -112,8 +95,39 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         viewHolder.favourite.setOnClickListener(this);
         viewHolder.favourite.setTag(position);
         // Return the completed view to render on screen
+
+        try{updateFavoriteView(dataModel, convertView);}catch(Exception e){}
         return convertView;
     }
+
+
+    private void changeFavoriteStatus(Accommodation dataModel, View v) {
+        dataModel.changeFavoriteStatus();
+        updateFavoriteView(dataModel, v);
+    }
+
+    private void updateFavoriteView(Accommodation dataModel, View v) {
+        if(dataModel.getFavorite()){
+            addAccomodationToFavorites(dataModel, v);
+        }
+        else {
+            removeAccomodationFromFavorites(dataModel, v);
+        }
+    }
+
+
+    private void addAccomodationToFavorites(Accommodation tappedAccomodation, View v) {
+        tappedAccomodation.addAsFavorite();
+        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_on);
+        Snackbar.make(v, tappedAccomodation.getAddress() + " added to favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+    }
+
+    private void removeAccomodationFromFavorites(Accommodation tappedAccomodation, View v) {
+        tappedAccomodation.removeAsFavorite();
+        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_off);
+        Snackbar.make(v, tappedAccomodation.getAddress() + " removed from favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+    }
+
 
 
 }
