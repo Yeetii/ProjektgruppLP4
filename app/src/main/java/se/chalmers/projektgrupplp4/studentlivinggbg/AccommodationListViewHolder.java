@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +11,6 @@ class AccommodationListViewHolder {
     TextView txtArea;
     TextView txtPrice;
     TextView txtSearchers;
-    ImageView favourite;
+    Button favourite;
     ImageView image;
 }

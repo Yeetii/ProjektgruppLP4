@@ -5,7 +5,9 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,8 +36,7 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
 
 
         int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        Accommodation dataModel=(Accommodation)object;
+        Accommodation tappedAccomodation=(Accommodation)getItem(position);
 
 
 
@@ -43,17 +44,32 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         switch (v.getId())
         {
             case R.id.favourite:
-
-
                 //TODO Add to favourites code here
-                Snackbar.make(v, "Added to favourites", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+
+
+                if(tappedAccomodation.getFavorite()){
+                    addAccomodationToFavorites(tappedAccomodation, v);
+                }
+                else {
+                    removeAccomodationFromFavorites(tappedAccomodation, v);
+                }
                 break;
         }
 
 
     }
 
+    private void addAccomodationToFavorites(Accommodation tappedAccomodation, View v) {
+        tappedAccomodation.removeAsFavorite();
+        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_off);
+        Snackbar.make(v, tappedAccomodation.getAddress() + " removed from favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+    }
 
+    private void removeAccomodationFromFavorites(Accommodation tappedAccomodation, View v) {
+        tappedAccomodation.addAsFavorite();
+        v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_on);
+        Snackbar.make(v, tappedAccomodation.getAddress() + " added to favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -74,7 +90,7 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
             viewHolder.txtArea = (TextView) convertView.findViewById(R.id.area);
             viewHolder.txtPrice = (TextView) convertView.findViewById(R.id.price);
             viewHolder.txtSearchers = (TextView) convertView.findViewById(R.id.searchers);
-            viewHolder.favourite = (ImageView) convertView.findViewById(R.id.favourite);
+            viewHolder.favourite = (Button) convertView.findViewById(R.id.favourite);
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
 
 
