@@ -92,7 +92,7 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         viewHolder.txtArea.setText(dataModel.getArea());
         viewHolder.txtPrice.setText(dataModel.getPrice());
         viewHolder.txtSearchers.setText(dataModel.getSearchers());
-        viewHolder.image.setImageResource(dataModel.getImage());
+        viewHolder.image.setImageResource(dataModel.getThumbnail());
         viewHolder.favourite.setOnClickListener(this);
         viewHolder.favourite.setTag(position);
         // Return the completed view to render on screen

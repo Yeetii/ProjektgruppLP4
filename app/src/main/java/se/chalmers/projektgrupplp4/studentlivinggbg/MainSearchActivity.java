@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 public class MainSearchActivity extends AppCompatActivity {
 
     private static SearchView searchView;
-    ArrayList<Accommodation> dataModels;
     ListView listView;
     private static AccommodationListViewAdapter adapter;
 
@@ -87,21 +87,16 @@ public class MainSearchActivity extends AppCompatActivity {
         //searchView = (SearchView) findViewById(R.id.searchField);
         //searchView.setOnClickListener(onClickListenerSearch);
 
+
+        adapter= new AccommodationListViewAdapter(MainModel.getAccommodations(),getApplicationContext());
+
         listView=(ListView)findViewById(R.id.list);
-        //Examples of list objects
-        dataModels= new ArrayList<>();
-        dataModels.add(new Accommodation("Lindholmsallén 37 Läg 101", AccommodationHouseType.TWO_ROOMS, 3650, 16.4, 120, R.drawable.house_image1));
-        dataModels.add(new Accommodation("ViktorRydbersgatan 48 Läg 1208", AccommodationHouseType.CORRIDOR, 3650, 40, 0, R.drawable.house_image2));
-        dataModels.add(new Accommodation("Våxtorpsgatan 00 Läg 1337", AccommodationHouseType.FOUR_ROOMS, 12345, 99, 1200, R.drawable.house_image3));
-
-        adapter= new AccommodationListViewAdapter(dataModels,getApplicationContext());
-
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Accommodation dataModel= dataModels.get(position);
+                Accommodation dataModel= MainModel.getAccommodations().get(position);
 
                 Context context = view.getContext();
                 Intent intent = new Intent(context, ObjectActivity.class);
