@@ -8,6 +8,7 @@ import android.view.View;
 
 public class SearchWatcherItem {
     public String temp;
+
     public SearchWatcherItem (String temp) {
         this.temp = temp;
     }

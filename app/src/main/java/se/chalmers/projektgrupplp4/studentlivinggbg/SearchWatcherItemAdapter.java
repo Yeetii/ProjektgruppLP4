@@ -29,11 +29,7 @@ public class SearchWatcherItemAdapter extends ArrayAdapter<SearchWatcherItem> im
 
     @Override
     public void onClick(View v) {
-        System.out.println("Clicked!");
         SearchWatcherActivity.toggle();
-
-
-
     }
 
     @Override
@@ -41,12 +37,11 @@ public class SearchWatcherItemAdapter extends ArrayAdapter<SearchWatcherItem> im
         convertView = super.getView(position, convertView, parent);
         if (convertView != null) {
 
-
             ImageView imageView = (ImageView) convertView.findViewById(R.id.hamButton);
 
             System.out.println(imageView);
             imageView.setOnClickListener(this);
-            SearchWatcherActivity.toggle();
+            SearchWatcherActivity.makeModalInvisible();
         }
 
         return convertView;

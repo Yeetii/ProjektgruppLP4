@@ -62,7 +62,7 @@ public class SearchWatcherActivity extends FragmentActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_notifications);
         Log.d("Test", "Activity created!");
-        ListView listView=(ListView)findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView);
 
         List<SearchWatcherItem> your_array_list = new ArrayList<SearchWatcherItem>();
         your_array_list.add(new SearchWatcherItem("temp1"));
@@ -70,6 +70,7 @@ public class SearchWatcherActivity extends FragmentActivity {
         your_array_list.add(new SearchWatcherItem("temp3"));
         your_array_list.add(new SearchWatcherItem("temp4"));
         your_array_list.add(new SearchWatcherItem("temp5"));
+        your_array_list.add(new SearchWatcherItem("temp6"));
 
 
         fm = getFragmentManager();
@@ -90,10 +91,10 @@ public class SearchWatcherActivity extends FragmentActivity {
 
         ImageButton imageButton = (ImageButton) findViewById(R.id.closeModalButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
-                                           public void onClick(View v) {
-                                               toggle();
-                                           }
-                                       });
+            public void onClick(View v) {
+                toggle();
+            }
+        });
 
         searchWatcherBackground.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -104,24 +105,28 @@ public class SearchWatcherActivity extends FragmentActivity {
 
         listView.setAdapter(arrayAdapter);
     }
+
     private static FragmentManager fm;
     private static boolean isModalVisible = true;
 
 
-    public static void toggle () {
-        System.out.println("Clicked toggle");
+    public static void toggle() {
         if (isModalVisible) {
-            fm.beginTransaction()
-                    .hide(fm.findFragmentById(R.id.searchWatcherModal))
-                    .commit();
+            makeModalInvisible();
         } else {
-            System.out.println("Show");
-            fm.beginTransaction()
-                    .show(fm.findFragmentById(R.id.searchWatcherModal))
-                    .commit();
+            makeModalVisible();
         }
-        isModalVisible = !isModalVisible;
-        System.out.println(isModalVisible);
 
+    }
+
+    public static void makeModalVisible() {
+        fm.beginTransaction().show(fm.findFragmentById(R.id.searchWatcherModal)).commit();
+        isModalVisible = true;
+    }
+
+
+    public static void makeModalInvisible() {
+        fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
+        isModalVisible = false;
     }
 }
