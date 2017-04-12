@@ -57,7 +57,7 @@ public class FavoritesActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_favorites);
 
-        adapter= new AccommodationListViewAdapter(MainModel.getReference().getFavorites(),getApplicationContext());
+        adapter= new AccommodationListViewAdapter(MainModel.getInstance().getFavorites(),getApplicationContext());
 
         listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
@@ -65,7 +65,7 @@ public class FavoritesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Accommodation dataModel= MainModel.getReference().getAccommodations().get(position);
+                Accommodation dataModel= MainModel.getInstance().getAccommodations().get(position);
 
                 Context context = view.getContext();
                 Intent intent = new Intent(context, ObjectActivity.class);

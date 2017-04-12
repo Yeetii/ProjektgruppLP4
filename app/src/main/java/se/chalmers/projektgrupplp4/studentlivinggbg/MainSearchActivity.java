@@ -16,6 +16,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import EDU.purdue.cs.bloat.decorate.Main;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
@@ -77,7 +79,29 @@ public class MainSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new MainController(getApplicationContext());
         setContentView(R.layout.activity_main_search);
+
+        adapter= new AccommodationListViewAdapter(new ArrayList<Accommodation>(),getApplicationContext());
+
+        listView=(ListView)findViewById(R.id.list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Accommodation dataModel= MainModel.getInstance().getAccommodations().get(position);
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ObjectActivity.class);
+                intent.putExtra("ARG_POSITION", position);
+
+                startActivity(intent);
+
+                //When tapping on a household object
+                Snackbar.make(view, dataModel.getAddress(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
+            }
+        });
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -86,30 +110,34 @@ public class MainSearchActivity extends AppCompatActivity {
         //TODO fix searchView
         //searchView = (SearchView) findViewById(R.id.searchField);
         //searchView.setOnClickListener(onClickListenerSearch);
+        try {
+            /*
+            Wanted to use observer pattern but: "Only the original thread that created a view
+            hierarchy can touch its views" And loading/creating the database seems to require
+            threading.
+            */
 
-
-        adapter= new AccommodationListViewAdapter(MainModel.getReference().getAccommodations(),getApplicationContext());
-
-        listView=(ListView)findViewById(R.id.list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Accommodation dataModel= MainModel.getReference().getAccommodations().get(position);
-
-                Context context = view.getContext();
-                Intent intent = new Intent(context, ObjectActivity.class);
-                intent.putExtra("ARG_POSITION", position);
-
-                startActivity(intent);
-
-
-                //When tapping on a household object
-                Snackbar.make(view, dataModel.getAddress(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
-            }
-        });
-
+            MainModel.dbThread.join();
+            displaySearch();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
+    private void displaySearch() {
+        adapter.clear();
+        adapter.addAll(MainModel.getInstance().getAccommodations());
+    };
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Db4oDatabase.getInstance().close();
+    }
+
+    @Override
+    protected void onDestroy() {
+        MainModel.getInstance().save();
+        super.onDestroy();
+    }
 }
