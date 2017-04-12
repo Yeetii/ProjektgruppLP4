@@ -26,7 +26,10 @@
         <activity
             android:name=".FavoritesActivity"
             android:label="@string/title_favorites">
-
+        </activity>
+        <activity
+            android:name=".AdvancedSearchActivity"
+            android:label="@string/title_activity_advanced_search">
         </activity>
 
     </application>

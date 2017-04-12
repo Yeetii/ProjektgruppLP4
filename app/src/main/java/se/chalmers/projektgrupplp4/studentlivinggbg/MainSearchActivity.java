@@ -45,7 +45,7 @@ public class MainSearchActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             //TODO Start advanced search activity
-            Intent intent = new Intent(MainSearchActivity.this, FavoritesActivity.class);
+            Intent intent = new Intent(MainSearchActivity.this, AdvancedSearchActivity.class);
             startActivity(intent);
         }
     };

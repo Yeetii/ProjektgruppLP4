@@ -99,5 +99,10 @@
     <string name="title_activity_t_est">tEST</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_activity_advanced_search">Avancerad sök</string>
+    <string name="multiSpinner_roomType">Rumstyp</string>
+    <string name="multiSpinner_areas">Områden</string>
+    <string name="multiSpinner_landlord">Hyresvärd</string>
+
 
 </resources>
