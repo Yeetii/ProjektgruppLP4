@@ -12,17 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 
 
 public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> implements View.OnClickListener{
 
-    private ArrayList<Accommodation> dataSet;
+    private List<Accommodation> dataSet;
     Context mContext;
     private int lastPosition = -1;
 
-    public AccommodationListViewAdapter(ArrayList<Accommodation> data, Context context) {
+    public AccommodationListViewAdapter(List<Accommodation> data, Context context) {
         super(context, R.layout.row_item, data);
         this.dataSet = data;
         this.mContext=context;
@@ -51,6 +52,10 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         }
 
 
+    }
+
+    public List<Accommodation> getDataSet() {
+        return dataSet;
     }
 
 
