@@ -92,12 +92,11 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="title_activity_main_search">Sök</string>
-    <string name="title_search">Search</string>
-    <string name="title_favorites">Favorites</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_settings">Settings</string>
-    <string name="title_activity_t_est">tEST</string>
-    <string name="title_home">Home</string>
+    <string name="title_search">Sök</string>
+    <string name="title_favorites">Favoriter</string>
+    <string name="title_notifications">Notifikationer</string>
+    <string name="title_settings">Inställningar</string>
+    <string name="title_home">Hem</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_activity_advanced_search">Avancerad sök</string>
     <string name="multiSpinner_roomType">Rumstyp</string>
