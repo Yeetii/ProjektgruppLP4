@@ -5,15 +5,10 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 
 
@@ -35,11 +30,8 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
     @Override
     public void onClick(View v) {
 
-
         int position=(Integer) v.getTag();
         Accommodation tappedAccomodation=(Accommodation)getItem(position);
-
-
 
 
         switch (v.getId())
@@ -50,8 +42,6 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
                 changeFavoriteStatus(tappedAccomodation, v);
                 break;
         }
-
-
     }
 
     public List<Accommodation> getDataSet() {
@@ -78,7 +68,7 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
             viewHolder.txtArea = (TextView) convertView.findViewById(R.id.area);
             viewHolder.txtPrice = (TextView) convertView.findViewById(R.id.price);
             viewHolder.txtSearchers = (TextView) convertView.findViewById(R.id.searchers);
-            viewHolder.favourite = (Button) convertView.findViewById(R.id.favourite);
+            viewHolder.favourite = (ImageView) convertView.findViewById(R.id.favourite);
             viewHolder.image = (ImageView) convertView.findViewById(R.id.image);
 
 
@@ -124,13 +114,13 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
     private void addAccomodationToFavorites(Accommodation tappedAccomodation, View v) {
         tappedAccomodation.addAsFavorite();
         v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_on);
-        Snackbar.make(v, tappedAccomodation.getAddress() + " added to favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+        Snackbar.make(v, tappedAccomodation.getAddress() + " tillagd till favoriter.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
     }
 
     private void removeAccomodationFromFavorites(Accommodation tappedAccomodation, View v) {
         tappedAccomodation.removeAsFavorite();
         v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_off);
-        Snackbar.make(v, tappedAccomodation.getAddress() + " removed from favorites.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
+        Snackbar.make(v, tappedAccomodation.getAddress() + " borttagen från favoriter.", Snackbar.LENGTH_LONG).setAction("No action", null).show();
     }
 
 

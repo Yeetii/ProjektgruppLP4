@@ -13,13 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-
-import EDU.purdue.cs.bloat.decorate.Main;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
@@ -41,10 +37,10 @@ public class MainSearchActivity extends AppCompatActivity {
         }
     };
 
+    //Advanced search button
     private ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //TODO Start advanced search activity
             Intent intent = new Intent(MainSearchActivity.this, AdvancedSearchActivity.class);
             startActivity(intent);
         }

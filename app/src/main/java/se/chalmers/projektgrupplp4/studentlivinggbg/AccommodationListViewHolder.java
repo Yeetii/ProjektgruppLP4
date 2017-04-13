@@ -11,6 +11,6 @@ class AccommodationListViewHolder {
     TextView txtArea;
     TextView txtPrice;
     TextView txtSearchers;
-    Button favourite;
+    ImageView favourite;
     ImageView image;
 }
