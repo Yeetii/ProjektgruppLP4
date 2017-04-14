@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
+import android.widget.SearchView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,12 +19,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+import static se.chalmers.projektgrupplp4.studentlivinggbg.R.id.searchField;
 
 public class MainSearchActivity extends AppCompatActivity {
 
-    private static SearchView searchView;
+    private SearchView searchView;
     ListView listView;
-    private static AccommodationListViewAdapter adapter;
+    private AccommodationListViewAdapter adapter;
 
     private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
         @Override
@@ -103,9 +104,8 @@ public class MainSearchActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         ImageButton advancedSearch = (ImageButton) findViewById(R.id.advancedSearch);
         advancedSearch.setOnClickListener(onClickListener);
-        //TODO fix searchView
-        //searchView = (SearchView) findViewById(R.id.searchField);
-        //searchView.setOnClickListener(onClickListenerSearch);
+        searchView = (SearchView) findViewById(R.id.searchField);
+        searchView.setOnClickListener(onClickListenerSearch);
         try {
             /*
             Wanted to use observer pattern but: "Only the original thread that created a view
@@ -123,7 +123,7 @@ public class MainSearchActivity extends AppCompatActivity {
     private void displaySearch() {
         adapter.clear();
         adapter.addAll(MainModel.getInstance().getAccommodations());
-    };
+    }
 
     @Override
     protected void onPause() {
