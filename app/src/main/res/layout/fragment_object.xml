@@ -9,19 +9,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.ObjectActivity$PlaceholderFragment">
 
-    <ImageSwitcher
-        android:id="@+id/imageSwitcher"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:src="@android:drawable/ic_menu_report_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="50dp"
+        tools:layout_conversion_absoluteX="5dp"
+        tools:layout_conversion_absoluteY="5dp" />
 
     <TextView
         android:id="@+id/rent_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/type_lbl"
-        android:layout_below="@+id/imageSwitcher"
+        android:layout_below="@+id/imageView"
         android:layout_marginTop="12dp"
         android:text="Hyra:" />
 

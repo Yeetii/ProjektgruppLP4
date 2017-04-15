@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -129,6 +132,9 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         private static final String ARG_AREA = "object_area";
         private static final String ARG_HOST = "object_host";
 
+        private Drawable image = null;
+
+
         public PlaceholderFragment() {
         }
 
@@ -146,8 +152,13 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             args.putString(ARG_TYPE, a.getAccommodationHouseType());
             args.putString(ARG_AREA, a.getArea());
             args.putString(ARG_HOST, a.getAccommodationHost());
+            fragment.setImage(a.getThumbnail());
             fragment.setArguments(args);
             return fragment;
+        }
+
+        public void setImage (Drawable image) {
+            this.image = image;
         }
 
         @Override
@@ -159,6 +170,9 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             TextView type = (TextView) rootView.findViewById(R.id.type);
             TextView area = (TextView) rootView.findViewById(R.id.area);
             TextView host = (TextView) rootView.findViewById(R.id.host);
+
+            ImageView imageView = (ImageView) rootView.findViewById(R.id.imageView);
+            imageView.setImageDrawable(image);
 
             description.setText(getArguments().getString(ARG_DESCRIPTION));
             rent.setText(getArguments().getString(ARG_RENT) + "kr");

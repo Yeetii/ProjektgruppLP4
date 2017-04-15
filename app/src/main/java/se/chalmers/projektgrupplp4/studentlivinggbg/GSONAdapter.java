@@ -1,8 +1,17 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.graphics.drawable.Drawable;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
@@ -42,7 +51,7 @@ public class GSONAdapter {
         int price = SGSAccommodation.getRentPerMonthSort();
         double area = SGSAccommodation.getObjectAreaSort();
         int searchers = SGSAccommodation.getCountInterest();
-        int thumbNail = R.drawable.house_image1; //Change this!
+        Drawable thumbNail = SGSAccommodation.getImage();
         String description = SGSAccommodation.getDescription();
         AccommodationHost host = AccommodationHost.SGS;
 
@@ -170,6 +179,16 @@ public class GSONAdapter {
                 case "Enkelrum med gruppkök":
                     return AccommodationHouseType.CORRIDOR;
 
+            }
+            return null;
+        }
+
+        public Drawable getImage() {
+            try {
+                InputStream is = (InputStream) new URL("https://marknad.sgsstudentbostader.se" + FirstEstateImageUrl).getContent();
+                return Drawable.createFromStream(is, "https://marknad.sgsstudentbostader.se" + FirstEstateImageUrl);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             return null;
         }

@@ -127,9 +127,12 @@ public class MainSearchActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        /*
+        Throws errors currently and since it is only a temp solution I won't fix it now.
         MainModel.getInstance().save();
         System.out.println("Saving!");
         Db4oDatabase.getInstance().close();
+        */
         super.onPause();
 
     }

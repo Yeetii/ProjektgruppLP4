@@ -1,6 +1,8 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 
+import android.graphics.drawable.Drawable;
+
 import java.util.List;
 
 public class Accommodation {
@@ -12,14 +14,14 @@ public class Accommodation {
     private int price;
     private double area;
     private int searchers;
-    private int thumbnail;
+    private Drawable thumbnail;
     private List<Integer> images;
     private String description;
     private AccommodationHost accommodationHost;
     private boolean isFavorite = false;
 
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
-                         int price, double area, int searchers, int thumbnail, String description,
+                         int price, double area, int searchers, Drawable thumbnail, String description,
                          AccommodationHost accommodationHost) {
         this.objectNumber = objectNumber;
         this.address=address;
@@ -62,7 +64,7 @@ public class Accommodation {
     }
 
 
-    public int getThumbnail(){
+    public Drawable getThumbnail(){
         return thumbnail;
     }
 

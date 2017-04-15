@@ -14,9 +14,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observable;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.GSONAdapter;
 
 public class MainModel {
 
