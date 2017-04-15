@@ -10,8 +10,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
  */
 
 public class MainController {
+    public static Context applicationContext;
+
     public MainController(Context context) {
         Db4oDatabase.getInstance().setContext(context);
+        applicationContext = context;
     }
 
 

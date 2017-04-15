@@ -6,31 +6,33 @@ import java.util.List;
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing
 
-    private String address = "testgatangatan 999 läg 123";
-    private AccommodationHouseType accommodationHouseType = AccommodationHouseType.ONE_ROOM;
-    private int price = 1000;
-    private double area = 100;
-    private int searchers = 10;
+    private String objectNumber;
+    private String address;
+    private AccommodationHouseType accommodationHouseType;
+    private int price;
+    private double area;
+    private int searchers;
     private int thumbnail;
     private List<Integer> images;
-    private String description = "Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet, när en okänd boksättare tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok. Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk typografi utan större förändringar. Det blev allmänt känt på 1960-talet i samband med lanseringen av Letraset-ark med avsnitt av Lorem Ipsum, och senare med mjukvaror som Aldus PageMaker.";
-    private AccommodationHost accommodationHost = AccommodationHost.CHALMERS;
+    private String description;
+    private AccommodationHost accommodationHost;
     private boolean isFavorite = false;
 
-    public Accommodation(String adress){
-        this.address=adress;
-    }
-
-
-    public Accommodation(String address, AccommodationHouseType accommodationHouseType, int price, double area, int searchers, int thumbnail) {
+    public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
+                         int price, double area, int searchers, int thumbnail, String description,
+                         AccommodationHost accommodationHost) {
+        this.objectNumber = objectNumber;
         this.address=address;
         this.accommodationHouseType = accommodationHouseType;
         this.price=price;
         this.area=area;
         this.searchers=searchers;
         this.thumbnail=thumbnail;
+        this.description = description;
+        this.accommodationHost = accommodationHost;
     }
 
+    public String getObjectNumber() {return objectNumber;}
 
     public String getAddress() {
         return address;
@@ -54,6 +56,11 @@ public class Accommodation {
     public String getSearchers(){
         return Integer.toString(searchers);
     }
+
+    public void setSearchers(int amount){
+         searchers = amount;
+    }
+
 
     public int getThumbnail(){
         return thumbnail;

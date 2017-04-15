@@ -127,13 +127,11 @@ public class MainSearchActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        super.onPause();
+        MainModel.getInstance().save();
+        System.out.println("Saving!");
         Db4oDatabase.getInstance().close();
+        super.onPause();
+
     }
 
-    @Override
-    protected void onDestroy() {
-        MainModel.getInstance().save();
-        super.onDestroy();
-    }
 }
