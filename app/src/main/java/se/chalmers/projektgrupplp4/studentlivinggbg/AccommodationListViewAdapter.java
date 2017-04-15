@@ -110,7 +110,7 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         }
     }
 
-
+    //Should be refactored imo, should be enough with a toggle favorite method.
     private void addAccomodationToFavorites(Accommodation tappedAccomodation, View v) {
         tappedAccomodation.addAsFavorite();
         v.findViewById(R.id.favourite).setBackgroundResource(R.drawable.favorite_on);

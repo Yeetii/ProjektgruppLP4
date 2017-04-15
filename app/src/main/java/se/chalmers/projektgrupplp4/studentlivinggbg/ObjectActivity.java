@@ -19,8 +19,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
@@ -32,7 +34,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private ArrayList<Accommodation> accommodations = new ArrayList<>();
+    private List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
@@ -46,13 +48,6 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         setContentView(R.layout.activity_object);
 
         System.out.println(getIntent().getStringExtra("ARG_POSITION"));
-        /*
-        accommodations.add(new Accommodation("Gibraltargatan"));
-        accommodations.add(new Accommodation("Chalmers"));
-        accommodations.add(new Accommodation("Skåne"));
-        accommodations.add(new Accommodation("Ingenstans"));
-
-        */
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
