@@ -1,6 +1,10 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
@@ -51,7 +56,7 @@ public class GSONAdapter {
         int price = SGSAccommodation.getRentPerMonthSort();
         double area = SGSAccommodation.getObjectAreaSort();
         int searchers = SGSAccommodation.getCountInterest();
-        Drawable thumbNail = SGSAccommodation.getImage();
+        String thumbNail = SGSAccommodation.getImagePath();
         String description = SGSAccommodation.getDescription();
         AccommodationHost host = AccommodationHost.SGS;
 
@@ -183,14 +188,8 @@ public class GSONAdapter {
             return null;
         }
 
-        public Drawable getImage() {
-            try {
-                InputStream is = (InputStream) new URL("https://marknad.sgsstudentbostader.se" + FirstEstateImageUrl).getContent();
-                return Drawable.createFromStream(is, "https://marknad.sgsstudentbostader.se" + FirstEstateImageUrl);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
+        public String getImagePath() {
+            return "https://marknad.sgsstudentbostader.se" + FirstEstateImageUrl;
         }
     }
 }

@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 import android.content.res.AssetManager;
+import android.graphics.BitmapFactory;
 
 import com.google.gson.Gson;
 

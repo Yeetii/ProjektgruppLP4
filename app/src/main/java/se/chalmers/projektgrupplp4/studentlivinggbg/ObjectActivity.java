@@ -161,7 +161,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             args.putString(ARG_TYPE, a.getAccommodationHouseType());
             args.putString(ARG_AREA, a.getArea());
             args.putString(ARG_HOST, a.getAccommodationHost());
-            fragment.setImage(a.getThumbnail());
+            fragment.setImage(a.getImage());
             fragment.setArguments(args);
             return fragment;
         }
