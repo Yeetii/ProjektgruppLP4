@@ -20,6 +20,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.GSONAdapter;
 public class MainModel {
 
     private static MainModel INSTANCE = new MainModel();
+    public static Thread dbThread;
+
 
     private SearchHandler searchHandler;
 
@@ -36,7 +38,7 @@ public class MainModel {
         settings = new Settings();
         loadDatabase();
     }
-    public static Thread dbThread;
+
     private void loadDatabase() {
         //Throws error if not done in a thread.
         dbThread = (new Thread() {
@@ -45,7 +47,6 @@ public class MainModel {
             public void run() {
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 List<Accommodation> temp = db.findAll();
-                System.out.println("Temp size:" + temp.size());
 
                 accommodations.clear();
 
@@ -69,7 +70,6 @@ public class MainModel {
     public void save() {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.deleteAll();
-        System.out.println("Save");
         for (int i = 0; i < accommodations.size(); i++) {
             db.store(accommodations.get(i));
         }
@@ -93,7 +93,7 @@ public class MainModel {
 
     /*
         Creates a Gson Adapter filled with info from a JSON file.
-     */
+    */
     private GSONAdapter getPopulatedGsonAdapter() {
         Gson gson = new Gson();
         GSONAdapter adapter = null;
@@ -108,8 +108,8 @@ public class MainModel {
             InputStream is = am.open("JSONFile");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
-
             adapter = gson.fromJson(reader, GSONAdapter.class);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

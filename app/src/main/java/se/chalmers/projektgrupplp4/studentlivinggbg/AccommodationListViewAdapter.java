@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.ImageModel;
 
 
 public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> implements View.OnClickListener{
@@ -87,7 +88,6 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
         viewHolder.txtPrice.setText(dataModel.getPrice());
         viewHolder.txtSearchers.setText(dataModel.getSearchers());
         viewHolder.image.setImageDrawable(dataModel.getImage());
-        System.out.println(dataModel.getImage());
         viewHolder.favourite.setOnClickListener(this);
         viewHolder.favourite.setTag(position);
         // Return the completed view to render on screen

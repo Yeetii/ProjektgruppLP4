@@ -48,32 +48,6 @@ public class Accommodation {
         this.tempImage = tempImage;
     }
 
-    public Drawable getImage () {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    System.out.println();
-                    InputStream is = (InputStream) new URL(thumbnail).getContent();
-                    setTempImage(Drawable.createFromStream(is, thumbnail));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        Long timestamp = System.currentTimeMillis();
-        thread.start();
-        try {
-            thread.join();
-            System.out.println(System.currentTimeMillis() - timestamp);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Drawable drawable = tempImage;
-        tempImage = null;
-        return drawable;
-    }
-
     public String getObjectNumber() {return objectNumber;}
 
     public String getAddress() {
@@ -101,6 +75,10 @@ public class Accommodation {
 
     public void setSearchers(int amount){
          searchers = amount;
+    }
+
+    public Drawable getImage () {
+        return ImageModel.getMainImage(objectNumber);
     }
 
 

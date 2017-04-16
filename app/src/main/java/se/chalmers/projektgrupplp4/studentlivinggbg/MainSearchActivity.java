@@ -2,6 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
@@ -114,6 +116,9 @@ public class MainSearchActivity extends AppCompatActivity {
             */
 
             MainModel.dbThread.join();
+            Long currentTime = System.currentTimeMillis();
+            ImageModel.loadImages().join();
+            System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             displaySearch();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -127,14 +132,9 @@ public class MainSearchActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        /*
-        Throws errors currently and since it is only a temp solution I won't fix it now.
         MainModel.getInstance().save();
-        System.out.println("Saving!");
         Db4oDatabase.getInstance().close();
-        */
         super.onPause();
-
     }
 
 }
