@@ -19,11 +19,10 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
     Context mContext;
     private int lastPosition = -1;
 
-    public AccommodationListViewAdapter(List<Accommodation> data, Context context) {
+    public AccommodationListViewAdapter(Context context, List<Accommodation> data) {
         super(context, R.layout.row_item, data);
         this.dataSet = data;
         this.mContext=context;
-
     }
 
 

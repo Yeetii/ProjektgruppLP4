@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +11,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -26,6 +27,9 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
  */
 
 public class SearchWatcherActivity extends FragmentActivity {
+
+    ListView listView;
+    private SearchWatcherAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,19 +66,15 @@ public class SearchWatcherActivity extends FragmentActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_notifications);
         Log.d("Test", "Activity created!");
-        ListView listView = (ListView) findViewById(R.id.listView);
 
-        List<SearchWatcherItem> your_array_list = new ArrayList<SearchWatcherItem>();
-        your_array_list.add(new SearchWatcherItem("temp1"));
-        your_array_list.add(new SearchWatcherItem("temp2"));
-        your_array_list.add(new SearchWatcherItem("temp3"));
-        your_array_list.add(new SearchWatcherItem("temp4"));
-        your_array_list.add(new SearchWatcherItem("temp5"));
-        your_array_list.add(new SearchWatcherItem("temp6"));
+        adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcher>());
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
+        try{displaySearch();}catch(Exception e){}
+
 
 
         fm = getFragmentManager();
-        ArrayAdapter<SearchWatcherItem> arrayAdapter = new SearchWatcherItemAdapter(this, your_array_list);
 
         FragmentManager fm = getFragmentManager();
         ConstraintLayout searchWatcherBackground = (ConstraintLayout) findViewById(R.id.backgroundModal);
@@ -103,7 +103,6 @@ public class SearchWatcherActivity extends FragmentActivity {
         });
 
 
-        listView.setAdapter(arrayAdapter);
     }
 
     private static FragmentManager fm;
@@ -128,5 +127,10 @@ public class SearchWatcherActivity extends FragmentActivity {
     public static void makeModalInvisible() {
         fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
         isModalVisible = false;
+    }
+
+    private void displaySearch(){
+        adapter.clear();
+        adapter.addAll(MainModel.getInstance().getSearchWatchers());
     }
 }

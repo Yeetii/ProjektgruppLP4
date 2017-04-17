@@ -57,7 +57,7 @@ public class FavoritesActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_favorites);
 
-        adapter= new AccommodationListViewAdapter(MainModel.getInstance().getFavorites(),getApplicationContext());
+        adapter= new AccommodationListViewAdapter(getApplicationContext(), MainModel.getInstance().getFavorites());
 
         listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);

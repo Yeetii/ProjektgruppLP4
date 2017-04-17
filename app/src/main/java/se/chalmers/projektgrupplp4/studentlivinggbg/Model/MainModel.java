@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 
 import android.content.res.AssetManager;
-import android.graphics.BitmapFactory;
+import android.support.annotation.IntDef;
 
 import com.google.gson.Gson;
 
@@ -28,6 +28,7 @@ public class MainModel {
     private Settings settings;
 
     private List<Accommodation> accommodations = new ArrayList<>();
+    private List<SearchWatcher> searchWatchers = new ArrayList<>();
 
     public static MainModel getInstance() {
         return INSTANCE;
@@ -37,7 +38,45 @@ public class MainModel {
         searchHandler = new SearchHandler();
         settings = new Settings();
         loadDatabase();
+        //TODO: This is just for testing
+        initializeTestSearchWatchers();
+
     }
+
+    private void initializeTestSearchWatchers() {
+
+        ArrayList<AccommodationHouseType> testHouseType = new ArrayList<>();
+        testHouseType.add(AccommodationHouseType.COOKING_CABINET);
+
+        ArrayList<AccommodationHouseType> testHouseType2 = new ArrayList<>();
+        testHouseType2.add(AccommodationHouseType.FOUR_ROOMS);
+
+        ArrayList<AccommodationHost> testHost = new ArrayList<>();
+        testHost.add(AccommodationHost.SGS);
+
+        Search search1 = new Search("testGlobal", "Viktor Rydbergsgatan", "syd",
+                testHouseType, testHost,
+                -1, 9998, 100, 200, 9999,
+                "13-12-17", "24-12-17");
+
+        Search search2 = new Search("testGlobal2", "Lindholmsallén", "norr",
+                testHouseType, testHost,
+                700, 9998, 100, 450, 9999,
+                "13-12-17", "24-12-17");
+
+        Search search3 = new Search("testGlobal2", "Gibraltargatan", "öst",
+                testHouseType2, testHost,
+                700, -1, 100, -1, 9999,
+                "13-12-17", "24-12-17");
+
+        searchWatchers.add(new SearchWatcher("Gamla boendet", search1));
+        searchWatchers.add(new SearchWatcher("Nära masters", search2));
+        searchWatchers.add(new SearchWatcher("Lättast att få", search3));
+    }
+
+    public List<SearchWatcher> getSearchWatchers(){return INSTANCE.searchWatchers;}
+
+
 
     private void loadDatabase() {
         //Throws error if not done in a thread.

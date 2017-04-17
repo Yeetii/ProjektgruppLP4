@@ -81,7 +81,7 @@ public class MainSearchActivity extends AppCompatActivity {
         new MainController(getApplicationContext());
         setContentView(R.layout.activity_main_search);
 
-        adapter= new AccommodationListViewAdapter(new ArrayList<Accommodation>(),getApplicationContext());
+        adapter= new AccommodationListViewAdapter(getApplicationContext(), new ArrayList<Accommodation>());
 
         listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
