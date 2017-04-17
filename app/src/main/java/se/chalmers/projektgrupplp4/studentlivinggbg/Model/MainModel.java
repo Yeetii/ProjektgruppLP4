@@ -102,12 +102,10 @@ public class MainModel {
             MainController.applicationContext does not follow MVC. But this should be temp code
             anyway.
              */
-
             AssetManager am = MainController.applicationContext.getAssets();
 
-            InputStream is = am.open("JSONFile");
+            InputStream is = MainController.applicationContext.openFileInput("SGSData");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
             adapter = gson.fromJson(reader, GSONAdapter.class);
 
         } catch (FileNotFoundException e) {

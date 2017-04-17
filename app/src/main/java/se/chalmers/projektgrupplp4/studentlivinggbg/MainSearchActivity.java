@@ -80,6 +80,7 @@ public class MainSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         new MainController(getApplicationContext());
         setContentView(R.layout.activity_main_search);
+        new  SendPostSGS().execute();
 
         adapter= new AccommodationListViewAdapter(new ArrayList<Accommodation>(),getApplicationContext());
 
