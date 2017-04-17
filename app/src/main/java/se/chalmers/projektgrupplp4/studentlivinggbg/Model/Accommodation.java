@@ -43,11 +43,6 @@ public class Accommodation {
         this.accommodationHost = accommodationHost;
     }
 
-    private  Drawable tempImage = null;
-    private void setTempImage (Drawable tempImage) {
-        this.tempImage = tempImage;
-    }
-
     public String getObjectNumber() {return objectNumber;}
 
     public String getAddress() {
@@ -78,9 +73,17 @@ public class Accommodation {
     }
 
     public Drawable getImage () {
-        return ImageModel.getMainImage(objectNumber);
+        return ImageModel.getInstance().getMainImage(getImagePath());
     }
 
+    public String getImagePath () {
+        if (accommodationHost.equals(AccommodationHost.SGS)) {
+            return thumbnail.substring(thumbnail.indexOf("thumbs/") + "thumbs/".length());
+        } else {
+            //TODO: Get file name from Chalmers.
+            return null;
+        }
+    }
 
     public String getThumbnail(){
         return thumbnail;

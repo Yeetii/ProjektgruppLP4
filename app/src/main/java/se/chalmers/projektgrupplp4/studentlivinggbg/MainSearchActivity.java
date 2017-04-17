@@ -83,6 +83,7 @@ public class MainSearchActivity extends AppCompatActivity {
 
         adapter= new AccommodationListViewAdapter(getApplicationContext(), new ArrayList<Accommodation>());
 
+
         listView=(ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,9 +117,6 @@ public class MainSearchActivity extends AppCompatActivity {
             */
 
             MainModel.dbThread.join();
-            Long currentTime = System.currentTimeMillis();
-            ImageModel.loadImages().join();
-            System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             displaySearch();
         } catch (InterruptedException e) {
             e.printStackTrace();
