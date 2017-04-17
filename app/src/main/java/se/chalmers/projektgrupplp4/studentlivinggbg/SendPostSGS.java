@@ -23,6 +23,7 @@ public class SendPostSGS extends AsyncTask<String, Integer, Void> {
     private String filename = "SGSData";
     private String url = "https://marknad.sgsstudentbostader.se/API/Service/SearchServiceHandler.ashx";
     private Context context = MainController.applicationContext;
+    private boolean isDone = false;
 
 
     @Override
@@ -33,6 +34,10 @@ public class SendPostSGS extends AsyncTask<String, Integer, Void> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean isDone() {
+        return isDone;
     }
 
 
@@ -89,19 +94,9 @@ public class SendPostSGS extends AsyncTask<String, Integer, Void> {
             outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            isDone = true;
         }
-        /*
-        FileInputStream fin = context.openFileInput(filename);
-
-        int c;
-        String temp="";
-        while( (c = fin.read()) != -1){
-            temp = temp + Character.toString((char)c);
-        }
-        System.out.println(temp);
-        fin.close();
-        */
-
     }
 
 }

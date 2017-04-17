@@ -6,9 +6,12 @@ import android.util.Log;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
+import com.db4o.config.TSerializable;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
@@ -36,14 +39,12 @@ public class Db4oDatabase {
 
     //Create, open and close the database
     public ObjectContainer db() {
-        System.out.println("Open");
         try {
             if (oc == null || oc.ext().isClosed()) {
                 oc = Db4oEmbedded.openFile(dbConfig(), db4oDBFullPath(context));
             }
             return oc;
         } catch (Exception ie) {
-            System.out.println("Humm");
             Log.e(Db4oDatabase.class.getName(), ie.toString());
             return null;
         }
@@ -76,6 +77,29 @@ public class Db4oDatabase {
         db().store(exercise);
     }
 
+
+    //Stupid but it works, didn't get it to work with string, long, custom class only contaning long/string
+    //actual timestamps classes could be saved but gave strange output, stackoverflow didn't help either.
+    public void storeTimestamp() {
+        while (db().query(StringBuilder.class).size() != 0) {
+            db().delete(db().query(StringBuilder.class).get(0));
+        }
+        StringBuilder builder = new StringBuilder("" + System.currentTimeMillis());
+        db().store(builder);
+
+    }
+
+    public Long getTimestamp() {
+        List<StringBuilder> timestamps = db().query(StringBuilder.class);
+
+        if (timestamps.size() != 0) {
+            return Long.parseLong(timestamps.get(0).substring(0));
+            // return timestamps.get(0).getTime();
+        }
+
+        return null;
+    }
+
     public void delete(Accommodation exercise) {
         db().delete(exercise);
     }
@@ -98,4 +122,5 @@ public class Db4oDatabase {
     public void setContext(Context context) {
         this.context = context;
     }
+
 }
