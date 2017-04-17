@@ -61,6 +61,8 @@ public class MainModel {
 
                 GSONAdapter adapter = getPopulatedGsonAdapter();
                 adapter.updateAccommodations();
+                System.out.println(accommodations.get(0).getThumbnail());
+
             }
         });
 
@@ -107,10 +109,12 @@ public class MainModel {
             InputStream is = MainController.applicationContext.openFileInput("SGSData");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             adapter = gson.fromJson(reader, GSONAdapter.class);
+            Long currentTime = System.currentTimeMillis();
+            ImageModel.getInstance().loadAllImages();
+            System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
+
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return adapter;

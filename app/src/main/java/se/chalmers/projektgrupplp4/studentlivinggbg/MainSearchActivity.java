@@ -117,9 +117,6 @@ public class MainSearchActivity extends AppCompatActivity {
             */
 
             MainModel.dbThread.join();
-            Long currentTime = System.currentTimeMillis();
-            ImageModel.loadImages().join();
-            System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             displaySearch();
         } catch (InterruptedException e) {
             e.printStackTrace();

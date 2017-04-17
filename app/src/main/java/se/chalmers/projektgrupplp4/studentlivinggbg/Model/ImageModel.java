@@ -3,9 +3,13 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,42 +22,44 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 
 public class ImageModel {
     private static final HashMap<String, Drawable> mainImages = new HashMap<>();
+    private static final ImageModel INSTANCE = new ImageModel();
 
-    public static Drawable getMainImage(String objectNumber) {
+    private List<Thread> threads = new ArrayList<>();
+
+    public static ImageModel getInstance() {
+        return INSTANCE;
+    }
+
+
+    public Drawable getMainImage(String objectNumber) {
         return mainImages.get(objectNumber);
     }
 
-    private void loadAllInDir () {
+    public void loadAllImages() {
+        ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        List<String> addedFiles = new ArrayList<>();
+        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+        threads.clear();
+        for (int i = 0; i < accommodations.size(); i++) {
+            Accommodation accommodation = accommodations.get(i);
 
-    }
-
-
-    public static Thread loadImages () {
-        final List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
-        final List<Thread> threads = new ArrayList<Thread>();
-        threads.add(new Thread() {
-            @Override
-            public void run () {
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            //Only load each file once.
+            if (addedFiles.contains(accommodation.getImagePath())) {
+                continue;
             }
-        });
+            addedFiles.add(accommodation.getImagePath());
 
-        Thread mainThread = new Thread() {
-            @Override
-            public void run () {
-                for (int i = 0; i < accommodations.size(); i++) {
-                    Accommodation accommodation = accommodations.get(i);
-                    threads.add(putMainImage(accommodation.getObjectNumber(), accommodation.getThumbnail()));
-                }
+            File imageFile = new File(directory, accommodation.getImagePath());
+            //Check if file exists, load directly from disc then otherwise load from server.
+            if(imageFile.exists() && !imageFile.isDirectory()) {
+                loadImage(accommodation.getImagePath());
+            } else {
+                loadImageFromServer(accommodation);
             }
-        };
-        mainThread.start();
-        threads.get(0).start();
+        }
 
+        //Join all threads to avoid race conditions.
         for (int i = 0; i < threads.size(); i++) {
             try {
                 threads.get(i).join();
@@ -61,16 +67,51 @@ public class ImageModel {
                 e.printStackTrace();
             }
         }
-        return mainThread;
+        System.out.println("All images should be done!");
+    }
 
+    private void loadImage (String path) {
+        ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        try {
+            File imageFile = new File(directory, path);
+            mainImages.put(path,Drawable.createFromStream(new FileInputStream(imageFile), path));
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void loadImageFromServer (final Accommodation accommodation) {
+        //Has (and should) be done in threads. First get the image from server. Then save it locally.
+        Thread thread = new Thread() {
+            @Override
+            public void run () {
+                try {
+                    InputStream is = (InputStream) new URL(accommodation.getThumbnail()).getContent();
+                    mainImages.put(accommodation.getImagePath(),Drawable.createFromStream(is, accommodation.getImagePath()));
+                    saveToInternalStorage(accommodation.getImagePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+        //To avoid race-conditions, save the threads and later join them.
+        threads.add(thread);
     }
 
     //To slow to download the image each time, better to save to disc.
     //http://stackoverflow.com/questions/17674634/saving-and-reading-bitmaps-images-from-internal-memory-in-android
-    private void saveToInternalStorage(Bitmap bitmapImage, String path){
+    private void saveToInternalStorage(String path){
         ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        File myPath=new File(directory, path + ".jpg");
+        Drawable drawable = mainImages.get(path);
+        Bitmap bitmapImage = ((BitmapDrawable) drawable).getBitmap();
+
+        File myPath=new File(directory, path);
 
         FileOutputStream outputStream = null;
         try {
@@ -86,23 +127,5 @@ public class ImageModel {
                 e.printStackTrace();
             }
         }
-    }
-
-
-    private static Thread putMainImage (final String objectNumber, final String url) {
-        Thread thread = new Thread() {
-            @Override
-            public void run () {
-                try {
-                    System.out.println();
-                    InputStream is = (InputStream) new URL(url).getContent();
-                    mainImages.put(objectNumber,Drawable.createFromStream(is, url));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-        return thread;
     }
 }
