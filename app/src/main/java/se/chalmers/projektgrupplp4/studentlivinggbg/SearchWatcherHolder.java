@@ -13,6 +13,4 @@ public class SearchWatcherHolder {
     TextView txtAreaLabel;
     TextView txtPrice;
     TextView txtPriceLabel;
-    TextView txtDays;
-    TextView txtDaysLabel;
 }

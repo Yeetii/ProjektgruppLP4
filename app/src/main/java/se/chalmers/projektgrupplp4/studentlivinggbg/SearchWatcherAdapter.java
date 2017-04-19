@@ -63,8 +63,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> implements
             viewHolder.txtAreaLabel = (TextView) convertView.findViewById(R.id.textViewAreaLabel);
             viewHolder.txtPrice = (TextView) convertView.findViewById(R.id.textViewPrice);
             viewHolder.txtPriceLabel = (TextView) convertView.findViewById(R.id.textViewPriceLabel);
-            viewHolder.txtDays = (TextView) convertView.findViewById(R.id.textViewDays);
-            viewHolder.txtDaysLabel = (TextView) convertView.findViewById(R.id.textViewDaysLabel);
+
 
             convertView.setTag(viewHolder);
 
@@ -141,8 +140,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> implements
             viewHolder.txtPriceLabel.setText("");
         }
 
-        //TODO: Days Left
-        viewHolder.txtDays.setText("3");
+
 
 
         // Return the completed view to render on screen
