@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
+import android.widget.ToggleButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,6 +30,8 @@ public class SearchWatcherActivity extends FragmentActivity {
 
     ListView listView;
     private SearchWatcherAdapter adapter;
+    static ToggleButton toggleButton;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,9 +90,8 @@ public class SearchWatcherActivity extends FragmentActivity {
             }
         });
 
-
-        ImageButton imageButton = (ImageButton) findViewById(R.id.closeModalButton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        toggleButton = (ToggleButton) findViewById(R.id.closeModalButton);
+        toggleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 toggle();
             }
@@ -112,8 +113,10 @@ public class SearchWatcherActivity extends FragmentActivity {
     public static void toggle() {
         if (isModalVisible) {
             makeModalInvisible();
+            toggleButton.setBackgroundResource(R.drawable.plus_icon);
         } else {
             makeModalVisible();
+            toggleButton.setBackgroundResource(R.drawable.close_icon);
         }
 
     }

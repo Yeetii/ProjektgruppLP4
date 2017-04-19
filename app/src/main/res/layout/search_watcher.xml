@@ -7,34 +7,19 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="337dp"
-        android:layout_height="432dp"
+        android:layout_width="348dp"
+        android:layout_height="372dp"
         android:layout_marginBottom="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/content"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <fragment
-        android:id="@+id/searchWatcherModal"
-        android:name="se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherModal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout="@layout/search_watcher_modal"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/closeModalButton" />
 
     <FrameLayout
         android:id="@+id/content"
@@ -56,5 +41,35 @@
             app:menu="@menu/navigation" />
 
     </FrameLayout>
+
+
+    <fragment
+        android:id="@+id/searchWatcherModal"
+        android:name="se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherModal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/content"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout="@layout/search_watcher_modal" />
+
+
+    <ToggleButton
+        android:id="@+id/closeModalButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:textOn=""
+        android:textOff=""
+        android:background="@drawable/plus_icon"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
