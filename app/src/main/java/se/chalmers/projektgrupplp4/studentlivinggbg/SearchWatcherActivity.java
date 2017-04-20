@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +28,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
  * Created by PG on 03/04/2017.
  */
 
-public class SearchWatcherActivity extends FragmentActivity {
+public class SearchWatcherActivity extends AppCompatActivity {
 
     ListView listView;
     private SearchWatcherAdapter adapter;
@@ -63,6 +65,8 @@ public class SearchWatcherActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_watcher);
+
+        setTitle(R.string.title_notifications);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

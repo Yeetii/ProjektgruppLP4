@@ -30,6 +30,8 @@ public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> im
     @Override
     public void onClick(View v) {
 
+        System.out.println("CLICK");
+
         int position=(Integer) v.getTag();
         Accommodation tappedAccomodation=(Accommodation)getItem(position);
 
