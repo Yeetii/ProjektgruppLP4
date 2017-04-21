@@ -4,19 +4,19 @@ import android.view.View;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Search;
 
-public class SearchWatcher{
+public class SearchWatcherItem {
     public String title;
     private Search search;
 
-    public SearchWatcher (String title) {
+    public SearchWatcherItem(String title) {
         this.title = title;
     }
 
-    public SearchWatcher(Search search) {
+    public SearchWatcherItem(Search search) {
         this.search = search;
     }
 
-    public SearchWatcher(String title, Search search) {
+    public SearchWatcherItem(String title, Search search) {
         this.title = title;
         this.search = search;
     }

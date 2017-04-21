@@ -27,7 +27,7 @@ public class MainModel {
     private Settings settings;
 
     private List<Accommodation> accommodations = new ArrayList<>();
-    private List<SearchWatcher> searchWatchers = new ArrayList<>();
+    private List<SearchWatcherItem> searchWatcherItems = new ArrayList<>();
 
     public static MainModel getInstance() {
         return INSTANCE;
@@ -68,12 +68,12 @@ public class MainModel {
                 700, -1, 100, -1, 9999,
                 "13-12-17", "24-12-17");
 
-        searchWatchers.add(new SearchWatcher("Gamla boendet", search1));
-        searchWatchers.add(new SearchWatcher("Nära masters", search2));
-        searchWatchers.add(new SearchWatcher("Lättast att få", search3));
+        searchWatcherItems.add(new SearchWatcherItem("Gamla boendet", search1));
+        searchWatcherItems.add(new SearchWatcherItem("Nära masters", search2));
+        searchWatcherItems.add(new SearchWatcherItem("Lättast att få", search3));
     }
 
-    public List<SearchWatcher> getSearchWatchers(){return INSTANCE.searchWatchers;}
+    public List<SearchWatcherItem> getSearchWatcherItems(){return INSTANCE.searchWatcherItems;}
 
 
 

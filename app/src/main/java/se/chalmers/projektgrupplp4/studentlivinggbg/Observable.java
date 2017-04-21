@@ -7,6 +7,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 public interface Observable {
     void add(Observer observer);
     boolean remove(Observer observer);
-    void nortifyObservers();
+    void notifyObservers();
 
 }

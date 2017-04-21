@@ -12,14 +12,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcherItem;
 
 
 /**
  * Created by PG on 03/04/2017.
  */
 
-public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> implements View.OnClickListener {
+public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
 
     private List<Search> dataSet;
     Context mContext;
@@ -31,21 +31,17 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> implements
 //        this.mContext=context;
 //    }
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcher> data) {
+    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data) {
         super(context, R.layout.search_watcher_row_item, data);
     }
 
     private boolean isShowing = true;
 
-    @Override
-    public void onClick(View v) {
-        SearchWatcherActivity.toggle();
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        SearchWatcher dataModel = getItem(position);
+        SearchWatcherItem dataModel = getItem(position);
         SearchWatcherHolder viewHolder = new SearchWatcherHolder();
 
 
@@ -69,8 +65,8 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> implements
 
             ImageView imageView = (ImageView) convertView.findViewById(R.id.hamButton);
             System.out.println(imageView);
-            imageView.setOnClickListener(this);
-            SearchWatcherActivity.makeModalInvisible();
+          //  imageView.setOnClickListener(this);
+          //  SearchWatcherActivity.makeModalInvisible();
         }else{
             viewHolder = (SearchWatcherHolder) convertView.getTag();
         }
