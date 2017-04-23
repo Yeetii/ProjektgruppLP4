@@ -1,8 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,7 +10,6 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,13 +17,11 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.widget.SearchView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import java.util.ArrayList;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.Activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;

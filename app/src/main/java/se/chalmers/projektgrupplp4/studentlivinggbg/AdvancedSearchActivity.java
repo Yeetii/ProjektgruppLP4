@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.Activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;

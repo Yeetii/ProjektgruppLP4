@@ -1,14 +1,9 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.View;
+package se.chalmers.projektgrupplp4.studentlivinggbg.View.SearchWatcher;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.widget.ListView;
-import android.widget.ToggleButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcherViewModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 
 /**
  * Created by PG on 21/04/2017.
