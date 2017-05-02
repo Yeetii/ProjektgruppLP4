@@ -25,7 +25,7 @@ import static se.chalmers.projektgrupplp4.studentlivinggbg.R.id.parent;
  * Created by Jonathan on 16/04/2017.
  */
 
-class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
+public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private List<Accommodation> dataSet;
     private Context mContext;
