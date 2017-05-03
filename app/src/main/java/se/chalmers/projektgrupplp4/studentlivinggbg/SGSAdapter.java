@@ -170,6 +170,9 @@ public class SGSAdapter implements AccommodationAdapter {
                     return AccommodationHouseType.THREE_ROOMS;
                 case "4 rum och kök":
                     return AccommodationHouseType.FOUR_ROOMS;
+                case "4 rum och kokvrå":
+                    //80 kvadrat men inget kök...
+                    return AccommodationHouseType.FOUR_ROOMS;
                 case "Enkelrum med gruppkök":
                     return AccommodationHouseType.CORRIDOR;
 

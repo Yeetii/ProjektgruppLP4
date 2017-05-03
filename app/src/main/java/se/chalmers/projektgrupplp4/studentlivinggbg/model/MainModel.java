@@ -100,7 +100,7 @@ public class MainModel {
                 //legacy reasons, should be removed once everyone has used this method once.
                 if (temp.size() > 0 && temp.get(0).getObjectNumber() == null) {
                     db.deleteAll();
-                } else if (true || db.getTimestamp() == null || Math.abs(db.getTimestamp() -
+                } else if (db.getTimestamp() == null || Math.abs(db.getTimestamp() -
                         System.currentTimeMillis()) > twelveHours) {
                     //Above handles ege case if time is changed.
 
