@@ -80,8 +80,7 @@ public class Accommodation {
         if (accommodationHost.equals(AccommodationHost.SGS)) {
             return thumbnail.substring(thumbnail.indexOf("thumbs/") + "thumbs/".length());
         } else {
-            //TODO: Get file name from Chalmers.
-            return null;
+            return thumbnail.substring(thumbnail.indexOf("file=") + "file=".length());
         }
     }
 

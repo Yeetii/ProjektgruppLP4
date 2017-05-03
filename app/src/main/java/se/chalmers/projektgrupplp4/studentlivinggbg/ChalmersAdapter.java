@@ -15,6 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
 
 /**
  * Created by PG on 20/04/2017.
@@ -26,8 +27,25 @@ public class ChalmersAdapter implements AccommodationAdapter {
 
     @Override
     public void updateAccommodations() {
-        //System.out.println(html.getObjectSummaryApartments());
-        html.printAll();
+        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+        List<Accommodation> chalmersAccommodations = html.getAccommodations();
+        System.out.println("Adding chalmers");
+        //TODO: remove duplicated code
+        for (int i = 0; i < chalmersAccommodations.size(); i++) {
+            boolean alreadyExists = false;
+            for (int y = 0; y < accommodations.size(); y++) {
+                if (accommodations.get(y).getObjectNumber().equals(chalmersAccommodations.get(i).getObjectNumber())) {
+                    alreadyExists = true;
+                   // updateAccommodation(chalmersAccommodations.get(i), accommodations.get(y));
+                    break;
+                }
+            }
+
+            if (!alreadyExists) {
+                accommodations.add(chalmersAccommodations.get(i));
+            }
+        }
+        System.out.println("hai");
     }
 
     public static byte[] getFormattedBytes(StringBuffer buffer) throws UnsupportedEncodingException {
@@ -56,10 +74,6 @@ public class ChalmersAdapter implements AccommodationAdapter {
         private String objectSummary;
         private String objectSorter;
 
-        public void printAll() {
-            getAccommodations();
-        }
-
         public List<Accommodation> getAccommodations() {
             List<Accommodation> accommodations = new ArrayList<>();
             String infoString = objectSummaryImages;
@@ -79,14 +93,20 @@ public class ChalmersAdapter implements AccommodationAdapter {
             int price = parsePrice(getAttribute(infoString, "rent"));
             double area = parseArea(getAttribute(infoString, "area"));
             String description = getAttribute(infoString, "description");
-            String thumbnail = getAttribute(infoString, "thumbnail");
-
-            return new Accommodation(objectNumber, street, houseType, price, area, 0, description, thumbnail, AccommodationHost.CHALMERS);
-          //  return new Accommodation()
+            System.out.println(getAttribute(infoString, "thumbnail"));
+            String thumbnail = createThumbnail(getAttribute(infoString, "thumbnail"));
+            return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS);
         }
 
         private double parseArea (String areaString) {
             return Double.parseDouble(areaString);
+        }
+
+        private String createThumbnail (String fistStep) {
+            fistStep = fistStep.replaceAll("amp;", "");
+            fistStep = "https://" + fistStep;
+            fistStep += "&width=200&height=200";
+            return fistStep;
         }
 
         private int parsePrice(String priceString) {
@@ -143,10 +163,9 @@ public class ChalmersAdapter implements AccommodationAdapter {
                 case "thumbnail":
                     firstStartTag = "data-src=";
                     secondStartTag = "https://";
-                    endTag = " ";
+                    endTag = "\" ";
                     break;
             }
-
             infoString = infoString.substring(infoString.indexOf(firstStartTag));
             return infoString.substring(infoString.indexOf(secondStartTag) + secondStartTag.length(), infoString.indexOf(endTag));
         };
