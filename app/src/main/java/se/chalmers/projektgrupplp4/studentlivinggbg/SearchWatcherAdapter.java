@@ -6,14 +6,12 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.SearchWatcher.SearchWatcherItemController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.View.SearchWatcher.SearchWatcherItemView;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchWatcher.SearchWatcherItemController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcher.SearchWatcherItemView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher.SearchWatcherItem;
 
 
 /**

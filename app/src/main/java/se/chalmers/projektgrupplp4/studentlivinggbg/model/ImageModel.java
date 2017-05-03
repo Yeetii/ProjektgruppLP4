@@ -1,9 +1,8 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 
 public class ImageModel {
     private static final HashMap<String, Drawable> mainImages = new HashMap<>();

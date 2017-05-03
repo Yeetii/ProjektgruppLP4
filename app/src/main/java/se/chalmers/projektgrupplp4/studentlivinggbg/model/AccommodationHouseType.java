@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 
 public enum AccommodationHouseType {

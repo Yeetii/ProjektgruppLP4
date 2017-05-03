@@ -6,15 +6,12 @@ import android.util.Log;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
-import com.db4o.config.TSerializable;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 
 /**
  * Created by PG on 11/04/2017.

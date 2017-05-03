@@ -1,7 +1,6 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class Search {

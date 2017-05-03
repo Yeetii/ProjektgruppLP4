@@ -18,15 +18,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageButton;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
@@ -64,6 +62,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setCurrentItem(getIntent().getIntExtra("ARG_POSITION", 0));
+
 
 
         //Todo Implement favorites

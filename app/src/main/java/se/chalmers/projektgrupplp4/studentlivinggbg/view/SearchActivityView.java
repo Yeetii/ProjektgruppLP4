@@ -1,7 +1,6 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.View;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,7 +15,7 @@ import android.view.View;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AdvancedSearchActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchActivityModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**

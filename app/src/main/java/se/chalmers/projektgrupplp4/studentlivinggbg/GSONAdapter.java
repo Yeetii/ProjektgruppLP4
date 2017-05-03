@@ -1,23 +1,12 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 /**
  * Created by PG on 15/04/2017.

@@ -1,16 +1,11 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Controller;
+package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
@@ -18,14 +13,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Activity.SearchWatcherActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.AdvancedSearchActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.FavoritesActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchActivityModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.View.SearchActivityView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 

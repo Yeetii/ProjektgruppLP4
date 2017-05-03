@@ -1,25 +1,16 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
-
-import static android.support.v4.content.ContextCompat.startActivity;
-import static se.chalmers.projektgrupplp4.studentlivinggbg.R.id.parent;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 /**
  * Created by Jonathan on 16/04/2017.

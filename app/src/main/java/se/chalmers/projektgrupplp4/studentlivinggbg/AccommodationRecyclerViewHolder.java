@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 
 import static android.support.v4.content.ContextCompat.startActivity;
 

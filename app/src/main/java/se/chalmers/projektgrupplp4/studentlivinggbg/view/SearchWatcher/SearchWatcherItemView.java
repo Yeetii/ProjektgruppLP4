@@ -1,9 +1,9 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.View.SearchWatcher;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcher;
 
 import android.view.View;
 import android.widget.TextView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 

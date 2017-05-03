@@ -1,12 +1,11 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher;
 
 import android.app.Activity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 

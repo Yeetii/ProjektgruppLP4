@@ -1,18 +1,9 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.sql.Timestamp;
 import java.util.List;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing

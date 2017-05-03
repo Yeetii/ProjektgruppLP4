@@ -1,11 +1,8 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 public class SearchWatcherItem {
     public String title;

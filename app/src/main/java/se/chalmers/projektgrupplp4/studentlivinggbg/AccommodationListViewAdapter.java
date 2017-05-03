@@ -9,8 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 
 
 public class AccommodationListViewAdapter extends ArrayAdapter<Accommodation> implements View.OnClickListener{

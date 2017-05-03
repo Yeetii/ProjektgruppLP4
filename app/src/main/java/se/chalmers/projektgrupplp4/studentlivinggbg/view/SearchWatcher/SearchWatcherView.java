@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.View.SearchWatcher;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcher;
 
 import android.app.Activity;
 import android.app.FragmentManager;

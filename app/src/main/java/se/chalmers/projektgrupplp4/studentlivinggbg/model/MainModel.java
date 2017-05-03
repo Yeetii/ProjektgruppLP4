@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.Model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.content.res.AssetManager;
 
@@ -11,10 +11,10 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Controller.MainController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.GSONAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.SearchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SendPostSGS;
 
 public class MainModel {

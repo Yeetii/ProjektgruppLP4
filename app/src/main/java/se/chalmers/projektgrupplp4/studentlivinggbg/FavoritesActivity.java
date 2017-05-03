@@ -18,8 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Activity.SearchWatcherActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
