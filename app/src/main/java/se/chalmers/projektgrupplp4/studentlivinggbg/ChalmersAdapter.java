@@ -57,16 +57,16 @@ public class ChalmersAdapter implements AccommodationAdapter {
         private String objectSorter;
 
         public void printAll() {
-            System.out.println("5: " + objectSummaryImages);
+            getAccommodations();
         }
 
         public List<Accommodation> getAccommodations() {
             List<Accommodation> accommodations = new ArrayList<>();
             String infoString = objectSummaryImages;
             while (infoString.contains("<div class=\"Box ObjektListItem \">")) {
-                accommodations.add(parseAccommodation(infoString));
-                infoString = infoString.substring(infoString.indexOf("<div class=\"Box ObjektListItem \">") + 1);
                 infoString = infoString.substring(infoString.indexOf("<div class=\"Box ObjektListItem \">"));
+                accommodations.add(parseAccommodation(infoString));
+                infoString = infoString.substring(infoString.indexOf("<div class=\"Box ObjektListItem \">") + 3);
             }
 
             return accommodations;
@@ -76,18 +76,10 @@ public class ChalmersAdapter implements AccommodationAdapter {
             String objectNumber = getAttribute(infoString, "object number");
             String street = getAttribute(infoString, "street");
             AccommodationHouseType houseType = parseHouseType(getAttribute(infoString, "house type"));
-            int price = parsePrice(getAttribute(infoString, "price"));
+            int price = parsePrice(getAttribute(infoString, "rent"));
             double area = parseArea(getAttribute(infoString, "area"));
             String description = getAttribute(infoString, "description");
             String thumbnail = getAttribute(infoString, "thumbnail");
-
-            System.out.println(objectNumber);
-            System.out.println(street);
-            System.out.println(houseType);
-            System.out.println(price);
-            System.out.println(area);
-            System.out.println(description);
-            System.out.println(thumbnail);
 
             return new Accommodation(objectNumber, street, houseType, price, area, 0, description, thumbnail, AccommodationHost.CHALMERS);
           //  return new Accommodation()
@@ -98,17 +90,19 @@ public class ChalmersAdapter implements AccommodationAdapter {
         }
 
         private int parsePrice(String priceString) {
-            priceString = priceString.replace(" ", "");
+            priceString = priceString.replaceAll("\\s+", "");
             return Integer.parseInt(priceString);
         }
 
         private AccommodationHouseType parseHouseType (String houseTypeString) {
-
             switch (houseTypeString) {
                 case "1 rum och kök":
                     return AccommodationHouseType.ONE_ROOM;
-                case "1 rum och trinett":
+                case "1 rum med trinett":
                     return AccommodationHouseType.KITCHENETTE;
+                case "1 rum och kokvrå":
+                    return AccommodationHouseType.COOKING_CABINET;
+
             }
             System.out.println("Should add to switch!: " + houseTypeString);
             return null;
@@ -122,16 +116,18 @@ public class ChalmersAdapter implements AccommodationAdapter {
             switch (type) {
                 case "object number":
                     firstStartTag = "refid=";
-                    secondStartTag = "";
+                    secondStartTag = "refid=";
                     endTag = "\">";
                     break;
                 case "street":
                     firstStartTag = "class=\"ObjektAdress\"";
                     secondStartTag = "d\">";
+                    endTag = "</a>";
                     break;
                 case "house type":
                     firstStartTag = "class=\"ObjektTyp\">";
                     secondStartTag = "d\">";
+                    endTag = "</a>";
                     break;
                 case "description":
                     firstStartTag = "class=\"ObjektFritext\">";
@@ -146,17 +142,13 @@ public class ChalmersAdapter implements AccommodationAdapter {
                     break;
                 case "thumbnail":
                     firstStartTag = "data-src=";
-                    secondStartTag = "https";
+                    secondStartTag = "https://";
                     endTag = " ";
                     break;
             }
 
             infoString = infoString.substring(infoString.indexOf(firstStartTag));
-            return infoString.substring(infoString.indexOf(secondStartTag), infoString.indexOf(endTag));
+            return infoString.substring(infoString.indexOf(secondStartTag) + secondStartTag.length(), infoString.indexOf(endTag));
         };
-
-        public String getObjectSummaryApartments () {
-            return objectSummaryApartments;
-        }
     }
 }
