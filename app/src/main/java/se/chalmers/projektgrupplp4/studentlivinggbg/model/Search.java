@@ -60,7 +60,7 @@ public class Search {
         return possibleAccommodationHouseTypes;
     }
 
-    public ArrayList<AccommodationHost> getPossibleAccomodationHosts() {
+    public ArrayList<AccommodationHost> getPossibleAccommodationHosts() {
         return possibleAccommodationHosts;
     }
 

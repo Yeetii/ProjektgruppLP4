@@ -12,7 +12,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by PG on 15/04/2017.
  */
 
-public class GSONAdapter {
+public class SGSAdapter implements AccommodationAdapter {
     private SGSJsonAccommodation[] Result;
     private String ObjectMainGroupDescription;
     private int ObjectMainGroupNo;

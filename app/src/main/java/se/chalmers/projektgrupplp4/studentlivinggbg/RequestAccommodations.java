@@ -18,17 +18,25 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
  * Created by PG on 17/04/2017.
  */
 
-public class SendPostSGS extends AsyncTask<String, Integer, Void> {
-    private String filename = "SGSData";
-    private String url = "https://marknad.sgsstudentbostader.se/API/Service/SearchServiceHandler.ashx";
+public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
     private Context context = MainController.applicationContext;
     private boolean isDone = false;
+    private boolean sendSGS;
+
+
+    public RequestAccommodations (boolean isSGS) {
+        this.sendSGS = isSGS;
+    }
 
 
     @Override
     protected Void doInBackground(String[] params) {
         try {
-            sendPost();
+            if (sendSGS) {
+                sendPost();
+            } else {
+                sendGet();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,9 +47,56 @@ public class SendPostSGS extends AsyncTask<String, Integer, Void> {
         return isDone;
     }
 
+    private void sendRequest(HttpsURLConnection con, String fileName) throws Exception {
+        InputStream _is;
+        if (con.getResponseCode() < HttpsURLConnection.HTTP_BAD_REQUEST) {
+            _is = con.getInputStream();
+            System.out.println("Success!");
+        } else {
+            _is = con.getErrorStream();
+        }
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(_is));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        FileOutputStream outputStream;
+        try {
+            outputStream = context.openFileOutput(fileName, context.MODE_PRIVATE);
+            if (sendSGS) {
+                outputStream.write(response.toString().getBytes("UTF-8"));
+            } else {
+                //Chalmersstudentbostäder uses horrible format, reformat and then save.
+                outputStream.write(ChalmersAdapter.getFormattedBytes(response));
+
+            }
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            isDone = true;
+        }
+    }
+
+    public void sendGet() throws Exception {
+        String fileName = "ChalmersData";
+        String url = "https://www.chalmersstudentbostader.se/widgets/?actionId=&omraden=&objektTyper=&maxAntalDagarPublicerad=&callback=jQuery172027556341802877515_1492691004676&widgets%5B%5D=alert&widgets%5B%5D=objektfilter%40lagenheter&widgets%5B%5D=objektsummering%40lagenheter&widgets%5B%5D=objektsortering&widgets%5B%5D=objektlistabilder%40lagenheter&objektfilter%40lagenheter.maxyta=130&objektfilter%40lagenheter.maxhyra=14000";
+        URL obj = new URL(url);
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        sendRequest(con, fileName);
+    }
+
 
     // HTTPS POST request
     public  void sendPost() throws Exception {
+        String fileName = "SGSData";
+        String url = "https://marknad.sgsstudentbostader.se/API/Service/SearchServiceHandler.ashx";
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -66,36 +121,7 @@ public class SendPostSGS extends AsyncTask<String, Integer, Void> {
         wr.flush();
         wr.close();
 
-        int responseCode = con.getResponseCode();
-
-        InputStream _is;
-        if (con.getResponseCode() < HttpsURLConnection.HTTP_BAD_REQUEST) {
-            _is = con.getInputStream();
-            System.out.println("Success!");
-        } else {
-            _is = con.getErrorStream();
-        }
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(_is));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        FileOutputStream outputStream;
-        try {
-            outputStream = context.openFileOutput(filename, context.MODE_PRIVATE);
-            outputStream.write(response.toString().getBytes("UTF-8"));
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            isDone = true;
-        }
+        sendRequest(con, fileName);
     }
 
 }
