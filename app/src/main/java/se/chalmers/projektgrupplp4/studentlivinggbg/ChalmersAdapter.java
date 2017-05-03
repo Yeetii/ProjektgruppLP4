@@ -105,7 +105,7 @@ public class ChalmersAdapter implements AccommodationAdapter {
         private String createThumbnail (String fistStep) {
             fistStep = fistStep.replaceAll("amp;", "");
             fistStep = "https://" + fistStep;
-            fistStep += "&width=200&height=200";
+            fistStep += "&width=400&height=400";
             return fistStep;
         }
 
