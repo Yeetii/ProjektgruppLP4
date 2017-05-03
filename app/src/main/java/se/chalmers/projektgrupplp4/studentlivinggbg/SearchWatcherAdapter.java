@@ -10,6 +10,7 @@ import android.view.View;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchWatcher.SearchWatcherItemController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherItem;
 
@@ -18,7 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWa
  * Created by PG on 03/04/2017.
  */
 
-public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
+public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
     public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data) {
         super(context, R.layout.search_watcher_row_item, data);
@@ -43,6 +44,22 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
 
         viewHolder.updateView();
         return convertView;
+    }
+
+    //When tapping on a SearchWatcherItem
+    @Override
+    public void onClick(View v) {
+
+        int position=(Integer) v.getTag();
+        SearchWatcherItem tappedSearch = getItem(position);
+
+
+        switch (v.getId())
+        {
+            case R.id.searchWithSearchWatcherButton:
+                AdvancedSearchActivity.advancedSearchButtonPressed(v);
+                break;
+        }
     }
 }
 

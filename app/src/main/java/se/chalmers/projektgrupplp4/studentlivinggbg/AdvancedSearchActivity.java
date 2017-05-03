@@ -18,6 +18,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivi
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -196,7 +197,8 @@ public class AdvancedSearchActivity extends AppCompatActivity{
     }
 
 
-    public void advancedSearchButtonPressed(View view){
+    public static void advancedSearchButtonPressed(View view){
+        System.out.print("An advanced search was made!");
 
     }
 

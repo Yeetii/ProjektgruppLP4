@@ -2,6 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
@@ -11,12 +12,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 public class SearchWatcherView {
     private Activity activity;
+    private ToggleButton modalButton;
     private FragmentManager fm;
-    private boolean isModalVisible = false;
+    private boolean modalVisibility = false;
 
     public SearchWatcherView (Activity activity) {
         this.activity = activity;
-        fm = activity.getFragmentManager();
+        this.modalButton = new ToggleButton(activity);
+        this.fm = activity.getFragmentManager();
         initializeView();
     }
 
@@ -25,18 +28,24 @@ public class SearchWatcherView {
         activity.setTitle(R.string.title_notifications);
     }
 
-    public void toggleModalVisibility() {
-        System.out.println("Toggle");
-        if (isModalVisible) {
-            fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
-        } else {
-            fm.beginTransaction().show(fm.findFragmentById(R.id.searchWatcherModal)).commit();
-        }
-        isModalVisible = !isModalVisible;
-    }
-
     public void hideModal () {
         fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
-        isModalVisible = false;
+        modalVisibility = false;
+    }
+
+    public ToggleButton getModalButton() {
+        return modalButton;
+    }
+
+    public FragmentManager getFm() {
+        return fm;
+    }
+
+    public boolean getModalVisibility() {
+        return modalVisibility;
+    }
+
+    public void toggleModalVisibility(){
+        modalVisibility = !modalVisibility;
     }
 }

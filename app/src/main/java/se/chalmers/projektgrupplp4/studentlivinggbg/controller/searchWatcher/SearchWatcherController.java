@@ -41,7 +41,23 @@ public class SearchWatcherController {
     }
 
     private void toggle() {
+        System.out.println("Toggle");
+        if (view.getModalVisibility()) {
+            view.getFm().beginTransaction().hide(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
+        } else {
+            view.getFm().beginTransaction().show(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
+        }
         view.toggleModalVisibility();
+        updateModalButton();
+    }
+
+    //TODO This does not seem to work
+    private void updateModalButton(){
+        if(view.getModalVisibility()){
+            view.getModalButton().setBackgroundResource(R.drawable.close_icon);
+        }else{
+            view.getModalButton().setBackgroundResource(R.drawable.plus_icon);
+        }
     }
 
     private void initializeDoNothingListener () {
@@ -56,7 +72,7 @@ public class SearchWatcherController {
     }
 
     private void initializeToggleModalListener () {
-        ToggleButton toggleButton = (ToggleButton) activity.findViewById(R.id.closeModalButton);
+        ToggleButton toggleButton = (ToggleButton) activity.findViewById(R.id.modalButton);
         toggleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 toggle();
