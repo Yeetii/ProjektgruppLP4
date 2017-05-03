@@ -3,9 +3,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchWatcher.SearchWatcherController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher.SearchWatcherViewModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcher.SearchWatcherView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchWatcher.SearchWatcherController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherViewModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
 /**
  * Created by PG on 03/04/2017.

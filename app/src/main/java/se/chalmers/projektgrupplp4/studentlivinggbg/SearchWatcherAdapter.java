@@ -9,9 +9,9 @@ import android.view.View;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchWatcher.SearchWatcherItemController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcher.SearchWatcherItemView;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchWatcher.SearchWatcherItemController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherItem;
 
 
 /**
