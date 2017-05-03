@@ -54,18 +54,21 @@ public class MainModel {
         ArrayList<AccommodationHost> testHost = new ArrayList<>();
         testHost.add(AccommodationHost.SGS);
 
-        Search search1 = new Search("testGlobal", "Viktor Rydbergsgatan", "syd",
-                testHouseType, testHost,
+        ArrayList<Region> testRegion = new ArrayList<>();
+        testRegion.add(Region.NORTH);
+
+        Search search1 = new Search("testGlobal", "Viktor Rydbergsgatan",
+                testHouseType, testHost, testRegion,
                 -1, 9998, 100, 200, 9999,
                 "13-12-17", "24-12-17");
 
-        Search search2 = new Search("testGlobal2", "Lindholmsallén", "norr",
-                testHouseType, testHost,
+        Search search2 = new Search("testGlobal2", "Lindholmsallén",
+                testHouseType, testHost, testRegion,
                 700, 9998, 100, 450, 9999,
                 "13-12-17", "24-12-17");
 
-        Search search3 = new Search("testGlobal2", "Gibraltargatan", "öst",
-                testHouseType2, testHost,
+        Search search3 = new Search("testGlobal2", "Gibraltargatan",
+                testHouseType2, testHost, testRegion,
                 700, -1, 100, -1, 9999,
                 "13-12-17", "24-12-17");
 

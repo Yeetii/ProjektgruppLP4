@@ -8,19 +8,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 public class AdvancedSearchActivity extends AppCompatActivity{
 
     private static SearchView searchView;
+
+
+    //TODO add proper implementation with model
+    ArrayList<String> roomTypeItems = new ArrayList<>();
+    ArrayList<String> areasItems = new ArrayList<>();
+    ArrayList<String> landlordItems = new ArrayList<>();
+
+    MultiSpinner roomTypeSpinner;
+    MultiSpinner areasSpinner;
+    MultiSpinner landlordSpinner;
+
+    SeekBar seekBarMinPrice;
+    SeekBar seekBarMaxPrice;
+    SeekBar seekBarMinArea;
+    SeekBar seekBarMaxArea;
+
 
     private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
         @Override
@@ -77,11 +96,8 @@ public class AdvancedSearchActivity extends AppCompatActivity{
         ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel);
         cancelButton.setOnClickListener(onClickListener);
 
-        //
         //MultiSpinner Code
-        //
-        //TODO add proper implementation with model
-        ArrayList<String> roomTypeItems = new ArrayList<>();
+        roomTypeItems = new ArrayList<>();
         roomTypeItems.add(AccommodationHouseType.CORRIDOR.toString());
         roomTypeItems.add(AccommodationHouseType.KITCHENETTE.toString());
         roomTypeItems.add(AccommodationHouseType.COOKING_CABINET.toString());
@@ -89,30 +105,36 @@ public class AdvancedSearchActivity extends AppCompatActivity{
         roomTypeItems.add(AccommodationHouseType.TWO_ROOMS.toString());
         roomTypeItems.add(AccommodationHouseType.THREE_ROOMS.toString());
         roomTypeItems.add(AccommodationHouseType.FOUR_ROOMS.toString());
-        ArrayList<String> areasItems = new ArrayList<>();
-        areasItems.add("Temp area");
-        ArrayList<String> landlordItems = new ArrayList<>();
-        landlordItems.add("Temp lords");
 
-        MultiSpinner roomTypeSpinner = (MultiSpinner) findViewById(R.id.roomType_spinner);
-        MultiSpinner areasSpinner = (MultiSpinner) findViewById(R.id.areas_spinner);
-        MultiSpinner landlordSpinner = (MultiSpinner) findViewById(R.id.landlord_spinner);
+        areasItems = new ArrayList<>();
+        areasItems.add(Region.CENTER.toString());
+        areasItems.add(Region.NORTH.toString());
+        areasItems.add(Region.SOUTH.toString());
+        areasItems.add(Region.WEST.toString());
+        areasItems.add(Region.EAST.toString());
+
+        landlordItems = new ArrayList<>();
+        landlordItems.add(AccommodationHost.CHALMERS.toString());
+        landlordItems.add(AccommodationHost.SGS.toString());
+
+        roomTypeSpinner = (MultiSpinner) findViewById(R.id.roomType_spinner);
+        areasSpinner = (MultiSpinner) findViewById(R.id.areas_spinner);
+        landlordSpinner = (MultiSpinner) findViewById(R.id.landlord_spinner);
+
         roomTypeSpinner.setItems(roomTypeItems, getString(R.string.multiSpinner_roomType), new MultiSpinnerListener(AccommodationHouseType.values()));
-        areasSpinner.setItems(areasItems, getString(R.string.multiSpinner_areas), new MultiSpinnerListener(AccommodationHouseType.values()));//TODO correct enums
-        landlordSpinner.setItems(landlordItems, getString(R.string.multiSpinner_landlord), new MultiSpinnerListener(AccommodationHouseType.values()));
+        areasSpinner.setItems(areasItems, getString(R.string.multiSpinner_areas), new MultiSpinnerListener(Region.values()));
+        landlordSpinner.setItems(landlordItems, getString(R.string.multiSpinner_landlord), new MultiSpinnerListener(AccommodationHost.values()));
 
-        //
         //SeekBar Code
-        //
         final TextView textViewMinPrice = (TextView) findViewById(R.id.textViewMinPrice);
         final TextView textViewMaxPrice = (TextView) findViewById(R.id.textViewMaxPrice);
         final TextView textViewMinArea = (TextView) findViewById(R.id.textViewMinArea);
         final TextView textViewMaxArea = (TextView) findViewById(R.id.textViewMaxArea);
 
-        final SeekBar seekBarMinPrice = (SeekBar) findViewById(R.id.seekBarMinPrice);
-        final SeekBar seekBarMaxPrice = (SeekBar) findViewById(R.id.seekBarMaxPrice);
-        final SeekBar seekBarMinArea = (SeekBar) findViewById(R.id.seekBarMinArea);
-        final SeekBar seekBarMaxArea = (SeekBar) findViewById(R.id.seekBarMaxArea);
+        seekBarMinPrice = (SeekBar) findViewById(R.id.seekBarMinPrice);
+        seekBarMaxPrice = (SeekBar) findViewById(R.id.seekBarMaxPrice);
+        seekBarMinArea = (SeekBar) findViewById(R.id.seekBarMinArea);
+        seekBarMaxArea = (SeekBar) findViewById(R.id.seekBarMaxArea);
 
         seekBarMinPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMinPrice));
         seekBarMaxPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxPrice));
@@ -172,6 +194,20 @@ public class AdvancedSearchActivity extends AppCompatActivity{
             }
         }
     }
+
+
+    public void advancedSearchButtonPressed(View view){
+
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

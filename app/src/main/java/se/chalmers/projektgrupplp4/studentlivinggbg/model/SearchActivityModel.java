@@ -15,6 +15,8 @@ public class SearchActivityModel {
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView recyclerView;
 
+
+
     public SearchActivityModel (Activity activity) {
         recyclerViewAdapter = new AccommodationRecyclerViewAdapter(MainModel.getInstance().getAccommodations(), activity.getApplicationContext());
         recyclerView = (RecyclerView) activity.findViewById(R.id.list);

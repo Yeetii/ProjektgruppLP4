@@ -10,10 +10,9 @@ public class Search {
 
     private String mainSearch = "";
     private String address = "";
-    private String region = "";
-    private ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes;
-    private ArrayList<AccommodationHost> possibleAccomodationHosts;
-    //private ArrayList<Areas> possibleAreas; <-- Eventuell enumklass: norr, syd, etc
+    private ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes;
+    private ArrayList<AccommodationHost> possibleAccommodationHosts;
+    private ArrayList<Region> possibleRegions;
     private int minPrice = -1;
     private int maxPrice = -1;
     private double minArea = -1;
@@ -27,17 +26,18 @@ public class Search {
     }
 
 
-    public Search(String mainSearch, String address, String region,
+    public Search(String mainSearch, String address,
                   ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                   ArrayList<AccommodationHost> possibleAccomodationHosts,
+                  ArrayList<Region> possibleRegions,
                   int minPrice, int maxPrice, double minArea, double maxArea, int maxSearchers,
                   String upploadDate, String lastApplyDate) {
 
         this.mainSearch = mainSearch;
         this.address = address;
-        this.region = region;
-        this.possibleAccomodationHouseTypes = possibleAccomodationHouseTypes;
-        this.possibleAccomodationHosts = possibleAccomodationHosts;
+        this.possibleAccommodationHouseTypes = possibleAccomodationHouseTypes;
+        this.possibleAccommodationHosts = possibleAccomodationHosts;
+        this.possibleRegions = possibleRegions;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
         this.minArea = minArea;
@@ -56,16 +56,16 @@ public class Search {
         return address;
     }
 
-    public String getRegion() {
-        return region;
-    }
-
     public ArrayList<AccommodationHouseType> getPossibleAccomodationHouseTypes() {
-        return possibleAccomodationHouseTypes;
+        return possibleAccommodationHouseTypes;
     }
 
     public ArrayList<AccommodationHost> getPossibleAccomodationHosts() {
-        return possibleAccomodationHosts;
+        return possibleAccommodationHosts;
+    }
+
+    public ArrayList<Region> getPossibleRegions() {
+        return possibleRegions;
     }
 
     public int getMinPrice() {

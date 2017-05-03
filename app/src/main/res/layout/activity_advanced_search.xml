@@ -180,6 +180,19 @@
             android:layout_below="@+id/seekBarMinArea"
             android:text=" m²" />
 
+        <Button
+            android:id="@+id/advancedSearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="13dp"
+            android:layout_toStartOf="@+id/textView14"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Sök"
+            android:onClick="advancedSearchButtonPressed"/>
+
 
     </RelativeLayout>
 
