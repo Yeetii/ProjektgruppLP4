@@ -30,8 +30,6 @@ public class FavoritesActivity extends AppCompatActivity {
     AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private Paint p = new Paint();
 
-    private static AccommodationListViewAdapter adapter;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -66,8 +64,6 @@ public class FavoritesActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_favorites);
 
-        adapter= new AccommodationListViewAdapter(getApplicationContext(), MainModel.getInstance().getFavorites());
-
         recyclerViewAdapter = new AccommodationRecyclerViewAdapter(MainModel.getInstance().getFavorites(), getApplicationContext());
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
@@ -77,27 +73,6 @@ public class FavoritesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         initSwipe();
         recyclerView.setAdapter(recyclerViewAdapter);
-
-        /*listView=(ListView)findViewById(R.id.list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Accommodation dataModel= MainModel.getInstance().getAccommodations().get(position);
-
-                Context context = view.getContext();
-                Intent intent = new Intent(context, ObjectActivity.class);
-                intent.putExtra("ARG_POSITION", position);
-
-                startActivity(intent);
-
-
-                //When tapping on a household object
-                Snackbar.make(view, dataModel.getAddress(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
-            }
-        });*/
-
     }
 
     private void initSwipe(){
@@ -162,4 +137,7 @@ public class FavoritesActivity extends AppCompatActivity {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+
+
 }

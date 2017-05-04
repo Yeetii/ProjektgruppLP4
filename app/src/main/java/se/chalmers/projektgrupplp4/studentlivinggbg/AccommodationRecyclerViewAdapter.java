@@ -16,7 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by Jonathan on 16/04/2017.
  */
 
-public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
+public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
 
     private List<Accommodation> dataSet;
     private Context mContext;
@@ -47,20 +47,35 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
         MainModel.getInstance().getAccommodations().get(position).removeAsFavorite();
     }
 
+
+    private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
+        if(viewHolder.isFavorite()) {
+            viewHolder.getCurrent().removeAsFavorite();
+            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
+        } else {
+            viewHolder.getCurrent().addAsFavorite();
+            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_on);
+        }
+
+    }
+
+
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AccommodationRecyclerViewHolder viewHolder = (AccommodationRecyclerViewHolder) holder;
         final Accommodation accommodation = dataSet.get(position);
 
+        viewHolder.add(this);
         viewHolder.txtAddress.setText(accommodation.getAddress());
         viewHolder.txtHouseType.setText(accommodation.getAccommodationHouseType());
         viewHolder.txtArea.setText(accommodation.getArea());
         viewHolder.txtPrice.setText(accommodation.getPrice());
         viewHolder.txtSearchers.setText(accommodation.getSearchers());
         if(accommodation.getFavorite()) {
-            viewHolder.favourite.setImageResource(R.drawable.favorite_on);
+            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_on);
         } else {
-            viewHolder.favourite.setImageResource(R.drawable.favorite_off);
+            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
         }
         viewHolder.image.setImageDrawable(accommodation.getImage());
         viewHolder.current = accommodation;
@@ -79,4 +94,9 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
 
 
+
+    @Override
+    public void update(AccommodationRecyclerViewHolder viewHolder) {
+        toggleFavoriteStatus(viewHolder);
+    }
 }

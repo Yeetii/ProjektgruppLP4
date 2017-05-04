@@ -12,7 +12,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by PG on 15/04/2017.
  */
 
-public class GSONAdapter {
+public class SGSAdapter implements AccommodationAdapter {
     private SGSJsonAccommodation[] Result;
     private String ObjectMainGroupDescription;
     private int ObjectMainGroupNo;
@@ -169,6 +169,9 @@ public class GSONAdapter {
                 case "3 rum och kök":
                     return AccommodationHouseType.THREE_ROOMS;
                 case "4 rum och kök":
+                    return AccommodationHouseType.FOUR_ROOMS;
+                case "4 rum och kokvrå":
+                    //80 kvadrat men inget kök...
                     return AccommodationHouseType.FOUR_ROOMS;
                 case "Enkelrum med gruppkök":
                     return AccommodationHouseType.CORRIDOR;

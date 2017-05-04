@@ -15,16 +15,17 @@ import static android.support.v4.content.ContextCompat.startActivity;
  * Created by Jonathan on 18/04/2017.
  */
 
-public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
+public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {
         TextView txtAddress;
         TextView txtHouseType;
         TextView txtArea;
         TextView txtPrice;
         TextView txtSearchers;
-        ImageView favourite;
+        ImageView favoriteButton;
         ImageView image;
         Accommodation current;
         int position;
+        private RecyclerViewHolderObserver recyclerViewHolderObserver;
 
         public AccommodationRecyclerViewHolder(View v) {
             super(v);
@@ -33,8 +34,16 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
             txtArea = (TextView) v.findViewById(R.id.area);
             txtPrice = (TextView) v.findViewById(R.id.price);
             txtSearchers = (TextView) v.findViewById(R.id.searchers);
-            favourite = (ImageView) v.findViewById(R.id.favourite);
+            favoriteButton = (ImageView) v.findViewById(R.id.favoriteButton);
             image = (ImageView) v.findViewById(R.id.image);
+
+            favoriteButton.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    notifyObservers();
+                }
+            });
+
+
             v.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     Context context = v.getContext();
@@ -46,7 +55,25 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
             });
         }
 
+        public Accommodation getCurrent(){return current;}
+
         public boolean isFavorite() {
             return current.getFavorite();
         }
+
+    @Override
+    public void add(RecyclerViewHolderObserver recyclerViewHolderObserver) {
+        this.recyclerViewHolderObserver = recyclerViewHolderObserver;
     }
+
+
+    @Override
+    public void notifyObservers() {
+        try{
+            recyclerViewHolderObserver.update(this);}
+        catch(Exception e){
+            System.out.print("Exception thrown in notifyObservers() in AccomodationRecyclerViewHolder)");
+        }}
+
+
+}

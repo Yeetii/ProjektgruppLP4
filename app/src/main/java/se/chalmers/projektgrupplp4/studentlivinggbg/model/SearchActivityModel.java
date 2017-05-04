@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.widget.ImageView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -14,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 public class SearchActivityModel {
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView recyclerView;
-
+    private ImageView favoriteButton;
 
 
     public SearchActivityModel (Activity activity) {

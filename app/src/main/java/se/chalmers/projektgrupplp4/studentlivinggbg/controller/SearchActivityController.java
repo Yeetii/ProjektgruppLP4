@@ -11,6 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
@@ -77,6 +78,10 @@ public class SearchActivityController {
 
     };
 
+
+
+
+
     private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -118,4 +123,6 @@ public class SearchActivityController {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(model.getRecyclerView());
     }
+
+
 }

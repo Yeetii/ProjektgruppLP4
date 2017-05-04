@@ -1,11 +1,13 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.content.res.AssetManager;
+import android.widget.Adapter;
 
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -13,9 +15,11 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.GSONAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SendPostSGS;
+import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
 
 public class MainModel {
 
@@ -100,12 +104,13 @@ public class MainModel {
                         System.currentTimeMillis()) > twelveHours) {
                     //Above handles ege case if time is changed.
 
-
                     db.deleteAll();
                     db.storeTimestamp();
-                    SendPostSGS sendPostSGS = new SendPostSGS();
-                    sendPostSGS.execute();
-                    while (!sendPostSGS.isDone()) {
+                    RequestAccommodations sgsRequest = new RequestAccommodations(true);
+                    RequestAccommodations chalmersRequest = new RequestAccommodations(false);
+                    sgsRequest.execute();
+                    chalmersRequest.execute();
+                    while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
                         //Shit code, please fix :)
                     }
                 } else {
@@ -113,7 +118,9 @@ public class MainModel {
                 }
                 db.close();
 
-                GSONAdapter adapter = getPopulatedGsonAdapter();
+                AccommodationAdapter adapter = getPopulatedAdapter(true);
+                AccommodationAdapter crashAndBurn = getPopulatedAdapter(false);
+
                 adapter.updateAccommodations();
                 Long currentTime = System.currentTimeMillis();
                 ImageModel.getInstance().loadAllImages();
@@ -147,28 +154,37 @@ public class MainModel {
 
     public List<Accommodation> getAccommodations(){return INSTANCE.accommodations;}
 
-
     /*
         Creates a Gson Adapter filled with info from a JSON file.
     */
-    private GSONAdapter getPopulatedGsonAdapter() {
+    private AccommodationAdapter getPopulatedAdapter (boolean isSGS) {
         Gson gson = new Gson();
-        GSONAdapter adapter = null;
+        AccommodationAdapter adapter = null;
         try {
+            String fileName = isSGS? "SGSData" : "ChalmersData";
+
             /*
             MainController.applicationContext does not follow MVC. But this should be temp code
             anyway.
              */
-            AssetManager am = MainController.applicationContext.getAssets();
 
-            InputStream is = MainController.applicationContext.openFileInput("SGSData");
+            InputStream is = MainController.applicationContext.openFileInput(fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            adapter = gson.fromJson(reader, GSONAdapter.class);
-
+            if (isSGS) {
+                adapter = gson.fromJson(reader, SGSAdapter.class);
+            } else {
+                System.out.println("why not crash wat?");
+                adapter = gson.fromJson(reader, ChalmersAdapter.class);
+                ChalmersAdapter hej = (ChalmersAdapter) adapter;
+                hej.updateAccommodations();
+            }
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return adapter;
     }
+
 
 }
