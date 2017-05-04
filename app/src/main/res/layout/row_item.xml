@@ -175,7 +175,7 @@
         tools:layout_conversion_absoluteY="37dp" />
 
     <ImageView
-        android:id="@+id/favourite"
+        android:id="@+id/favoriteButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="16dp"

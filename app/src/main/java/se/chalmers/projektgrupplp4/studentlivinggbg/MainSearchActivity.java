@@ -22,10 +22,7 @@ public class MainSearchActivity extends AppCompatActivity {
         SearchActivityView searchActivityView = new SearchActivityView(this);
         SearchActivityModel searchActivityModel = new SearchActivityModel(this);
         searchActivityView.initLayoutManager(searchActivityModel);
-        new SearchActivityController(
-                this,
-                searchActivityModel,
-                searchActivityView);
+        new SearchActivityController(this, searchActivityModel, searchActivityView);
 
         try {
             /*
@@ -47,5 +44,7 @@ public class MainSearchActivity extends AppCompatActivity {
         Db4oDatabase.getInstance().close();
         super.onPause();
     }
+
+
 
 }

@@ -199,8 +199,8 @@ public class AdvancedSearchActivity extends AppCompatActivity{
 
     public static void advancedSearchButtonPressed(View view){
         System.out.print("An advanced search was made!");
-
     }
+
 
 
 

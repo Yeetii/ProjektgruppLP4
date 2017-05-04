@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by Jonathan on 16/04/2017.
  */
 
-public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements ImageViewObserver{
+public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
 
     private List<Accommodation> dataSet;
     private Context mContext;
@@ -49,7 +48,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     }
 
 
-    private void toggleFavoriteStatus(ImageView imageView, AccommodationRecyclerViewHolder viewHolder) {
+    private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
         if(viewHolder.isFavorite()) {
             viewHolder.getCurrent().removeAsFavorite();
             viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
@@ -97,7 +96,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
 
 
     @Override
-    public void update(ImageView imageView, AccommodationRecyclerViewHolder viewHolder) {
-        toggleFavoriteStatus(imageView, viewHolder);
+    public void update(AccommodationRecyclerViewHolder viewHolder) {
+        toggleFavoriteStatus(viewHolder);
     }
 }

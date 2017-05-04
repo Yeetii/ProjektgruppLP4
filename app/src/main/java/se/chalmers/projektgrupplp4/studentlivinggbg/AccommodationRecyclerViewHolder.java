@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 
@@ -16,7 +15,7 @@ import static android.support.v4.content.ContextCompat.startActivity;
  * Created by Jonathan on 18/04/2017.
  */
 
-public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements ImageViewObservable{
+public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {
         TextView txtAddress;
         TextView txtHouseType;
         TextView txtArea;
@@ -26,7 +25,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
         ImageView image;
         Accommodation current;
         int position;
-        private ImageViewObserver imageViewObserver;
+        private RecyclerViewHolderObserver recyclerViewHolderObserver;
 
         public AccommodationRecyclerViewHolder(View v) {
             super(v);
@@ -63,14 +62,15 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
         }
 
     @Override
-    public void add(ImageViewObserver imageViewObserver) {
-        this.imageViewObserver = imageViewObserver;
+    public void add(RecyclerViewHolderObserver recyclerViewHolderObserver) {
+        this.recyclerViewHolderObserver = recyclerViewHolderObserver;
     }
 
 
     @Override
     public void notifyObservers() {
-        try{imageViewObserver.update(favoriteButton, this);}
+        try{
+            recyclerViewHolderObserver.update(this);}
         catch(Exception e){
             System.out.print("Exception thrown in notifyObservers() in AccomodationRecyclerViewHolder)");
         }}
