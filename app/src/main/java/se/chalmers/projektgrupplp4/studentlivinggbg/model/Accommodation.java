@@ -3,10 +3,14 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing
+
+    public static List<Accommodation> accommodations = new ArrayList<>();
+
 
     private String objectNumber;
     private String address;
@@ -23,6 +27,8 @@ public class Accommodation {
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
                          int price, double area, int searchers, String thumbnail, String description,
                          AccommodationHost accommodationHost) {
+
+
         this.objectNumber = objectNumber;
         this.address=address;
         this.accommodationHouseType = accommodationHouseType;
@@ -32,7 +38,34 @@ public class Accommodation {
         this.thumbnail=thumbnail;
         this.description = description;
         this.accommodationHost = accommodationHost;
+        initAccommodations();
+        addToAccommodationList();
+
     }
+
+    private void addToAccommodationList() {
+        if(!accommodationIsInList()){accommodations.add(this);}
+    }
+
+    private boolean accommodationIsInList() {
+        try{
+            if(accommodations != null && accommodations.size() > 0){
+                for(Accommodation accommodation : accommodations){
+                    if(accommodation == this){return true;}
+                }
+            }
+        }catch(Exception e){}
+        return false;
+    }
+
+    private void initAccommodations() {
+        try{
+            if(accommodations != null){}
+        }catch(Exception e){
+            accommodations =  new ArrayList<>();
+        }
+    }
+
 
     public String getObjectNumber() {return objectNumber;}
 

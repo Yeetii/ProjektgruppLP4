@@ -19,7 +19,7 @@ public class SGSAdapter implements AccommodationAdapter {
     private int TotalCount;
 
     public void updateAccommodations () {
-        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+        List<Accommodation> accommodations = Accommodation.accommodations;
 
         for (int i = 0; i < Result.length; i++) {
             boolean alreadyExists = false;
@@ -53,7 +53,7 @@ public class SGSAdapter implements AccommodationAdapter {
         Accommodation accommodation = new Accommodation(objectNumber, street, type, price, area,
                 searchers, thumbNail, description, host);
         //Add
-        MainModel.getInstance().getAccommodations().add(accommodation);
+        Accommodation.accommodations.add(accommodation);
     }
 
     private void updateAccommodation (SGSJsonAccommodation SGSAccommodation, Accommodation accommodation) {

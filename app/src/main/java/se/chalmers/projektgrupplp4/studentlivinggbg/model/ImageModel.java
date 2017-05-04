@@ -38,7 +38,7 @@ public class ImageModel {
         ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         List<String> addedFiles = new ArrayList<>();
-        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+        List<Accommodation> accommodations = Accommodation.accommodations;
         threads.clear();
         for (int i = 0; i < accommodations.size(); i++) {
             Accommodation accommodation = accommodations.get(i);
