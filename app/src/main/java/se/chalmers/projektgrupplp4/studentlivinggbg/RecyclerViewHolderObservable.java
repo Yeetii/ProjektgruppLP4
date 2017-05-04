@@ -1,12 +1,13 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.widget.ImageView;
+
 /**
  * Created by PG on 11/04/2017.
  */
 
-public interface Observable {
-    void add(Observer observer);
-    boolean remove(Observer observer);
+public interface ImageViewObservable {
+    void add(ImageViewObserver imageViewObserver);
     void notifyObservers();
 
 }
