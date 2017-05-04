@@ -1,8 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
-import android.content.res.AssetManager;
-import android.widget.Adapter;
-
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -15,7 +12,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;

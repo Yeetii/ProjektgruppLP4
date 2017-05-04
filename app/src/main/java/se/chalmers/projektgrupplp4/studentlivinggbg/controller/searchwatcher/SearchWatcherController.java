@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchWatcher;
+package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchWatcher.SearchWatcherViewModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
