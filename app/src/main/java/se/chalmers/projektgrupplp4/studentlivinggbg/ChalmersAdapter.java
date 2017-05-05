@@ -26,7 +26,7 @@ public class ChalmersAdapter implements AccommodationAdapter {
 
     @Override
     public void updateAccommodations() {
-        List<Accommodation> accommodations = Accommodation.accommodations;
+        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
         List<Accommodation> chalmersAccommodations = html.getAccommodations();
         System.out.println("Adding chalmers");
         //TODO: remove duplicated code

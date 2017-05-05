@@ -28,6 +28,7 @@ public class MainModel {
 
     private Settings settings;
 
+    private List<Accommodation> accommodations = new ArrayList<>();
     private List<SearchWatcherItem> searchWatcherItems = new ArrayList<>();
 
     public static MainModel getInstance() {
@@ -91,7 +92,7 @@ public class MainModel {
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 List<Accommodation> temp = db.findAll();
 
-                Accommodation.accommodations.clear();
+                accommodations.clear();
 
                 //legacy reasons, should be removed once everyone has used this method once.
                 if (temp.size() > 0 && temp.get(0).getObjectNumber() == null) {
@@ -110,7 +111,7 @@ public class MainModel {
                         //Shit code, please fix :)
                     }
                 } else {
-                    Accommodation.accommodations.addAll(temp);
+                    accommodations.addAll(temp);
                 }
                 db.close();
 
@@ -130,17 +131,17 @@ public class MainModel {
     public void save() {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.deleteAll();
-        for (int i = 0; i < Accommodation.accommodations.size(); i++) {
-            db.store(Accommodation.accommodations.get(i));
+        for (int i = 0; i < accommodations.size(); i++) {
+            db.store(accommodations.get(i));
         }
         db.close();
     }
 
     public ArrayList<Accommodation> getFavorites() {
-        System.out.println(Accommodation.accommodations);
+        System.out.println(accommodations);
         ArrayList<Accommodation> result = new ArrayList<>();
-        for (Accommodation accommodation: Accommodation.accommodations){
-            System.out.println("accommodations: " + Accommodation.accommodations);
+        for (Accommodation accommodation: accommodations){
+            System.out.println("accommodations: " + accommodations);
             if(accommodation.getFavorite()) {
                 result.add(accommodation);
             }
@@ -148,6 +149,7 @@ public class MainModel {
         return result;
     }
 
+    public List<Accommodation> getAccommodations(){return INSTANCE.accommodations;}
 
     /*
         Creates a Gson Adapter filled with info from a JSON file.
@@ -174,6 +176,8 @@ public class MainModel {
                 hej.updateAccommodations();
             }
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return adapter;

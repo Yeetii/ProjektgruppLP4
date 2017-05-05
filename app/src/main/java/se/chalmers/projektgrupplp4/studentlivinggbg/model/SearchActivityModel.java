@@ -19,7 +19,7 @@ public class SearchActivityModel {
 
 
     public SearchActivityModel (Activity activity) {
-        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.accommodations, activity.getApplicationContext());
+        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(MainModel.getInstance().getAccommodations(), activity.getApplicationContext());
         recyclerView = (RecyclerView) activity.findViewById(R.id.list);
 
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -38,7 +38,7 @@ public class SearchActivityModel {
 
     public void refreshAdapter() {
         recyclerViewAdapter.clear();
-        recyclerViewAdapter.addAll(Accommodation.accommodations);
+        recyclerViewAdapter.addAll(MainModel.getInstance().getAccommodations());
     }
 
     public RecyclerView getRecyclerView() {
