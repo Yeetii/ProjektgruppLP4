@@ -65,6 +65,7 @@ public class FavoritesController {
         this.view = view;
         this.model = model;
         initNavigationListener();
+        initSwipe();
     }
 
     private void initNavigationListener () {
@@ -72,7 +73,7 @@ public class FavoritesController {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void onChildDrawController(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+    public void onChildDrawController(Canvas c, RecyclerView.ViewHolder viewHolder, float dX,  int actionState) {
         if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
             AccommodationRecyclerViewHolder accommodation = (AccommodationRecyclerViewHolder) viewHolder;
             if((dX > 0 && !accommodation.isFavorite()) || accommodation.isFavorite()) {
@@ -94,13 +95,13 @@ public class FavoritesController {
                 int position = viewHolder.getAdapterPosition();
 
                 if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN){
-                    model.updateFavoriteStatus(position, direction == ItemTouchHelper.LEFT, viewHolder);;
+                    model.updateFavoriteStatus(position, direction != ItemTouchHelper.LEFT, viewHolder);;
                 }
             }
 
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                onChildDrawController(c, recyclerView, viewHolder, dX, dY,actionState, isCurrentlyActive);
+                onChildDrawController(c, viewHolder, dX, actionState);
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
