@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
@@ -28,7 +29,6 @@ public class MainModel {
 
     private Settings settings;
 
-    private List<Accommodation> accommodations = new ArrayList<>();
     private List<SearchWatcherItem> searchWatcherItems = new ArrayList<>();
 
     public static MainModel getInstance() {
@@ -92,36 +92,36 @@ public class MainModel {
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 List<Accommodation> temp = db.findAll();
 
-                accommodations.clear();
+                Accommodation.getAccommodations().clear();
+
 
                 //legacy reasons, should be removed once everyone has used this method once.
                 if (temp.size() > 0 && temp.get(0).getObjectNumber() == null) {
                     db.deleteAll();
-                } else if (db.getTimestamp() == null || Math.abs(db.getTimestamp() -
-                        System.currentTimeMillis()) > twelveHours) {
+                } else if (db.getTimestamp() == null || Math.abs(db.getTimestamp() - System.currentTimeMillis()) > twelveHours) {
                     //Above handles ege case if time is changed.
 
                     db.deleteAll();
                     db.storeTimestamp();
-                    RequestAccommodations sgsRequest = new RequestAccommodations(true, MainController.applicationContext);
-                    RequestAccommodations chalmersRequest = new RequestAccommodations(false, MainController.applicationContext);
+                    RequestAccommodations sgsRequest = new RequestAccommodations(true);
+                    RequestAccommodations chalmersRequest = new RequestAccommodations(false);
                     sgsRequest.execute();
                     chalmersRequest.execute();
                     while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
                         //Shit code, please fix :)
                     }
                 } else {
-                    accommodations.addAll(temp);
+                    Accommodation.getAccommodations().addAll(removeNullFrom(temp));
                 }
+
                 db.close();
 
                 AccommodationAdapter adapter = getPopulatedAdapter(true);
                 AccommodationAdapter crashAndBurn = getPopulatedAdapter(false);
 
                 adapter.updateAccommodations();
-                crashAndBurn.updateAccommodations();
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().getAndSaveImages(true, accommodations, MainController.applicationContext);
+                ImageModel.getInstance().loadAllImages();
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             }
         });
@@ -129,28 +129,31 @@ public class MainModel {
         dbThread.start();
     }
 
+    private List<Accommodation>  removeNullFrom(List<Accommodation> temp) {
+        List<Accommodation> tempResult = new ArrayList<>();
+
+        for(Accommodation looper : temp){
+            try{
+            if(looper != null && !(looper.getAddress().equals(""))){
+                tempResult.add(looper);
+            }}
+            catch(NullPointerException e){}
+        }
+        return tempResult;
+    }
+
     public void save() {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.deleteAll();
-        for (int i = 0; i < accommodations.size(); i++) {
-            db.store(accommodations.get(i));
+        for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
+            db.store(Accommodation.getAccommodations().get(i));
         }
         db.close();
     }
 
-    public ArrayList<Accommodation> getFavorites() {
-        System.out.println(accommodations);
-        ArrayList<Accommodation> result = new ArrayList<>();
-        for (Accommodation accommodation: accommodations){
-            System.out.println("accommodations: " + accommodations);
-            if(accommodation.getFavorite()) {
-                result.add(accommodation);
-            }
-        }
-        return result;
-    }
 
-    public List<Accommodation> getAccommodations(){return INSTANCE.accommodations;}
+
+    public List<Accommodation> getAccommodations(){return Accommodation.getAccommodations();}
 
     /*
         Creates a Gson Adapter filled with info from a JSON file.
@@ -171,11 +174,12 @@ public class MainModel {
             if (isSGS) {
                 adapter = gson.fromJson(reader, SGSAdapter.class);
             } else {
+                System.out.println("why not crash wat?");
                 adapter = gson.fromJson(reader, ChalmersAdapter.class);
+                ChalmersAdapter hej = (ChalmersAdapter) adapter;
+                hej.updateAccommodations();
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return adapter;

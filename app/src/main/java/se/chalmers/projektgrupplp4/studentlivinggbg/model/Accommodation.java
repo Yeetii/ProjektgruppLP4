@@ -3,10 +3,13 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing
+
+    static List<Accommodation> accommodations;
 
     private String objectNumber;
     private String address;
@@ -20,6 +23,7 @@ public class Accommodation {
     private AccommodationHost accommodationHost;
     private boolean isFavorite = false;
 
+    /*
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
                          int price, double area, int searchers, String thumbnail, String description,
                          AccommodationHost accommodationHost) {
@@ -32,6 +36,60 @@ public class Accommodation {
         this.thumbnail=thumbnail;
         this.description = description;
         this.accommodationHost = accommodationHost;
+
+        initAccommodations();
+        addToAccommodations();
+    }*/
+
+    public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
+                         int price, double area, int searchers, String thumbnail, String description,
+                         AccommodationHost accommodationHost, boolean addToAccommodations) {
+        this.objectNumber = objectNumber;
+        this.address=address;
+        this.accommodationHouseType = accommodationHouseType;
+        this.price=price;
+        this.area=area;
+        this.searchers=searchers;
+        this.thumbnail=thumbnail;
+        this.description = description;
+        this.accommodationHost = accommodationHost;
+
+        initAccommodations();
+        if(addToAccommodations){
+            addToAccommodations();
+        }
+    }
+
+    private void addToAccommodations() {
+        accommodations.add(this);
+    }
+
+    public static ArrayList<Accommodation> getFavorites() {
+        System.out.println(getAccommodations());
+        ArrayList<Accommodation> result = new ArrayList<>();
+        for (Accommodation accommodation: getAccommodations()){
+            System.out.println("accommodations: " + getAccommodations());
+            if(accommodation.getFavorite()) {
+                result.add(accommodation);
+            }
+        }
+        return result;
+    }
+
+    private static void initAccommodations() {
+        try{
+            if(accommodations != null && accommodations.size() >= 0){}
+            else{
+                accommodations = new ArrayList<>();
+            }
+        }catch(Exception e){
+            accommodations = new ArrayList<>();
+        }
+    }
+
+    public static List<Accommodation> getAccommodations(){
+        initAccommodations();
+        return accommodations;
     }
 
     public String getObjectNumber() {return objectNumber;}
@@ -63,10 +121,6 @@ public class Accommodation {
          searchers = amount;
     }
 
-    public void setFavorite (boolean value) {
-        this.isFavorite = value;
-    }
-
     public Drawable getImage () {
         return ImageModel.getInstance().getMainImage(getImagePath());
     }
@@ -96,8 +150,4 @@ public class Accommodation {
     public void addAsFavorite(){isFavorite = true;}
     public void removeAsFavorite(){isFavorite = false;}
     public void changeFavoriteStatus(){isFavorite = !isFavorite;}
-
-    public void update(Accommodation accommodation) {
-        this.searchers = Integer.parseInt(accommodation.getSearchers());
-    }
 }

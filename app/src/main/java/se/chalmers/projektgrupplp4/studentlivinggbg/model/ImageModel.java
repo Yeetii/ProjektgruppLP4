@@ -34,11 +34,13 @@ public class ImageModel {
         return mainImages.get(objectNumber);
     }
 
-    public void getAndSaveImages (boolean loadFromDisc, List<Accommodation> accommodations, Context context) {
-        ContextWrapper cw = new ContextWrapper(context);
+    public void loadAllImages() {
+        ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         List<String> addedFiles = new ArrayList<>();
+        List<Accommodation> accommodations = Accommodation.getAccommodations();
         threads.clear();
+
         for (int i = 0; i < accommodations.size(); i++) {
             Accommodation accommodation = accommodations.get(i);
 
@@ -51,10 +53,6 @@ public class ImageModel {
             File imageFile = new File(directory, accommodation.getImagePath());
             //Check if file exists, load directly from disc then otherwise load from server.
             if(imageFile.exists() && !imageFile.isDirectory()) {
-                //Only want to save new images to disc.
-                if (!loadFromDisc) {
-                    continue;
-                }
                 loadImage(accommodation.getImagePath());
             } else {
                 loadImageFromServer(accommodation);

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
@@ -64,7 +65,7 @@ public class FavoritesActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_favorites);
 
-        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(MainModel.getInstance().getFavorites(), getApplicationContext());
+        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites(), getApplicationContext());
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
