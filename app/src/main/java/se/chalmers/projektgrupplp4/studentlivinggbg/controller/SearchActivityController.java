@@ -11,11 +11,10 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SearchView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.FavoritesActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;

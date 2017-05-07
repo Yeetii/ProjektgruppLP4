@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.FavoritesActivity">
+    tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

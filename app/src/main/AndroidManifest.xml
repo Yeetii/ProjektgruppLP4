@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FavoritesActivity"
+            android:name=".activity.FavoritesActivity"
             android:label="@string/title_favorites">
         </activity>
         <activity
