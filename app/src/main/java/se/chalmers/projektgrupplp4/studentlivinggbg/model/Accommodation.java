@@ -63,6 +63,10 @@ public class Accommodation {
          searchers = amount;
     }
 
+    public void setFavorite (boolean value) {
+        this.isFavorite = value;
+    }
+
     public Drawable getImage () {
         return ImageModel.getInstance().getMainImage(getImagePath());
     }
@@ -92,4 +96,8 @@ public class Accommodation {
     public void addAsFavorite(){isFavorite = true;}
     public void removeAsFavorite(){isFavorite = false;}
     public void changeFavoriteStatus(){isFavorite = !isFavorite;}
+
+    public void update(Accommodation accommodation) {
+        this.searchers = Integer.parseInt(accommodation.getSearchers());
+    }
 }

@@ -26,7 +26,7 @@ public class OnBootReceiver extends BroadcastReceiver {
         Intent createdIntent = new Intent(context, AlarmReceiver.class);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, createdIntent, 0);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3000, 3000, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
     }
 
 }

@@ -103,8 +103,8 @@ public class MainModel {
 
                     db.deleteAll();
                     db.storeTimestamp();
-                    RequestAccommodations sgsRequest = new RequestAccommodations(true);
-                    RequestAccommodations chalmersRequest = new RequestAccommodations(false);
+                    RequestAccommodations sgsRequest = new RequestAccommodations(true, MainController.applicationContext);
+                    RequestAccommodations chalmersRequest = new RequestAccommodations(false, MainController.applicationContext);
                     sgsRequest.execute();
                     chalmersRequest.execute();
                     while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
@@ -119,8 +119,9 @@ public class MainModel {
                 AccommodationAdapter crashAndBurn = getPopulatedAdapter(false);
 
                 adapter.updateAccommodations();
+                crashAndBurn.updateAccommodations();
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().loadAllImages();
+                ImageModel.getInstance().getAndSaveImages(true, accommodations, MainController.applicationContext);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             }
         });
@@ -170,10 +171,7 @@ public class MainModel {
             if (isSGS) {
                 adapter = gson.fromJson(reader, SGSAdapter.class);
             } else {
-                System.out.println("why not crash wat?");
                 adapter = gson.fromJson(reader, ChalmersAdapter.class);
-                ChalmersAdapter hej = (ChalmersAdapter) adapter;
-                hej.updateAccommodations();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
