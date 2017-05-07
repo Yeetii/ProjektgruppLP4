@@ -92,6 +92,14 @@ public class Accommodation {
         return accommodations;
     }
 
+    public void update(Accommodation accommodation) {
+        this.searchers = Integer.parseInt(accommodation.getSearchers());
+    }
+
+    public void setFavorite(boolean value) {
+        this.isFavorite = value;
+    }
+
     public String getObjectNumber() {return objectNumber;}
 
     public String getAddress() {

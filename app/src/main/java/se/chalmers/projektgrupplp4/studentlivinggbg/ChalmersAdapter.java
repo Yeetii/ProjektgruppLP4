@@ -20,31 +20,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by PG on 20/04/2017.
  */
 
-public class ChalmersAdapter implements AccommodationAdapter {
-    public htmlObject html;
-
+public class ChalmersAdapter extends AccommodationAdapter {
+    private htmlObject html;
 
     @Override
-    public void updateAccommodations() {
-        List<Accommodation> accommodations = Accommodation.getAccommodations();
-        List<Accommodation> chalmersAccommodations = html.getAccommodations();
-        System.out.println("Adding chalmers");
-        //TODO: remove duplicated code
-        for (int i = 0; i < chalmersAccommodations.size(); i++) {
-            boolean alreadyExists = false;
-            for (int y = 0; y < accommodations.size(); y++) {
-                if (accommodations.get(y).getObjectNumber().equals(chalmersAccommodations.get(i).getObjectNumber())) {
-                    alreadyExists = true;
-                   // updateAccommodation(chalmersAccommodations.get(i), accommodations.get(y));
-                    break;
-                }
-            }
-
-            if (!alreadyExists) {
-                //accommodations.add(chalmersAccommodations.get(i));
-            }
-        }
-        System.out.println("hai");
+    public List<Accommodation> getAccommodations() {
+        return html.getAccommodations();
     }
 
     public static byte[] getFormattedBytes(StringBuffer buffer) throws UnsupportedEncodingException {

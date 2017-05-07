@@ -103,8 +103,8 @@ public class MainModel {
 
                     db.deleteAll();
                     db.storeTimestamp();
-                    RequestAccommodations sgsRequest = new RequestAccommodations(true);
-                    RequestAccommodations chalmersRequest = new RequestAccommodations(false);
+                    RequestAccommodations sgsRequest = new RequestAccommodations(true, MainController.applicationContext);
+                    RequestAccommodations chalmersRequest = new RequestAccommodations(true, MainController.applicationContext);
                     sgsRequest.execute();
                     chalmersRequest.execute();
                     while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
@@ -116,12 +116,13 @@ public class MainModel {
 
                 db.close();
 
-                AccommodationAdapter adapter = getPopulatedAdapter(true);
-                AccommodationAdapter crashAndBurn = getPopulatedAdapter(false);
+                AccommodationAdapter sgsAdapter = getPopulatedAdapter(true);
+                AccommodationAdapter chalmersAdapter = getPopulatedAdapter(false);
 
-                adapter.updateAccommodations();
+                sgsAdapter.updateAccommodations();
+                chalmersAdapter.updateAccommodations();
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().loadAllImages();
+                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations(), MainController.applicationContext);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             }
         });
