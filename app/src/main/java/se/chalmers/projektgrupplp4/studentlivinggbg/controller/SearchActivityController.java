@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
+import java.util.List;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
@@ -26,19 +30,20 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
  */
 
 public class SearchActivityController {
+    private static SearchActivityController controller;
+
     private Activity activity;
-    private Context context;
     private SearchView searchView;
     private SearchActivityView activityView;
     private SearchActivityModel model;
 
     public SearchActivityController(Activity activity, SearchActivityModel model, SearchActivityView activityView) {
         this.activity = activity;
-        this.context = activity.getApplicationContext();
         this.model = model;
         this.activityView = activityView;
         initListeners();
         initSwipe();
+        controller = this;
     }
 
     private void initListeners() {
@@ -121,6 +126,19 @@ public class SearchActivityController {
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(model.getRecyclerView());
+    }
+
+    public static void updateAccommodations(final List<Accommodation> accommodations) {
+        if (controller != null) {
+            controller.activity.runOnUiThread(new Runnable() {
+                  @Override
+                  public void run() {
+                      Accommodation.setNewAccommodationList(accommodations, controller.activity.getApplicationContext());
+                      controller.model.refreshAdapter();
+                  }
+              }
+            );
+        }
     }
 
 

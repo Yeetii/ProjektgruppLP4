@@ -51,7 +51,7 @@ public class SearchActivityView {
             View itemView = viewHolder.itemView;
             float height = (float) itemView.getBottom() - (float) itemView.getTop();
             float width = height / 3;
-
+            //TODO: This code seems to be a duplicate
             if(dX > 0 && !accommodation.isFavorite()) {
                 p.setColor(Color.parseColor("#388E3C"));
                 RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());

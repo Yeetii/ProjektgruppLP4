@@ -8,6 +8,7 @@ import android.content.Intent;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 
@@ -38,14 +39,11 @@ public class AlarmReceiver extends BroadcastReceiver {
             getNewData(context);
 
             List<Accommodation> newAccommodations = fillNewAccommodations(context);
-
             updateFavoriteStatus(previousAccommodations, newAccommodations);
             storeNewData(db, newAccommodations);
-            
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations, context);
-
-            createNextAlarm(System.currentTimeMillis() + updateInterval + extraDelayTime, context);
-            notifyApp();
+            createNextAlarm(System.currentTimeMillis() + /* + updateInterval + */extraDelayTime, context);
+            notifyApp(newAccommodations, context);
         } else {
             //Set next alarm so it calls 12h + 3s after last update of the database.
             long nextUpdateTime = lastUpdateTime + updateInterval + extraDelayTime;
@@ -56,7 +54,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     //TODO: create notifyApp method
-    private void notifyApp() {
+    private void notifyApp(List<Accommodation> accommodations, Context context) {
+        SearchActivityController.updateAccommodations(accommodations);
     }
 
     private void createNextAlarm(long nextUpdateItem, Context context) {

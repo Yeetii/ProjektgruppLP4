@@ -1,7 +1,9 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,4 +160,10 @@ public class Accommodation {
     public void addAsFavorite(){isFavorite = true;}
     public void removeAsFavorite(){isFavorite = false;}
     public void changeFavoriteStatus(){isFavorite = !isFavorite;}
+
+    public static void setNewAccommodationList(List<Accommodation> newAccommodations, Context context) {
+        ImageModel.getInstance().getAndSaveImages(true, newAccommodations, context);
+        Accommodation.getAccommodations().clear();
+        Accommodation.getAccommodations().addAll(newAccommodations);
+    }
 }

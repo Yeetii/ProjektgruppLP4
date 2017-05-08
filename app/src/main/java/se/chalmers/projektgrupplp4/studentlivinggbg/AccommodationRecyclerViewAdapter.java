@@ -37,6 +37,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         for (Accommodation i : dataSet) {
             this.dataSet.add(i);
         }
+        notifyDataSetChanged();
     }
 
     public void addToFavorites (int position) {
