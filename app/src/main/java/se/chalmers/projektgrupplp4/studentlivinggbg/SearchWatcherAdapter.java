@@ -9,6 +9,7 @@ import android.view.View;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
@@ -56,7 +57,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         switch (v.getId())
         {
             case R.id.searchWithSearchWatcherButton:
-                AdvancedSearchActivity.advancedSearchButtonPressed(v);
+                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
                 break;
         }
     }
