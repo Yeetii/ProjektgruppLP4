@@ -32,10 +32,12 @@ public class FavoritesModel {
     }
 
     public void updateFavoriteStatus(int position, boolean favorite, RecyclerView.ViewHolder viewHolder) {
+        Accommodation accommodation = Accommodation.getFavorites().get(position);
+        int realPosition = Accommodation.getAccommodations().indexOf(accommodation);
         if (favorite) {
-            recyclerViewAdapter.addToFavorites(position);
+            recyclerViewAdapter.addToFavorites(realPosition);
         } else {
-            recyclerViewAdapter.removeFromFavorites(position);
+            recyclerViewAdapter.removeFromFavorites(realPosition);
         }
         recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
     }
