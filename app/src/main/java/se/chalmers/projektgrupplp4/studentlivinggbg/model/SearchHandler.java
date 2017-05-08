@@ -3,15 +3,21 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.ArrayList;
 import java.util.List;
 
-class SearchHandler {
+public class SearchHandler {
 
-    private List<Search> lastSearches = new ArrayList<>();
+    static private List<Search> lastSearches = new ArrayList<>();
 
-    public SearchHandler () {
+    public SearchHandler () {}
 
+    public static Search createSearch(String mainSearch){
+        Search result = new Search(mainSearch);
+        if(mainSearch == null || mainSearch.isEmpty() || mainSearch.equals("") || mainSearch.length() <= 0) {}
+        else{
+        addToLastSearches(result);}
+        return result;
     }
 
-    public Search createSearch(String mainSearch, String address,
+    public static Search createSearch(String mainSearch, String address,
                                ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                                ArrayList<AccommodationHost> possibleAccomodationHosts,
                                ArrayList<Region> possibleRegions,
@@ -30,7 +36,7 @@ class SearchHandler {
         return result;
     }
 
-    private void addToLastSearches(Search result) {
+    static void addToLastSearches(Search result) {
         if(lastSearches.size() >= 10){
             lastSearches.remove(lastSearches.size()-1);
         }
@@ -42,4 +48,33 @@ class SearchHandler {
     }
 
 
+    static Search getLastSearch(){
+        try{
+            return lastSearches.get(0);}
+        catch(IndexOutOfBoundsException e){
+            return new Search("");}}
+
+
+    public static List<Accommodation> search(Search search){
+        List<Accommodation> result = new ArrayList<>();
+
+
+        if (search.getMainSearch().equals("")) {
+            return Accommodation.getAccommodations();
+        }
+
+        for (Accommodation accommodation: Accommodation.getAccommodations()){
+
+            String resultString = accommodation.getAddress() +
+                    accommodation.getAccommodationHouseType() +
+                    accommodation.getRegions() +
+                    accommodation.getAccommodationHost();
+
+            if(resultString.contains(search.getMainSearch())) {
+                result.add(accommodation);
+            }
+        }
+
+        return result;
+    }
 }

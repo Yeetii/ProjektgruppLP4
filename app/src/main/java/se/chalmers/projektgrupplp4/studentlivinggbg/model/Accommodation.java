@@ -14,6 +14,7 @@ public class Accommodation {
     private String objectNumber;
     private String address;
     private AccommodationHouseType accommodationHouseType;
+    private ArrayList<Region> possibleRegions;
     private int price;
     private double area;
     private int searchers;
@@ -60,6 +61,7 @@ public class Accommodation {
         }
     }
 
+
     private void addToAccommodations() {
         accommodations.add(this);
     }
@@ -68,7 +70,6 @@ public class Accommodation {
         System.out.println(getAccommodations());
         ArrayList<Accommodation> result = new ArrayList<>();
         for (Accommodation accommodation: getAccommodations()){
-            System.out.println("accommodations: " + getAccommodations());
             if(accommodation.getFavorite()) {
                 result.add(accommodation);
             }
@@ -153,9 +154,21 @@ public class Accommodation {
         return accommodationHost.toString();
     }
 
+    public String getRegions(){
+        try{
+        String result = ", ";
+        for(Region region: possibleRegions){
+            result = result + region.toString() + ", ";
+        }
+        return result.substring(0, result.length() - 2);}
+    catch(Exception e){
+        return "";
+    }}
+
     public boolean getFavorite(){return isFavorite;}
 
     public void addAsFavorite(){isFavorite = true;}
     public void removeAsFavorite(){isFavorite = false;}
     public void changeFavoriteStatus(){isFavorite = !isFavorite;}
+
 }
