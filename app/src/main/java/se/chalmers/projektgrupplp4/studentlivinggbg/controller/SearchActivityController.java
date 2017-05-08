@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.SettingsActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
@@ -81,6 +82,9 @@ public class SearchActivityController {
                     activity.startActivity(searchWatcher);
                     return true;
                 case R.id.navigation_settings:
+                    Intent settings = new Intent(activity, SettingsActivity.class);
+                    settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
+                    activity.startActivity(settings);
                     return true;
             }
             return false;

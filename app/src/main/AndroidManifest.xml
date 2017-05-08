@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="se.chalmers.projektgrupplp4.studentlivinggbg">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />;
-    <uses-permission android:name="android.permission.INTERNET" />;
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    ;
+    <uses-permission android:name="android.permission.INTERNET" />
+    ;
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -18,29 +21,32 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainSearchActivity"
-            android:label="@string/title_activity_main_search" >
+            android:label="@string/title_activity_main_search">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
         <activity
             android:name=".activity.FavoritesActivity"
-            android:label="@string/title_favorites">
-        </activity>
+            android:label="@string/title_favorites"></activity>
         <activity
             android:name=".AdvancedSearchActivity"
             android:label="@string/title_activity_advanced_search" />
         <activity android:name=".ApplyActivity">
-            android:label="@string/title_activity_advanced_search">
-        </activity>
+            android:label="@string/title_activity_advanced_search"></activity>
+
         <receiver android:name=".OnBootReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <receiver android:name=".AlarmReceiver" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
