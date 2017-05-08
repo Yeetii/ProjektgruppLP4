@@ -89,39 +89,13 @@ public class MainModel {
 
             @Override
             public void run() {
-                int twelveHours = 12 * 3600 * 1000;
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 List<Accommodation> temp = db.findAll();
 
                 Accommodation.getAccommodations().clear();
-
-
-                //legacy reasons, should be removed once everyone has used this method once.
-                if (temp.size() > 0 && temp.get(0).getObjectNumber() == null) {
-                    db.deleteAll();
-                } else if (db.getTimestamp() == null || Math.abs(db.getTimestamp() - System.currentTimeMillis()) > twelveHours) {
-                    //Above handles ege case if time is changed.
-
-                    db.deleteAll();
-                    db.storeTimestamp();
-                    RequestAccommodations sgsRequest = new RequestAccommodations(true, MainController.applicationContext);
-                    RequestAccommodations chalmersRequest = new RequestAccommodations(true, MainController.applicationContext);
-                    sgsRequest.execute();
-                    chalmersRequest.execute();
-                    while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
-                        //Shit code, please fix :)
-                    }
-                } else {
-                    Accommodation.getAccommodations().addAll(removeNullFrom(temp));
-                }
-
+                Accommodation.getAccommodations().addAll(removeNullFrom(temp));
                 db.close();
 
-                AccommodationAdapter sgsAdapter = getPopulatedAdapter(true);
-                AccommodationAdapter chalmersAdapter = getPopulatedAdapter(false);
-
-                sgsAdapter.updateAccommodations();
-                chalmersAdapter.updateAccommodations();
                 Long currentTime = System.currentTimeMillis();
                 ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations(), MainController.applicationContext);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
@@ -152,40 +126,4 @@ public class MainModel {
         }
         db.close();
     }
-
-
-
-    public List<Accommodation> getAccommodations(){return Accommodation.getAccommodations();}
-
-    /*
-        Creates a Gson Adapter filled with info from a JSON file.
-    */
-    private AccommodationAdapter getPopulatedAdapter (boolean isSGS) {
-        Gson gson = new Gson();
-        AccommodationAdapter adapter = null;
-        try {
-            String fileName = isSGS? "SGSData" : "ChalmersData";
-
-            /*
-            MainController.applicationContext does not follow MVC. But this should be temp code
-            anyway.
-             */
-
-            InputStream is = MainController.applicationContext.openFileInput(fileName);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            if (isSGS) {
-                adapter = gson.fromJson(reader, SGSAdapter.class);
-            } else {
-                System.out.println("why not crash wat?");
-                adapter = gson.fromJson(reader, ChalmersAdapter.class);
-                ChalmersAdapter hej = (ChalmersAdapter) adapter;
-                hej.updateAccommodations();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return adapter;
-    }
-
-
 }

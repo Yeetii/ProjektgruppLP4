@@ -75,7 +75,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
                 //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 //startActivity(intent);
                 //Intent intent = new Intent(ObjectActivity.this, ApplyActivity.class);
-                Accommodation accommodation = MainModel.getInstance().getAccommodations().get(getIntent().getIntExtra("ARG_POSITION",0));
+                Accommodation accommodation = Accommodation.getAccommodations().get(getIntent().getIntExtra("ARG_POSITION",0));
                 if (accommodation.getAccommodationHost().equals("SGS Studentbostäder")) {
                     //String URL = "https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%" + accommodation.getObjectNumber();
                     //intent.putExtra("URL", URL);

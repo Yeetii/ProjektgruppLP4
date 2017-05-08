@@ -20,7 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 public abstract class AccommodationAdapter {
     public void updateAccommodations() {
         List<Accommodation> adapterAccommodations = getAccommodations();
-        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+        List<Accommodation> accommodations = Accommodation.getAccommodations();
 
         for (int i = 0; i < adapterAccommodations.size(); i++) {
             boolean alreadyExists = false;
