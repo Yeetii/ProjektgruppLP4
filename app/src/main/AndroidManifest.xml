@@ -24,13 +24,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+            </activity>
         <activity
             android:name=".activity.FavoritesActivity"
             android:label="@string/title_favorites">
         </activity>
         <activity
             android:name=".AdvancedSearchActivity"
+            android:label="@string/title_activity_advanced_search" />
+        <activity android:name=".ApplyActivity">
             android:label="@string/title_activity_advanced_search">
         </activity>
         <receiver android:name=".OnBootReceiver">
