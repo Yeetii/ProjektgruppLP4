@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.widget.SeekBar;
 
 import java.util.ArrayList;
@@ -10,9 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.AdvancedSearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 
 /**
  * Created by Erik on 2017-05-05.
@@ -30,7 +27,12 @@ public class AdvancedSearchActivityView {
         this.activity = activity;
 
         initSeekBars();
+        initMultiSpinners();
 
+        activity.setContentView(R.layout.activity_advanced_search);
+    }
+
+    private void initMultiSpinners() {
         MultiSpinner roomTypeSpinner;
         MultiSpinner areasSpinner;
         MultiSpinner landlordSpinner;
@@ -39,14 +41,11 @@ public class AdvancedSearchActivityView {
         areasSpinner = (MultiSpinner) activity.findViewById(R.id.areas_spinner);
         landlordSpinner = (MultiSpinner) activity.findViewById(R.id.landlord_spinner);
 
-
 //        TODO Should this get its items from a static methods?
         fillLists();
         roomTypeSpinner.setItems(roomTypeItems, activity.getString(R.string.multiSpinner_roomType));
         areasSpinner.setItems(areasItems, activity.getString(R.string.multiSpinner_areas));
         landlordSpinner.setItems(landlordItems, activity.getString(R.string.multiSpinner_landlord));
-
-        activity.setContentView(R.layout.activity_advanced_search);
     }
 
     private void initSeekBars(){
