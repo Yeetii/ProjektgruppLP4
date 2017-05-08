@@ -31,7 +31,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Db4oDatabase db = initDataBase(context);
         Long lastUpdateTime = db.getTimestamp();
 
-        if (lastUpdateTime > System.currentTimeMillis() ||
+        if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 lastUpdateTime + updateInterval < System.currentTimeMillis()) {
             System.out.println("Fetching new data");
             List<Accommodation> previousAccommodations = db.findAll();

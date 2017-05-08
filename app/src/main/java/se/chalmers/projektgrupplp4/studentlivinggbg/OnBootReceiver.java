@@ -17,7 +17,7 @@ public class OnBootReceiver extends BroadcastReceiver {
         setUpAlarm(context);
     }
 
-    private void setUpAlarm (Context context) {
+    public static void setUpAlarm (Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent createdIntent = new Intent(context, AlarmReceiver.class);
 

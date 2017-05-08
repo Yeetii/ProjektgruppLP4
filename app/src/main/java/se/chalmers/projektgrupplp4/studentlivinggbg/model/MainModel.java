@@ -1,5 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.OnBootReceiver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
@@ -38,7 +41,6 @@ public class MainModel {
     private MainModel () {
         searchHandler = new SearchHandler();
         settings = new Settings();
-        loadDatabase();
         //TODO: This is just for testing
         initializeTestSearchWatchers();
 
@@ -83,7 +85,7 @@ public class MainModel {
 
 
 
-    private void loadDatabase() {
+    public void loadDatabase(final Context context) {
         //Throws error if not done in a thread.
         dbThread = (new Thread() {
 
@@ -91,13 +93,17 @@ public class MainModel {
             public void run() {
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 List<Accommodation> temp = db.findAll();
+                //Should happen the first time the user starts the app
+                if (temp.size() == 0) {
+                    OnBootReceiver.setUpAlarm(context);
+                }
 
                 Accommodation.getAccommodations().clear();
                 Accommodation.getAccommodations().addAll(removeNullFrom(temp));
                 db.close();
 
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations(), MainController.applicationContext);
+                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations(), context);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             }
         });

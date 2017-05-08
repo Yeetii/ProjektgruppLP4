@@ -17,6 +17,7 @@ public class MainSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainModel.getInstance().loadDatabase(getApplicationContext());
         new MainController(getApplicationContext());
 
         SearchActivityView searchActivityView = new SearchActivityView(this);
