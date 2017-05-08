@@ -57,6 +57,8 @@ public class SearchActivityController {
         showAll.setOnClickListener(onClickShowAll);
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        searchView.setIconifiedByDefault(true);
+        searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
     }
 
@@ -86,6 +88,12 @@ public class SearchActivityController {
 
     };
 
+    private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            searchView.setIconified(false);
+        }
+    };
 
 
 
