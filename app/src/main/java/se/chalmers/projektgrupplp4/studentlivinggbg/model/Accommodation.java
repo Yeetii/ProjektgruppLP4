@@ -3,14 +3,18 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.graphics.drawable.Drawable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing
 
+    static List<Accommodation> accommodations;
+
     private String objectNumber;
     private String address;
     private AccommodationHouseType accommodationHouseType;
+    private ArrayList<Region> possibleRegions;
     private int price;
     private double area;
     private int searchers;
@@ -20,6 +24,7 @@ public class Accommodation {
     private AccommodationHost accommodationHost;
     private boolean isFavorite = false;
 
+    /*
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
                          int price, double area, int searchers, String thumbnail, String description,
                          AccommodationHost accommodationHost) {
@@ -32,6 +37,68 @@ public class Accommodation {
         this.thumbnail=thumbnail;
         this.description = description;
         this.accommodationHost = accommodationHost;
+
+        initAccommodations();
+        addToAccommodations();
+    }*/
+
+    public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
+                         int price, double area, int searchers, String thumbnail, String description,
+                         AccommodationHost accommodationHost, boolean addToAccommodations) {
+        this.objectNumber = objectNumber;
+        this.address=address;
+        this.accommodationHouseType = accommodationHouseType;
+        this.price=price;
+        this.area=area;
+        this.searchers=searchers;
+        this.thumbnail=thumbnail;
+        this.description = description;
+        this.accommodationHost = accommodationHost;
+
+        initAccommodations();
+        if(addToAccommodations){
+            addToAccommodations();
+        }
+    }
+
+
+    private void addToAccommodations() {
+        accommodations.add(this);
+    }
+
+    public static ArrayList<Accommodation> getFavorites() {
+        System.out.println(getAccommodations());
+        ArrayList<Accommodation> result = new ArrayList<>();
+        for (Accommodation accommodation: getAccommodations()){
+            if(accommodation.getFavorite()) {
+                result.add(accommodation);
+            }
+        }
+        return result;
+    }
+
+    private static void initAccommodations() {
+        try{
+            if(accommodations != null && accommodations.size() >= 0){}
+            else{
+                accommodations = new ArrayList<>();
+            }
+        }catch(Exception e){
+            accommodations = new ArrayList<>();
+        }
+    }
+
+    public static List<Accommodation> getAccommodations(){
+        initAccommodations();
+        return accommodations;
+    }
+
+    public void update(Accommodation accommodation) {
+        this.searchers = Integer.parseInt(accommodation.getSearchers());
+    }
+
+    public void setFavorite(boolean value) {
+        this.isFavorite = value;
     }
 
     public String getObjectNumber() {return objectNumber;}
@@ -87,9 +154,21 @@ public class Accommodation {
         return accommodationHost.toString();
     }
 
+    public String getRegions(){
+        try{
+        String result = ", ";
+        for(Region region: possibleRegions){
+            result = result + region.toString() + ", ";
+        }
+        return result.substring(0, result.length() - 2);}
+    catch(Exception e){
+        return "";
+    }}
+
     public boolean getFavorite(){return isFavorite;}
 
     public void addAsFavorite(){isFavorite = true;}
     public void removeAsFavorite(){isFavorite = false;}
     public void changeFavoriteStatus(){isFavorite = !isFavorite;}
+
 }

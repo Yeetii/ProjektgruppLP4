@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ToggleButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.FavoritesActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;

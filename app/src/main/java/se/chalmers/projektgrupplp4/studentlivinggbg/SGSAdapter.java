@@ -12,32 +12,24 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
  * Created by PG on 15/04/2017.
  */
 
-public class SGSAdapter implements AccommodationAdapter {
+public class SGSAdapter extends AccommodationAdapter {
+    //Has to use SGS variable names
     private SGSJsonAccommodation[] Result;
     private String ObjectMainGroupDescription;
     private int ObjectMainGroupNo;
     private int TotalCount;
 
-    public void updateAccommodations () {
-        List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
-
+    @Override
+    public List<Accommodation> getAccommodations() {
+        List<Accommodation> accommodations = new ArrayList<>();
         for (int i = 0; i < Result.length; i++) {
-            boolean alreadyExists = false;
-            for (int y = 0; y < accommodations.size(); y++) {
-                if (accommodations.get(y).getObjectNumber().equals(Result[i].getObjectNumber())) {
-                    alreadyExists = true;
-                    updateAccommodation(Result[i], accommodations.get(y));
-                    break;
-                }
-            }
-
-            if (!alreadyExists) {
-                addAccommodation(Result[i]);
-            }
+            accommodations.add(convertAccommodation(Result[i]));
         }
+
+        return accommodations;
     }
 
-    private void addAccommodation(SGSJsonAccommodation SGSAccommodation) {
+    private Accommodation convertAccommodation(SGSJsonAccommodation SGSAccommodation) {
         //Get
         String objectNumber = SGSAccommodation.getObjectNumber();
         String street = SGSAccommodation.getStreet();
@@ -51,14 +43,8 @@ public class SGSAdapter implements AccommodationAdapter {
 
         //Create
         Accommodation accommodation = new Accommodation(objectNumber, street, type, price, area,
-                searchers, thumbNail, description, host);
-        //Add
-        MainModel.getInstance().getAccommodations().add(accommodation);
-    }
-
-    private void updateAccommodation (SGSJsonAccommodation SGSAccommodation, Accommodation accommodation) {
-        //Only searchers should change from each load.
-        accommodation.setSearchers(SGSAccommodation.getCountInterest());
+                searchers, thumbNail, description, host, false);
+        return accommodation;
     }
 
 

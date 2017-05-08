@@ -36,7 +36,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private List<Accommodation> accommodations = MainModel.getInstance().getAccommodations();
+    private List<Accommodation> accommodations = Accommodation.getAccommodations();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**

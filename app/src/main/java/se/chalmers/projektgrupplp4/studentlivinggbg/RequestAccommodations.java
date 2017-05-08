@@ -19,13 +19,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
  */
 
 public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
-    private Context context = MainController.applicationContext;
+    private Context context;
     private boolean isDone = false;
     private boolean sendSGS;
 
 
-    public RequestAccommodations (boolean isSGS) {
+    public RequestAccommodations (boolean isSGS, Context context) {
         this.sendSGS = isSGS;
+        this.context = context;
     }
 
 
