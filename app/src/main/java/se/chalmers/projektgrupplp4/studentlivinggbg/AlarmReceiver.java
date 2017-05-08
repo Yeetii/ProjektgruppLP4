@@ -6,7 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
@@ -25,32 +28,79 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     private void updateDatabase(Context context) {
-        long updateInterval = AlarmManager.INTERVAL_HALF_DAY; //Should update every 12h
+        long updateInterval = AlarmManager.INTERVAL_DAY / 2; //Should update every 12h
         long extraDelayTime = 3 * 1000; //Set 3s delay, might be need
 
         Db4oDatabase db = initDataBase(context);
         Long lastUpdateTime = db.getTimestamp();
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
-                lastUpdateTime + updateInterval < System.currentTimeMillis()) {
+                checkIfItShouldUpdate(lastUpdateTime)) {
             System.out.println("Fetching new data");
             List<Accommodation> previousAccommodations = db.findAll();
 
             getNewData(context);
 
             List<Accommodation> newAccommodations = fillNewAccommodations(context);
+
             updateFavoriteStatus(previousAccommodations, newAccommodations);
             storeNewData(db, newAccommodations);
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations, context);
-            createNextAlarm(System.currentTimeMillis() + /* + updateInterval + */extraDelayTime, context);
+            createNextAlarm(System.currentTimeMillis() +  updateInterval + extraDelayTime, context);
             notifyApp(newAccommodations, context);
         } else {
             //Set next alarm so it calls 12h + 3s after last update of the database.
-            long nextUpdateTime = lastUpdateTime + updateInterval + extraDelayTime;
+            long nextUpdateTime = nextUpdateTime(lastUpdateTime);
             System.out.println("Set up next fetch at: " + nextUpdateTime);
             createNextAlarm(nextUpdateTime , context);
             db.close();
         }
+    }
+
+    private boolean checkIfItShouldUpdate(long lastUpdate) {
+        /*
+            The application should update at 6, 12, 18, 24 a clock.
+         */
+        //Don't want to struggle with month/year. Every check should appear at least every 6h.
+        if (6 * 3600 * 1000 + lastUpdate < System.currentTimeMillis()) return true;
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeZone(TimeZone.getTimeZone("Etc/GMT+2"));
+        calendar.setTimeInMillis(lastUpdate);
+        //Since it is a singleton we have to save all the info and then change.
+        int lastUpdateDay = calendar.get(Calendar.DATE);
+        int lastUpdateHour = calendar.get(Calendar.HOUR);
+
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        int currentDay = calendar.get(Calendar.DATE);
+        int currentHour = calendar.get(Calendar.HOUR);
+        if (lastUpdateDay != currentDay) return true;
+        if (lastUpdateHour < 6 && currentHour >= 6) return true;
+        if (lastUpdateHour < 12 && currentHour >= 12) return true;
+        if (lastUpdateHour < 18 && currentHour >= 18) return true;
+        return false;
+    }
+
+    private long nextUpdateTime(long lastUpdateTime) {
+        Calendar calender = Calendar.getInstance();
+        calender.setTimeZone(TimeZone.getTimeZone("Etc/GMT+2"));
+        calender.setTimeInMillis(System.currentTimeMillis());
+        int currentHour = calender.get(Calendar.HOUR);
+        calender.setTimeInMillis(lastUpdateTime);
+        int amountOfHours = 0;
+        int amountOfMin = 0;
+        if (calender.get(Calendar.MINUTE) % 60 != 0) {
+            amountOfHours--;
+            amountOfMin = 60 - calender.get(Calendar.MINUTE);
+        }
+
+        if (calender.get(Calendar.HOUR) % 6 != 0) {
+            amountOfHours += 6 - (calender.get(Calendar.HOUR) % 6);
+        } else if (calender.get(Calendar.HOUR) == currentHour) {
+            amountOfHours += 6;
+        }
+        return lastUpdateTime + 1000 * (3600 * amountOfHours + 60 * amountOfMin);
     }
 
     //TODO: create notifyApp method
