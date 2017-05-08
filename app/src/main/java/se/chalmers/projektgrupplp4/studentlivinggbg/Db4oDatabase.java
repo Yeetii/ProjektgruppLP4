@@ -42,7 +42,8 @@ public class Db4oDatabase {
             }
             return oc;
         } catch (Exception ie) {
-            Log.e(Db4oDatabase.class.getName(), ie.toString());
+//            Log.e(Db4oDatabase.class.getName(), ie.toString());
+            ie.printStackTrace();
             return null;
         }
     }
