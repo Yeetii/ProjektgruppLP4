@@ -68,10 +68,11 @@ public class MainModel {
                 700, 9998, 100, 450, 9999,
                 "13-12-17", "24-12-17");
 
-        Search search3 = new Search("testGlobal2", "Gibraltargatan",
+        Search search3 = new Search("testGloba3", "Gibraltargatan",
                 testHouseType2, testHost, testRegion,
                 700, -1, 100, -1, 9999,
                 "13-12-17", "24-12-17");
+
 
         searchWatcherItems.add(new SearchWatcherItem("Gamla boendet", search1));
         searchWatcherItems.add(new SearchWatcherItem("Nära masters", search2));

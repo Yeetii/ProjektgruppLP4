@@ -18,6 +18,7 @@ import android.view.View;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.SettingsActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.FavoritesModel;
@@ -53,6 +54,9 @@ public class FavoritesController {
                     activity.startActivity(searchWatcher);
                     return true;
                 case R.id.navigation_settings:
+                    Intent settings = new Intent(activity, SettingsActivity.class);
+                    settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
+                    activity.startActivity(settings);
                     return true;
             }
             return false;
