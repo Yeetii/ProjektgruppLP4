@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
@@ -42,13 +43,12 @@ public class SearchActivityController {
     private SearchActivityView activityView;
     private SearchActivityModel model;
     private Button showAll;
-    private RecyclerViewHelper recyclerViewHelper;
 
     public SearchActivityController(Activity activity, SearchActivityModel model, SearchActivityView activityView) {
         this.activity = activity;
         this.model = model;
         this.activityView = activityView;
-        this.recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity,model);
         recyclerViewHelper.initSwipe();
         initListeners();
         //initSwipe();
@@ -63,40 +63,11 @@ public class SearchActivityController {
 
         showAll.setOnClickListener(onClickShowAll);
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getFirstInstance(activity));
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    return true;
-                case R.id.navigation_favorites:
-                    Intent favorites = new Intent(activity, FavoritesActivity.class);
-                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(favorites);
-                    return true;
-                case R.id.navigation_notifications:
-                    Intent searchWatcher = new Intent(activity, SearchWatcherActivity.class);
-                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(searchWatcher);
-                    return true;
-                case R.id.navigation_settings:
-                    Intent settings = new Intent(activity, SettingsActivity.class);
-                    settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(settings);
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
         @Override

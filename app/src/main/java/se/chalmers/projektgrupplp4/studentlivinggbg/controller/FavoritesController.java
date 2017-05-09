@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
+import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
@@ -35,42 +36,12 @@ public class FavoritesController {
     private Activity activity;
     private FavoritesView view;
     private FavoritesModel model;
-    private RecyclerViewHelper recyclerViewHelper;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    Intent search = new Intent(activity, MainSearchActivity.class);
-                    search.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(search);
-                    return true;
-                case R.id.navigation_favorites:
-                    return true;
-                case R.id.navigation_notifications:
-                    Intent searchWatcher = new Intent(activity, SearchWatcherActivity.class);
-                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(searchWatcher);
-                    return true;
-                case R.id.navigation_settings:
-                    Intent settings = new Intent(activity, SettingsActivity.class);
-                    settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(settings);
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     public FavoritesController(Activity activity, FavoritesView view, FavoritesModel model) {
         this.activity = activity;
         this.view = view;
         this.model = model;
-        this.recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity,model);
         recyclerViewHelper.initSwipe();
         initNavigationListener();
         //initSwipe();
@@ -78,7 +49,7 @@ public class FavoritesController {
 
     private void initNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
     }
 
 }

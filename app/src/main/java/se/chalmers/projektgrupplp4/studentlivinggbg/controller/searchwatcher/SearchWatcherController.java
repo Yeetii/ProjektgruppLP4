@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ToggleButton;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SettingsActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
@@ -90,37 +91,8 @@ public class SearchWatcherController {
 
 
     private void initializeNavigationListener () {
-        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-                = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_search:
-                        Intent search = new Intent(activity, MainSearchActivity.class);
-                        search.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(search);
-                        return true;
-                    case R.id.navigation_favorites:
-                        Intent favorites = new Intent(activity, FavoritesActivity.class);
-                        favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(favorites);
-                        return true;
-                    case R.id.navigation_notifications:
-                        return true;
-                    case R.id.navigation_settings:
-                        Intent settings = new Intent(activity, SettingsActivity.class);
-                        settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(settings);
-                        return true;
-                }
-                return false;
-            }
-
-        };
-
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
         navigation.setSelectedItemId(R.id.navigation_notifications);
     }
 }

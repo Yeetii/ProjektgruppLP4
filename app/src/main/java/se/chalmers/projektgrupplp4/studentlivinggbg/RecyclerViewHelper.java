@@ -8,14 +8,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
-import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.FavoritesModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 
 /**
