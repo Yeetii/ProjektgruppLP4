@@ -73,7 +73,6 @@ public class ChalmersAdapter extends AccommodationAdapter {
             int price = parsePrice(getAttribute(infoString, "rent"));
             double area = parseArea(getAttribute(infoString, "area"));
             String description = getAttribute(infoString, "description");
-            System.out.println(getAttribute(infoString, "thumbnail"));
             String thumbnail = createThumbnail(getAttribute(infoString, "thumbnail"));
             return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS, false);
         }
@@ -102,13 +101,15 @@ public class ChalmersAdapter extends AccommodationAdapter {
                     return AccommodationHouseType.KITCHENETTE;
                 case "1 rum och kokvrå":
                     return AccommodationHouseType.COOKING_CABINET;
+                case "2 rum och kök":
+                    return AccommodationHouseType.TWO_ROOMS;
 
             }
             System.out.println("Should add to switch!: " + houseTypeString);
             return null;
         }
 
-        public String getAttribute(String infoString, String type) {
+        private String getAttribute(String infoString, String type) {
             String firstStartTag = "";
             String secondStartTag = ">";
             String endTag = "<";
