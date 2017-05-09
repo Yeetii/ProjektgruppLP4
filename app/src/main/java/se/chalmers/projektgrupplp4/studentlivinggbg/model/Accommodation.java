@@ -16,7 +16,7 @@ public class Accommodation {
     private String objectNumber;
     private String address;
     private AccommodationHouseType accommodationHouseType;
-    private ArrayList<Region> possibleRegions;
+    private Region region;
     private int price;
     private double area;
     private int searchers;
@@ -156,16 +156,7 @@ public class Accommodation {
         return accommodationHost.toString();
     }
 
-    public String getRegions(){
-        try{
-        String result = ", ";
-        for(Region region: possibleRegions){
-            result = result + region.toString() + ", ";
-        }
-        return result.substring(0, result.length() - 2);}
-    catch(Exception e){
-        return "";
-    }}
+    public String getRegion(){try{return region.toString();}catch(NullPointerException e){return "";}}
 
     public boolean getFavorite(){return isFavorite;}
 

@@ -48,6 +48,7 @@ public class Search {
 
     }
 
+
     public String getMainSearch() {
         return mainSearch;
     }
@@ -67,6 +68,7 @@ public class Search {
     public ArrayList<Region> getPossibleRegions() {
         return possibleRegions;
     }
+
 
     public int getMinPrice() {
         return minPrice;
@@ -95,5 +97,6 @@ public class Search {
     public String getLastApplyDate() {
         return lastApplyDate;
     }
+
 
 }

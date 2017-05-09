@@ -13,16 +13,28 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
 public class SearchActivityModel {
+
+    static SearchActivityModel searchActivityModel;
+
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView recyclerView;
     private Search lastSearch;
 
 
-    public SearchActivityModel (Activity activity) {
+    private SearchActivityModel (Activity activity) {
         recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), activity.getApplicationContext());
         recyclerView = (RecyclerView) activity.findViewById(R.id.list);
 
         recyclerView.setAdapter(recyclerViewAdapter);
+    }
+
+    static public SearchActivityModel createInstance(Activity activity){
+        searchActivityModel = new SearchActivityModel(activity);
+        return searchActivityModel;
+    }
+
+    static public SearchActivityModel getInstance(){
+        return searchActivityModel;
     }
 
     public void setLastSearch(Search lastSearch) {
@@ -45,7 +57,7 @@ public class SearchActivityModel {
 
         lastSearch = SearchHandler.getLastSearch();
 
-        if (isNotNull(lastSearch)) {
+        if (SearchHandler.isNotNull(lastSearch)) {
             recyclerViewAdapter.addAll(SearchHandler.search(lastSearch));
         }else{
             recyclerViewAdapter.addAll(Accommodation.getAccommodations());
@@ -59,26 +71,7 @@ public class SearchActivityModel {
         recyclerViewAdapter.notifyDataSetChanged();
     }
 
-    private boolean isNotNull(Search lastSearch) {
 
-        try {
-            return lastSearch != null && (!lastSearch.getMainSearch().equals("") ||
-                    !lastSearch.getAddress().equals("") ||
-                    !lastSearch.getPossibleAccommodationHosts().isEmpty() ||
-                    !lastSearch.getPossibleAccomodationHouseTypes().isEmpty() ||
-                    !(lastSearch.getMaxArea() == -1) ||
-                    !(lastSearch.getMinArea() == -1) ||
-                    !(lastSearch.getMaxPrice() == -1) ||
-                    !(lastSearch.getMinPrice() == -1) ||
-                    !(lastSearch.getMaxArea() == -1) ||
-                    !(lastSearch.getMaxSearchers() == -1) ||
-                    !lastSearch.getLastApplyDate().equals("") ||
-                    !lastSearch.getUpploadDate().equals(""));
-        }
-        catch(NullPointerException e){
-            return false;
-        }
-    }
 
     public RecyclerView getRecyclerView() {
         return recyclerView;

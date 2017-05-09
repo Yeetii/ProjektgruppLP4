@@ -21,7 +21,7 @@ public class MainSearchActivity extends AppCompatActivity {
         new MainController(getApplicationContext());
 
         SearchActivityView searchActivityView = new SearchActivityView(this);
-        SearchActivityModel searchActivityModel = new SearchActivityModel(this);
+        SearchActivityModel searchActivityModel = SearchActivityModel.createInstance(this);
         searchActivityView.initLayoutManager(searchActivityModel);
         new SearchActivityController(this, searchActivityModel, searchActivityView);
 
