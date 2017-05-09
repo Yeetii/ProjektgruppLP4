@@ -62,11 +62,13 @@ public class AdvancedSearchActivityView {
 
 
     private void fillLists(){
+        //TODO: This sohuld be done dynamically
         roomTypeItems.add(AccommodationHouseType.CORRIDOR.toString());
         roomTypeItems.add(AccommodationHouseType.KITCHENETTE.toString());
         roomTypeItems.add(AccommodationHouseType.COOKING_CABINET.toString());
         roomTypeItems.add(AccommodationHouseType.ONE_ROOM.toString());
         roomTypeItems.add(AccommodationHouseType.TWO_ROOMS.toString());
+        roomTypeItems.add(AccommodationHouseType.TWO_ROOMS_KITCHENETTE.toString());
         roomTypeItems.add(AccommodationHouseType.THREE_ROOMS.toString());
         roomTypeItems.add(AccommodationHouseType.FOUR_ROOMS.toString());
 

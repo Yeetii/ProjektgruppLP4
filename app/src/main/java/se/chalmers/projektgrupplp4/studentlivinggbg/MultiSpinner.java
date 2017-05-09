@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -98,9 +99,18 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
             selected[i] = true;
 
         // all text on the spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, new String[] { allText });
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[] {allText});
         setAdapter(adapter);
+    }
+
+    public ArrayList<String> getSelectedItems(){
+        ArrayList<String> result = new ArrayList<>();
+        for(int i=0; i<items.size(); i++){
+            if(selected[i]){
+                result.add(items.get(i));
+            }
+        }
+        return result;
     }
 
     public void setListener(MultiSpinnerListener listener){
