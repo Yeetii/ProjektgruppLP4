@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
+import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
@@ -46,8 +48,10 @@ public class SearchActivityController {
         this.activity = activity;
         this.model = model;
         this.activityView = activityView;
+        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        recyclerViewHelper.initSwipe();
         initListeners();
-        initSwipe();
+        //initSwipe();
         controller = this;
     }
 
@@ -59,40 +63,11 @@ public class SearchActivityController {
 
         showAll.setOnClickListener(onClickShowAll);
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getFirstInstance(activity));
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    return true;
-                case R.id.navigation_favorites:
-                    Intent favorites = new Intent(activity, FavoritesActivity.class);
-                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(favorites);
-                    return true;
-                case R.id.navigation_notifications:
-                    Intent searchWatcher = new Intent(activity, SearchWatcherActivity.class);
-                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(searchWatcher);
-                    return true;
-                case R.id.navigation_settings:
-                    Intent settings = new Intent(activity, SettingsActivity.class);
-                    settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(settings);
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
         @Override
@@ -137,29 +112,6 @@ public class SearchActivityController {
             activityView.openAdvancedSearch();
         }
     };
-
-    private void initSwipe(){
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                model.changeFavorite(viewHolder, direction);
-            }
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                activityView.displayChangeFavorite(actionState, dX, c, viewHolder);
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-            }
-        };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(model.getRecyclerView());
-    }
 
     public static void updateAccommodations(final List<Accommodation> accommodations) {
         if (controller != null) {

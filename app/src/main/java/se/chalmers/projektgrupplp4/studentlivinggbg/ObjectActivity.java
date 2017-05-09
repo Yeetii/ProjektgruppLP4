@@ -84,7 +84,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
                 } else if (accommodation.getAccommodationHost().equals("Chalmers Studentbostäder")) {
                     //TODO add procidure for CSB
                     //intent.putExtra("URL", "https://www.chalmersstudentbostader.se/");
-                    uri = Uri.parse("https://www.chalmersstudentbostader.se/");
+                    uri = Uri.parse("https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%" + accommodation.getObjectNumber());
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);

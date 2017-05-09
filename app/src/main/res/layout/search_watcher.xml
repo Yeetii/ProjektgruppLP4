@@ -18,8 +18,8 @@
         app:layout_constraintBottom_toTopOf="@+id/content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/closeModalButton" />
+        app:layout_constraintVertical_bias="0.0" />
+        <!--app:layout_constraintTop_toBottomOf="@+id/closeModalButton" />-->
 
     <FrameLayout
         android:id="@+id/content"

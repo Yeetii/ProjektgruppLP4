@@ -34,27 +34,4 @@ public class FavoritesView {
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void draw(Canvas c, boolean favorite, RecyclerView.ViewHolder viewHolder, float dX) {
-        Paint paint = new Paint();
-        View itemView = viewHolder.itemView;
-        float height = (float) itemView.getBottom() - (float) itemView.getTop();
-        float width = height / 3;
-        int color = Color.parseColor(favorite ? "#D32F2F" : "#388E3C");
-        int drawableIcon = favorite ? R.drawable.ic_delete_white : R.drawable.ic_edit_white;
-        RectF background;
-        RectF iconDest;
-        Bitmap icon;
-        paint.setColor(color);
-
-        if (favorite) {
-            iconDest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-            background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
-        } else {
-            background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());
-            iconDest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
-        }
-        c.drawRect(background,paint);
-        icon = BitmapFactory.decodeResource(activity.getResources(), drawableIcon);
-        c.drawBitmap(icon,null,iconDest, paint);
-    }
 }

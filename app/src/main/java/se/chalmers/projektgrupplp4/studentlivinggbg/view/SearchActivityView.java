@@ -42,32 +42,4 @@ public class SearchActivityView {
         activity.startActivity(intent);
     }
 
-    public void displayChangeFavorite(int actionState, float dX, Canvas c, RecyclerView.ViewHolder viewHolder) {
-        Bitmap icon;
-        if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
-
-            AccommodationRecyclerViewHolder accommodation = (AccommodationRecyclerViewHolder) viewHolder;
-
-            View itemView = viewHolder.itemView;
-            float height = (float) itemView.getBottom() - (float) itemView.getTop();
-            float width = height / 3;
-            //TODO: This code seems to be a duplicate
-            if(dX > 0 && !accommodation.isFavorite()) {
-                //p.setColor(Color.parseColor("#388E3C"));
-                p.setColor(Color.YELLOW);
-                RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());
-                c.drawRect(background,p);
-                icon = BitmapFactory.decodeResource(activity.getResources(), R.drawable.favorite);
-                RectF icon_dest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
-                c.drawBitmap(icon,null,icon_dest,p);
-            } else if (accommodation.isFavorite()) {
-                p.setColor(Color.parseColor("#D32F2F"));
-                RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
-                c.drawRect(background,p);
-                icon = BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_delete_white);
-                RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-                c.drawBitmap(icon,null,icon_dest,p);
-            }
-        }
-    }
 }
