@@ -2,9 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
 import android.widget.SeekBar;
-
 import java.util.ArrayList;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
@@ -26,10 +24,10 @@ public class AdvancedSearchActivityView {
     public AdvancedSearchActivityView(Activity activity){
         this.activity = activity;
 
+        this.activity.setContentView(R.layout.activity_advanced_search);
+
         initSeekBars();
         initMultiSpinners();
-
-        activity.setContentView(R.layout.activity_advanced_search);
     }
 
     private void initMultiSpinners() {
@@ -40,9 +38,9 @@ public class AdvancedSearchActivityView {
         roomTypeSpinner = (MultiSpinner) activity.findViewById(R.id.roomType_spinner);
         areasSpinner = (MultiSpinner) activity.findViewById(R.id.areas_spinner);
         landlordSpinner = (MultiSpinner) activity.findViewById(R.id.landlord_spinner);
+        fillLists();
 
 //        TODO Should this get its items from a static methods?
-        fillLists();
         roomTypeSpinner.setItems(roomTypeItems, activity.getString(R.string.multiSpinner_roomType));
         areasSpinner.setItems(areasItems, activity.getString(R.string.multiSpinner_areas));
         landlordSpinner.setItems(landlordItems, activity.getString(R.string.multiSpinner_landlord));

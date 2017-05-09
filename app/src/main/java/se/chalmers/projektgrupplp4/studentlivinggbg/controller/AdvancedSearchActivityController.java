@@ -10,20 +10,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.AdvancedSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
-/**
- * Created by Erik on 2017-05-04.
- */
 
 public class AdvancedSearchActivityController {
     private Activity activity;

@@ -2,11 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.ArrayList;
 
-/**
- * Created by Erik on 2017-05-04.
- */
-
-//TODO Not used at all atm
+//TODO Not used at all atm, but maybe this is more correct?
 public class AdvancedSearchActivityModel {
     private ArrayList<String> roomTypeItems = new ArrayList<>();
     private ArrayList<String> areasItems = new ArrayList<>();
