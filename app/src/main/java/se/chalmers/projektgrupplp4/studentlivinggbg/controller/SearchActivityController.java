@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
@@ -41,13 +42,16 @@ public class SearchActivityController {
     private SearchActivityView activityView;
     private SearchActivityModel model;
     private Button showAll;
+    private RecyclerViewHelper recyclerViewHelper;
 
     public SearchActivityController(Activity activity, SearchActivityModel model, SearchActivityView activityView) {
         this.activity = activity;
         this.model = model;
         this.activityView = activityView;
+        this.recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        recyclerViewHelper.initSwipe();
         initListeners();
-        initSwipe();
+        //initSwipe();
         controller = this;
     }
 
@@ -137,29 +141,6 @@ public class SearchActivityController {
             activityView.openAdvancedSearch();
         }
     };
-
-    private void initSwipe(){
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                model.changeFavorite(viewHolder, direction);
-            }
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                activityView.displayChangeFavorite(actionState, dX, c, viewHolder);
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-            }
-        };
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(model.getRecyclerView());
-    }
 
     public static void updateAccommodations(final List<Accommodation> accommodations) {
         if (controller != null) {

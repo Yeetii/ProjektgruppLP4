@@ -18,6 +18,7 @@ import android.view.View;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewHolder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SettingsActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
@@ -34,6 +35,7 @@ public class FavoritesController {
     private Activity activity;
     private FavoritesView view;
     private FavoritesModel model;
+    private RecyclerViewHelper recyclerViewHelper;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -68,56 +70,15 @@ public class FavoritesController {
         this.activity = activity;
         this.view = view;
         this.model = model;
+        this.recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        recyclerViewHelper.initSwipe();
         initNavigationListener();
-        initSwipe();
+        //initSwipe();
     }
 
     private void initNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
-    public void onChildDrawController(Canvas c, RecyclerView.ViewHolder viewHolder, float dX,  int actionState) {
-        if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
-            AccommodationRecyclerViewHolder accommodation = (AccommodationRecyclerViewHolder) viewHolder;
-            if((dX > 0 && !accommodation.isFavorite()) || accommodation.isFavorite()) {
-                view.draw(c, accommodation.isFavorite(), viewHolder, dX);
-            }
-        }
-    }
-
-
-    private void initSwipe() {
-        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-
-                if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN){
-                    model.updateFavoriteStatus(position, direction != ItemTouchHelper.LEFT, viewHolder);;
-                }
-            }
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-                onChildDrawController(c, viewHolder, dX, actionState);
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-            }
-        };
-        attachItemTouchHelperToRecycleView(simpleItemTouchCallback);
-    }
-
-    private void attachItemTouchHelperToRecycleView (ItemTouchHelper.SimpleCallback simpleItemTouchCallback) {
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView((RecyclerView) activity.findViewById(R.id.list));
-    }
-
-
-
 
 }
