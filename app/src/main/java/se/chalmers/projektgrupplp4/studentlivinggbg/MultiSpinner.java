@@ -88,11 +88,9 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         return true;
     }
 
-    public void setItems(List<String> items, String allText,
-                         MultiSpinnerListener listener) {
+    public void setItems(List<String> items, String allText) {
         this.items = items;
         this.defaultText = allText;
-        this.listener = listener;
 
         // all selected by default
         selected = new boolean[items.size()];
@@ -103,6 +101,10 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, new String[] { allText });
         setAdapter(adapter);
+    }
+
+    public void setListener(MultiSpinnerListener listener){
+        this.listener = listener;
     }
 
     public interface MultiSpinnerListener {
