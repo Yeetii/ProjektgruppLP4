@@ -60,17 +60,17 @@ public class MainModel {
         ArrayList<Region> testRegion = new ArrayList<>();
         testRegion.add(Region.NORTH);
 
-        Search search1 = new Search("testGlobal", "Viktor Rydbergsgatan",
+        Search search1 = new Search("a", "Viktor Rydbergsgatan",
                 testHouseType, testHost, testRegion,
                 -1, 9998, 100, 200, 9999,
                 "13-12-17", "24-12-17");
 
-        Search search2 = new Search("testGlobal2", "Lindholmsallén",
+        Search search2 = new Search("Bra", "Lindholmsallén",
                 testHouseType, testHost, testRegion,
                 700, 9998, 100, 450, 9999,
                 "13-12-17", "24-12-17");
 
-        Search search3 = new Search("testGloba3", "Gibraltargatan",
+        Search search3 = new Search("Omg", "Gibraltargatan",
                 testHouseType2, testHost, testRegion,
                 700, -1, 100, -1, 9999,
                 "13-12-17", "24-12-17");
