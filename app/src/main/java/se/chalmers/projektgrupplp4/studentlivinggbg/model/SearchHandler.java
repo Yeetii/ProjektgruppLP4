@@ -58,7 +58,7 @@ public class SearchHandler {
         return result;
     }
 
-    static void addToLastSearches(Search result) {
+    public static void addToLastSearches(Search result) {
         if(lastSearches.size() >= 10){
             lastSearches.remove(lastSearches.size()-1);
         }

@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.app.Activity;
 import android.content.Context;
 
 import android.view.LayoutInflater;
@@ -21,8 +22,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data) {
+    private Activity activity;
+
+    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity) {
         super(context, R.layout.search_watcher_row_item, data);
+        this.activity = activity;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
             convertView = inflater.inflate(R.layout.search_watcher_row_item, parent, false);
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
 
-            new SearchWatcherItemController(dataModel, convertView);
+            new SearchWatcherItemController(dataModel, convertView, activity);
 
         }else{
             viewHolder = (SearchWatcherItemView) convertView.getTag();

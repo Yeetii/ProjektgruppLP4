@@ -1,8 +1,13 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
@@ -13,16 +18,21 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 public class SearchWatcherItemController {
     private SearchWatcherItem model;
     private View view;
+    private Activity activity;
 
-    public SearchWatcherItemController (SearchWatcherItem model, View view) {
+    public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity) {
         this.model = model;
         this.view = view;
-        addEditSearchWatcherListener();
+        this.activity = activity;
+        addListeners();
     }
 
-    private void addEditSearchWatcherListener () {
-        ImageView imageView = (ImageView) view.findViewById(R.id.hamButton);
-        imageView.setOnClickListener(getEditSearchWatcherListener());
+    private void addListeners() {
+        ImageView hamButton = (ImageView) view.findViewById(R.id.hamButton);
+        hamButton.setOnClickListener(getEditSearchWatcherListener());
+
+        ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
+        searchButton.setOnClickListener(getSearchSearchWatcherListener());
     }
 
     private ImageView.OnClickListener getEditSearchWatcherListener() {
@@ -30,6 +40,18 @@ public class SearchWatcherItemController {
             @Override
             public void onClick (View view) {
                 model.editSearchWatcher();
+            }
+        });
+    }
+
+    private ImageView.OnClickListener getSearchSearchWatcherListener() {
+        return (new ImageView.OnClickListener () {
+            @Override
+            public void onClick (View view) {
+                Search search = model.getSearch();
+                SearchHandler.addToLastSearches(search);
+                Intent intent = new Intent(activity, MainSearchActivity.class);
+                activity.startActivity(intent);
             }
         });
     }

@@ -20,7 +20,7 @@ public class SearchWatcherViewModel {
 
     public SearchWatcherViewModel (Activity activity) {
         this.activity = activity;
-        adapter = new SearchWatcherAdapter(activity.getApplicationContext(), new ArrayList<SearchWatcherItem>());
+        adapter = new SearchWatcherAdapter(activity.getApplicationContext(), new ArrayList<SearchWatcherItem>(), activity);
         ListView listView = (ListView) activity.findViewById(R.id.listView);
         listView.setAdapter(adapter);
         refreshAdapter();
