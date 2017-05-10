@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -132,8 +133,17 @@ public class AlarmReceiver extends BroadcastReceiver {
         AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context);
         AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context);
         newAccommodations = sgsAdapter.getAccommodations();
+
+        getAmountOfSearcher(chalmersAdapter.getAccommodations());
+
         newAccommodations.addAll(chalmersAdapter.getAccommodations());
         return newAccommodations;
+    }
+
+    private void getAmountOfSearcher(List<Accommodation> accommodations) {
+        List<RequestAccommodations> requests = new ArrayList<>();
+        for (int i = 0; i < accommodations.size(); i++) {
+        }
     }
 
     private void storeNewData (Db4oDatabase db, List<Accommodation> newAccommodations) {
