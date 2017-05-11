@@ -37,8 +37,6 @@ public class FavoritesActivity extends AppCompatActivity {
         FavoritesView view = new FavoritesView(this);
         FavoritesModel model = new FavoritesModel(this);
         new FavoritesController(this, view, model);
-
-
     }
 
 

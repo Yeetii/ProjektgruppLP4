@@ -24,10 +24,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
@@ -39,7 +38,6 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private List<Accommodation> accommodations = Accommodation.getAccommodations();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
@@ -53,7 +51,8 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-        System.out.println(getIntent().getStringExtra("ARG_POSITION"));
+        //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
+        ObjectActivityModel.setAccommodations(SearchHandler.getLastSearchResults());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -144,7 +143,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
     //Used for updating title
     @Override
     public void onPageSelected(int position) {
-        setTitle(accommodations.get(position).getAddress());
+        setTitle(ObjectActivityModel.getAccommodations().get(position).getAddress());
     }
 
     @Override
@@ -235,19 +234,19 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
 
-            return PlaceholderFragment.newInstance(accommodations.get(position));
+            return PlaceholderFragment.newInstance(ObjectActivityModel.getAccommodations().get(position));
         }
 
         @Override
         public int getCount() {
-            return accommodations.size();
+            return ObjectActivityModel.getAccommodations().size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             if (position > mViewPager.getChildCount())
                 return null;
-            return accommodations.get(position).getAddress();
+            return ObjectActivityModel.getAccommodations().get(position).getAddress();
         }
     }
 }
