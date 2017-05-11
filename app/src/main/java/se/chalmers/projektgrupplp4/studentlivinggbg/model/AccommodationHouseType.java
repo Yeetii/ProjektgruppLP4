@@ -7,7 +7,7 @@ public enum AccommodationHouseType {
     //TODO Change to package private when no longer neccessary for tesing
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
-    FOUR_ROOMS;
+    FOUR_ROOMS, UNKNOWN;
 
 
     @Override
@@ -21,6 +21,7 @@ public enum AccommodationHouseType {
             case "TWO_ROOMS_KITCHENETTE": return "2-rum med kokvrå";
             case "THREE_ROOMS":           return "3-rum och kök";
             case "FOUR_ROOMS":            return "4-rum och kök";
+            case "UNKNOWN":               return "Okänd";
         }
         return "ERROR";
     }

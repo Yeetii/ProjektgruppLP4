@@ -106,7 +106,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
 
             }
             System.out.println("Should add to switch!: " + houseTypeString);
-            return null;
+            return AccommodationHouseType.UNKNOWN;
         }
 
         private String getAttribute(String infoString, String type) {

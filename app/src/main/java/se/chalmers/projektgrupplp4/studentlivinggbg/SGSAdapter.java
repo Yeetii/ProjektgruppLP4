@@ -161,9 +161,11 @@ public class SGSAdapter extends AccommodationAdapter {
                     return AccommodationHouseType.FOUR_ROOMS;
                 case "Enkelrum med gruppkök":
                     return AccommodationHouseType.CORRIDOR;
-
+                case "Enkelrum med kokskåp":
+                    return AccommodationHouseType.COOKING_CABINET;
             }
-            return null;
+            System.out.println("Should add to switch!: " + ObjectTypeDescription);
+            return AccommodationHouseType.UNKNOWN;
         }
 
         public String getImagePath() {
