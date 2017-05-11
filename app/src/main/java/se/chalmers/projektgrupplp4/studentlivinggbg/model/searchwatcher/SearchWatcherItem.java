@@ -19,7 +19,6 @@ public class SearchWatcherItem {
         System.out.println("Currently does nothing");
     }
 
-
     public void test (View view) {
         System.out.println("Hai");
     }
