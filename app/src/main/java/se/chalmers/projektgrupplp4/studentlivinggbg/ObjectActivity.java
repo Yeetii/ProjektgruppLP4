@@ -51,9 +51,6 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-        //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
-        ObjectActivityModel.setAccommodations(SearchHandler.getLastSearchResults());
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three

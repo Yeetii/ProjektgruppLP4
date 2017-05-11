@@ -110,7 +110,6 @@ public class Accommodation {
     }
 
     public String getAccommodationHouseType() {
-        System.out.println("WOELS" + accommodationHouseType.toString());
         return accommodationHouseType.toString();
     }
 
