@@ -37,7 +37,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 checkIfItShouldUpdate(lastUpdateTime)) {
-            System.out.println("Fetching new data");
             List<Accommodation> previousAccommodations = db.findAll();
 
             getNewData(context);
@@ -130,20 +129,64 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     private List<Accommodation> fillNewAccommodations(Context context) {
         List<Accommodation> newAccommodations;
+        List<Accommodation> chalmersAccommodations;
+
         AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context);
         AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context);
         newAccommodations = sgsAdapter.getAccommodations();
+        chalmersAccommodations = chalmersAdapter.getAccommodations();
 
-        getAmountOfSearcher(chalmersAdapter.getAccommodations());
+        getAmountOfSearcher(chalmersAccommodations);
 
-        newAccommodations.addAll(chalmersAdapter.getAccommodations());
+        newAccommodations.addAll(chalmersAccommodations);
         return newAccommodations;
     }
 
-    private void getAmountOfSearcher(List<Accommodation> accommodations) {
-        List<RequestAccommodations> requests = new ArrayList<>();
+    private void getAmountOfSearcher(final List<Accommodation> accommodations) {
+        List<Thread> threads = new ArrayList<>();
+
         for (int i = 0; i < accommodations.size(); i++) {
+            final int finalInt = i;
+            Thread newThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    setSearcher(sendRequest(accommodations.get(finalInt)), accommodations.get(finalInt));
+                }
+            });
+            newThread.start();
+            threads.add(newThread);
         }
+        //We have to wait until all request are set.
+        for (int i = 0; i < threads.size(); i++) {
+            try {
+                threads.get(i).join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private void setSearcher(StringBuffer stringBuffer, Accommodation accommodation) {
+        int amount = 0;
+        String response = stringBuffer.toString();
+        String findString = "intresseanmälts av ";
+        if (response.contains(findString)) {
+            response = response.substring(response.indexOf(findString) + findString.length());
+            response = response.substring(0, response.indexOf(" "));
+            amount = Integer.parseInt(response);
+        }
+        accommodation.setSearchers(amount);
+    }
+
+    private StringBuffer sendRequest (Accommodation accommodation) {
+        String url = "https://www.chalmersstudentbostader.se/widgets/?refid=" + accommodation.getObjectNumber() + "&callback=jQuery17207749987494540287_1494421798118&widgets%5B%5D=alert&widgets%5B%5D=objektinformation%40lagenheter&widgets%5B%5D=objektbilder&widgets%5B%5D=objektinformation%40lagenheter&widgets%5B%5D=objektdokument&widgets%5B%5D=objektfritext&widgets%5B%5D=objektkarta&widgets%5B%5D=objektegenskaper&widgets%5B%5D=objektintresse&widgets%5B%5D=objektintressestatus&widgets%5B%5D=objektforegaende&widgets%5B%5D=objektnasta";
+        try {
+            return NetworkHelper.sendGetRequest(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private void storeNewData (Db4oDatabase db, List<Accommodation> newAccommodations) {
@@ -160,7 +203,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         for (int i = 0; i < previousAccommodations.size(); i++) {
             for (int y = 0; y < newAccommodations.size(); y++) {
                 Accommodation previousAccommodation = previousAccommodations.get(i);
-                Accommodation newAccommodation = newAccommodations.get(i);
+                Accommodation newAccommodation = newAccommodations.get(y);
 
                 if (previousAccommodation.getObjectNumber().equals(newAccommodation.getObjectNumber())) {
                     newAccommodation.setFavorite(previousAccommodation.getFavorite());
