@@ -78,6 +78,9 @@ public class SearchHandler {
 
 
 
+    public static List<Accommodation> getLastSearchResults(){
+        return search(getLastSearch());
+    }
 
     public static List<Accommodation> search(Search search){
         List<Accommodation> result = new ArrayList<>();

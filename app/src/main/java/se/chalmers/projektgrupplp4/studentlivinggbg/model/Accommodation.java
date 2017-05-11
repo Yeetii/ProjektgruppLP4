@@ -109,16 +109,14 @@ public class Accommodation {
         return address;
     }
 
-
     public String getAccommodationHouseType() {
+        System.out.println("WOELS" + accommodationHouseType.toString());
         return accommodationHouseType.toString();
     }
-
 
     public String getPrice() {
         return Integer.toString(price);
     }
-
 
     public String getArea() {
         return Double.toString(area);
