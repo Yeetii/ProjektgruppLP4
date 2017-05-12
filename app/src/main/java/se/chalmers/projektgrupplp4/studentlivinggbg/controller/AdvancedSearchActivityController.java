@@ -12,23 +12,20 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SearchView;
 
-import com.db4o.internal.Null;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -36,6 +33,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 public class AdvancedSearchActivityController {
     private Activity activity;
     private Button advancedSearchButton;
+    private Button createSearchWatcherButton;
     private SearchView advancedSearchView;
 
     private SeekBar seekBarMinPrice;
@@ -75,8 +73,11 @@ public class AdvancedSearchActivityController {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         ImageButton cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
         advancedSearchButton = (Button) activity.findViewById(R.id.advancedSearchButton);
+        createSearchWatcherButton = (Button) activity.findViewById(R.id.advancedSearchCreateSearchWatcherButton);
+
         cancelButton.setOnClickListener(onClickListener);
         advancedSearchButton.setOnClickListener(onAdvancedSearchListener);
+        createSearchWatcherButton.setOnClickListener(onCreateSearchWatcherListener);
 
         advancedSearchView = (SearchView) activity.findViewById(R.id.advancedSearchView);
 
@@ -112,37 +113,7 @@ public class AdvancedSearchActivityController {
     private Button.OnClickListener onAdvancedSearchListener = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-
-
-            String mainSearch = "";
-            ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
-            ArrayList<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();
-            ArrayList<Region> possibleRegions = new ArrayList<>();
-            int minPrice = -1;
-            int maxPrice = -1;
-            double minArea = -1;
-            double maxArea = -1;
-
-            // TODO: implement maxSearchers in AdvancedSearch. Dates? Address-field?
-            int maxSearchers = -1;
-            String upploadDate = "";
-            String lastApplyDate = "";
-            String address = "";
-
-            try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){}
-            try{possibleAccommodationHouseTypes = AccommodationHouseType.parseStringList(roomTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
-            try{possibleAccommodationHosts = AccommodationHost.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){}
-            try{possibleRegions = Region.parseStringList(areasSpinner.getSelectedItems());}catch(NullPointerException e){}
-            try{minPrice = seekBarMinPrice.getProgress();}catch(NullPointerException e){}
-            try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}
-            try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
-            try{maxArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
-            //try{maxSearchers = ???;}catch(NullPointerException e){}
-
-
-            SearchHandler.createSearch(mainSearch, address, possibleAccommodationHouseTypes,
-                    possibleAccommodationHosts, possibleRegions, minPrice, maxPrice,
-                    minArea, maxArea, maxSearchers, upploadDate, lastApplyDate);
+            parseSearchTerms(true);
 
             //Är detta en bra lösning..?
             SearchActivityModel.getInstance().refreshAdapter();
@@ -150,6 +121,47 @@ public class AdvancedSearchActivityController {
             returnToMainSearch();
         }
     };
+
+    private Button.OnClickListener onCreateSearchWatcherListener = new ImageButton.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            System.out.println("Creating seardhwathcer");
+            Search search = parseSearchTerms(false);
+            //TODO prompt asking for name
+            SearchWatcherModel.createSearchWatcher("Tempname", search);
+        }
+    };
+
+    private Search parseSearchTerms(boolean addToSearchHistory){
+        String mainSearch = "";
+        ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
+        ArrayList<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();
+        ArrayList<Region> possibleRegions = new ArrayList<>();
+        int minPrice = -1;
+        int maxPrice = -1;
+        double minArea = -1;
+        double maxArea = -1;
+
+        // TODO: implement maxSearchers in AdvancedSearch. Dates? Address-field?
+        int maxSearchers = -1;
+        String upploadDate = "";
+        String lastApplyDate = "";
+        String address = "";
+
+        try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){}
+        try{possibleAccommodationHouseTypes = AccommodationHouseType.parseStringList(roomTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
+        try{possibleAccommodationHosts = AccommodationHost.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){}
+        try{possibleRegions = Region.parseStringList(areasSpinner.getSelectedItems());}catch(NullPointerException e){}
+        try{minPrice = seekBarMinPrice.getProgress();}catch(NullPointerException e){}
+        try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}
+        try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
+        try{maxArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
+        //try{maxSearchers = ???;}catch(NullPointerException e){}
+
+        return SearchHandler.createSearch(mainSearch, address, possibleAccommodationHouseTypes,
+                possibleAccommodationHosts, possibleRegions, minPrice, maxPrice,
+                minArea, maxArea, maxSearchers, upploadDate, lastApplyDate, addToSearchHistory);
+    }
 
     private void returnToMainSearch(){
         Intent intent = new Intent(activity, MainSearchActivity.class);
@@ -224,8 +236,5 @@ public class AdvancedSearchActivityController {
                 i++;
             }
         }
-    }
-    public static void advancedSearchButtonPressed(View view){
-        System.out.print("An advanced search was made!");
     }
 }

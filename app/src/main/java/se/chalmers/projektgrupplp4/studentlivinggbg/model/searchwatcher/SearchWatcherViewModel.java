@@ -28,7 +28,7 @@ public class SearchWatcherViewModel {
 
     public void refreshAdapter(){
         adapter.clear();
-        adapter.addAll(MainModel.getInstance().getSearchWatcherItems());
+        adapter.addAll(SearchWatcherModel.getSearchWatcherItems());
     }
 
     public Activity getActivity () {

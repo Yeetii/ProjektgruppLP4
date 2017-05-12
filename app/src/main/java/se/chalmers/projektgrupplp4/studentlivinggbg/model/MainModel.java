@@ -32,8 +32,6 @@ public class MainModel {
 
     private Settings settings;
 
-    private List<SearchWatcherItem> searchWatcherItems = new ArrayList<>();
-
     public static MainModel getInstance() {
         return INSTANCE;
     }
@@ -41,44 +39,7 @@ public class MainModel {
     private MainModel () {
         searchHandler = new SearchHandler();
         settings = new Settings();
-        //TODO: This is just for testing
-        initializeTestSearchWatchers();
-
     }
-
-    private void initializeTestSearchWatchers() {
-
-        ArrayList<AccommodationHouseType> testHouseType = new ArrayList<>();
-        testHouseType.add(AccommodationHouseType.COOKING_CABINET);
-
-        ArrayList<AccommodationHouseType> testHouseType2 = new ArrayList<>();
-        testHouseType2.add(AccommodationHouseType.FOUR_ROOMS);
-
-        ArrayList<AccommodationHost> testHost = new ArrayList<>();
-        testHost.add(AccommodationHost.SGS);
-
-        ArrayList<Region> testRegion = new ArrayList<>();
-        testRegion.add(Region.NORTH);
-
-        Search search1 = new Search("Bra");
-
-        Search search2 = new Search("Bra", "",
-                testHouseType, testHost, testRegion,
-                700, 9998, 100, 450, 9999,
-                "13-12-17", "24-12-17");
-
-        Search search3 = new Search("Omg", "Gibraltargatan",
-                testHouseType2, testHost, testRegion,
-                700, -1, 100, -1, 9999,
-                "13-12-17", "24-12-17");
-
-
-        searchWatcherItems.add(new SearchWatcherItem("Gamla boendet", search1));
-        searchWatcherItems.add(new SearchWatcherItem("Nära masters", search2));
-        searchWatcherItems.add(new SearchWatcherItem("Lättast att få", search3));
-    }
-
-    public List<SearchWatcherItem> getSearchWatcherItems(){return INSTANCE.searchWatcherItems;}
 
 
 
