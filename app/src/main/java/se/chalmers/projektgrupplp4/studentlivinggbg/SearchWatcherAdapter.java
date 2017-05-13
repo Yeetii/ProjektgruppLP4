@@ -61,7 +61,8 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         switch (v.getId())
         {
             case R.id.searchWithSearchWatcherButton:
-                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
+                //TODO not used atm
+//                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
                 break;
         }
     }
