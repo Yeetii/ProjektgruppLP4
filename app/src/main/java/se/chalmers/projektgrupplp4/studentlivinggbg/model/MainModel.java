@@ -2,27 +2,16 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.OnBootReceiver;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundTasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
 
 public class MainModel {
+    //Does this even need to be a model anymore? I don't think so.
+    //Rename to startUpProcess/Init program or something?
 
     private static MainModel INSTANCE = new MainModel();
     public static Thread dbThread;
@@ -92,7 +81,7 @@ public class MainModel {
                 List<Accommodation> temp = db.findAll();
                 //Should happen the first time the user starts the app
                 if (temp.size() == 0) {
-                    OnBootReceiver.setUpAlarm(context);
+                    AlarmTimeManger.getInstance().setUpInstantAlarm(context);
                 }
 
                 Accommodation.getAccommodations().clear();

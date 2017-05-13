@@ -166,4 +166,19 @@ public class Accommodation {
         Accommodation.getAccommodations().clear();
         Accommodation.getAccommodations().addAll(newAccommodations);
     }
+
+    public static void transferFavoriteStatus (List<Accommodation> previousAccommodations,
+                                       List<Accommodation> newAccommodations) {
+        for (int i = 0; i < previousAccommodations.size(); i++) {
+            for (int y = 0; y < newAccommodations.size(); y++) {
+                Accommodation previousAccommodation = previousAccommodations.get(i);
+                Accommodation newAccommodation = newAccommodations.get(y);
+
+                if (previousAccommodation.getObjectNumber().equals(newAccommodation.getObjectNumber())) {
+                    newAccommodation.setFavorite(previousAccommodation.getFavorite());
+                    break;
+                }
+            }
+        }
+    }
 }

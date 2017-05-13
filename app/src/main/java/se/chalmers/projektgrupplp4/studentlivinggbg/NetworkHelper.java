@@ -1,16 +1,14 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.content.Context;
-import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 
 /**
  * Created by PG on 10/05/2017.
@@ -70,6 +68,16 @@ public class NetworkHelper {
         }
         in.close();
         return response;
+    }
+
+    public static StringBuffer requestChalmersAccommodation (Accommodation accommodation) {
+        String url = "https://www.chalmersstudentbostader.se/widgets/?refid=" + accommodation.getObjectNumber() + "&callback=jQuery17207749987494540287_1494421798118&widgets%5B%5D=alert&widgets%5B%5D=objektinformation%40lagenheter&widgets%5B%5D=objektbilder&widgets%5B%5D=objektinformation%40lagenheter&widgets%5B%5D=objektdokument&widgets%5B%5D=objektfritext&widgets%5B%5D=objektkarta&widgets%5B%5D=objektegenskaper&widgets%5B%5D=objektintresse&widgets%5B%5D=objektintressestatus&widgets%5B%5D=objektforegaende&widgets%5B%5D=objektnasta";
+        try {
+            return sendGetRequest(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

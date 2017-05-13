@@ -2,7 +2,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
@@ -106,6 +105,21 @@ public class Db4oDatabase {
         while (findAll().size() != 0) {
             delete(findAll().get(0));
         }
+    }
+
+    public Db4oDatabase initDataBase(Context context) {
+        Db4oDatabase db = Db4oDatabase.getInstance();
+        db.setContext(context);
+        return db;
+    }
+
+    public void replaceAccommodationsList (List<Accommodation> newAccommodations) {
+        this.deleteAll();
+        this.storeTimestamp();
+        for (Accommodation accommodation: newAccommodations) {
+            this.store(accommodation);
+        }
+        this.close();
     }
 
     public List<Accommodation> findAll() {
