@@ -8,7 +8,7 @@ import android.content.Intent;
  * Created by PG on 04/05/2017.
  */
 
-class OnBootReceiver extends BroadcastReceiver {
+public class OnBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         System.out.println("On boot received");
