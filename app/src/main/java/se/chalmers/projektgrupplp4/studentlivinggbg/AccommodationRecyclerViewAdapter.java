@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,24 +41,15 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         notifyDataSetChanged();
     }
 
-    public void addToFavorites (int position) {
-        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).addAsFavorite();
-    }
-
-    public void removeFromFavorites (int position) {
-        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).removeAsFavorite();
+    public void setFavorite (int position, boolean value) {
+        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).setFavorite(value);
     }
 
 
     private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
-        if(viewHolder.isFavorite()) {
-            viewHolder.getCurrent().removeAsFavorite();
-            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
-        } else {
-            viewHolder.getCurrent().addAsFavorite();
-            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_on);
-        }
-
+        int drawable = viewHolder.isFavorite() ? R.drawable.favorite_off : R.drawable.favorite_on;
+        viewHolder.favoriteButton.setImageResource(drawable);
+        viewHolder.getCurrent().setFavorite(!viewHolder.isFavorite());
     }
 
 

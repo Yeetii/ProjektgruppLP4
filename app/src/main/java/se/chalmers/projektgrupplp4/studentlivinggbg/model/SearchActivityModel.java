@@ -44,11 +44,7 @@ public class SearchActivityModel {
     public void changeFavorite(RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
 
-        if (direction == ItemTouchHelper.LEFT){
-            recyclerViewAdapter.removeFromFavorites(position);
-        } else { //right?
-            recyclerViewAdapter.addToFavorites(position);
-        }
+        recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
         recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
     }
 

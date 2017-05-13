@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.FavoritesModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 
 /**
@@ -22,13 +22,13 @@ public class RecyclerViewHelper {
 
     private Activity activity;
 
-    private FavoritesModel favoriteModel;
 
     private SearchActivityModel searchModel;
+    private AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
-    public RecyclerViewHelper (Activity activity, FavoritesModel model) {
+    public RecyclerViewHelper (Activity activity, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;
-        this.favoriteModel = model;
+        this.recyclerViewAdapter = adapter;
     }
 
     public RecyclerViewHelper (Activity activity, SearchActivityModel model) {
@@ -55,11 +55,15 @@ public class RecyclerViewHelper {
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
 
                 if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN){
-                    if (favoriteModel!=null) {
-                        favoriteModel.updateFavoriteStatus(position, direction != ItemTouchHelper.LEFT, viewHolder);
+                    if (recyclerViewAdapter != null) {
+                        int position = viewHolder.getAdapterPosition();
+                        Accommodation accommodation = Accommodation.getFavorites().get(position);
+                        int realPosition = Accommodation.getAccommodations().indexOf(accommodation);
+
+                        recyclerViewAdapter.setFavorite(realPosition, direction != ItemTouchHelper.LEFT);
+                        recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
                     } else {
                         searchModel.changeFavorite(viewHolder, direction);
 

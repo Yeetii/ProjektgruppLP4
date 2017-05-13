@@ -157,10 +157,6 @@ public class Accommodation {
 
     public boolean getFavorite(){return isFavorite;}
 
-    public void addAsFavorite(){isFavorite = true;}
-    public void removeAsFavorite(){isFavorite = false;}
-    public void changeFavoriteStatus(){isFavorite = !isFavorite;}
-
     public static void setNewAccommodationList(List<Accommodation> newAccommodations, Context context) {
         ImageModel.getInstance().getAndSaveImages(true, newAccommodations, context);
         Accommodation.getAccommodations().clear();
