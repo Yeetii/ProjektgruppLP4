@@ -108,4 +108,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_settings">Inställningar</string>
+
+    <string name="dialogSearchWatcherName">Namn</string>
+    <string name="dialogSearchWatcherOk">Skapa bevakning</string>
 </resources>
