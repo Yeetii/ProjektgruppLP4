@@ -41,11 +41,11 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     }
 
     public void addToFavorites (int position) {
-        this.dataSet.get(position).addAsFavorite();
+        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).addAsFavorite();
     }
 
     public void removeFromFavorites (int position) {
-        this.dataSet.get(position).removeAsFavorite();
+        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).removeAsFavorite();
     }
 
 
