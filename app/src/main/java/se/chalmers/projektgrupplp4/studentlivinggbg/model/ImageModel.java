@@ -17,27 +17,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.ImageModelHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
-public class ImageModel {
-    private static final HashMap<String, Drawable> mainImages = new HashMap<>();
-    private static final ImageModel INSTANCE = new ImageModel();
+public class ImageModel<ImageType> {
+    private HashMap<String, ImageType> mainImages;
+    private ImageModelHelper<ImageType> helper;
+    private static ImageModel INSTANCE;
 
     private List<Thread> threads = new ArrayList<>();
 
-    public static ImageModel getInstance() {
+    public static <B> ImageModel<B> getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ImageModel<B>();
+        }
         return INSTANCE;
     }
 
 
-    public Drawable getMainImage(String objectNumber) {
+    private ImageModel () {
+        this.mainImages = new HashMap<>();
+        this.helper = new ImageModelHelper<>();
+    }
+
+
+    public ImageType getMainImage(String objectNumber) {
         return mainImages.get(objectNumber);
     }
 
-    public void getAndSaveImages (boolean loadFromDisc, List<Accommodation> accommodations, Context context) {
+    public void getAndSaveImages (boolean loadFromDisc, List<Accommodation> accommodations, File directory) {
+        /*
         ContextWrapper cw = new ContextWrapper(context);
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        */
         List<String> addedFiles = new ArrayList<>();
         threads.clear();
         for (int i = 0; i < accommodations.size(); i++) {
@@ -94,7 +107,7 @@ public class ImageModel {
             public void run () {
                 try {
                     InputStream is = (InputStream) new URL(accommodation.getThumbnail()).getContent();
-                    mainImages.put(accommodation.getImagePath(),Drawable.createFromStream(is, accommodation.getImagePath()));
+                    mainImages.put(accommodation.getImagePath(), helper.createImage());
                     saveToInternalStorage(accommodation.getImagePath());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -111,7 +124,7 @@ public class ImageModel {
     private void saveToInternalStorage(String path){
         ContextWrapper cw = new ContextWrapper(MainController.applicationContext);
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        Drawable drawable = mainImages.get(path);
+        ImageType drawable = mainImages.get(path);
         Bitmap bitmapImage = ((BitmapDrawable) drawable).getBitmap();
 
         File myPath=new File(directory, path);
