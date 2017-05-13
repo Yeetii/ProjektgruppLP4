@@ -94,9 +94,6 @@ public class SearchHandler {
                 result.add(accommodation);}
         }
 
-        //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
-        ObjectActivityModel.setAccommodations(SearchHandler.getLastSearchResults());
-
         return result;
     }
 
