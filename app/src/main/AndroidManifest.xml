@@ -37,12 +37,12 @@
         <activity android:name=".ApplyActivity">
             android:label="@string/title_activity_advanced_search"></activity>
 
-        <receiver android:name=".backgroundTasks.OnBootReceiver">
+        <receiver android:name=".backgroundtasks.OnBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".backgroundTasks.AlarmReceiver" />
+        <receiver android:name=".backgroundtasks.AlarmReceiver" />
 
         <activity
             android:name=".SettingsActivity"

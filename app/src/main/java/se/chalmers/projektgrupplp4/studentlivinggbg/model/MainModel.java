@@ -5,9 +5,8 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundTasks.AlarmTimeManger;
+import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
 public class MainModel {
     //Does this even need to be a model anymore? I don't think so.
