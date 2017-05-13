@@ -1,19 +1,21 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SearchView;
-
 import java.util.ArrayList;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
@@ -47,6 +49,10 @@ public class AdvancedSearchActivityController {
     private MultiSpinner roomTypeSpinner;
     private MultiSpinner areasSpinner;
     private MultiSpinner landlordSpinner;
+
+    //While waiting for a name to become a SearchWatcher
+    //TODO Should this be in the model?
+    private Search wannabeSearchWatcher;
 
 
     public AdvancedSearchActivityController(Activity activity){
@@ -128,9 +134,32 @@ public class AdvancedSearchActivityController {
             System.out.println("Creating seardhwathcer");
             Search search = parseSearchTerms(false);
             //TODO prompt asking for name
-            SearchWatcherModel.createSearchWatcher("Tempname", search);
+
+            //Saves the search anc waits for nameDialog to finish
+            createNameDialog();
+
+
         }
     };
+
+    private void createNameDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        builder.setMessage("Välj ett namn för din bevakning.").setTitle("Skapa bevaking");
+        LayoutInflater inflater = activity.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_search_watcher_name, null);
+        builder.setView(dialogView);
+        builder.setPositiveButton(R.string.dialogSearchWatcherOk, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                EditText text = (EditText) dialogView.findViewById(R.id.dialogSearchWatcherName);
+                SearchWatcherModel.createSearchWatcher(text.getText().toString(), wannabeSearchWatcher);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     private Search parseSearchTerms(boolean addToSearchHistory){
         String mainSearch = "";
