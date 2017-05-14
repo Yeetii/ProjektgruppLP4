@@ -9,13 +9,21 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
 public class FavoritesActivity extends AppCompatActivity {
+    AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AccommodationRecyclerViewAdapter recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites(), getApplicationContext());
+        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites(), getApplicationContext());
         new FavoritesView(this, recyclerViewAdapter);
         new FavoritesController(this, recyclerViewAdapter);
+    }
+
+    @Override
+    protected void onResume () {
+        recyclerViewAdapter.clear();
+        recyclerViewAdapter.addAll(Accommodation.getFavorites());
+        super.onResume();
     }
 
 

@@ -59,10 +59,11 @@ public class RecyclerViewHelper {
                 if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN){
                     if (recyclerViewAdapter != null) {
                         int position = viewHolder.getAdapterPosition();
-                        Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
-                        int realPosition = Accommodation.getAccommodations().indexOf(accommodation);
+                        //Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
+                        recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
+                        System.out.println(direction != ItemTouchHelper.LEFT);
+                        //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
 
-                        recyclerViewAdapter.setFavorite(realPosition, direction != ItemTouchHelper.LEFT);
                         recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
                     } else {
                         searchModel.changeFavorite(viewHolder, direction);
