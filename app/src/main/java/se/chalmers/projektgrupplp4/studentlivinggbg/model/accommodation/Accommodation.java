@@ -1,13 +1,9 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
-
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing
@@ -122,7 +118,7 @@ public class Accommodation {
 
     public String getLastApplyDate(){return lastApplyDate;}
 
-    public Drawable getImage () {
+    public Object getImage () {
         return ImageModel.getInstance().getMainImage(getImagePath());
     }
 
@@ -150,8 +146,8 @@ public class Accommodation {
 
     public boolean getFavorite(){return isFavorite;}
 
-    public static void setNewAccommodationList(List<Accommodation> newAccommodations, Context context) {
-        ImageModel.getInstance().getAndSaveImages(true, newAccommodations, context);
+    public static void setNewAccommodationList(List<Accommodation> newAccommodations) {
+        ImageModel.getInstance().getAndSaveImages(true, newAccommodations);
         Accommodation.getAccommodations().clear();
         Accommodation.getAccommodations().addAll(newAccommodations);
     }

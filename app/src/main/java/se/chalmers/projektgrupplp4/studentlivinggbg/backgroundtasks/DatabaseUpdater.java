@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 /**
  * Created by PG on 12/05/2017.
@@ -40,7 +40,7 @@ class DatabaseUpdater {
 
             Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
             db.replaceAccommodationsList(newAccommodations);
-            ImageModel.getInstance().getAndSaveImages(false, newAccommodations, context);
+            ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
             notifyApp(newAccommodations, context);
         }
         AlarmTimeManger.getInstance().createNextAlarm(context);

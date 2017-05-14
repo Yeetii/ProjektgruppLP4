@@ -7,9 +7,10 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Settings;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 public class MainActivityHelper {
     private Thread dbThread;
@@ -38,7 +39,7 @@ public class MainActivityHelper {
                 db.close();
 
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations(), context);
+                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations());
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
             }
         });
