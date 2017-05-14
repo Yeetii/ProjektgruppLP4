@@ -1,12 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.widget.Switch;
-
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +7,6 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 
 /**

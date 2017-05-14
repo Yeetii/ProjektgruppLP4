@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 
 /**
  * Created by Jonathan on 16/04/2017.

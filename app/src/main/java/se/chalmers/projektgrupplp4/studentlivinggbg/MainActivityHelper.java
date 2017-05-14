@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.model;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
 
@@ -6,32 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Settings;
 
-public class MainModel {
-    //Does this even need to be a model anymore? I don't think so.
-    //Rename to startUpProcess/Init program or something?
+public class MainActivityHelper {
+    private Thread dbThread;
 
-    private static MainModel INSTANCE = new MainModel();
-    public static Thread dbThread;
-
-
-    private SearchHandler searchHandler;
-
-    private Settings settings;
-
-    public static MainModel getInstance() {
-        return INSTANCE;
+    public MainActivityHelper(Context context) {
+        new SearchHandler();
+        new Settings();
+        loadDatabase(context);
     }
 
-    private MainModel () {
-        searchHandler = new SearchHandler();
-        settings = new Settings();
-    }
-
-
-
-    public void loadDatabase(final Context context) {
+    private void loadDatabase(final Context context) {
         //Throws error if not done in a thread.
         dbThread = (new Thread() {
 
@@ -70,12 +59,16 @@ public class MainModel {
         return tempResult;
     }
 
-    public void save() {
+    public void saveDatabase() {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.deleteAll();
         for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
             db.store(Accommodation.getAccommodations().get(i));
         }
         db.close();
+    }
+
+    public Thread getDbThread() {
+        return dbThread;
     }
 }

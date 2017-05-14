@@ -2,22 +2,19 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 public class MainSearchActivity extends AppCompatActivity {
-    private AccommodationRecyclerViewAdapter recyclerViewAdapter;
-    private RecyclerView recyclerView;
+    private MainActivityHelper mainActivityHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainModel.getInstance().loadDatabase(getApplicationContext());
+        mainActivityHelper = new MainActivityHelper(getApplicationContext());
         new MainController(getApplicationContext());
 
         SearchActivityView searchActivityView = new SearchActivityView(this);
@@ -32,7 +29,7 @@ public class MainSearchActivity extends AppCompatActivity {
             threading.
             */
 
-            MainModel.dbThread.join();
+            mainActivityHelper.getDbThread().join();
             searchActivityModel.refreshAdapter();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -40,10 +37,10 @@ public class MainSearchActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        MainModel.getInstance().save();
+    protected void onDestroy() {
+        mainActivityHelper.saveDatabase();
         Db4oDatabase.getInstance().close();
-        super.onPause();
+        super.onDestroy();
     }
 
 

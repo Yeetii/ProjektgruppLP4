@@ -6,7 +6,6 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 
 /**
