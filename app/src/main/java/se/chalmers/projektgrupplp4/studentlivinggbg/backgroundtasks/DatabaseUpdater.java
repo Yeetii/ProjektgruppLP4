@@ -46,9 +46,8 @@ class DatabaseUpdater {
             //Gets accommodations that weren't in the old database
             List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
             uniqueNewAccommoadations.removeAll(previousAccommodations);
-            SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
-            //TODO notification
-
+            int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
+            NotificationSender.sendNotification(context, mathces);
 
             notifyApp(newAccommodations, context);
         }
