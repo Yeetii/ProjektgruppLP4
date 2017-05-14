@@ -2,11 +2,15 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 
 import android.view.View;
 
+import java.util.List;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 public class SearchWatcherItem {
     public String title;
     private Search search;
+    private List<Accommodation> newAccommodations;
 
 
     public SearchWatcherItem(String title, Search search) {
@@ -19,9 +23,20 @@ public class SearchWatcherItem {
         System.out.println("Currently does nothing");
     }
 
+    public int checkForMatches(List<Accommodation> newAccommodations){
+        this.newAccommodations = SearchHandler.search(search, newAccommodations);
+        return this.newAccommodations.size();
+    }
+
+
     public void test (View view) {
         System.out.println("Hai");
     }
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
+
+    public List<Accommodation> getNewAccommodations() {
+        //TODO and reset list?
+        return newAccommodations;
+    }
 }

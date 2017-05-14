@@ -1,12 +1,10 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
 import android.content.Context;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
@@ -16,6 +14,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 /**
  * Created by PG on 12/05/2017.
@@ -32,7 +31,7 @@ class DatabaseUpdater {
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 checkIfItShouldUpdate(lastUpdateTime)) {
-            List<Accommodation> previousAccommodations = db.findAll();
+            List<Accommodation> previousAccommodations = db.findAllAccommodations();
 
             getNewData(context);
 
@@ -40,7 +39,18 @@ class DatabaseUpdater {
 
             Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
             db.replaceAccommodationsList(newAccommodations);
+
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
+
+            //SearchWatcher stuff
+            //Gets accommodations that weren't in the old database
+            List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
+            uniqueNewAccommoadations.removeAll(previousAccommodations);
+
+            int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
+            NotificationSender.sendNotification(context, mathces);
+
+
             notifyApp(newAccommodations, context);
         }
         AlarmTimeManger.getInstance().createNextAlarm(context);

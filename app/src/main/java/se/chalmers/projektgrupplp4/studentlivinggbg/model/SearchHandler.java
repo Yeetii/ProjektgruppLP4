@@ -87,20 +87,20 @@ public class SearchHandler {
     }
 
     public static List<Accommodation> search(Search search){
+        return search(search, Accommodation.getAccommodations());
+    }
+
+    public static List<Accommodation> search(Search search, List<Accommodation> accommodations){
         List<Accommodation> result = new ArrayList<>();
 
         if (!isNotNull(search)) {
-            return Accommodation.getAccommodations();}
+            return accommodations;}
 
-        for (Accommodation accommodation: Accommodation.getAccommodations()){
+        for (Accommodation accommodation: accommodations){
             //todo UpploadDate and LastApplyDate?
             if(matchesWithSearch(search, accommodation)) {
                 result.add(accommodation);}
         }
-
-        //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
-        ObjectActivityModel.setAccommodations(result);
-
         return result;
     }
 

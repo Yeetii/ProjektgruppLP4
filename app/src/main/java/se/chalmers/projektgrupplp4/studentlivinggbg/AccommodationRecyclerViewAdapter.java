@@ -6,12 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
  * Created by Jonathan on 16/04/2017.
@@ -28,6 +27,13 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
             dataSet.add(i);
         }
         this.mContext=context;
+
+        this.registerAdapterDataObserver(this);
+    }
+
+    private void registerAdapterDataObserver(AccommodationRecyclerViewAdapter accommodationRecyclerViewAdapter) {
+        //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
+        ObjectActivityModel.setAccommodations(dataSet);
     }
 
     public void clear () {
