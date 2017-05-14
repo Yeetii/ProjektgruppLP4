@@ -83,12 +83,16 @@ public class SearchHandler {
     }
 
     public static List<Accommodation> search(Search search){
+        return search(search, Accommodation.getAccommodations());
+    }
+
+    public static List<Accommodation> search(Search search, List<Accommodation> accommodations){
         List<Accommodation> result = new ArrayList<>();
 
         if (!isNotNull(search)) {
-            return Accommodation.getAccommodations();}
+            return accommodations;}
 
-        for (Accommodation accommodation: Accommodation.getAccommodations()){
+        for (Accommodation accommodation: accommodations){
             //todo UpploadDate and LastApplyDate?
             if(matchesWithSearch(search, accommodation)) {
                 result.add(accommodation);}

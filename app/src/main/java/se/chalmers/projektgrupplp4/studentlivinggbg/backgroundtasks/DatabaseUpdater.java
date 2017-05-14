@@ -16,6 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 /**
  * Created by PG on 12/05/2017.
@@ -41,6 +42,14 @@ class DatabaseUpdater {
             Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
             db.replaceAccommodationsList(newAccommodations);
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations, context);
+
+            //Gets accommodations that weren't in the old database
+            List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
+            uniqueNewAccommoadations.removeAll(previousAccommodations);
+            SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
+            //TODO notification
+
+
             notifyApp(newAccommodations, context);
         }
         AlarmTimeManger.getInstance().createNextAlarm(context);

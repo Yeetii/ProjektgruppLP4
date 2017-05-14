@@ -3,10 +3,12 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 /**
  * Created by Erik on 2017-05-12.
@@ -54,4 +56,19 @@ public class SearchWatcherModel {
 
     public static List<SearchWatcherItem> getSearchWatcherItems(){
         return searchWatcherItems;}
+
+//    public static void updateWatchers(){
+//        List<Accommodation> matches = null;
+//        for (SearchWatcherItem sWItem : searchWatcherItems){
+//            matches.addAll(SearchHandler.search(sWItem.getSearch()));
+//        }
+//    }
+
+    public static int updateWatchers(List<Accommodation> newAccommodations){
+        int matches = 0;
+        for (SearchWatcherItem sWItem : searchWatcherItems){
+            matches += sWItem.checkForMatches(newAccommodations);
+        }
+        return matches;
+    }
 }
