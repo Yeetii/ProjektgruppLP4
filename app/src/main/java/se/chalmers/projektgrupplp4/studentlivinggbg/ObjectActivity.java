@@ -26,6 +26,7 @@ import android.widget.TextView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
@@ -183,7 +184,8 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             args.putString(ARG_TYPE, a.getAccommodationHouseType());
             args.putString(ARG_AREA, a.getArea());
             args.putString(ARG_HOST, a.getAccommodationHost());
-            fragment.setImage(a.<Drawable>getImage());
+
+            fragment.setImage(ImageModel.<Drawable>getInstance().getMainImage(a.getImagePath()));
             fragment.setArguments(args);
             return fragment;
         }

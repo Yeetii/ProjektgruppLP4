@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 /**
  * Created by Jonathan on 16/04/2017.
@@ -69,7 +70,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         } else {
             viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
         }
-        viewHolder.image.setImageDrawable(accommodation.<Drawable>getImage());
+        viewHolder.image.setImageDrawable(ImageModel.<Drawable>getInstance().getMainImage(accommodation.getImagePath()));
         viewHolder.current = accommodation;
         viewHolder.position = position;
     }

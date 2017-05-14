@@ -15,6 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
@@ -104,6 +105,7 @@ public class SearchActivityController {
             controller.activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
+                      ImageModel.getInstance().getAndSaveImages(true, accommodations);
                       Accommodation.setNewAccommodationList(accommodations);
                       controller.model.refreshAdapter();
                   }

@@ -119,10 +119,6 @@ public class Accommodation {
 
     public String getLastApplyDate(){return lastApplyDate;}
 
-    public <T> T getImage () {
-        return ImageModel.<T>getInstance().getMainImage(getImagePath());
-    }
-
     public String getImagePath () {
         if (accommodationHost.equals(AccommodationHost.SGS)) {
             return thumbnail.substring(thumbnail.indexOf("thumbs/") + "thumbs/".length());
@@ -148,7 +144,6 @@ public class Accommodation {
     public boolean getFavorite(){return isFavorite;}
 
     public static void setNewAccommodationList(List<Accommodation> newAccommodations) {
-        ImageModel.getInstance().getAndSaveImages(true, newAccommodations);
         Accommodation.getAccommodations().clear();
         Accommodation.getAccommodations().addAll(newAccommodations);
     }

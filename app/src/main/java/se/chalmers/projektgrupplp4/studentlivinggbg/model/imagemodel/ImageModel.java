@@ -74,7 +74,6 @@ public class ImageModel<ImageType> {
 
     private void loadImage (String path) {
         try {
-            //Drawable.createFromStream(new FileInputStream(imageFile), path)
             mainImages.put(path, helper.loadImage(path));
         }
         catch (FileNotFoundException e)
