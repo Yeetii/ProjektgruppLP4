@@ -2,7 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.ObjectActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * Created by Erik on 2017-05-11.

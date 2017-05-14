@@ -1,12 +1,13 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 
 public class Accommodation {
     //TODO Change to package private when no longer neccessary for tesing

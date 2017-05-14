@@ -3,10 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.widget.ImageView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * Created by PG on 29/04/2017.

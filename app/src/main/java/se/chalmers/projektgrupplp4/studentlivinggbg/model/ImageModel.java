@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 public class ImageModel {
     private static final HashMap<String, Drawable> mainImages = new HashMap<>();

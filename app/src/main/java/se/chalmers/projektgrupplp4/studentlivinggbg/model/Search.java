@@ -2,6 +2,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.ArrayList;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
+
 
 public class Search {
     //TODO Change to package private when no longer neccessary for tesing

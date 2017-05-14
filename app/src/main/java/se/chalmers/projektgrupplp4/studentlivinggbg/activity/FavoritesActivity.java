@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.FavoritesController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
 public class FavoritesActivity extends AppCompatActivity {

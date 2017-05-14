@@ -3,10 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * Created by PG on 15/04/2017.

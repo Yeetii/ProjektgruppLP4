@@ -3,9 +3,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 /**

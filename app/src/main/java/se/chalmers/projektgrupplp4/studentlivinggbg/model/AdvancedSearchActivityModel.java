@@ -2,6 +2,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.ArrayList;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
+
 //TODO Not used at all atm, but maybe this is more correct?
 public class AdvancedSearchActivityModel {
     private ArrayList<String> roomTypeItems = new ArrayList<>();

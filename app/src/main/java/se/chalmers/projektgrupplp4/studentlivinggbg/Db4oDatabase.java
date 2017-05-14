@@ -10,7 +10,7 @@ import com.db4o.config.EmbeddedConfiguration;
 import java.io.IOException;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * Created by PG on 11/04/2017.

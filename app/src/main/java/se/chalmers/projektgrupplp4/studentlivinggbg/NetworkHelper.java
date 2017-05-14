@@ -8,7 +8,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * Created by PG on 10/05/2017.

@@ -14,7 +14,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 
 /**

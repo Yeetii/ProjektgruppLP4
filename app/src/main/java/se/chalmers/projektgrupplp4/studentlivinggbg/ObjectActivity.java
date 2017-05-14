@@ -24,9 +24,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 

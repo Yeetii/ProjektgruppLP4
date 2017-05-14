@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.model;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 
 import java.util.ArrayList;
