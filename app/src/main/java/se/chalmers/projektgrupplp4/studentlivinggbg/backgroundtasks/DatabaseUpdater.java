@@ -43,6 +43,8 @@ class DatabaseUpdater {
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
 
             //SearchWatcher stuff
+            SearchWatcherModel.getSearchWatcherItems().clear();
+            SearchWatcherModel.getSearchWatcherItems().addAll(db.findAllSearchWatcherItems());
             //Gets accommodations that weren't in the old database
             List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
             uniqueNewAccommoadations.removeAll(previousAccommodations);
