@@ -75,6 +75,10 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         viewHolder.position = position;
     }
 
+    public List<Accommodation> getAccommodations() {
+        return dataSet;
+    }
+
     @Override
     public int getItemCount() {
         return this.dataSet.size();
@@ -84,8 +88,6 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
         return new AccommodationRecyclerViewHolder(view);
     }
-
-
 
 
     @Override
