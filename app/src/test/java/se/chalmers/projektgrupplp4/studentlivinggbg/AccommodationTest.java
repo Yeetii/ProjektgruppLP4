@@ -33,7 +33,7 @@ public class AccommodationTest {
     @Test
     public void getAccommodations () throws Exception {
         //Database needs to be started?
-        List<Accommodation> accommodations = Db4oDatabase.getInstance().findAll();
+        List<Accommodation> accommodations = Db4oDatabase.getInstance().findAllAccommodations();
         /*List<Accommodation>*/ accommodations = Accommodation.getAccommodations();
         for (int i = 0;i<accommodations.size();i++) {
             assertNotNull(accommodations.get(i));

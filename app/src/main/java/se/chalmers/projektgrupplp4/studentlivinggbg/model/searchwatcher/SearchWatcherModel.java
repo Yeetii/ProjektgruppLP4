@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
@@ -51,7 +52,9 @@ public class SearchWatcherModel {
     }
 
     public static void createSearchWatcher(String name, Search search){
-        searchWatcherItems.add(new SearchWatcherItem(name, search));
+        SearchWatcherItem sWItem = new SearchWatcherItem(name, search);
+        searchWatcherItems.add(sWItem);
+        Db4oDatabase.getInstance().store(sWItem);
     }
 
     public static List<SearchWatcherItem> getSearchWatcherItems(){

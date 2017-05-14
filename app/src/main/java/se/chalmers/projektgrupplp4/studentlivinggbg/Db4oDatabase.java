@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
 /**
  * Created by PG on 11/04/2017.
@@ -73,6 +74,9 @@ public class Db4oDatabase {
     public void store(Accommodation exercise) {
         db().store(exercise);
     }
+    public void store(SearchWatcherItem exercise) {
+        db().store(exercise);
+    }
 
 
     //Stupid but it works, didn't get it to work with string, long, custom class only contaning long/string
@@ -102,8 +106,8 @@ public class Db4oDatabase {
     }
 
     public void deleteAll () {
-        while (findAll().size() != 0) {
-            delete(findAll().get(0));
+        while (findAllAccommodations().size() != 0) {
+            delete(findAllAccommodations().get(0));
         }
     }
 
@@ -122,8 +126,12 @@ public class Db4oDatabase {
         this.close();
     }
 
-    public List<Accommodation> findAll() {
+    public List<Accommodation> findAllAccommodations() {
         return db().query(Accommodation.class);
+    }
+
+    public List<SearchWatcherItem> findAllSearchWatcherItems() {
+        return db().query(SearchWatcherItem.class);
     }
 
     //This method is used to retrive matched object from database.

@@ -33,7 +33,7 @@ class DatabaseUpdater {
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 checkIfItShouldUpdate(lastUpdateTime)) {
-            List<Accommodation> previousAccommodations = db.findAll();
+            List<Accommodation> previousAccommodations = db.findAllAccommodations();
 
             getNewData(context);
 
@@ -43,11 +43,14 @@ class DatabaseUpdater {
             db.replaceAccommodationsList(newAccommodations);
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations, context);
 
+            //SearchWatcher stuff
             //Gets accommodations that weren't in the old database
             List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
             uniqueNewAccommoadations.removeAll(previousAccommodations);
+
             int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
             NotificationSender.sendNotification(context, mathces);
+
 
             notifyApp(newAccommodations, context);
         }

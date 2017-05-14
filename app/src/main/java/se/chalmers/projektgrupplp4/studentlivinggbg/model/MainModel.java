@@ -7,6 +7,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 public class MainModel {
     //Does this even need to be a model anymore? I don't think so.
@@ -38,7 +39,7 @@ public class MainModel {
             @Override
             public void run() {
                 Db4oDatabase db = Db4oDatabase.getInstance();
-                List<Accommodation> temp = db.findAll();
+                List<Accommodation> temp = db.findAllAccommodations();
                 //Should happen the first time the user starts the app
                 if (temp.size() == 0) {
                     AlarmTimeManger.getInstance().setUpInstantAlarm(context);
@@ -46,6 +47,10 @@ public class MainModel {
 
                 Accommodation.getAccommodations().clear();
                 Accommodation.getAccommodations().addAll(removeNullFrom(temp));
+
+                SearchWatcherModel.getSearchWatcherItems().clear();
+                SearchWatcherModel.getSearchWatcherItems().addAll(db.findAllSearchWatcherItems());
+
                 db.close();
 
                 Long currentTime = System.currentTimeMillis();
