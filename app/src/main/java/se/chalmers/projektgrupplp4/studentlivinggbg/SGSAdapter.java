@@ -7,6 +7,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 
 /**
  * Created by PG on 15/04/2017.
@@ -39,12 +40,14 @@ public class SGSAdapter extends AccommodationAdapter {
         int searchers = SGSAccommodation.getCountInterest();
         String thumbNail = SGSAccommodation.getImagePath();
         String description = SGSAccommodation.getDescription();
+        String upploadDate = SGSAccommodation.getPublishingDate();
+        String lastApplyDate = SGSAccommodation.getEndPeriod();
         AccommodationHost host = AccommodationHost.SGS;
+        Region region = Region.parseString(SGSAccommodation.getObjectArea());
 
-        //Create
-        Accommodation accommodation = new Accommodation(objectNumber, street, type, price, area,
-                searchers, thumbNail, description, host, false);
-        return accommodation;
+
+        return new Accommodation(objectNumber, street, type, price, area,
+                searchers, thumbNail, description, host, region, upploadDate, lastApplyDate, false);
     }
 
 
@@ -116,9 +119,19 @@ public class SGSAdapter extends AccommodationAdapter {
         private String SyndicatePropertyDescriptionGrouped;
         private int UseFilter;
 
+        public String getPublishingDate() {return parseDate(PublishingDate);}
+
+        public String getEndPeriod() {return parseDate(EndPeriodMPDateString);}
+
+        private String parseDate(String string){
+            return string.substring(8,10)+string.substring(4,8)+string.substring(0,4);
+        }
+
         private String getObjectNumber () {
             return ObjectNo;
         }
+
+        private String getObjectArea(){return ObjectArea;}
 
         public String getStreet() {
             return Street;

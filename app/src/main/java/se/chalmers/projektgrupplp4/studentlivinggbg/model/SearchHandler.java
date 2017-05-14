@@ -95,7 +95,7 @@ public class SearchHandler {
         }
 
         //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
-        ObjectActivityModel.setAccommodations(SearchHandler.getLastSearchResults());
+        ObjectActivityModel.setAccommodations(result);
 
         return result;
     }
@@ -160,9 +160,23 @@ public class SearchHandler {
     }
 
     private static boolean mainSearchMatch(Search search, Accommodation accommodation) {
-        return search.getMainSearch().equals("") ||
-                (accommodation.getAddress()+" "+accommodation.getAccommodationHouseType()+" "+accommodation.getRegion()+" "
-                        +accommodation.getAccommodationHost()).toLowerCase().contains(search.getMainSearch().toLowerCase());
+        if(search.getMainSearch().equals("")){return true;}
+
+        String[] mainSearchArray = search.getMainSearch().toLowerCase().split("\\s+");
+        String accommodationString = (accommodation.getAddress()+" "+accommodation.getAccommodationHouseType()+" "
+                +accommodation.getRegion()+" " +accommodation.getAccommodationHost()).toLowerCase();
+
+        int i = 0;
+        for(String mainSearchSubString: mainSearchArray){
+            try{
+                if((mainSearchSubString.equals("1") ||  mainSearchSubString.equals("2") || mainSearchSubString.equals("3")
+                        || mainSearchSubString.equals("4"))&& mainSearchArray[++i].equals("rum")){
+                    mainSearchSubString = mainSearchSubString+"-"+"rum";}}
+            catch(ArrayIndexOutOfBoundsException e){}
+            if(!accommodationString.contains(mainSearchSubString)){return false;}
+        }
+
+        return true;
     }
 
 

@@ -15,6 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.MainModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Region;
 
 /**
  * Created by PG on 20/04/2017.
@@ -74,7 +75,12 @@ public class ChalmersAdapter extends AccommodationAdapter {
             double area = parseArea(getAttribute(infoString, "area"));
             String description = getAttribute(infoString, "description");
             String thumbnail = createThumbnail(getAttribute(infoString, "thumbnail"));
-            return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS, false);
+            //todo: Implement theese
+            //String upploadDate = parseDate(getAttribute(infoString, "upploadDate"));
+            //String lastApplyDate = parseDate(getAttribute(infoString, "lastApplyDate"));
+            String upploadDate = "";
+            String lastApplyDate = "";
+            return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS, Region.CENTER, upploadDate, lastApplyDate, false);
         }
 
         private double parseArea (String areaString) {
@@ -91,6 +97,11 @@ public class ChalmersAdapter extends AccommodationAdapter {
         private int parsePrice(String priceString) {
             priceString = priceString.replaceAll("\\s+", "");
             return Integer.parseInt(priceString);
+        }
+
+        private String parseDate(String dateString){
+            //eventually todo
+            return dateString;
         }
 
         private AccommodationHouseType parseHouseType (String houseTypeString) {
@@ -140,6 +151,12 @@ public class ChalmersAdapter extends AccommodationAdapter {
                 case "area":
                     firstStartTag = "dd class=\"ObjektYta\"";
                     endTag = "m&sup2";
+                    break;
+                case "upploadDate":
+                    //todo
+                    break;
+                case "lastApplyDate":
+                    //todo
                     break;
                 case "thumbnail":
                     firstStartTag = "data-src=";
