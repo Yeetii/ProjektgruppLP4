@@ -104,7 +104,7 @@ public class SearchActivityController {
             controller.activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
-                      Accommodation.setNewAccommodationList(accommodations, controller.activity.getApplicationContext());
+                      Accommodation.setNewAccommodationList(accommodations);
                       controller.model.refreshAdapter();
                   }
               }

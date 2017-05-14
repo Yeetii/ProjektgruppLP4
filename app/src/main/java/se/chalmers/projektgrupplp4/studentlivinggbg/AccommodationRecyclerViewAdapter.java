@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         } else {
             viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
         }
-        viewHolder.image.setImageDrawable(accommodation.getImage());
+        viewHolder.image.setImageDrawable(accommodation.<Drawable>getImage());
         viewHolder.current = accommodation;
         viewHolder.position = position;
     }

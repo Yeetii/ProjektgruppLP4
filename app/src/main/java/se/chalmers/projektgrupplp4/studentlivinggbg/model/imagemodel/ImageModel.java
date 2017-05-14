@@ -1,5 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel;
 
+import android.graphics.drawable.Drawable;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

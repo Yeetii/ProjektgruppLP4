@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,8 +119,8 @@ public class Accommodation {
 
     public String getLastApplyDate(){return lastApplyDate;}
 
-    public Object getImage () {
-        return ImageModel.getInstance().getMainImage(getImagePath());
+    public <T> T getImage () {
+        return ImageModel.<T>getInstance().getMainImage(getImagePath());
     }
 
     public String getImagePath () {

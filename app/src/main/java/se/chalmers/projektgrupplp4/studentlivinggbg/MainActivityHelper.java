@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class MainActivityHelper {
     public MainActivityHelper(Context context) {
         new SearchHandler();
         new Settings();
+        CreateDrawableHelper createDrawableHelper = new CreateDrawableHelper(context);
+        ImageModel.<Drawable>getInstance().setHelper(createDrawableHelper);
         loadDatabase(context);
     }
 
