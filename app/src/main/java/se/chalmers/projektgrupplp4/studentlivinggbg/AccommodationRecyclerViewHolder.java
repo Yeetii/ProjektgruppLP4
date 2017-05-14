@@ -20,7 +20,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
         TextView txtHouseType;
         TextView txtArea;
         TextView txtPrice;
-        TextView txtSearchers;
+        TextView txtLastApplyDate;
         ImageView favoriteButton;
         ImageView image;
         Accommodation current;
@@ -33,7 +33,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
             txtHouseType = (TextView) v.findViewById(R.id.type);
             txtArea = (TextView) v.findViewById(R.id.area);
             txtPrice = (TextView) v.findViewById(R.id.price);
-            txtSearchers = (TextView) v.findViewById(R.id.searchers);
+            txtLastApplyDate = (TextView) v.findViewById(R.id.lastApplyDate);
             favoriteButton = (ImageView) v.findViewById(R.id.favoriteButton);
             image = (ImageView) v.findViewById(R.id.image);
 

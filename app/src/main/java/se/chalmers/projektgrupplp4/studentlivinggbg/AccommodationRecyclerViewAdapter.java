@@ -64,7 +64,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         viewHolder.txtHouseType.setText(accommodation.getAccommodationHouseType());
         viewHolder.txtArea.setText(accommodation.getArea());
         viewHolder.txtPrice.setText(accommodation.getPrice());
-        viewHolder.txtSearchers.setText(accommodation.getSearchers());
+        viewHolder.txtLastApplyDate.setText(accommodation.getLastApplyDate());
         if(accommodation.getFavorite()) {
             viewHolder.favoriteButton.setImageResource(R.drawable.favorite_on);
         } else {

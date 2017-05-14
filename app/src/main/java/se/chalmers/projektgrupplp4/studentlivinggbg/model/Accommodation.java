@@ -25,11 +25,13 @@ public class Accommodation {
     private String description;
     private AccommodationHost accommodationHost;
     private boolean isFavorite = false;
+    private String upploadDate;
+    private String lastApplyDate;
 
-    /*
+
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
-                         int price, double area, int searchers, String thumbnail, String description,
-                         AccommodationHost accommodationHost) {
+                         int price, double area, int searchers, String thumbnail, String description, AccommodationHost accommodationHost,
+                         Region region, String upploadDate, String lastApplyDate, boolean addToAccommodations) {
         this.objectNumber = objectNumber;
         this.address=address;
         this.accommodationHouseType = accommodationHouseType;
@@ -39,23 +41,9 @@ public class Accommodation {
         this.thumbnail=thumbnail;
         this.description = description;
         this.accommodationHost = accommodationHost;
-
-        initAccommodations();
-        addToAccommodations();
-    }*/
-
-    public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
-                         int price, double area, int searchers, String thumbnail, String description,
-                         AccommodationHost accommodationHost, boolean addToAccommodations) {
-        this.objectNumber = objectNumber;
-        this.address=address;
-        this.accommodationHouseType = accommodationHouseType;
-        this.price=price;
-        this.area=area;
-        this.searchers=searchers;
-        this.thumbnail=thumbnail;
-        this.description = description;
-        this.accommodationHost = accommodationHost;
+        this.region=region;
+        this.upploadDate=upploadDate;
+        this.lastApplyDate=lastApplyDate;
 
         initAccommodations();
         if(addToAccommodations){
@@ -128,6 +116,10 @@ public class Accommodation {
     public void setSearchers(int amount){
          searchers = amount;
     }
+
+    public String getUpploadDate(){return upploadDate;}
+
+    public String getLastApplyDate(){return lastApplyDate;}
 
     public Drawable getImage () {
         return ImageModel.getInstance().getMainImage(getImagePath());
