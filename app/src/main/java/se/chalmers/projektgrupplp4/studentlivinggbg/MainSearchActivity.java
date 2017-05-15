@@ -13,7 +13,7 @@ public class MainSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainActivityHelper = new MainActivityHelper(getApplicationContext());
+        mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
 
         new MainController(getApplicationContext());
 

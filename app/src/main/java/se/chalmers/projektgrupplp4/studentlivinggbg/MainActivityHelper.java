@@ -14,8 +14,17 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 public class MainActivityHelper {
     private Thread dbThread;
+    private static MainActivityHelper instance;
 
-    public MainActivityHelper(Context context) {
+    public static MainActivityHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new MainActivityHelper(context);
+        }
+        return instance;
+    }
+
+
+    private MainActivityHelper(Context context) {
         new SearchHandler();
         new Settings();
         CreateDrawableHelper createDrawableHelper = new CreateDrawableHelper(context);
