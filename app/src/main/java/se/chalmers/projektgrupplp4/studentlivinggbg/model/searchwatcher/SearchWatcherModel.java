@@ -54,6 +54,7 @@ public class SearchWatcherModel {
         SearchWatcherItem sWItem = new SearchWatcherItem(name, search);
         searchWatcherItems.add(sWItem);
         Db4oDatabase.getInstance().store(sWItem);
+        System.out.println("Creating " + name + " " + search + " " + searchWatcherItems.size());
     }
 
     public static List<SearchWatcherItem> getSearchWatcherItems(){
