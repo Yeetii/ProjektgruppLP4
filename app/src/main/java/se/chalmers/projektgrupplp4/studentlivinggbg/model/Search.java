@@ -19,8 +19,8 @@ public class Search {
     private ArrayList<Region> possibleRegions;
     private int minPrice = -1;
     private int maxPrice = -1;
-    private double minArea = -1;
-    private double maxArea = -1;
+    private int minArea = -1;
+    private int maxArea = -1;
     private int maxSearchers = -1;
     private String upploadDate = ""; //TODO Better date implementation
     private String lastApplyDate = "";
@@ -34,7 +34,7 @@ public class Search {
                   ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                   ArrayList<AccommodationHost> possibleAccomodationHosts,
                   ArrayList<Region> possibleRegions,
-                  int minPrice, int maxPrice, double minArea, double maxArea, int maxSearchers,
+                  int minPrice, int maxPrice, int minArea, int maxArea, int maxSearchers,
                   String upploadDate, String lastApplyDate) {
 
         this.mainSearch = mainSearch;
@@ -82,11 +82,11 @@ public class Search {
         return maxPrice;
     }
 
-    public double getMinArea() {
+    public int getMinArea() {
         return minArea;
     }
 
-    public double getMaxArea() {
+    public int getMaxArea() {
         return maxArea;
     }
 
@@ -102,5 +102,24 @@ public class Search {
         return lastApplyDate;
     }
 
+    public boolean isEmpty() {
 
+        try {
+            return this == null || (this.getMainSearch().equals("") &&
+                    this.getAddress().equals("") &&
+                    this.getPossibleAccommodationHosts().isEmpty() &&
+                    this.getPossibleAccomodationHouseTypes().isEmpty() &&
+                    (this.getMaxArea() == -1) &&
+                    (this.getMinArea() == -1) &&
+                    (this.getMaxPrice() == -1) &&
+                    (this.getMinPrice() == -1) &&
+                    (this.getMaxArea() == -1) &&
+                    (this.getMaxSearchers() == -1) &&
+                    this.getLastApplyDate().equals("") &&
+                    this.getUpploadDate().equals(""));
+        }
+        catch(NullPointerException e){
+            return true;
+        }
+    }
 }

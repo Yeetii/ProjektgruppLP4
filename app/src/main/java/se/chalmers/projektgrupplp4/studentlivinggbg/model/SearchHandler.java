@@ -23,29 +23,10 @@ public class SearchHandler {
     }
 
     public static Search createSearch(String mainSearch, String address,
-                               ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
-                               ArrayList<AccommodationHost> possibleAccomodationHosts,
-                               ArrayList<Region> possibleRegions,
-                               int minPrice, int maxPrice, double minArea, double maxArea, int maxSearchers,
-                               String upploadDate, String lastApplyDate){
-
-        Search result = new Search(mainSearch, address,
-                possibleAccomodationHouseTypes,
-                possibleAccomodationHosts,
-                possibleRegions,
-                minPrice, maxPrice, minArea, maxArea, maxSearchers,
-                upploadDate, lastApplyDate);
-
-        addToLastSearches(result);
-
-        return result;
-    }
-
-    public static Search createSearch(String mainSearch, String address,
                                       ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                                       ArrayList<AccommodationHost> possibleAccomodationHosts,
                                       ArrayList<Region> possibleRegions,
-                                      int minPrice, int maxPrice, double minArea, double maxArea, int maxSearchers,
+                                      int minPrice, int maxPrice, int minArea, int maxArea, int maxSearchers,
                                       String upploadDate, String lastApplyDate, boolean addToList){
 
         Search result = new Search(mainSearch, address,
@@ -74,7 +55,7 @@ public class SearchHandler {
     }
 
 
-    static Search getLastSearch(){
+    public static Search getLastSearch(){
         try{
             return lastSearches.get(0);}
         catch(IndexOutOfBoundsException e){
@@ -93,7 +74,7 @@ public class SearchHandler {
     public static List<Accommodation> search(Search search, List<Accommodation> accommodations){
         List<Accommodation> result = new ArrayList<>();
 
-        if (!isNotNull(search)) {
+        if (search.isEmpty()) {
             return accommodations;}
 
         for (Accommodation accommodation: accommodations){
@@ -183,25 +164,4 @@ public class SearchHandler {
         return true;
     }
 
-
-    public static boolean isNotNull(Search lastSearch) {
-
-        try {
-            return lastSearch != null && (!lastSearch.getMainSearch().equals("") ||
-                    !lastSearch.getAddress().equals("") ||
-                    !lastSearch.getPossibleAccommodationHosts().isEmpty() ||
-                    !lastSearch.getPossibleAccomodationHouseTypes().isEmpty() ||
-                    !(lastSearch.getMaxArea() == -1) ||
-                    !(lastSearch.getMinArea() == -1) ||
-                    !(lastSearch.getMaxPrice() == -1) ||
-                    !(lastSearch.getMinPrice() == -1) ||
-                    !(lastSearch.getMaxArea() == -1) ||
-                    !(lastSearch.getMaxSearchers() == -1) ||
-                    !lastSearch.getLastApplyDate().equals("") ||
-                    !lastSearch.getUpploadDate().equals(""));
-        }
-        catch(NullPointerException e){
-            return false;
-        }
-    }
 }

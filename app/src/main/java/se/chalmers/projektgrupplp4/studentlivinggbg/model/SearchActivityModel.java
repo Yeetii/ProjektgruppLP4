@@ -53,7 +53,7 @@ public class SearchActivityModel {
 
         lastSearch = SearchHandler.getLastSearch();
 
-        if (SearchHandler.isNotNull(lastSearch)) {
+        if (!lastSearch.isEmpty()) {
             recyclerViewAdapter.addAll(SearchHandler.search(lastSearch));
         }else{
             recyclerViewAdapter.addAll(Accommodation.getAccommodations());
@@ -66,8 +66,6 @@ public class SearchActivityModel {
         recyclerViewAdapter.addAll(Accommodation.getAccommodations());
         recyclerViewAdapter.notifyDataSetChanged();
     }
-
-
 
     public RecyclerView getRecyclerView() {
         return recyclerView;

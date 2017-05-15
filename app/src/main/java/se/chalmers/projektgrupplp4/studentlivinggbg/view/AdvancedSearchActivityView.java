@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
-import android.widget.SeekBar;
 import java.util.ArrayList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -47,17 +46,24 @@ public class AdvancedSearchActivityView {
     }
 
     private void initSeekBars(){
+        //The code below has been removed since it is basically the same as in the controller
+
+        /*
         SeekBar seekBarMinPrice = (SeekBar) activity.findViewById(R.id.seekBarMinPrice);
         SeekBar seekBarMaxPrice = (SeekBar) activity.findViewById(R.id.seekBarMaxPrice);
         SeekBar seekBarMinArea = (SeekBar) activity.findViewById(R.id.seekBarMinArea);
         SeekBar seekBarMaxArea = (SeekBar) activity.findViewById(R.id.seekBarMaxArea);
 
+        TextView textViewMaxPrice = (TextView) activity.findViewById(R.id.textViewMaxPrice);
+        TextView textViewMaxArea = (TextView) activity.findViewById(R.id.textViewMaxArea);
+
         seekBarMinPrice.setMax(15000);
         seekBarMaxPrice.setMax(15000);
-        seekBarMaxPrice.setProgress(15000);
+        textViewMaxPrice.setText("15000");
         seekBarMinArea.setMax(150);
         seekBarMaxArea.setMax(150);
-        seekBarMaxArea.setProgress(150);
+        textViewMaxArea.setText("150");
+        */
     }
 
 
