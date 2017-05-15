@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,6 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SettingsActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -19,14 +21,14 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 public class BottomNavigationListener {
 
-    Activity activity;
-    int currentSelection;
+    private Context context;
+    private int currentSelection;
 
     private static BottomNavigationListener instance;
 
-    private BottomNavigationListener (Activity activity) {
+    private BottomNavigationListener (Context context) {
         //TODO get activity directly
-        this.activity = activity;
+        this.context = context;
         this.currentSelection = R.id.navigation_search;
     }
 
@@ -53,40 +55,38 @@ public class BottomNavigationListener {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Class newActivityClass = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_search:
                     if (currentSelection != R.id.navigation_search) {
-                        Intent search = new Intent(activity, MainSearchActivity.class);
-                        search.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(search);
-                        currentSelection = R.id.navigation_search;
-                    }
-                    return true;
+                        newActivityClass = MainSearchActivity.class;
+                    } else return true;
+                    break;
                 case R.id.navigation_favorites:
                     if (currentSelection != R.id.navigation_favorites) {
-                        Intent favorites = new Intent(activity, FavoritesActivity.class);
-                        favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(favorites);
-                        currentSelection = R.id.navigation_favorites;
-                    }
-                    return true;
+                        newActivityClass = FavoritesActivity.class;
+                    } else return true;
+                    break;
                 case R.id.navigation_notifications:
                     if (currentSelection != R.id.navigation_notifications) {
-                        Intent searchWatcher = new Intent(activity, SearchWatcherActivity.class);
-                        searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(searchWatcher);
-                        currentSelection = R.id.navigation_notifications;
-                    }
-                    return true;
+                        newActivityClass = SearchWatcherActivity.class;
+                    } else return true;
+                    break;
                 case R.id.navigation_settings:
                     if (currentSelection != R.id.navigation_settings) {
-                        Intent settings = new Intent(activity, SettingsActivity.class);
-                        settings.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                        activity.startActivity(settings);
-                        currentSelection = R.id.navigation_settings;
-                    }
-                    return true;
+                        newActivityClass = SettingsActivity.class;
+                    } else return true;
+                    break;
             }
+            if (newActivityClass != null) {
+                Intent newActivity = new Intent(context, newActivityClass);
+                newActivity.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
+                context.startActivity(newActivity);
+                currentSelection = item.getItemId();
+                return true;
+            }
+
             return false;
         }
 
