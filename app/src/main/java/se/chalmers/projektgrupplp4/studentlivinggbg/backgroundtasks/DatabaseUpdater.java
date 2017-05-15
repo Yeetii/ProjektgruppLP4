@@ -9,6 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
@@ -21,43 +22,29 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
  * Created by PG on 12/05/2017.
  */
 
-class DatabaseUpdater {
+class DatabaseUpdater implements Observer {
     private static final DatabaseUpdater INSTANCE = new DatabaseUpdater();
+    private int counter = 0;
+    private Context context;
+    private Db4oDatabase db;
+    private List<Accommodation> sgsAccommodations;
+    private List<Accommodation> chalmersAccommodations;
+
 
     static DatabaseUpdater getInstance() {return INSTANCE;}
 
     void update(Context context) {
-        Db4oDatabase db = Db4oDatabase.getInstance().initDataBase(context);
+        this.context = context;
+        db = Db4oDatabase.getInstance().initDataBase(context);
         Long lastUpdateTime = db.getTimestamp();
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 checkIfItShouldUpdate(lastUpdateTime)) {
-            List<Accommodation> previousAccommodations = db.findAll(Accommodation.class);
-
             getNewData(context);
-
-            List<Accommodation> newAccommodations = fillNewAccommodations(context);
-
-            Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
-            db.replaceAccommodationsList(newAccommodations);
-
-            ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
-
-            //SearchWatcher stuff
-            SearchWatcherModel.getSearchWatcherItems().clear();
-            SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
-            //Gets accommodations that weren't in the old database
-            List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
-            uniqueNewAccommoadations.removeAll(previousAccommodations);
-
-            int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
-            NotificationSender.sendNotification(context, mathces);
-
-
-            notifyApp(newAccommodations, context);
+        } else {
+            AlarmTimeManger.getInstance().createNextAlarm(context);
+            db.close();
         }
-        AlarmTimeManger.getInstance().createNextAlarm(context);
-        db.close();
     }
 
     private boolean checkIfItShouldUpdate(long lastUpdate) {
@@ -90,28 +77,24 @@ class DatabaseUpdater {
     }
 
     private void getNewData (Context context) {
-        RequestAccommodations sgsRequest = new RequestAccommodations(true, context);
-        RequestAccommodations chalmersRequest = new RequestAccommodations(false, context);
+        RequestAccommodations sgsRequest = new RequestAccommodations(true, context, this);
+        RequestAccommodations chalmersRequest = new RequestAccommodations(false, context, this);
         sgsRequest.execute();
         chalmersRequest.execute();
-
-        while (!sgsRequest.isDone() || !chalmersRequest.isDone()) {
-            //Shit code, please fix :)
-        }
     }
 
-    private List<Accommodation> fillNewAccommodations(Context context) {
+    private List<Accommodation> fillNewAccommodations(Context context, String inputString) {
         List<Accommodation> newAccommodations;
-        List<Accommodation> chalmersAccommodations;
-
-        AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context, "SGSData");
-        AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context, "ChalmersData");
-        newAccommodations = sgsAdapter.getAccommodations();
-        chalmersAccommodations = chalmersAdapter.getAccommodations();
-
-        getAndSetAmountOfSearchersChalmers(chalmersAccommodations);
-
-        newAccommodations.addAll(chalmersAccommodations);
+        if (inputString.equals("SGS")) {
+            AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context, "SGSData");
+            newAccommodations = sgsAdapter.getAccommodations();
+            sgsAccommodations = newAccommodations;
+        } else {
+            AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context, "ChalmersData");
+            newAccommodations = chalmersAdapter.getAccommodations();
+            chalmersAccommodations = newAccommodations;
+            getAndSetAmountOfSearchersChalmers(chalmersAccommodations);
+        }
         return newAccommodations;
     }
 
@@ -141,6 +124,41 @@ class DatabaseUpdater {
 
     }
 
+    private void setAccommodations (String inputString) {
+        //Do as much as possible with each request.
+        List<Accommodation> previousAccommodations = db.findAll(Accommodation.class);
+        List<Accommodation> newAccommodations = fillNewAccommodations(context, inputString);
+
+        Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
+        ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
+
+        counter++;
+        //Only do some things when both SGS and Chalmers are done.
+        if (counter % 2 == 1) return;
+        newAccommodations.clear();
+        newAccommodations.addAll(chalmersAccommodations);
+        newAccommodations.addAll(sgsAccommodations);
+        db.replaceAccommodationsList(newAccommodations);
+
+
+        //SearchWatcher stuff
+        SearchWatcherModel.getSearchWatcherItems().clear();
+        SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
+        //Gets accommodations that weren't in the old database
+        List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
+        uniqueNewAccommoadations.removeAll(previousAccommodations);
+
+        int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
+        NotificationSender.sendNotification(context, mathces);
+
+
+        notifyApp(newAccommodations, context);
+
+        AlarmTimeManger.getInstance().createNextAlarm(context);
+        db.close();
+
+    }
+
     private void setSearcherChalmers(StringBuffer stringBuffer, Accommodation accommodation) {
         int amount = 0;
         String response = stringBuffer.toString();
@@ -151,5 +169,10 @@ class DatabaseUpdater {
             amount = Integer.parseInt(response);
         }
         accommodation.setSearchers(amount);
+    }
+
+    @Override
+    public void update(String update) {
+        setAccommodations(update);
     }
 }

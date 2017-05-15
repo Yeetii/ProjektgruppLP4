@@ -20,13 +20,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 
 public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
     private Context context;
-    private boolean isDone = false;
     private boolean sendSGS;
+    private Observer observer;
 
 
-    public RequestAccommodations (boolean isSGS, Context context) {
+    public RequestAccommodations (boolean isSGS, Context context, Observer observer) {
         this.sendSGS = isSGS;
         this.context = context;
+        this.observer = observer;
     }
 
 
@@ -46,13 +47,9 @@ public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            isDone = true;
+            observer.update(sendSGS ? "SGS" : "Chalmers");
         }
         return null;
-    }
-
-    public boolean isDone() {
-        return isDone;
     }
 
     private void writeToDisc(StringBuffer response, String fileName) throws Exception {
