@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.ObjectActivity$PlaceholderFragment">
+    tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.activity.ObjectActivity$PlaceholderFragment">
 
     <ImageView
         android:id="@+id/imageView"

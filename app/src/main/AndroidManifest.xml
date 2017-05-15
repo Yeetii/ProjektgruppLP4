@@ -16,11 +16,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.SearchWatcherActivity" />
         <activity
-            android:name=".ObjectActivity"
+            android:name=".activity.ObjectActivity"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainSearchActivity"
+            android:name=".activity.MainSearchActivity"
             android:label="@string/title_activity_main_search">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +32,9 @@
             android:name=".activity.FavoritesActivity"
             android:label="@string/title_favorites"></activity>
         <activity
-            android:name=".AdvancedSearchActivity"
+            android:name=".activity.AdvancedSearchActivity"
             android:label="@string/title_activity_advanced_search" />
-        <activity android:name=".ApplyActivity">
+        <activity android:name=".activity.ApplyActivity">
             android:label="@string/title_activity_advanced_search"></activity>
 
         <receiver android:name=".backgroundtasks.OnBootReceiver">
@@ -45,7 +45,7 @@
         <receiver android:name=".backgroundtasks.AlarmReceiver" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
     </application>
 

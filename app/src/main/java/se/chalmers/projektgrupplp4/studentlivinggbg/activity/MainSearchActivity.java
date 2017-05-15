@@ -1,10 +1,12 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.MainActivityHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;

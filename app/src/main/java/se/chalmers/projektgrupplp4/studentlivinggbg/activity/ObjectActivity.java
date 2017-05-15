@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -25,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;

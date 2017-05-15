@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
