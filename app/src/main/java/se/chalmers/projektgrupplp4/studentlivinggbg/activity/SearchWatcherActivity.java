@@ -3,8 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
 /**
@@ -20,6 +22,9 @@ public class SearchWatcherActivity extends AppCompatActivity {
         this.view = new SearchWatcherView(this);
         SearchWatcherViewModel model = new SearchWatcherViewModel(this);
         new SearchWatcherController(model, view);
+
+        new AdvancedSearchFragmentView(this);
+        new AdvancedSearchFragmentController(this);
     }
 
     //Should this be done in the controller?
