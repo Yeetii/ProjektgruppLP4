@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;

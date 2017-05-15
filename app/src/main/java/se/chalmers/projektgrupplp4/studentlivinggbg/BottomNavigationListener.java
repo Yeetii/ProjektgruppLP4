@@ -2,13 +2,14 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SettingsActivity;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 

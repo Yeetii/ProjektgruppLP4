@@ -8,6 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeMan
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Settings;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
@@ -39,7 +40,7 @@ public class MainActivityHelper {
             @Override
             public void run() {
                 Db4oDatabase db = Db4oDatabase.getInstance();
-                List<Accommodation> temp = db.findAllAccommodations();
+                List<Accommodation> temp = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
                 if (temp.size() == 0) {
                     AlarmTimeManger.getInstance().setUpInstantAlarm(context);
@@ -49,7 +50,7 @@ public class MainActivityHelper {
                 Accommodation.getAccommodations().addAll(removeNullFrom(temp));
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
-                SearchWatcherModel.getSearchWatcherItems().addAll(db.findAllSearchWatcherItems());
+                SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
 
                 db.close();
 
@@ -77,7 +78,7 @@ public class MainActivityHelper {
 
     public void saveDatabase() {
         Db4oDatabase db = Db4oDatabase.getInstance();
-        db.deleteAll();
+        db.deleteAll(Accommodation.class);
         for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
             db.store(Accommodation.getAccommodations().get(i));
         }

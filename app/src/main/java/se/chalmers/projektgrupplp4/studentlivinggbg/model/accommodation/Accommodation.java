@@ -89,6 +89,8 @@ public class Accommodation {
         this.isFavorite = value;
     }
 
+    public String getFurnitured() {return "nej";}
+
     public String getObjectNumber() {return objectNumber;}
 
     public String getAddress() {

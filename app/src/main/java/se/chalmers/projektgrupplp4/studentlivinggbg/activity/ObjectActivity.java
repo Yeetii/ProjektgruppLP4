@@ -1,8 +1,9 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
@@ -163,6 +165,8 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         private static final String ARG_TYPE = "object_type";
         private static final String ARG_AREA = "object_area";
         private static final String ARG_HOST = "object_host";
+        private static final String ARG_DATE = "object_date";
+        private static final String ARG_FURNITURED = "object_furnitured";
 
         private Drawable image = null;
 
@@ -184,7 +188,8 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
             args.putString(ARG_TYPE, a.getAccommodationHouseType());
             args.putString(ARG_AREA, a.getArea());
             args.putString(ARG_HOST, a.getAccommodationHost());
-
+            args.putString(ARG_DATE, a.getLastApplyDate());
+            args.putString(ARG_FURNITURED, a.getFurnitured());
             fragment.setImage(ImageModel.<Drawable>getInstance().getMainImage(a.getImagePath()));
             fragment.setArguments(args);
             return fragment;
@@ -198,20 +203,24 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_object, container, false);
-            TextView description = (TextView) rootView.findViewById(R.id.description);
+            TextView description = (TextView) rootView.findViewById(R.id.description_lbl);
             TextView rent = (TextView) rootView.findViewById(R.id.rent);
             TextView type = (TextView) rootView.findViewById(R.id.type);
             TextView area = (TextView) rootView.findViewById(R.id.area);
             TextView host = (TextView) rootView.findViewById(R.id.host);
+            TextView date = (TextView) rootView.findViewById(R.id.date_lbl);
+            TextView furnitured = (TextView) rootView.findViewById(R.id.furnitured_lbl);
 
             ImageView imageView = (ImageView) rootView.findViewById(R.id.imageView);
             imageView.setImageDrawable(image);
 
             description.setText(getArguments().getString(ARG_DESCRIPTION));
-            rent.setText(getArguments().getString(ARG_RENT) + "kr");
+            rent.setText(getArguments().getString(ARG_RENT) + " kr");
             type.setText(getArguments().getString(ARG_TYPE));
-            area.setText(getArguments().getString(ARG_AREA) + "kvm");
+            area.setText(getArguments().getString(ARG_AREA) + " m²");
             host.setText(getArguments().getString(ARG_HOST));
+            date.setText(getArguments().getString(ARG_DATE));
+            furnitured.setText(getArguments().getString(ARG_FURNITURED));
             return rootView;
         }
     }

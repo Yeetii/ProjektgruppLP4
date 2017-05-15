@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.webkit.WebViewClient;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 public class ApplyActivity extends AppCompatActivity {
 

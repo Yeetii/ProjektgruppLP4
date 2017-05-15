@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.SearchView;
 import java.util.ArrayList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.MainSearchActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
@@ -201,7 +201,7 @@ public class AdvancedSearchActivityController {
         @Override
         public void onClick(View view) {
             System.out.println("Creating seardhwathcer");
-            Search search = parseSearchTerms(false);
+            wannabeSearchWatcher = parseSearchTerms(false);
             //TODO prompt asking for name
 
             //Saves the search anc waits for nameDialog to finish
