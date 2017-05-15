@@ -123,7 +123,7 @@ public class SGSAdapter extends AccommodationAdapter {
         public String getEndPeriod() {return parseDate(EndPeriodMPDateString);}
 
         private String parseDate(String string){
-            return string.substring(8,10)+string.substring(4,8)+string.substring(0,4);
+            return string.substring(8,10)+string.substring(4,8)+string.substring(2,4);
         }
 
         private String getObjectNumber () {
