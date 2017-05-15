@@ -39,6 +39,7 @@ public class MainActivityHelper {
             @Override
             public void run() {
                 Db4oDatabase db = Db4oDatabase.getInstance();
+                db.setContext(context);
                 List<Accommodation> temp = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
                 if (temp.size() == 0) {

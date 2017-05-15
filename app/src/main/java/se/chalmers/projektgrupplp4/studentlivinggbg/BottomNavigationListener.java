@@ -11,7 +11,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SettingsActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 

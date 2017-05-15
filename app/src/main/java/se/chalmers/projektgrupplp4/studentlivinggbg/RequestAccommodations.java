@@ -3,16 +3,8 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
+
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MainController;
 
 /**
  * Created by PG on 17/04/2017.
