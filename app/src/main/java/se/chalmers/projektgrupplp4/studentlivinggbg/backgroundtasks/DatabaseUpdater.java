@@ -14,6 +14,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 /**
@@ -31,7 +32,7 @@ class DatabaseUpdater {
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
                 checkIfItShouldUpdate(lastUpdateTime)) {
-            List<Accommodation> previousAccommodations = db.findAllAccommodations();
+            List<Accommodation> previousAccommodations = db.findAll(Accommodation.class);
 
             getNewData(context);
 
@@ -43,6 +44,8 @@ class DatabaseUpdater {
             ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
 
             //SearchWatcher stuff
+            SearchWatcherModel.getSearchWatcherItems().clear();
+            SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
             //Gets accommodations that weren't in the old database
             List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
             uniqueNewAccommoadations.removeAll(previousAccommodations);

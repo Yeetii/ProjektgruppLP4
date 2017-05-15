@@ -68,10 +68,7 @@ public class Db4oDatabase {
         if (oc != null) oc.close();
     }
 
-    public void store(Accommodation exercise) {
-        db().store(exercise);
-    }
-    public void store(SearchWatcherItem exercise) {
+    public <T> void store(T exercise){
         db().store(exercise);
     }
 
@@ -98,13 +95,13 @@ public class Db4oDatabase {
         return null;
     }
 
-    public void delete(Accommodation exercise) {
+    public <T> void delete(T exercise) {
         db().delete(exercise);
     }
 
-    public void deleteAll () {
-        while (findAllAccommodations().size() != 0) {
-            delete(findAllAccommodations().get(0));
+    public void deleteAll (Class t) {
+        while (findAll(t).size() != 0) {
+            delete(findAll(t).get(0));
         }
     }
 
@@ -115,7 +112,7 @@ public class Db4oDatabase {
     }
 
     public void replaceAccommodationsList (List<Accommodation> newAccommodations) {
-        this.deleteAll();
+        this.deleteAll(Accommodation.class );
         this.storeTimestamp();
         for (Accommodation accommodation: newAccommodations) {
             this.store(accommodation);
@@ -123,12 +120,9 @@ public class Db4oDatabase {
         this.close();
     }
 
-    public List<Accommodation> findAllAccommodations() {
-        return db().query(Accommodation.class);
-    }
-
-    public List<SearchWatcherItem> findAllSearchWatcherItems() {
-        return db().query(SearchWatcherItem.class);
+    //Breaks if it t and T are not the same class.
+    public <T> List<T> findAll(Class t) {
+        return db().query(t);
     }
 
     //This method is used to retrive matched object from database.
