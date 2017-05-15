@@ -31,28 +31,28 @@
         android:id="@+id/rent_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/type_lbl"
+        android:text="Hyra:"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="12dp"
-        android:text="Hyra:" />
+        android:layout_alignEnd="@+id/type_lbl" />
 
     <TextView
         android:id="@+id/rent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/rent_lbl"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/type_lbl"
-        android:text="TextView" />
+        android:layout_marginStart="26dp"
+        android:text="TextView"
+        android:layout_alignBaseline="@+id/rent_lbl"
+        android:layout_alignBottom="@+id/rent_lbl"
+        android:layout_toEndOf="@+id/rent_lbl" />
 
     <TextView
         android:id="@+id/area_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/rent_lbl"
+        android:text="Boarea:"
         android:layout_below="@+id/rent_lbl"
-        android:layout_marginTop="5dp"
-        android:text="Boarea:" />
+        android:layout_alignEnd="@+id/type_lbl"
+        android:layout_marginTop="12dp" />
 
     <TextView
         android:id="@+id/area"
@@ -67,10 +67,10 @@
         android:id="@+id/type_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:text="Bostadstyp:"
+        android:layout_marginTop="11dp"
         android:layout_below="@+id/area_lbl"
-        android:layout_marginTop="5dp"
-        android:text="Bostadstyp:" />
+        android:layout_alignEnd="@+id/host_lbl" />
 
     <TextView
         android:id="@+id/type"
@@ -82,30 +82,70 @@
         android:text="TextView" />
 
     <TextView
+        android:id="@+id/date_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/date"
+        android:layout_alignBottom="@+id/date"
+        android:layout_alignStart="@+id/host"
+        android:text="TextView"
+        android:layout_alignEnd="@+id/host" />
+
+    <TextView
+        android:id="@+id/furnitured_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/furnitured"
+        android:layout_alignBottom="@+id/furnitured"
+        android:layout_alignEnd="@+id/date_lbl"
+        android:layout_alignStart="@+id/date_lbl"
+        android:text="TextView" />
+
+    <TextView
         android:id="@+id/host_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/type_lbl"
+        android:text="Hyresvärd:"
+        android:layout_marginTop="13dp"
         android:layout_below="@+id/type_lbl"
-        android:layout_marginTop="5dp"
-        android:text="Hyresvärd:" />
+        android:layout_alignEnd="@+id/date" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:text="Ansök senast:"
         android:layout_below="@+id/host_lbl"
-        android:layout_marginTop="5dp"
-        android:text="Beskrivning" />
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/furnitured"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Möblerad:"
+        android:layout_below="@+id/date"
+        android:layout_alignEnd="@+id/date"
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:id="@+id/host"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="TextView"
         android:layout_alignBaseline="@+id/host_lbl"
         android:layout_alignBottom="@+id/host_lbl"
-        android:layout_alignStart="@+id/area"
-        android:text="TextView" />
+        android:layout_alignStart="@+id/area" />
+
+    <TextView
+        android:id="@+id/description_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/furnitured_lbl"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
