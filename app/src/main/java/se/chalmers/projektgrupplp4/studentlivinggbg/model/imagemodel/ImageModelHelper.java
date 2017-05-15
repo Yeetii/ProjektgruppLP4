@@ -12,4 +12,5 @@ public interface ImageModelHelper<T> {
     T createImage(InputStream is, String path);
     T loadImage(String path) throws FileNotFoundException;
     File getDirectory();
+    void changeDirectory(String directoryName);
 }

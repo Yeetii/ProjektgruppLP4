@@ -22,8 +22,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModelH
 
 public class CreateDrawableHelper implements ImageModelHelper<Drawable> {
     private File directory;
+    private Context context;
 
     public CreateDrawableHelper (Context context) {
+        this.context = context;
         ContextWrapper cw = new ContextWrapper(context);
         directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
     }
@@ -38,6 +40,11 @@ public class CreateDrawableHelper implements ImageModelHelper<Drawable> {
     public Drawable loadImage(String path) throws FileNotFoundException {
         File imageFile = new File(directory, path);
         return Drawable.createFromStream(new FileInputStream(imageFile), path);
+    }
+
+    public void changeDirectory(String directoryName) {
+        ContextWrapper cw = new ContextWrapper(context);
+        directory = cw.getDir(directoryName, Context.MODE_PRIVATE);
     }
 
 

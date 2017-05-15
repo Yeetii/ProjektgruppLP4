@@ -32,6 +32,7 @@ public class ImageModel<ImageType> {
     }
 
     public ImageType getMainImage(String objectNumber) {
+        System.out.println(mainImages.size());
         return mainImages.get(objectNumber);
     }
 
