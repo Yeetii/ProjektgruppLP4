@@ -14,180 +14,27 @@
         android:layout_height="match_parent"
         android:layout_weight="1.05">
 
-        <ImageButton
-            android:id="@+id/cancel"
+        <fragment
+            android:id="@+id/createSearchWatcher"
+            android:name="se.chalmers.projektgrupplp4.studentlivinggbg.fragment.AdvancedSearchFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1.88"
-            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+            android:layout_weight="1"
+            tools:layout="@layout/advanced_search_fragment" />
 
-        <SearchView
-            android:id="@+id/advancedSearchView"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content" />
-
-        <SeekBar
-            android:id="@+id/seekBarMinPrice"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/cancel"
-            android:text="Minpris" />
-
-        <TextView
-            android:id="@+id/textViewMinPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cancel"
-            android:layout_toStartOf="@+id/textView13"
-            android:text="0" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMinPrice"
-            android:text="Maxpris" />
-
-        <TextView
-            android:id="@+id/textViewMaxPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView14"
-            android:layout_alignBottom="@+id/textView14"
-            android:layout_toStartOf="@+id/textView14"
-            android:text="0" />
-
-        <SeekBar
-            android:id="@+id/seekBarMaxPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMaxPrice"
-            android:text="Min Golvyta" />
-
-        <TextView
-            android:id="@+id/textViewMinArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView15"
-            android:layout_alignBottom="@+id/textView15"
-            android:layout_toStartOf="@+id/textView15"
-            android:text="0" />
-
-        <SeekBar
-            android:id="@+id/seekBarMinArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView9"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMinArea"
-            android:text="Max Golvyta" />
-
-        <TextView
-            android:id="@+id/textViewMaxArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView16"
-            android:layout_alignBottom="@+id/textView16"
-            android:layout_toStartOf="@+id/textView16"
-            android:text="0" />
-
-        <SeekBar
-            android:id="@+id/seekBarMaxArea"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView11"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true" />
-
-        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
-            android:id="@+id/roomType_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMaxArea" />
-
-        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
-            android:id="@+id/areas_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/roomType_spinner" />
-
-        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
-            android:id="@+id/landlord_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/areas_spinner"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/cancel"
-            android:text=" kr" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" kr"
-            android:layout_below="@+id/seekBarMinPrice"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/seekBarMaxPrice"
-            android:text=" m²" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/seekBarMinArea"
-            android:text=" m²" />
 
         <Button
             android:id="@+id/advancedSearchCreateSearchWatcherButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/advancedSearchButton"
-            android:layout_alignEnd="@+id/advancedSearchButton"
-            android:layout_alignStart="@+id/advancedSearchButton"
-            android:layout_marginBottom="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
             android:background="@android:color/holo_green_dark"
             android:text="Skapa bevakning" />
 
@@ -196,10 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="13dp"
-            android:layout_toStartOf="@+id/textView14"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:background="@android:color/holo_blue_dark"
             android:text="Sök" />
 
