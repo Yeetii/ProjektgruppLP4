@@ -104,8 +104,8 @@ class DatabaseUpdater {
         List<Accommodation> newAccommodations;
         List<Accommodation> chalmersAccommodations;
 
-        AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context);
-        AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context);
+        AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context, "SGSData");
+        AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context, "ChalmersData");
         newAccommodations = sgsAdapter.getAccommodations();
         chalmersAccommodations = chalmersAdapter.getAccommodations();
 

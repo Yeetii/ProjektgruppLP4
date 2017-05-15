@@ -19,30 +19,13 @@ public class MainSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainActivityHelper = new MainActivityHelper(getApplicationContext());
-
+        mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
         new MainController(getApplicationContext());
 
         SearchActivityView searchActivityView = new SearchActivityView(this);
         SearchActivityModel searchActivityModel = SearchActivityModel.createInstance(this);
         searchActivityView.initLayoutManager(searchActivityModel);
         new SearchActivityController(this, searchActivityModel, searchActivityView);
-
-
-        try {
-            /*
-            Wanted to use observer pattern but: "Only the original thread that created a view
-            hierarchy can touch its views" And loading/creating the database seems to require
-            threading.
-            */
-
-            mainActivityHelper.getDbThread().join();
-            searchActivityModel.refreshAdapter();
-            List<Accommodation> test = Accommodation.getAccommodations();
-            List<Accommodation> test2 = test;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
