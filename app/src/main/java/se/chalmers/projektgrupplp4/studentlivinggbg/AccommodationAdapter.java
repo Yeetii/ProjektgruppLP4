@@ -45,13 +45,10 @@ public abstract class AccommodationAdapter {
     public abstract List<Accommodation> getAccommodations();
 
     public static AccommodationAdapter getPopulatedAdapter(Class<? extends AccommodationAdapter> adapterClass,
-                                                           Context context) {
+                                                           Context context, String fileName) {
         Gson gson = new Gson();
         AccommodationAdapter adapter = null;
         try {
-            //Compare the classes
-            String fileName = (adapterClass.isAssignableFrom(SGSAdapter.class)) ? "SGSData" : "ChalmersData";
-
             InputStream is = context.openFileInput(fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             //Create a new adapter
