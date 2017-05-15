@@ -201,7 +201,7 @@ public class AdvancedSearchActivityController {
         @Override
         public void onClick(View view) {
             System.out.println("Creating seardhwathcer");
-            Search search = parseSearchTerms(false);
+            wannabeSearchWatcher = parseSearchTerms(false);
             //TODO prompt asking for name
 
             //Saves the search anc waits for nameDialog to finish

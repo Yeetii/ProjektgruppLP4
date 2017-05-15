@@ -9,6 +9,8 @@ import android.webkit.WebViewClient;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+
 public class ApplyActivity extends AppCompatActivity {
 
     private WebView browser;
