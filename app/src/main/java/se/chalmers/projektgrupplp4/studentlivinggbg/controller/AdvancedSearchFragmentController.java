@@ -121,11 +121,8 @@ public class AdvancedSearchFragmentController {
             if (lastSearch.getPossibleRegions().contains(Region.EAST)) {
                 regionSpinner.select(2);
             }
-            if (lastSearch.getPossibleRegions().contains(Region.SOUTH)) {
-                regionSpinner.select(3);
-            }
             if (lastSearch.getPossibleRegions().contains(Region.WEST)) {
-                regionSpinner.select(4);
+                regionSpinner.select(3);
             }
         }catch(Exception e){
             regionSpinner.selectAll();}

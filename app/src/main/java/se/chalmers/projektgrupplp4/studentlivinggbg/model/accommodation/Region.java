@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public enum Region {
     //TODO Change to package private when no longer neccessary for tesing
 
-    NORTH, EAST, SOUTH, WEST, CENTER;
+    NORTH, EAST, WEST, CENTER;
 
 
     //Creating a nice toString() method
@@ -15,7 +15,6 @@ public enum Region {
         switch(name()){
             case "NORTH":  return "Norr";
             case "EAST":   return "Öster";
-            case "SOUTH":  return "Söder";
             case "WEST":   return "Väster";
             case "CENTER": return "Centrum";
 
@@ -27,7 +26,6 @@ public enum Region {
         switch(string){
             case "Norr":                return NORTH;
             case "Öster":               return EAST;
-            case "Söder":               return SOUTH;
             case "Väster":              return WEST;
             case "Centrum":             return CENTER;
         }

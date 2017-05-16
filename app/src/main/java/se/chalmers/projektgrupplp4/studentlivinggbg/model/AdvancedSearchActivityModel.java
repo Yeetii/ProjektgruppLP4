@@ -24,7 +24,6 @@ public class AdvancedSearchActivityModel {
 
         areasItems.add(Region.CENTER.toString());
         areasItems.add(Region.NORTH.toString());
-        areasItems.add(Region.SOUTH.toString());
         areasItems.add(Region.WEST.toString());
         areasItems.add(Region.EAST.toString());
 
