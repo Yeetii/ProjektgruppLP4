@@ -96,35 +96,6 @@ public class SearchActivityController {
 
             }
         });
-        /*sort.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selected = (String) sort.getSelectedItem();
-                /*switch (selected) {
-                    case "Pris ↑":
-                        int n = model.getRecyclerView()
-                        int k;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-                                if (array[i] > array[k]) {
-                                    swapNumbers(i, k, array);
-                                }
-                            }
-                            printNumbers(array);
-                        }
-                    }
-
-                    private static void swapNumbers(int i, int j, int[] array) {
-
-                        int temp;
-                        temp = array[i];
-                        array[i] = array[j];
-                        array[j] = temp;
-                    }
-                }
-            }
-        });*/
     }
 
     private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
@@ -177,6 +148,4 @@ public class SearchActivityController {
             );
         }
     }
-
-
 }

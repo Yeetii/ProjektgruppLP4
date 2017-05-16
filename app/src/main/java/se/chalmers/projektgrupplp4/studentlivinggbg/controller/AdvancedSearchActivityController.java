@@ -74,10 +74,6 @@ public class AdvancedSearchActivityController implements Observer{
         @Override
         public void onClick(View view) {
             fragmentController.parseSearchTerms(true);
-
-            //Är detta en bra lösning..?
-           // SearchActivityModel.getInstance().refreshAdapter();
-
             returnToMainSearch();
         }
     };

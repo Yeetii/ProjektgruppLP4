@@ -19,6 +19,7 @@ public class MainSearchActivity extends AppCompatActivity {
         AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), getApplicationContext());
         SearchActivityView searchActivityView = new SearchActivityView(this, adapter);
         new SearchActivityController(this, searchActivityView, adapter);
+        adapter.refresh();
     }
 
     @Override
