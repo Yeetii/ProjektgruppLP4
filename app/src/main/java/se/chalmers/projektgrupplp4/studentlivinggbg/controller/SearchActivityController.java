@@ -55,7 +55,7 @@ public class SearchActivityController {
         searchView.setOnQueryTextListener(onQueryTextListener);
 
         final String[] arraySpinner = new String[] {
-                "Pris ↑", "Pris ↓",  "Storlek ↑", "Storlek ↓",
+                "Pris ↑", "Pris ↓",  "Storlek ↑", "Storlek ↓", "A-Ö", "Ö-A",
         };
         sort = (Spinner) activity.findViewById(R.id.sort);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
@@ -160,6 +160,48 @@ public class SearchActivityController {
                         //model.getRecyclerViewAdapter().clear();
                         //model.getRecyclerViewAdapter().addAll(accommodations);
                         recyclerAdapter.notifyDataSetChanged();
+                        break;
+                    case "A-Ö":
+                        n = accommodations.size();
+                        k = 0;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (accommodations.get(i).getAddress().compareTo(accommodations.get(k).getAddress()) > 0) {
+                                    Accommodation temp;
+                                    temp = accommodations.get(k);
+                                    accommodations.remove(k);
+                                    accommodations.add(k,accommodations.get(i));
+                                    accommodations.remove(i);
+                                    accommodations.add(i,temp);
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().clear();
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        break;
+                    case "Ö-A":
+                        n = accommodations.size();
+                        k = 0;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (accommodations.get(i).getAddress().compareTo(accommodations.get(k).getAddress()) < 0) {
+                                    Accommodation temp;
+                                    temp = accommodations.get(k);
+                                    accommodations.remove(k);
+                                    accommodations.add(k,accommodations.get(i));
+                                    accommodations.remove(i);
+                                    accommodations.add(i,temp);
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().clear();
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
                         break;
 
                     }
