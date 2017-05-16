@@ -77,12 +77,10 @@ public class SearchActivityController {
 
         @Override
         public boolean onQueryTextChange(String query) {
-            if(query.equals("")){
-                SearchHandler.createSearch("");
+            if(query.length()==0){
+                SearchHandler.createSearch("", true);
+                model.refreshAdapter();
             }
-            //SearchHandler.createSearch(query);
-
-            model.refreshAdapter();
             return false;
         }
     };
