@@ -3,9 +3,12 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 import android.app.Activity;
 import android.support.design.widget.BottomNavigationView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class SearchActivityController {
     private SearchView searchView;
     private SearchActivityView activityView;
     private SearchActivityModel model;
-    private Button showAll;
+    private Spinner sort;
 
     public SearchActivityController(Activity activity, SearchActivityModel model, SearchActivityView activityView) {
         this.activity = activity;
@@ -46,14 +49,160 @@ public class SearchActivityController {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         ImageButton advancedSearch = (ImageButton) activity.findViewById(R.id.advancedSearch);
         searchView = (SearchView) activity.findViewById(R.id.searchField);
-        showAll = (Button) activity.findViewById(R.id.showAllButton);
 
-        showAll.setOnClickListener(onClickShowAll);
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
         navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getFirstInstance(activity));
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
+
+        final String[] arraySpinner = new String[] {
+                "Pris ↑", "Pris ↓",  "Storlek ↑", "Storlek ↓",
+        };
+        sort = (Spinner) activity.findViewById(R.id.sort);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
+                android.R.layout.simple_spinner_dropdown_item, arraySpinner);
+        sort.setAdapter(adapter);
+        sort.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = (String) sort.getSelectedItem();
+                List<Accommodation> accommodations = model.getRecyclerViewAdapter().getAccommodations();
+                switch (selected) {
+                    case "Pris ↑":
+                        int n = accommodations.size();
+                        int k;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (Double.parseDouble(accommodations.get(i).getPrice()) > Double.parseDouble(accommodations.get(k).getPrice())) {
+                                    Accommodation tempK;
+                                    tempK = accommodations.get(k);
+                                    Accommodation tempI;
+                                    tempI = accommodations.get(i);
+                                    accommodations.remove(k);
+                                    accommodations.remove(i);
+                                    accommodations.add(i,tempK);
+                                    if (k==n-1) {
+                                        accommodations.add(tempI);
+                                    } else {
+                                        accommodations.add(k, tempI);
+                                    }
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        break;
+                    case "Pris ↓":
+                        n = accommodations.size();
+                        k = 0;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (Double.parseDouble(accommodations.get(i).getPrice()) < Double.parseDouble(accommodations.get(k).getPrice())) {
+                                    Accommodation temp;
+                                    temp = accommodations.get(k);
+                                    accommodations.remove(k);
+                                    accommodations.add(k,accommodations.get(i));
+                                    accommodations.remove(i);
+                                    accommodations.add(i,temp);
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().clear();
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        break;
+                    case "Storlek ↑":
+                        n = accommodations.size();
+                        k = 0;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (Double.parseDouble(accommodations.get(i).getArea()) > Double.parseDouble(accommodations.get(k).getArea())) {
+                                    Accommodation tempK;
+                                    tempK = accommodations.get(k);
+                                    Accommodation tempI;
+                                    tempI = accommodations.get(i);
+                                    accommodations.remove(k);
+                                    accommodations.remove(i);
+                                    accommodations.add(i,tempK);
+                                    if (k==n-1) {
+                                        accommodations.add(tempI);
+                                    } else {
+                                        accommodations.add(k, tempI);
+                                    }
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        break;
+                    case "Storlek ↓":
+                        n = accommodations.size();
+                        k = 0;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+
+                                if (Double.parseDouble(accommodations.get(i).getArea()) < Double.parseDouble(accommodations.get(k).getArea())) {
+                                    Accommodation temp;
+                                    temp = accommodations.get(k);
+                                    accommodations.remove(k);
+                                    accommodations.add(k,accommodations.get(i));
+                                    accommodations.remove(i);
+                                    accommodations.add(i,temp);
+                                }
+                            }
+                        }
+                        //model.getRecyclerViewAdapter().clear();
+                        //model.getRecyclerViewAdapter().addAll(accommodations);
+                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        break;
+
+                    }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*sort.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selected = (String) sort.getSelectedItem();
+                /*switch (selected) {
+                    case "Pris ↑":
+                        int n = model.getRecyclerView()
+                        int k;
+                        for (int m = n; m >= 0; m--) {
+                            for (int i = 0; i < n - 1; i++) {
+                                k = i + 1;
+                                if (array[i] > array[k]) {
+                                    swapNumbers(i, k, array);
+                                }
+                            }
+                            printNumbers(array);
+                        }
+                    }
+
+                    private static void swapNumbers(int i, int j, int[] array) {
+
+                        int temp;
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+        });*/
     }
 
     private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
@@ -84,17 +233,6 @@ public class SearchActivityController {
             return false;
         }
     };
-
-
-    //Show all button
-    private Button.OnClickListener onClickShowAll = new Button.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            model.setLastSearch(SearchHandler.createSearch(""));
-            model.refreshNotUpdateAdapter();
-        }
-    };
-
 
     //Advanced search button
     private ImageButton.OnClickListener onClickAdvancedSearch = new ImageButton.OnClickListener() {

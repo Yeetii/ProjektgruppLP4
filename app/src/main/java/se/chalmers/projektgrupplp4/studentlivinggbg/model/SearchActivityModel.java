@@ -90,4 +90,7 @@ public class SearchActivityModel {
         return recyclerView;
     }
 
+    public AccommodationRecyclerViewAdapter getRecyclerViewAdapter() {
+        return recyclerViewAdapter;
+    }
 }
