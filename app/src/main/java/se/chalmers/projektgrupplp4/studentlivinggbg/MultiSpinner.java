@@ -121,6 +121,12 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         selected[position] = true;
     }
 
+    public void selectAll(){
+        for(boolean object: selected){
+            object = true;
+        }
+    }
+
     public void deselect(int position){
         selected[position] = false;
     }

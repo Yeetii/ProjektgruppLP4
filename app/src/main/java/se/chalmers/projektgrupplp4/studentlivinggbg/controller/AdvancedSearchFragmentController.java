@@ -96,29 +96,53 @@ public class AdvancedSearchFragmentController {
 
     private void fillHouseTypeSpinner(Search lastSearch) {
         houseTypeSpinner.clear();
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.CORRIDOR)) {houseTypeSpinner.select(0);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.KITCHENETTE)) {houseTypeSpinner.select(1);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.COOKING_CABINET)) {houseTypeSpinner.select(2);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.ONE_ROOM)) {houseTypeSpinner.select(3);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS)) {houseTypeSpinner.select(4);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS_KITCHENETTE)) {houseTypeSpinner.select(5);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.THREE_ROOMS)) {houseTypeSpinner.select(6);}
-        if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.FOUR_ROOMS)) {houseTypeSpinner.select(7);}
+        try{
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.CORRIDOR)) {houseTypeSpinner.select(0);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.KITCHENETTE)) {houseTypeSpinner.select(1);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.COOKING_CABINET)) {houseTypeSpinner.select(2);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.ONE_ROOM)) {houseTypeSpinner.select(3);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS)) {houseTypeSpinner.select(4);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS_KITCHENETTE)) {houseTypeSpinner.select(5);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.THREE_ROOMS)) {houseTypeSpinner.select(6);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.FOUR_ROOMS)) {houseTypeSpinner.select(7);}
+        }catch(Exception e){
+            houseTypeSpinner.selectAll();}
     }
 
     private void fillRegionSpinner(Search lastSearch) {
         regionSpinner.clear();
-        if (lastSearch.getPossibleRegions().contains(Region.CENTER)) {regionSpinner.select(0);}
-        if (lastSearch.getPossibleRegions().contains(Region.NORTH)) {regionSpinner.select(1);}
-        if (lastSearch.getPossibleRegions().contains(Region.EAST)) {regionSpinner.select(2);}
-        if (lastSearch.getPossibleRegions().contains(Region.SOUTH)) {regionSpinner.select(3);}
-        if (lastSearch.getPossibleRegions().contains(Region.WEST)) {regionSpinner.select(4);}
+        try {
+            if (lastSearch.getPossibleRegions().contains(Region.CENTER)) {
+                regionSpinner.select(0);
+            }
+            if (lastSearch.getPossibleRegions().contains(Region.NORTH)) {
+                regionSpinner.select(1);
+            }
+            if (lastSearch.getPossibleRegions().contains(Region.EAST)) {
+                regionSpinner.select(2);
+            }
+            if (lastSearch.getPossibleRegions().contains(Region.SOUTH)) {
+                regionSpinner.select(3);
+            }
+            if (lastSearch.getPossibleRegions().contains(Region.WEST)) {
+                regionSpinner.select(4);
+            }
+        }catch(Exception e){
+            regionSpinner.selectAll();}
     }
 
     private void fillLandlordSpinner(Search lastSearch) {
         landlordSpinner.clear();
-        if(lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.CHALMERS)){landlordSpinner.select(0);}
-        if(lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.SGS)){landlordSpinner.select(1);}
+        try {
+            if (lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.CHALMERS)) {
+                landlordSpinner.select(0);
+            }
+            if (lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.SGS)) {
+                landlordSpinner.select(1);
+            }
+        }catch(Exception e){
+            landlordSpinner.selectAll();
+        }
     }
 
     private void initMax() {

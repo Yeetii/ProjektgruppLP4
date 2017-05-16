@@ -154,11 +154,11 @@ public class SearchHandler {
         int i = 0;
         for(String mainSearchSubString: mainSearchArray){
             try{
-                if((mainSearchSubString.equals("1") ||  mainSearchSubString.equals("2") || mainSearchSubString.equals("3")
-                        || mainSearchSubString.equals("4"))&& mainSearchArray[++i].equals("rum")){
+                if((mainSearchSubString.equals("1") ||  mainSearchSubString.equals("2") || mainSearchSubString.equals("3") || mainSearchSubString.equals("4"))&& mainSearchArray[++i].equals("rum")){
                     mainSearchSubString = mainSearchSubString+"-"+"rum";}}
             catch(ArrayIndexOutOfBoundsException e){}
-            if(!accommodationString.contains(mainSearchSubString)){return false;}
+            if(!accommodationString.contains(mainSearchSubString)){
+                return false;}
         }
 
         return true;

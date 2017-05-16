@@ -53,6 +53,8 @@ public class SearchActivityModel {
 
         lastSearch = SearchHandler.getLastSearch();
 
+
+        //TODO THE FOLLOWING CODE HAS STOPPED WORKING!!!
         if (!lastSearch.isEmpty()) {
             recyclerViewAdapter.addAll(SearchHandler.search(lastSearch));
         }else{
