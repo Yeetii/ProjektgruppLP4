@@ -76,9 +76,9 @@ public class SearchActivityController {
         }
 
         @Override
-        public boolean onQueryTextChange(String newText) {
-            if(newText.equals("")){
-                SearchHandler.createSearch("");
+        public boolean onQueryTextChange(String query) {
+            if(query.length()==0){
+                SearchHandler.createSearch("", true);
                 model.refreshAdapter();
             }
             return false;

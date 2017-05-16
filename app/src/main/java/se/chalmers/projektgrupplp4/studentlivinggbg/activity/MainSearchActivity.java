@@ -15,8 +15,10 @@ public class MainSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
+        mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
 
         SearchActivityView searchActivityView = new SearchActivityView(this);
+        //SearchActivityModel searchActivityModel = SearchActivityModel.getInstance(this);
         SearchActivityModel searchActivityModel = SearchActivityModel.createInstance(this);
         searchActivityView.initLayoutManager(searchActivityModel);
         new SearchActivityController(this, searchActivityModel, searchActivityView);

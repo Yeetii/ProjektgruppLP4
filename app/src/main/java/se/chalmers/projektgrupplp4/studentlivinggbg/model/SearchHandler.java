@@ -22,6 +22,13 @@ public class SearchHandler {
         return result;
     }
 
+
+    public static Search createSearch(String mainSearch, boolean AddToList){
+        Search result = new Search(mainSearch);
+        if(AddToList) {addToLastSearches(result);}
+        return result;
+    }
+
     public static Search createSearch(String mainSearch, String address,
                                       ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                                       ArrayList<AccommodationHost> possibleAccomodationHosts,

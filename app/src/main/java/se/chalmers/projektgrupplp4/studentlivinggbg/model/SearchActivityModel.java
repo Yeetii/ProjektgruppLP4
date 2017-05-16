@@ -15,26 +15,43 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 public class SearchActivityModel {
 
     static SearchActivityModel searchActivityModel;
+    static int numberOfInstances = 0;
 
+    static private AccommodationRecyclerViewAdapter lastRecyclerViewAdapter;
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private RecyclerView recyclerView;
     private Search lastSearch;
 
-
     private SearchActivityModel (Activity activity) {
-        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), activity.getApplicationContext());
+        if (lastRecyclerViewAdapter == null) {
+            recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), activity.getApplicationContext());
+        }else {
+            recyclerViewAdapter = new AccommodationRecyclerViewAdapter(lastRecyclerViewAdapter.getAccommodations(), activity.getApplicationContext());
+        }
+        lastRecyclerViewAdapter = recyclerViewAdapter;
         recyclerView = (RecyclerView) activity.findViewById(R.id.list);
-
         recyclerView.setAdapter(recyclerViewAdapter);
+        numberOfInstances++;
     }
 
     static public SearchActivityModel createInstance(Activity activity){
+        //if(searchActivityModel == null){
         searchActivityModel = new SearchActivityModel(activity);
+    //}
         return searchActivityModel;
     }
 
     static public SearchActivityModel getInstance(){
         return searchActivityModel;
+    }
+
+    static public SearchActivityModel getInstance(Activity activity){
+        if(numberOfInstances > 0){
+            return searchActivityModel;}
+        else{
+            searchActivityModel = new SearchActivityModel(activity);
+            return searchActivityModel;
+        }
     }
 
     public void setLastSearch(Search lastSearch) {
