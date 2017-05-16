@@ -147,7 +147,7 @@ public class AdvancedSearchFragmentController {
         }
     };
 
-    Search parseSearchTerms(boolean addToSearchHistory){
+    public Search parseSearchTerms(boolean addToSearchHistory){
         String mainSearch = "";
         ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
         ArrayList<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();

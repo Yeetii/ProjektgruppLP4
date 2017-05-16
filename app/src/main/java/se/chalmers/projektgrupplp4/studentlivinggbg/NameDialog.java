@@ -16,7 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class NameDialog {
 
-    public NameDialog(final Activity activity, final AdvancedSearchActivityController controller){
+    public NameDialog(final Activity activity, final Observer controller){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setMessage("Välj ett namn för din bevakning.").setTitle("Skapa bevaking");
@@ -28,7 +28,7 @@ public class NameDialog {
                 System.out.println("YOU PRESS OKAAAY");
                 // User clicked OK button
                 EditText text = (EditText) dialogView.findViewById(R.id.dialogSearchWatcherName);
-                controller.createSearchWatcher(text.getText().toString());
+                controller.update(text.getText().toString());
             }
         });
 

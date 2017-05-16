@@ -1,22 +1,16 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-
-import java.util.Observer;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -28,7 +22,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 
-public class AdvancedSearchActivityController{
+public class AdvancedSearchActivityController implements Observer{
     private Activity activity;
     private AdvancedSearchFragmentController fragmentController;
 
@@ -130,8 +124,14 @@ public class AdvancedSearchActivityController{
 
     };
 
-    public void createSearchWatcher(String name){
+    private void createSearchWatcher(String name){
         System.out.println("Creating SW " + name);
         SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
+    }
+
+    //Called from NameDialog
+    @Override
+    public void update(String updateString) {
+        createSearchWatcher(updateString);
     }
 }
