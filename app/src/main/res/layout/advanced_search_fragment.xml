@@ -10,9 +10,8 @@
     android:weightSum="1">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.05">
+        android:layout_width="347dp"
+        android:layout_height="match_parent">
 
         <ImageButton
             android:id="@+id/cancel"
@@ -28,157 +27,302 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content" />
 
-        <SeekBar
-            android:id="@+id/seekBarMinPrice"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView4" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/minHyra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@+id/textView9"
             android:layout_below="@+id/cancel"
-            android:text="Minpris" />
+            android:text="Min Hyra"
+            android:textSize="16sp"
+            />
 
         <TextView
             android:id="@+id/textViewMinPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cancel"
-            android:layout_toStartOf="@+id/textView13"
-            android:text="0" />
+            android:text="0"
+            android:textSize="16sp"
+            android:layout_above="@+id/priceLinearLayout"
+            android:layout_toStartOf="@+id/minKr" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/minKr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMinPrice"
-            android:text="Maxpris" />
+            android:text=" kr"
+            android:textSize="16sp"
+            android:layout_above="@+id/priceLinearLayout"
+            android:layout_alignEnd="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/maxHyra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/priceLinearLayout"
+            android:layout_alignStart="@+id/textView11"
+            android:textSize="16sp"
+            android:text="Max Hyra" />
 
         <TextView
             android:id="@+id/textViewMaxPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView14"
-            android:layout_alignBottom="@+id/textView14"
-            android:layout_toStartOf="@+id/textView14"
+            android:layout_alignBaseline="@+id/maxKr"
+            android:layout_alignBottom="@+id/maxKr"
+            android:layout_toStartOf="@+id/maxKr"
+            android:textSize="16sp"
             android:text="0" />
 
-        <SeekBar
-            android:id="@+id/seekBarMaxPrice"
+        <TextView
+            android:id="@+id/maxKr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView15"
+            android:layout_below="@+id/cancel"
+            android:textSize="16sp"
+            android:text=" kr" />
+
+        <LinearLayout
+            android:id="@+id/priceLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/minHyra"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <SeekBar
+                android:id="@+id/seekBarMinPrice"
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView4"
+                android:paddingBottom="5dp" />
+
+            <SeekBar
+                android:id="@+id/seekBarMaxPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView7"
+                android:paddingBottom="5dp" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMaxPrice"
-            android:text="Min Golvyta" />
+            android:layout_alignStart="@+id/textView6"
+            android:layout_below="@+id/priceLinearLayout"
+            android:text="Min Boyta"
+            android:textSize="16sp" />
+
 
         <TextView
             android:id="@+id/textViewMinArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView15"
-            android:layout_alignBottom="@+id/textView15"
-            android:layout_toStartOf="@+id/textView15"
-            android:text="0" />
+            android:text="0"
+            android:textSize="16sp"
+            android:layout_below="@+id/priceLinearLayout"
+            android:layout_toStartOf="@+id/textView16" />
 
-        <SeekBar
-            android:id="@+id/seekBarMinArea"
+        <TextView
+            android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView9"
-            android:layout_alignParentEnd="true" />
+            android:text=" m²"
+            android:textSize="16sp"
+            android:layout_alignBaseline="@+id/textViewMinArea"
+            android:layout_alignBottom="@+id/textViewMinArea"
+            android:layout_alignEnd="@+id/textView10" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMinArea"
-            android:text="Max Golvyta" />
+            android:layout_below="@+id/priceLinearLayout"
+            android:layout_marginStart="26dp"
+            android:layout_toEndOf="@+id/textView16"
+            android:text="Max Boyta"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewMaxArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView16"
-            android:layout_alignBottom="@+id/textView16"
-            android:layout_toStartOf="@+id/textView16"
-            android:text="0" />
+            android:layout_below="@+id/priceLinearLayout"
+            android:layout_toStartOf="@+id/textView15"
+            android:text="0"
+            android:textSize="16sp" />
 
-        <SeekBar
-            android:id="@+id/seekBarMaxArea"
+
+        <TextView
+            android:id="@+id/textView15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView11"
+            android:layout_alignBaseline="@+id/textViewMaxArea"
+            android:layout_alignBottom="@+id/textViewMaxArea"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:text=" m²"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/areaLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/textView9"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <SeekBar
+                android:id="@+id/seekBarMinArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView9"
+                android:layout_weight="1.00"
+                android:paddingBottom="5dp" />
+
+
+            <SeekBar
+                android:id="@+id/seekBarMaxArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView11"
+                android:layout_weight="1.00"
+                android:paddingBottom="5dp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/areaLinearLayout"
+            android:layout_marginStart="10dp"
+            android:text="Upplagd "
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewUpploadDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView6"
+            android:layout_alignBottom="@+id/textView6"
+            android:layout_marginLeft="0dp"
+            android:layout_toEndOf="@+id/textView6"
+            android:text="X"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewUpploadDate"
+            android:layout_alignBottom="@+id/textViewUpploadDate"
+            android:layout_marginLeft="0dp"
+            android:layout_toEndOf="@+id/textViewUpploadDate"
+            android:text=" dagar sen"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView11"
+            android:layout_below="@+id/areaLinearLayout"
+            android:layout_marginLeft="0dp"
+            android:text="X"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView19"
+            android:layout_alignBottom="@+id/textView19"
+            android:layout_marginLeft="0dp"
+            android:layout_toEndOf="@+id/textView19"
+            android:text=" dagar kvar"
+            android:textSize="16sp" />
+
+
+        <LinearLayout
+            android:id="@+id/dateLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/areaLinearLayout"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <SeekBar
+                android:id="@+id/seekBarUpploadDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView6"
+                android:layout_weight="1.93"
+                android:paddingBottom="5dp"
+                android:paddingTop="2dp" />
+
+            <SeekBar
+                android:id="@+id/seekBarLastApplyDate"
+                android:layout_width="169dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
+                android:layout_toEndOf="@+id/textView11"
+                android:layout_weight="0.08"
+                android:paddingBottom="5dp"
+                android:paddingTop="2dp" />
+
+
+        </LinearLayout>
 
         <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/roomType_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/seekBarMaxArea" />
+            android:layout_below="@+id/dateLinearLayout"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp" />
 
         <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/areas_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/roomType_spinner" />
+            android:layout_below="@+id/roomType_spinner"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp" />
 
         <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/landlord_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/areas_spinner"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/cancel"
-            android:text=" kr" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" kr"
-            android:layout_below="@+id/seekBarMinPrice"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/seekBarMaxPrice"
-            android:text=" m²" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/seekBarMinArea"
-            android:text=" m²" />
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp" />
 
 
     </RelativeLayout>
