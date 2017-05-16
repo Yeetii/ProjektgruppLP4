@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
@@ -99,5 +102,18 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     @Override
     public void update(AccommodationRecyclerViewHolder viewHolder) {
         toggleFavoriteStatus(viewHolder);
+    }
+
+    public void refresh() {
+        dataSet.clear();
+        Search lastSearch = SearchHandler.getLastSearch();
+
+        //TODO THE FOLLOWING CODE HAS STOPPED WORKING!!!
+        if (!lastSearch.isEmpty()) {
+            dataSet.addAll(SearchHandler.search(lastSearch));
+        }else{
+            dataSet.addAll(Accommodation.getAccommodations());
+        }
+        notifyDataSetChanged();
     }
 }

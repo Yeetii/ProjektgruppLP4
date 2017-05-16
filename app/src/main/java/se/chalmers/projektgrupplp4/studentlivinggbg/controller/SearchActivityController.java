@@ -5,17 +5,16 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
@@ -31,17 +30,16 @@ public class SearchActivityController {
     private Activity activity;
     private SearchView searchView;
     private SearchActivityView activityView;
-    private SearchActivityModel model;
+    private AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
 
-    public SearchActivityController(Activity activity, SearchActivityModel model, SearchActivityView activityView) {
+    public SearchActivityController(Activity activity, SearchActivityView activityView, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;
-        this.model = model;
         this.activityView = activityView;
-        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity,model);
+        this.recyclerAdapter = adapter;
+        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity, adapter);
         recyclerViewHelper.initSwipe();
         initListeners();
-        //initSwipe();
         controller = this;
     }
 
@@ -60,14 +58,14 @@ public class SearchActivityController {
                 "Pris ↑", "Pris ↓",  "Storlek ↑", "Storlek ↓",
         };
         sort = (Spinner) activity.findViewById(R.id.sort);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
                 android.R.layout.simple_spinner_dropdown_item, arraySpinner);
         sort.setAdapter(adapter);
         sort.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = (String) sort.getSelectedItem();
-                List<Accommodation> accommodations = model.getRecyclerViewAdapter().getAccommodations();
+                List<Accommodation> accommodations = recyclerAdapter.getAccommodations();
                 switch (selected) {
                     case "Pris ↑":
                         int n = accommodations.size();
@@ -93,7 +91,7 @@ public class SearchActivityController {
                             }
                         }
                         //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "Pris ↓":
                         n = accommodations.size();
@@ -114,7 +112,7 @@ public class SearchActivityController {
                         }
                         //model.getRecyclerViewAdapter().clear();
                         //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "Storlek ↑":
                         n = accommodations.size();
@@ -140,7 +138,7 @@ public class SearchActivityController {
                             }
                         }
                         //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
                     case "Storlek ↓":
                         n = accommodations.size();
@@ -161,7 +159,7 @@ public class SearchActivityController {
                         }
                         //model.getRecyclerViewAdapter().clear();
                         //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        recyclerAdapter.notifyDataSetChanged();
                         break;
 
                     }
@@ -220,7 +218,7 @@ public class SearchActivityController {
         @Override
         public boolean onQueryTextSubmit(String query) {
             SearchHandler.createSearch(query);
-            model.refreshAdapter();
+            controller.recyclerAdapter.refresh();
             return false;
         }
 
@@ -228,7 +226,7 @@ public class SearchActivityController {
         public boolean onQueryTextChange(String query) {
             if(query.length()==0){
                 SearchHandler.createSearch("", true);
-                model.refreshAdapter();
+                controller.recyclerAdapter.refresh();
             }
             return false;
         }
@@ -249,7 +247,7 @@ public class SearchActivityController {
                   public void run() {
                       ImageModel.getInstance().getAndSaveImages(true, accommodations);
                       Accommodation.setNewAccommodationList(accommodations);
-                      controller.model.refreshAdapter();
+                      controller.recyclerAdapter.refresh();
                   }
               }
             );
