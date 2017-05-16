@@ -14,6 +14,7 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -55,7 +56,7 @@ public class SearchActivityController {
         searchView.setOnQueryTextListener(onQueryTextListener);
 
         final String[] arraySpinner = new String[] {
-                "Pris ↑", "Pris ↓",  "Storlek ↑", "Storlek ↓", "A-Ö", "Ö-A",
+                "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
         };
         sort = (Spinner) activity.findViewById(R.id.sort);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
@@ -68,144 +69,25 @@ public class SearchActivityController {
                 List<Accommodation> accommodations = recyclerAdapter.getAccommodations();
                 switch (selected) {
                     case "Pris ↑":
-                        int n = accommodations.size();
-                        int k;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (Double.parseDouble(accommodations.get(i).getPrice()) > Double.parseDouble(accommodations.get(k).getPrice())) {
-                                    Accommodation tempK;
-                                    tempK = accommodations.get(k);
-                                    Accommodation tempI;
-                                    tempI = accommodations.get(i);
-                                    accommodations.remove(k);
-                                    accommodations.remove(i);
-                                    accommodations.add(i,tempK);
-                                    if (k==n-1) {
-                                        accommodations.add(tempI);
-                                    } else {
-                                        accommodations.add(k, tempI);
-                                    }
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        recyclerAdapter.notifyDataSetChanged();
+                        SorterHelper.sortByPrice(accommodations, true);
                         break;
                     case "Pris ↓":
-                        n = accommodations.size();
-                        k = 0;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (Double.parseDouble(accommodations.get(i).getPrice()) < Double.parseDouble(accommodations.get(k).getPrice())) {
-                                    Accommodation temp;
-                                    temp = accommodations.get(k);
-                                    accommodations.remove(k);
-                                    accommodations.add(k,accommodations.get(i));
-                                    accommodations.remove(i);
-                                    accommodations.add(i,temp);
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().clear();
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        recyclerAdapter.notifyDataSetChanged();
+                        SorterHelper.sortByPrice(accommodations, false);
                         break;
                     case "Storlek ↑":
-                        n = accommodations.size();
-                        k = 0;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (Double.parseDouble(accommodations.get(i).getArea()) > Double.parseDouble(accommodations.get(k).getArea())) {
-                                    Accommodation tempK;
-                                    tempK = accommodations.get(k);
-                                    Accommodation tempI;
-                                    tempI = accommodations.get(i);
-                                    accommodations.remove(k);
-                                    accommodations.remove(i);
-                                    accommodations.add(i,tempK);
-                                    if (k==n-1) {
-                                        accommodations.add(tempI);
-                                    } else {
-                                        accommodations.add(k, tempI);
-                                    }
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        recyclerAdapter.notifyDataSetChanged();
+                        SorterHelper.sortBySize(accommodations, true);
                         break;
                     case "Storlek ↓":
-                        n = accommodations.size();
-                        k = 0;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (Double.parseDouble(accommodations.get(i).getArea()) < Double.parseDouble(accommodations.get(k).getArea())) {
-                                    Accommodation temp;
-                                    temp = accommodations.get(k);
-                                    accommodations.remove(k);
-                                    accommodations.add(k,accommodations.get(i));
-                                    accommodations.remove(i);
-                                    accommodations.add(i,temp);
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().clear();
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        recyclerAdapter.notifyDataSetChanged();
+                        SorterHelper.sortBySize(accommodations, false);
                         break;
                     case "A-Ö":
-                        n = accommodations.size();
-                        k = 0;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (accommodations.get(i).getAddress().compareTo(accommodations.get(k).getAddress()) > 0) {
-                                    Accommodation temp;
-                                    temp = accommodations.get(k);
-                                    accommodations.remove(k);
-                                    accommodations.add(k,accommodations.get(i));
-                                    accommodations.remove(i);
-                                    accommodations.add(i,temp);
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().clear();
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        SorterHelper.sortByAddress(accommodations, false);
                         break;
                     case "Ö-A":
-                        n = accommodations.size();
-                        k = 0;
-                        for (int m = n; m >= 0; m--) {
-                            for (int i = 0; i < n - 1; i++) {
-                                k = i + 1;
-
-                                if (accommodations.get(i).getAddress().compareTo(accommodations.get(k).getAddress()) < 0) {
-                                    Accommodation temp;
-                                    temp = accommodations.get(k);
-                                    accommodations.remove(k);
-                                    accommodations.add(k,accommodations.get(i));
-                                    accommodations.remove(i);
-                                    accommodations.add(i,temp);
-                                }
-                            }
-                        }
-                        //model.getRecyclerViewAdapter().clear();
-                        //model.getRecyclerViewAdapter().addAll(accommodations);
-                        model.getRecyclerViewAdapter().notifyDataSetChanged();
+                        SorterHelper.sortByAddress(accommodations, true);
                         break;
-
                     }
-
+                recyclerAdapter.notifyDataSetChanged();
 
             }
 
