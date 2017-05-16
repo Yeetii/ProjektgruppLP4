@@ -1,7 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel;
 
-import android.graphics.drawable.Drawable;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,7 +30,6 @@ public class ImageModel<ImageType> {
     }
 
     public ImageType getMainImage(String objectNumber) {
-        System.out.println(mainImages.size());
         return mainImages.get(objectNumber);
     }
 

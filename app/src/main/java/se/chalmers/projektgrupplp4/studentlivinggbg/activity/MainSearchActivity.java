@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MainActivityHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
@@ -26,7 +25,6 @@ public class MainSearchActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         mainActivityHelper.saveDatabase();
-        Db4oDatabase.getInstance().close();
         super.onDestroy();
     }
 

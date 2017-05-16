@@ -6,6 +6,7 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
@@ -122,7 +123,10 @@ public class Db4oDatabase {
 
     //Breaks if it t and T are not the same class.
     public <T> List<T> findAll(Class t) {
-        return db().query(t);
+        //Sometimes throws strange exception when using the same list.
+        List<T> newList = new ArrayList<>();
+        newList.addAll(db().query(t));
+        return newList;
     }
 
     //This method is used to retrive matched object from database.

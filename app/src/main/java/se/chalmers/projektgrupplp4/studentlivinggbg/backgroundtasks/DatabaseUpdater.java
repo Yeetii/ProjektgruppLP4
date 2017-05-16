@@ -1,12 +1,15 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.CreateDrawableHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
@@ -130,12 +133,14 @@ class DatabaseUpdater implements Observer {
         List<Accommodation> newAccommodations = fillNewAccommodations(context, inputString);
 
         Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
-        ImageModel.getInstance().getAndSaveImages(false, newAccommodations);
+        ImageModel<Drawable> imageModel = ImageModel.<Drawable>getInstance();
+        imageModel.setHelper(new CreateDrawableHelper(context));
+        imageModel.getAndSaveImages(false, newAccommodations);
 
         counter++;
         //Only do some things when both SGS and Chalmers are done.
         if (counter % 2 == 1) return;
-        newAccommodations.clear();
+        newAccommodations = new ArrayList<>();
         newAccommodations.addAll(chalmersAccommodations);
         newAccommodations.addAll(sgsAccommodations);
         db.replaceAccommodationsList(newAccommodations);
