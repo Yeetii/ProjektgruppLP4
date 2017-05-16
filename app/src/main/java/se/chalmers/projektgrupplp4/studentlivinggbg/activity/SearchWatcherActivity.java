@@ -24,7 +24,6 @@ public class SearchWatcherActivity extends AppCompatActivity {
         new SearchWatcherController(model, view);
 
         new AdvancedSearchFragmentView(this);
-        new AdvancedSearchFragmentController(this);
     }
 
     //Should this be done in the controller?
