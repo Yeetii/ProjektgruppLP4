@@ -82,7 +82,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
         private String createThumbnail (String fistStep) {
             fistStep = fistStep.replaceAll("amp;", "");
             fistStep = "https://" + fistStep;
-            fistStep += "&width=400&height=400";
+            fistStep += "&width=700&height=500";
             return fistStep;
         }
 
@@ -106,6 +106,8 @@ public class ChalmersAdapter extends AccommodationAdapter {
                     return AccommodationHouseType.COOKING_CABINET;
                 case "2 rum och kök":
                     return AccommodationHouseType.TWO_ROOMS;
+                case "2 rum och kokvrå":
+                    return AccommodationHouseType.TWO_ROOMS_KITCHENETTE;
 
             }
             System.out.println("Should add to switch!: " + houseTypeString);
