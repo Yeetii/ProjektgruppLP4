@@ -1,18 +1,16 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -23,7 +21,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 
-public class AdvancedSearchActivityController {
+public class AdvancedSearchActivityController implements Observer{
     private Activity activity;
     private AdvancedSearchFragmentController fragmentController;
 
@@ -87,30 +85,12 @@ public class AdvancedSearchActivityController {
     private Button.OnClickListener onCreateSearchWatcherListener = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //Saves the search anc waits for nameDialog to finish
+            //Saves the search and waits for nameDialog to finish
             wannabeSearchWatcher = fragmentController.parseSearchTerms(false);
-            createNameDialog();
+//            createNameDialog();
+            new NameDialog(activity, AdvancedSearchActivityController.this);
         }
     };
-
-    private void createNameDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        builder.setMessage("Välj ett namn för din bevakning.").setTitle("Skapa bevaking");
-        LayoutInflater inflater = activity.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog_search_watcher_name, null);
-        builder.setView(dialogView);
-        builder.setPositiveButton(R.string.dialogSearchWatcherOk, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-                EditText text = (EditText) dialogView.findViewById(R.id.dialogSearchWatcherName);
-                SearchWatcherModel.createSearchWatcher(text.getText().toString(), wannabeSearchWatcher);
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
 
     private void returnToMainSearch(){
         Intent intent = new Intent(activity, MainSearchActivity.class);
@@ -142,4 +122,15 @@ public class AdvancedSearchActivityController {
         }
 
     };
+
+    private void createSearchWatcher(String name){
+        System.out.println("Creating SW " + name);
+        SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
+    }
+
+    //Called from NameDialog
+    @Override
+    public void update(String updateString) {
+        createSearchWatcher(updateString);
+    }
 }

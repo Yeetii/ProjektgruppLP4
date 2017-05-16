@@ -4,9 +4,15 @@ import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
+import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
@@ -15,16 +21,20 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWat
  * Created by PG on 21/04/2017.
  */
 
-public class SearchWatcherController {
+public class SearchWatcherController implements Observer{
     private SearchWatcherViewModel model;
     private SearchWatcherView view;
     private Activity activity;
+    private AdvancedSearchFragmentController fragment;
 
 
     public SearchWatcherController (SearchWatcherViewModel model, SearchWatcherView view) {
         this.model = model;
         this.view = view;
         this.activity = model.getActivity();
+
+        fragment = new AdvancedSearchFragmentController(activity);
+
         initializeListeners();
     }
 
@@ -32,7 +42,9 @@ public class SearchWatcherController {
         initializeNavigationListener();
         initializeToggleModalListener();
         initializeDoNothingListener();
+        initializeModalDoneButtonListener();
     }
+
 
     private void toggle() {
         System.out.println("Toggle");
@@ -54,8 +66,19 @@ public class SearchWatcherController {
         }
     }
 
+    private void initializeModalDoneButtonListener() {
+        ImageButton modalDoneButton = (ImageButton) activity.findViewById(R.id.modalDoneButton);
+        modalDoneButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                new NameDialog(activity, SearchWatcherController.this );
+            }
+        });
+    }
+
     private void initializeDoNothingListener () {
-        //This is super bad code, remove before submit!
+        //TODO This is super bad code, remove before submit!
         ConstraintLayout searchWatcherContent = (ConstraintLayout) activity.findViewById(R.id.constraintLayout);
 
         searchWatcherContent.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +109,19 @@ public class SearchWatcherController {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
         navigation.setSelectedItemId(R.id.navigation_notifications);
+    }
+
+    private void createSearchWatcher(String name){
+        System.out.println("Creating SW " + name);
+        Search search = fragment.parseSearchTerms(false);
+        SearchWatcherModel.createSearchWatcher(name, search);
+        model.refreshAdapter();
+    }
+
+    //Called from NameDialog
+    @Override
+    public void update(String updateString) {
+        createSearchWatcher(updateString);
+        toggle();
     }
 }
