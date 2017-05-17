@@ -79,9 +79,7 @@ public class BottomNavigationListener {
                     break;
             }
             if (newActivityClass != null) {
-                Intent newActivity = new Intent(context, newActivityClass);
-                newActivity.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                context.startActivity(newActivity);
+                NavigationHelper.getInstance(context).navigate(newActivityClass);
                 currentSelection = item.getItemId();
                 return true;
             }

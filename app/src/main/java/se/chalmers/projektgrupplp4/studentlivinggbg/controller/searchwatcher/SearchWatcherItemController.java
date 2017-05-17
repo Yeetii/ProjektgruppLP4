@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.NavigationHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -50,8 +51,7 @@ public class SearchWatcherItemController {
             public void onClick (View view) {
                 Search search = model.getSearch();
                 SearchHandler.addToLastSearches(search);
-                Intent intent = new Intent(activity, MainSearchActivity.class);
-                activity.startActivity(intent);
+                NavigationHelper.getInstance(activity).navigateToMainActivity();
             }
         });
     }

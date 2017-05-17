@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
+import se.chalmers.projektgrupplp4.studentlivinggbg.NavigationHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.FavoritesActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
@@ -40,7 +43,7 @@ public class AdvancedSearchActivityController implements Observer{
 
     private void initListeners() {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
         ImageButton cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
         advancedSearchButton = (Button) activity.findViewById(R.id.advancedSearchButton);
         createSearchWatcherButton = (Button) activity.findViewById(R.id.advancedSearchCreateSearchWatcherButton);
@@ -88,35 +91,8 @@ public class AdvancedSearchActivityController implements Observer{
     };
 
     private void returnToMainSearch(){
-        Intent intent = new Intent(activity, MainSearchActivity.class);
-        activity.startActivity(intent);
+        NavigationHelper.getInstance(activity).navigateToMainActivity();
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_search:
-                    return true;
-                case R.id.navigation_favorites:
-                    Intent favorites = new Intent(activity, FavoritesActivity.class);
-                    favorites.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(favorites);
-                    return true;
-                case R.id.navigation_notifications:
-                    Intent searchWatcher = new Intent(activity, SearchWatcherActivity.class);
-                    searchWatcher.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
-                    activity.startActivity(searchWatcher);
-                    return true;
-                case R.id.navigation_settings:
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     private void createSearchWatcher(String name){
         System.out.println("Creating SW " + name);

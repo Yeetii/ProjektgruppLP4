@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 import android.app.Activity;
 import android.content.Intent;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.NavigationHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.AdvancedSearchActivity;
 
@@ -20,7 +21,6 @@ public class AdvancedSearchActivityView {
     }
 
     public static void open (Activity activity) {
-            Intent intent = new Intent(activity, AdvancedSearchActivity.class);
-            activity.startActivity(intent);
+        NavigationHelper.getInstance(activity).navigateToAdvancedSearch();
     }
 }
