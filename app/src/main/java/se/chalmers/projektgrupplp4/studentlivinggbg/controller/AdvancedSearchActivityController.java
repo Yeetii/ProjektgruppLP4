@@ -16,7 +16,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
@@ -75,10 +74,6 @@ public class AdvancedSearchActivityController implements Observer{
         @Override
         public void onClick(View view) {
             fragmentController.parseSearchTerms(true);
-
-            //Är detta en bra lösning..?
-            SearchActivityModel.getInstance().refreshAdapter();
-
             returnToMainSearch();
         }
     };

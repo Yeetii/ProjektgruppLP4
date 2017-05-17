@@ -11,9 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchActivityModel;
-
 /**
  * Created by Jonathan on 09/05/2017.
  */
@@ -23,17 +20,11 @@ public class RecyclerViewHelper {
     private Activity activity;
 
 
-    private SearchActivityModel searchModel;
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
     public RecyclerViewHelper (Activity activity, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;
         this.recyclerViewAdapter = adapter;
-    }
-
-    public RecyclerViewHelper (Activity activity, SearchActivityModel model) {
-        this.activity = activity;
-        this.searchModel = model;
     }
 
     private void onChildDrawController(Canvas c, RecyclerView.ViewHolder viewHolder, float dX, int actionState) {
@@ -65,9 +56,6 @@ public class RecyclerViewHelper {
                         //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
 
                         recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
-                    } else {
-                        searchModel.changeFavorite(viewHolder, direction);
-
                     }
                 }
             }
