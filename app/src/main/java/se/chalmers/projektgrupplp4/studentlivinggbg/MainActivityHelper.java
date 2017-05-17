@@ -8,7 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeMan
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Settings;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
@@ -27,7 +27,7 @@ public class MainActivityHelper {
 
     private MainActivityHelper(Context context) {
         new SearchHandler();
-        new Settings();
+        new SettingsModel();
         CreateDrawableHelper createDrawableHelper = new CreateDrawableHelper(context);
         ImageModel.<Drawable>getInstance().setHelper(createDrawableHelper);
         loadDatabase(context);
