@@ -37,7 +37,8 @@ public class SearchWatcherItemView {
         convertView.setTag(this);
     }
 
-    public void updateView () {
+    public void updateView (SearchWatcherItem model) {
+        this.model = model;
         updateTitle();
         updateAddress();
         updateAccommodationHouseType();

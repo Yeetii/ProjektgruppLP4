@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import android.app.Activity;
 import android.content.Context;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -23,9 +24,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
     private Activity activity;
+    private LayoutInflater inflater;
 
     public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity) {
         super(context, R.layout.search_watcher_row_item, data);
+        inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
     }
 
@@ -34,19 +37,21 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         // Get the data item for this position
         SearchWatcherItem dataModel = getItem(position);
         SearchWatcherItemView viewHolder;
+        System.out.println("Making list item " + position + " with title" + dataModel.getTitle());
 
         if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.search_watcher_row_item, parent, false);
+            convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
+            convertView.setTag(viewHolder);
 
             new SearchWatcherItemController(dataModel, convertView, activity);
+
 
         }else{
             viewHolder = (SearchWatcherItemView) convertView.getTag();
         }
 
-        viewHolder.updateView();
+        viewHolder.updateView(dataModel);
         return convertView;
     }
 
@@ -65,6 +70,11 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
 //                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
                 break;
         }
+    }
+
+    @Override
+    public long getItemId(int position){
+        return super.getItemId(position);
     }
 }
 
