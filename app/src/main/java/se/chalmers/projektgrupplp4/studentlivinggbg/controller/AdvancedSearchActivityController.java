@@ -29,7 +29,6 @@ public class AdvancedSearchActivityController implements Observer{
     private Button createSearchWatcherButton;
 
     //While waiting for a name to become a SearchWatcher
-    //TODO Should this be in the model?
     private Search wannabeSearchWatcher;
 
 

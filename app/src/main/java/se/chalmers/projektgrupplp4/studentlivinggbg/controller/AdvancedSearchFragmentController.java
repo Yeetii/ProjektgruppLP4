@@ -1,14 +1,12 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
-import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
