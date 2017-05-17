@@ -142,6 +142,7 @@ public class SearchActivityController {
                   @Override
                   public void run() {
                       ImageModel.getInstance().getAndSaveImages(true, accommodations);
+                      SorterHelper.sortByPrice(accommodations, false);
                       Accommodation.setNewAccommodationList(accommodations);
                       controller.recyclerAdapter.refresh();
                   }

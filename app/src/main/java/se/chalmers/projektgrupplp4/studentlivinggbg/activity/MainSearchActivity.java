@@ -16,7 +16,7 @@ public class MainSearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
-        AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), getApplicationContext());
+        AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations());
         SearchActivityView searchActivityView = new SearchActivityView(this, adapter);
         new SearchActivityController(this, searchActivityView, adapter);
         adapter.refresh();

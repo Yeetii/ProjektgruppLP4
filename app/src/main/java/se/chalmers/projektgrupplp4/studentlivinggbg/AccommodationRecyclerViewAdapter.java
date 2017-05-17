@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,15 +21,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
 
     private List<Accommodation> dataSet;
-    private Context mContext;
 
-    public AccommodationRecyclerViewAdapter(List<Accommodation> data, Context context) {
+    public AccommodationRecyclerViewAdapter(List<Accommodation> data) {
         dataSet = new ArrayList<>();
         for (Accommodation i : data) {
             dataSet.add(i);
         }
-        this.mContext=context;
-
         this.registerAdapterDataObserver(this);
     }
 

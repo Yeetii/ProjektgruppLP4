@@ -14,7 +14,7 @@ public class FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites(), getApplicationContext());
+        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites());
         new FavoritesView(this, recyclerViewAdapter);
         new FavoritesController(this, recyclerViewAdapter);
     }
