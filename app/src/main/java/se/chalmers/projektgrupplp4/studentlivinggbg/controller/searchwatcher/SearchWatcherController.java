@@ -8,11 +8,13 @@ import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
+import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
@@ -115,7 +117,8 @@ public class SearchWatcherController implements Observer{
     private void createSearchWatcher(String name){
         System.out.println("Creating SW " + name);
         Search search = fragment.parseSearchTerms(false);
-        SearchWatcherModel.createSearchWatcher(name, search);
+        SearchWatcherItem searchWatcher = SearchWatcherModel.createSearchWatcher(name, search);
+        Db4oDatabase.getInstance().store(searchWatcher);
         adapter.refresh();
     }
 
