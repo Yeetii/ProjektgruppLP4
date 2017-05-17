@@ -17,6 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
 /**
@@ -28,6 +29,8 @@ public class SearchWatcherController implements Observer{
     private Activity activity;
     private AdvancedSearchFragmentController fragment;
     private SearchWatcherAdapter adapter;
+    private ModalController modalController;
+    private ModalView modalView;
 
 
     public SearchWatcherController (SearchWatcherAdapter adapter, SearchWatcherView view, Activity activity) {
@@ -36,6 +39,8 @@ public class SearchWatcherController implements Observer{
         this.activity = activity;
 
         fragment = new AdvancedSearchFragmentController(activity);
+        modalView = new ModalView(activity);
+        modalController = new ModalController(activity, modalView, this);
 
         initializeListeners();
         adapter.refresh();
@@ -43,69 +48,8 @@ public class SearchWatcherController implements Observer{
 
     private void initializeListeners() {
         initializeNavigationListener();
-        initializeToggleModalListener();
-        initializeDoNothingListener();
-        initializeModalDoneButtonListener();
     }
 
-
-    private void toggle() {
-        System.out.println("Toggle");
-        if (view.getModalVisibility()) {
-            view.getFm().beginTransaction().hide(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
-        } else {
-            view.getFm().beginTransaction().show(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
-        }
-        view.toggleModalVisibility();
-        updateModalButton();
-    }
-
-    //TODO This does not seem to work
-    private void updateModalButton(){
-        if(view.getModalVisibility()){
-            view.getModalButton().setBackgroundResource(R.drawable.close_icon);
-        }else{
-            view.getModalButton().setBackgroundResource(R.drawable.plus_icon);
-        }
-    }
-
-    private void initializeModalDoneButtonListener() {
-        ImageButton modalDoneButton = (ImageButton) activity.findViewById(R.id.modalDoneButton);
-        modalDoneButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                new NameDialog(activity, SearchWatcherController.this );
-            }
-        });
-    }
-
-    private void initializeDoNothingListener () {
-        //TODO This is super bad code, remove before submit!
-        ConstraintLayout searchWatcherContent = (ConstraintLayout) activity.findViewById(R.id.constraintLayout);
-
-        searchWatcherContent.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                System.out.println("Don't do anything!");
-            }
-        });
-    }
-
-    private void initializeToggleModalListener () {
-        ToggleButton toggleButton = (ToggleButton) activity.findViewById(R.id.modalButton);
-        toggleButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                toggle();
-            }
-        });
-
-        ConstraintLayout searchWatcherBackground = (ConstraintLayout) activity.findViewById(R.id.backgroundModal);
-        searchWatcherBackground.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (v.getId() == R.id.backgroundModal) toggle();
-            }
-        });
-    }
 
 
     private void initializeNavigationListener () {
@@ -126,15 +70,19 @@ public class SearchWatcherController implements Observer{
     @Override
     public void update(String updateString) {
         createSearchWatcher(updateString);
-        toggle();
+        modalController.toggle();
     }
 
     public boolean onBackPressed() {
-        if (view.getModalVisibility()){
-            toggle();
+        if (modalView.getModalVisibility()){
+            modalController.toggle();
             return false;
         }else{
             return true;
         }
+    }
+
+    public void onStart () {
+        modalView.hideModal();
     }
 }

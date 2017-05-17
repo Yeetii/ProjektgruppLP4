@@ -30,11 +30,10 @@ public class SearchWatcherActivity extends AppCompatActivity {
         new AdvancedSearchFragmentView(this);
     }
 
-    //Should this be done in the controller?
     @Override
     public void onStart () {
         super.onStart();
-        view.hideModal();
+        controller.onStart();
     }
 
     @Override
