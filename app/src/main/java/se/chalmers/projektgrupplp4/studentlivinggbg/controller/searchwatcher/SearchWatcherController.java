@@ -10,10 +10,10 @@ import android.widget.ToggleButton;
 import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
@@ -22,20 +22,21 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWat
  */
 
 public class SearchWatcherController implements Observer{
-    private SearchWatcherViewModel model;
     private SearchWatcherView view;
     private Activity activity;
     private AdvancedSearchFragmentController fragment;
+    private SearchWatcherAdapter adapter;
 
 
-    public SearchWatcherController (SearchWatcherViewModel model, SearchWatcherView view) {
-        this.model = model;
+    public SearchWatcherController (SearchWatcherAdapter adapter, SearchWatcherView view, Activity activity) {
+        this.adapter = adapter;
         this.view = view;
-        this.activity = model.getActivity();
+        this.activity = activity;
 
         fragment = new AdvancedSearchFragmentController(activity);
 
         initializeListeners();
+        adapter.refresh();
     }
 
     private void initializeListeners() {
@@ -115,7 +116,7 @@ public class SearchWatcherController implements Observer{
         System.out.println("Creating SW " + name);
         Search search = fragment.parseSearchTerms(false);
         SearchWatcherModel.createSearchWatcher(name, search);
-        model.refreshAdapter();
+        adapter.refresh();
     }
 
     //Called from NameDialog

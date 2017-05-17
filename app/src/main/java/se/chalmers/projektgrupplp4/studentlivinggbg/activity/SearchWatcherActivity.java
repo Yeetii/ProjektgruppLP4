@@ -3,9 +3,11 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
+import java.util.ArrayList;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherViewModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
 
@@ -19,9 +21,10 @@ public class SearchWatcherActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.view = new SearchWatcherView(this);
-        SearchWatcherViewModel model = new SearchWatcherViewModel(this);
-        new SearchWatcherController(model, view);
+        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcherItem>(), this);
+
+        this.view = new SearchWatcherView(this, adapter);
+        new SearchWatcherController(adapter, view, this);
 
         new AdvancedSearchFragmentView(this);
     }

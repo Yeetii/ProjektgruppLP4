@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;

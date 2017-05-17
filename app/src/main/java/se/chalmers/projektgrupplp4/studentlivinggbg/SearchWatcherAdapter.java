@@ -12,6 +12,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
@@ -23,9 +24,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
     private Activity activity;
+    private List<SearchWatcherItem> data;
 
     public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity) {
         super(context, R.layout.search_watcher_row_item, data);
+        this.data = data;
         this.activity = activity;
     }
 
@@ -65,6 +68,12 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
 //                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
                 break;
         }
+    }
+
+
+    public void refresh(){
+        data.clear();
+        data.addAll(SearchWatcherModel.getSearchWatcherItems());
     }
 }
 
