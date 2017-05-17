@@ -19,7 +19,6 @@ public class RecyclerViewHelper {
 
     private Activity activity;
 
-
     private AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
     public RecyclerViewHelper (Activity activity, AccommodationRecyclerViewAdapter adapter) {

@@ -110,7 +110,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
 
         //TODO THE FOLLOWING CODE HAS STOPPED WORKING!!!
         if (!lastSearch.isEmpty()) {
-            dataSet.addAll(SearchHandler.search(lastSearch));
+            dataSet.addAll(Search.search(lastSearch));
         }else{
             dataSet.addAll(Accommodation.getAccommodations());
         }

@@ -128,4 +128,13 @@ public class SearchWatcherController implements Observer{
         createSearchWatcher(updateString);
         toggle();
     }
+
+    public boolean onBackPressed() {
+        if (view.getModalVisibility()){
+            toggle();
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
