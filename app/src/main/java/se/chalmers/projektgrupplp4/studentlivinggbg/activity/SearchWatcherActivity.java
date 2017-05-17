@@ -17,6 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWat
 
 public class SearchWatcherActivity extends AppCompatActivity {
     private SearchWatcherView view;
+    private SearchWatcherController controller;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class SearchWatcherActivity extends AppCompatActivity {
         SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcherItem>(), this);
 
         this.view = new SearchWatcherView(this, adapter);
-        new SearchWatcherController(adapter, view, this);
+        controller = new SearchWatcherController(adapter, view, this);
 
         new AdvancedSearchFragmentView(this);
     }
@@ -34,5 +35,11 @@ public class SearchWatcherActivity extends AppCompatActivity {
     public void onStart () {
         super.onStart();
         view.hideModal();
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (controller.onBackPressed())
+            super.onBackPressed();
     }
 }
