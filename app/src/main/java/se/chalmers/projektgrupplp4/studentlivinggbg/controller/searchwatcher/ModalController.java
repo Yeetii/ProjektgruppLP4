@@ -9,6 +9,8 @@ import android.widget.ToggleButton;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
 
 /**
@@ -16,6 +18,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView
  */
 
 public class ModalController {
+    private final AdvancedSearchFragmentController fragment;
     private Activity activity;
     private ModalView view;
     private final Observer observer;
@@ -25,6 +28,8 @@ public class ModalController {
         this.activity = activity;
         this.view = view;
         this.observer = observer;
+
+        fragment = new AdvancedSearchFragmentController(activity);
 
         initializeToggleModalListener();
         initializeDoNothingListener();
@@ -37,18 +42,10 @@ public class ModalController {
             view.getFm().beginTransaction().hide(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
         } else {
             view.getFm().beginTransaction().show(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
+            if (!view.getNewMode())
+                fragment.fillFilters(view.getModel().getSearch());
         }
         view.toggleModalVisibility();
-        updateModalButton();
-    }
-
-    //TODO This does not seem to work
-    private void updateModalButton(){
-        if(view.getModalVisibility()){
-            view.getModalButton().setBackgroundResource(R.drawable.close_icon);
-        }else{
-            view.getModalButton().setBackgroundResource(R.drawable.plus_icon);
-        }
     }
 
     private void initializeModalDoneButtonListener() {
@@ -87,5 +84,9 @@ public class ModalController {
                 if (v.getId() == R.id.backgroundModal) toggle();
             }
         });
+    }
+
+    public Search parseSearchTerms(boolean addToSearchHistory) {
+        return fragment.parseSearchTerms(addToSearchHistory);
     }
 }

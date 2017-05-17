@@ -25,22 +25,18 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWat
  */
 
 public class SearchWatcherController implements Observer{
-    private SearchWatcherView view;
     private Activity activity;
-    private AdvancedSearchFragmentController fragment;
     private SearchWatcherAdapter adapter;
     private ModalController modalController;
     private ModalView modalView;
 
 
-    public SearchWatcherController (SearchWatcherAdapter adapter, SearchWatcherView view, Activity activity) {
+    public SearchWatcherController(SearchWatcherAdapter adapter, Activity activity) {
         this.adapter = adapter;
-        this.view = view;
         this.activity = activity;
 
-        fragment = new AdvancedSearchFragmentController(activity);
-        modalView = new ModalView(activity);
-        modalController = new ModalController(activity, modalView, this);
+        this.modalView = new ModalView(activity, true);
+        this.modalController = new ModalController(activity, modalView, this);
 
         initializeListeners();
         adapter.refresh();
@@ -48,9 +44,8 @@ public class SearchWatcherController implements Observer{
 
     private void initializeListeners() {
         initializeNavigationListener();
+        initializeNewSWListener();
     }
-
-
 
     private void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
@@ -58,9 +53,19 @@ public class SearchWatcherController implements Observer{
         navigation.setSelectedItemId(R.id.navigation_notifications);
     }
 
+    private void initializeNewSWListener(){
+        ImageButton newSWButton = (ImageButton) activity.findViewById(R.id.newSearchWatcherButton);
+        newSWButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                modalController.toggle();
+            }
+        });
+    }
+
     private void createSearchWatcher(String name){
         System.out.println("Creating SW " + name);
-        Search search = fragment.parseSearchTerms(false);
+        Search search = modalController.parseSearchTerms(false);
         SearchWatcherItem searchWatcher = SearchWatcherModel.createSearchWatcher(name, search);
         Db4oDatabase.getInstance().store(searchWatcher);
         adapter.refresh();

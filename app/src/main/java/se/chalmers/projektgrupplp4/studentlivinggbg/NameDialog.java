@@ -25,7 +25,6 @@ public class NameDialog {
         builder.setView(dialogView);
         builder.setPositiveButton(R.string.dialogSearchWatcherOk, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                System.out.println("YOU PRESS OKAAAY");
                 // User clicked OK button
                 EditText text = (EditText) dialogView.findViewById(R.id.dialogSearchWatcherName);
                 controller.update(text.getText().toString());

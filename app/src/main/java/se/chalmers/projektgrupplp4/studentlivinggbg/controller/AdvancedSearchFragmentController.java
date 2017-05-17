@@ -33,10 +33,18 @@ public class AdvancedSearchFragmentController {
     private MultiSpinner landlordSpinner;
 
 
+    //Sets filters to last search
     public AdvancedSearchFragmentController(Activity activity){
         this.activity = activity;
         initListeners();
         fillFilters();
+    }
+
+    //Sets filters to provided search
+    public AdvancedSearchFragmentController(Activity activity, Search search){
+        this.activity = activity;
+        initListeners();
+        fillFilters(search);
     }
 
     private void initListeners(){
@@ -67,20 +75,25 @@ public class AdvancedSearchFragmentController {
     }
 
     private void fillFilters() {
-        Search lastSearch = SearchHandler.getLastSearch();
+        fillFilters(SearchHandler.getLastSearch());
+    }
+
+    public void fillFilters(Search search){
+
+        System.out.println("Filling filters");
         initMax();
 
-        if(!lastSearch.isEmpty()){
+        if(!search.isEmpty()){
             //todo These could be more dynamic + dublicated code?
 
-            fillSeekBars(lastSearch);
-            fillHouseTypeSpinner(lastSearch);
-            fillRegionSpinner(lastSearch);
-            fillLandlordSpinner(lastSearch);
+            fillSeekBars(search);
+            fillHouseTypeSpinner(search);
+            fillRegionSpinner(search);
+            fillLandlordSpinner(search);
 
         }
-        if(lastSearch.getMaxPrice() < 1){seekBarMaxPrice.setProgress(15000);}
-        if(lastSearch.getMaxArea() < 1){seekBarMaxArea.setProgress(100);}
+        if(search.getMaxPrice() < 1){seekBarMaxPrice.setProgress(15000);}
+        if(search.getMaxArea() < 1){seekBarMaxArea.setProgress(100);}
 
         updateTextViews();
     }
