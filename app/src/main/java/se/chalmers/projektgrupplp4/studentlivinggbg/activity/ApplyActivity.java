@@ -10,37 +10,20 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.ApplyActivityController;
 
 public class ApplyActivity extends AppCompatActivity {
-
-    private WebView browser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        new ApplyActivityController(this);
+
+        //Should be in view but ridiculous to make a class for one line?
         setContentView(R.layout.activity_apply);
-        browser = (WebView) findViewById(R.id.browser);
-        String URL = getIntent().getStringExtra("URL");
-        browser.setWebViewClient(new myWebViewClient());
-        browser.getSettings().setJavaScriptEnabled(true);
-
-        browser.getSettings().setLoadWithOverviewMode(true);
-        browser.getSettings().setUseWideViewPort(true);
-        WebSettings webSettings = browser.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        //browser.loadUrl(URL);
-        //browser.loadUrl("https://www.chalmersstudentbostader.se/");
-
-
     }
 
-    class myWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
-        }
-    }
+
 
 }
