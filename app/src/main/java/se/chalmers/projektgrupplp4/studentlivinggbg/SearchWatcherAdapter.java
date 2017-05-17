@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import android.app.Activity;
 import android.content.Context;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,7 +10,6 @@ import android.view.View;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
@@ -46,8 +44,6 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
-            convertView.setTag(viewHolder);
-
             new SearchWatcherItemController(dataModel, convertView, activity);
 
 
