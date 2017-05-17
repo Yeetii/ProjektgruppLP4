@@ -297,7 +297,7 @@
 
         </LinearLayout>
 
-        <se.chalmers.projektgrupplp4.studentlivinggbg.controller.MultiSpinner
+        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/roomType_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -306,7 +306,7 @@
             android:layout_marginTop="5dp"
             android:paddingTop="5dp" />
 
-        <se.chalmers.projektgrupplp4.studentlivinggbg.controller.MultiSpinner
+        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/areas_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -315,7 +315,7 @@
             android:layout_marginTop="5dp"
             android:paddingTop="5dp" />
 
-        <se.chalmers.projektgrupplp4.studentlivinggbg.controller.MultiSpinner
+        <se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner
             android:id="@+id/landlord_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

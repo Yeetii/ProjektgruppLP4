@@ -2,7 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
 import java.util.ArrayList;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.MultiSpinner;
+import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;

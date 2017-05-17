@@ -7,6 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;

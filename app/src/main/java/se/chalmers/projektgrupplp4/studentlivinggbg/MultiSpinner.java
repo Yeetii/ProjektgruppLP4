@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
+package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.app.AlertDialog;
 import android.content.Context;
