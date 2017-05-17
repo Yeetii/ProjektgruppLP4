@@ -31,9 +31,4 @@ public class SearchActivityView {
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    public void openAdvancedSearch () {
-        Intent intent = new Intent(activity, AdvancedSearchActivity.class);
-        activity.startActivity(intent);
-    }
-
 }

@@ -19,6 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
@@ -131,7 +132,7 @@ public class SearchActivityController {
     private ImageButton.OnClickListener onClickAdvancedSearch = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            activityView.openAdvancedSearch();
+            AdvancedSearchActivityView.open(activity);
         }
     };
 
