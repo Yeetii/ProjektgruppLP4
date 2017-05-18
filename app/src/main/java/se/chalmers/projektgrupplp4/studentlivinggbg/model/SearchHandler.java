@@ -29,19 +29,19 @@ public class SearchHandler {
         return result;
     }
 
-    public static Search createSearch(String mainSearch, String address,
+    public static Search createSearch(String mainSearch,
                                       ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                                       ArrayList<AccommodationHost> possibleAccomodationHosts,
                                       ArrayList<Region> possibleRegions,
-                                      int minPrice, int maxPrice, int minArea, int maxArea, int maxSearchers,
-                                      String upploadDate, String lastApplyDate, boolean addToList){
+                                      int minPrice, int maxPrice, int minArea, int maxArea,
+                                      int daysUpploaded, int daysLeft, boolean addToList){
 
-        Search result = new Search(mainSearch, address,
+        Search result = new Search(mainSearch,
                 possibleAccomodationHouseTypes,
                 possibleAccomodationHosts,
                 possibleRegions,
-                minPrice, maxPrice, minArea, maxArea, maxSearchers,
-                upploadDate, lastApplyDate);
+                minPrice, maxPrice, minArea, maxArea,
+                daysUpploaded, daysLeft);
 
         if(addToList) {
             addToLastSearches(result);
@@ -64,6 +64,6 @@ public class SearchHandler {
             return new Search("");}}
 
     public static List<Accommodation> getLastSearchResults(){
-        return Search.search(getLastSearch());
+        return getLastSearch().search();
     }
 }

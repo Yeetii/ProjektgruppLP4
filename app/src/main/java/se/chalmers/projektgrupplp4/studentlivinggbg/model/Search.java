@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -13,7 +14,6 @@ public class Search {
     //TODO Change to package private when no longer neccessary for tesing
 
     private String mainSearch = "";
-    private String address = "";
     private ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes;
     private ArrayList<AccommodationHost> possibleAccommodationHosts;
     private ArrayList<Region> possibleRegions;
@@ -21,24 +21,22 @@ public class Search {
     private int maxPrice = -1;
     private int minArea = -1;
     private int maxArea = -1;
-    private int maxSearchers = -1;
-    private String upploadDate = ""; //TODO Better date implementation
-    private String lastApplyDate = "";
+    private int daysUpploaded = -1;
+    private int daysLeft = -1;
 
     public Search(String mainSearch){
         this.mainSearch=mainSearch;
     }
 
 
-    public Search(String mainSearch, String address,
+    public Search(String mainSearch,
                   ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                   ArrayList<AccommodationHost> possibleAccomodationHosts,
                   ArrayList<Region> possibleRegions,
-                  int minPrice, int maxPrice, int minArea, int maxArea, int maxSearchers,
-                  String upploadDate, String lastApplyDate) {
+                  int minPrice, int maxPrice, int minArea, int maxArea,
+                  int daysUpploaded, int daysLeft) {
 
         this.mainSearch = mainSearch;
-        this.address = address;
         this.possibleAccommodationHouseTypes = possibleAccomodationHouseTypes;
         this.possibleAccommodationHosts = possibleAccomodationHosts;
         this.possibleRegions = possibleRegions;
@@ -46,63 +44,171 @@ public class Search {
         this.maxPrice = maxPrice;
         this.minArea = minArea;
         this.maxArea = maxArea;
-        this.maxSearchers = maxSearchers;
-        this.upploadDate = upploadDate;
-        this.lastApplyDate = lastApplyDate;
+        this.daysUpploaded = daysUpploaded;
+        this.daysLeft = daysLeft;
 
     }
 
 
-    public static List<Accommodation> search(Search search){
-        return search(search, Accommodation.getAccommodations());
+    public List<Accommodation> search(){
+        return search(Accommodation.getAccommodations());
     }
 
-    public static List<Accommodation> search(Search search, List<Accommodation> accommodations){
+    public List<Accommodation> search(List<Accommodation> accommodations){
         List<Accommodation> result = new ArrayList<>();
 
-        if (search.isEmpty()) {
+        if (this.isEmpty()) {
             return accommodations;}
 
         for (Accommodation accommodation: accommodations){
-            //todo UpploadDate and LastApplyDate?
-            if(matchesWithSearch(search, accommodation)) {
+            if(matchesWithSearch(accommodation)) {
                 result.add(accommodation);}
         }
         return result;
     }
 
-    private static boolean matchesWithSearch(Search search, Accommodation accommodation) {
+    private boolean matchesWithSearch(Accommodation accommodation) {
 
-        if(!mainSearchMatch(search, accommodation)){return false;}
-        if(!houseTypeMatch(search, accommodation)){return false;}
-        if(!hostMatch(search, accommodation)){return false;}
-        if(!regionMatch(search, accommodation)){return false;}
-        if(!priceMatch(search, accommodation)){return false;}
-        if(!areaMatch(search, accommodation)){return false;}
-        if(!searchersMatch(search, accommodation)){return false;}
+        if(!mainSearchMatch(accommodation)){return false;}
+        if(!houseTypeMatch(accommodation)){return false;}
+        if(!hostMatch(accommodation)){return false;}
+        if(!regionMatch(accommodation)){return false;}
+        if(!priceMatch(accommodation)){return false;}
+        if(!areaMatch(accommodation)){return false;}
+        if(!upploadDayMatch(accommodation)){return false;}
+        if(!daysLeftMatch(accommodation)){return false;}
         return true;
     }
 
-    private static boolean searchersMatch(Search search, Accommodation accommodation) {
-        return search.getMaxSearchers() == -1 || search.getMaxSearchers() > Integer.parseInt(accommodation.getSearchers());
+    private static String parseDate(String input) {
+        String result = parseDateDay(input);
+        result = result+"-"+parseDateMonth(input);
+        result = result+"-"+parseDateYear(input);
+        return result;
     }
 
-    private static boolean areaMatch(Search search, Accommodation accommodation) {
+    private static String parseDateDay(String string) {
+        return string.substring(8,10);
+    }
 
-        //Todo: Remove "0" case when seekBar-bug is gone
-        double searchMaxArea = search.getMaxArea();
+    private static String parseDateMonth(String string) {
+        string = string.substring(4,7);
+        switch(string){
+            case "Jan": string = "01";
+                break;
+            case "Feb": string = "02";
+                break;
+            case "Mar": string = "03";
+                break;
+            case "Apr": string = "04";
+                break;
+            case "May": string = "05";
+                break;
+            case "Jun": string = "06";
+                break;
+            case "Jul": string = "07";
+                break;
+            case "Aug": string = "08";
+                break;
+            case "Sep": string = "09";
+                break;
+            case "Oct": string = "10";
+                break;
+            case "Nov": string = "11";
+                break;
+            case "Dec": string = "12";
+                break;
+        }
+        return string;
+    }
+
+    private static String parseDateYear(String string) {
+        return string.substring(30,34);
+    }
+
+
+    private static boolean parseDays(String higherDate, String lowerDate, int daysDelta) {
+        if(higherDate.length() > lowerDate.length()){
+            higherDate = parseDate(higherDate);
+        }else{
+            lowerDate = parseDate(lowerDate);
+        }
+
+        int higherDay = Integer.valueOf(higherDate.substring(0,2));
+        int lowerDay = Integer.valueOf(lowerDate.substring(0,2));
+        int higherMonth = Integer.valueOf(higherDate.substring(3,5));
+        int lowerMonth = Integer.valueOf(lowerDate.substring(3,5));
+        int higherYear = Integer.valueOf(higherDate.substring(6,10));
+        int lowerYear = Integer.valueOf(lowerDate.substring(6,10));
+
+
+        if(higherYear == lowerYear){
+            if(higherMonth == lowerMonth){
+                return (higherDay - lowerDay) <= daysDelta;
+            }
+            if(higherMonth == lowerMonth+1){
+                return (daysInMonth(higherMonth, higherYear)+higherDay-lowerDay) <= daysDelta;
+            }
+            return false;
+        }
+        if(higherYear == lowerYear+1){
+            if(higherMonth == 1 && lowerMonth == 12){
+                return (31+higherDay-lowerDay) <= daysDelta;
+            }
+        }
+        return false;
+
+    }
+
+    private static int daysInMonth(int month, int year) {
+        if(month == 2){
+            if(year % 4 == 0){
+                return 29;
+            }else{
+                return 28;
+            }}
+        if(month >= 8){
+            if(month % 2 == 0){
+                return 31;
+            }else{
+                return 30;
+            }
+        }else{
+            if(month % 2 == 0){
+                return 30;
+            }else{
+                return 31;
+            }
+        }
+    }
+
+
+    private boolean daysLeftMatch(Accommodation accommodation) {
+        if(getDaysLeft() == 7 ||getDaysLeft() == -1){return true;}
+        return parseDays(accommodation.getLastApplyDate(), new Date().toString(), getDaysLeft());
+    }
+
+
+    private boolean upploadDayMatch(Accommodation accommodation) {
+        if(getDaysUpploaded() == 7 || getDaysUpploaded() == -1){return true;}
+        return parseDays(new Date().toString(), accommodation.getUpploadDate(), getDaysUpploaded());
+    }
+
+    private boolean areaMatch(Accommodation accommodation) {
+
+        double searchMaxArea = getMaxArea();
         if(searchMaxArea == 0){searchMaxArea = -1;}
 
-        if(search.getMinArea() == -1 && searchMaxArea == -1){return true;}
-        if(search.getMinArea() == -1){return Double.parseDouble(accommodation.getArea()) < searchMaxArea;}
-        if(searchMaxArea == -1){return Double.parseDouble(accommodation.getArea()) > search.getMinArea();}
-        return Double.parseDouble(accommodation.getArea()) > search.getMinArea()
+        if(getMinArea() == -1 && searchMaxArea == -1){return true;}
+        if(getMinArea() == -1){return Double.parseDouble(accommodation.getArea()) < searchMaxArea;}
+        if(searchMaxArea == -1){return Double.parseDouble(accommodation.getArea()) > getMinArea();}
+        return Double.parseDouble(accommodation.getArea()) > getMinArea()
                 && Double.parseDouble(accommodation.getArea()) < searchMaxArea;
     }
 
-    private static boolean priceMatch(Search search, Accommodation accommodation) {
-        int searchMinPrice = search.getMinPrice();
-        int searchMaxPrice = search.getMaxPrice();
+    private boolean priceMatch(Accommodation accommodation) {
+        int searchMinPrice = getMinPrice();
+        int searchMaxPrice = getMaxPrice();
         if(searchMinPrice == -1 && searchMaxPrice == -1){return true;}
         if(searchMinPrice == -1){return Integer.parseInt(accommodation.getPrice()) > searchMaxPrice;}
         if(searchMaxPrice == -1){return Integer.parseInt(accommodation.getPrice()) < searchMinPrice;}
@@ -110,28 +216,28 @@ public class Search {
                 && Integer.parseInt(accommodation.getPrice()) < searchMaxPrice;
     }
 
-    private static boolean regionMatch(Search search, Accommodation accommodation) {
-        try{return  search.getPossibleRegions().toString().equals("") ||
-                Region.toStringList(search.getPossibleRegions()).contains(accommodation.getRegion());}
+    private boolean regionMatch(Accommodation accommodation) {
+        try{return  getPossibleRegions().toString().equals("") ||
+                Region.toStringList(getPossibleRegions()).contains(accommodation.getRegion());}
         catch(NullPointerException e){return true;}
     }
 
-    private static boolean hostMatch(Search search, Accommodation accommodation) {
-        try{return  search.getPossibleAccommodationHosts().toString().equals("") ||
-                AccommodationHost.toStringList(search.getPossibleAccommodationHosts()).contains(accommodation.getAccommodationHost());}
+    private boolean hostMatch(Accommodation accommodation) {
+        try{return  getPossibleAccommodationHosts().toString().equals("") ||
+                AccommodationHost.toStringList(getPossibleAccommodationHosts()).contains(accommodation.getAccommodationHost());}
         catch(NullPointerException e){return true;}
     }
 
-    private static boolean houseTypeMatch(Search search, Accommodation accommodation) {
-        try{return search.getPossibleAccomodationHouseTypes().toString().equals("") ||
-                AccommodationHouseType.toStringList(search.getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
+    private boolean houseTypeMatch(Accommodation accommodation) {
+        try{return getPossibleAccomodationHouseTypes().toString().equals("") ||
+                AccommodationHouseType.toStringList(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
         catch(NullPointerException e){return true;}
     }
 
-    private static boolean mainSearchMatch(Search search, Accommodation accommodation) {
-        if(search.getMainSearch().equals("")){return true;}
+    private boolean mainSearchMatch(Accommodation accommodation) {
+        if(getMainSearch().equals("")){return true;}
 
-        String[] mainSearchArray = search.getMainSearch().toLowerCase().split("\\s+");
+        String[] mainSearchArray = getMainSearch().toLowerCase().split("\\s+");
         String accommodationString = (accommodation.getAddress()+" "+accommodation.getAccommodationHouseType()+" "
                 +accommodation.getRegion()+" " +accommodation.getAccommodationHost()).toLowerCase();
 
@@ -153,9 +259,6 @@ public class Search {
         return mainSearch;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
     public ArrayList<AccommodationHouseType> getPossibleAccomodationHouseTypes() {
         return possibleAccommodationHouseTypes;
@@ -185,23 +288,10 @@ public class Search {
         return maxArea;
     }
 
-    public int getMaxSearchers() {
-        return maxSearchers;
-    }
-
-    public String getUpploadDate() {
-        return upploadDate;
-    }
-
-    public String getLastApplyDate() {
-        return lastApplyDate;
-    }
-
     public boolean isEmpty() {
 
         try {
             return this == null || (this.getMainSearch().equals("") &&
-                    this.getAddress().equals("") &&
                     this.getPossibleAccommodationHosts().isEmpty() &&
                     this.getPossibleAccomodationHouseTypes().isEmpty() &&
                     (this.getMaxArea() == -1) &&
@@ -209,12 +299,19 @@ public class Search {
                     (this.getMaxPrice() == -1) &&
                     (this.getMinPrice() == -1) &&
                     (this.getMaxArea() == -1) &&
-                    (this.getMaxSearchers() == -1) &&
-                    this.getLastApplyDate().equals("") &&
-                    this.getUpploadDate().equals(""));
+                    (this.getDaysUpploaded() == -1) &&
+                    (this.getDaysLeft() == -1));
         }
         catch(NullPointerException e){
             return true;
         }
+    }
+
+    public int getDaysUpploaded(){
+        return daysUpploaded;
+    }
+
+    public int getDaysLeft(){
+        return daysLeft;
     }
 }

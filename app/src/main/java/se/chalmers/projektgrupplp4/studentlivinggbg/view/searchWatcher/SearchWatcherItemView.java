@@ -56,7 +56,7 @@ public class SearchWatcherItemView {
 
     private void updateAddress() {
         try{
-            if(model.getSearch().getAddress() != null) txtAddress.setText(model.getSearch().getAddress());
+            if(model.getSearch().getMainSearch() != null) txtAddress.setText(model.getSearch().getMainSearch());
         } catch(NullPointerException e){
             txtAddress.setText("");
             txtAddressLabel.setText("");

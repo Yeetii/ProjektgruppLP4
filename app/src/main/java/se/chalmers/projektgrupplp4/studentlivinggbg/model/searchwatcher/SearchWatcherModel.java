@@ -33,15 +33,15 @@ public class SearchWatcherModel {
 
         Search search1 = new Search("Bra");
 
-        Search search2 = new Search("Bra", "",
+        Search search2 = new Search("Bra",
                 testHouseType, testHost, testRegion,
-                700, 9998, 100, 450, 9999,
-                "13-12-17", "24-12-17");
+                700, 9998, 100, 450,
+                6, 5);
 
-        Search search3 = new Search("Omg", "Gibraltargatan",
+        Search search3 = new Search("Omg",
                 testHouseType2, testHost, testRegion,
-                700, -1, 100, -1, 9999,
-                "13-12-17", "24-12-17");
+                700, -1, 100, -1,
+                7, 6);
 
 
         searchWatcherItems.add(new SearchWatcherItem("Gamla boendet", search1));

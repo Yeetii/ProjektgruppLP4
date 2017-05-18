@@ -23,7 +23,7 @@ public class SearchWatcherItem {
     }
 
     public int checkForMatches(List<Accommodation> newAccommodations){
-        this.newAccommodations = Search.search(search, newAccommodations);
+        this.newAccommodations = search.search(newAccommodations);
         return this.newAccommodations.size();
     }
 

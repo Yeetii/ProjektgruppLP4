@@ -104,9 +104,8 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         dataSet.clear();
         Search lastSearch = SearchHandler.getLastSearch();
 
-        //TODO THE FOLLOWING CODE HAS STOPPED WORKING!!!
         if (!lastSearch.isEmpty()) {
-            dataSet.addAll(Search.search(lastSearch));
+            dataSet.addAll(lastSearch.search());
         }else{
             dataSet.addAll(Accommodation.getAccommodations());
         }
