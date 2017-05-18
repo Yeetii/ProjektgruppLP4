@@ -1,16 +1,10 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
-
-import android.content.Context;
-
-import com.google.gson.Gson;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * Created by PG on 20/04/2017.
@@ -43,19 +37,4 @@ public abstract class AccommodationAdapter {
     }
 
     public abstract List<Accommodation> getAccommodations();
-
-    public static AccommodationAdapter getPopulatedAdapter(Class<? extends AccommodationAdapter> adapterClass,
-                                                           Context context, String fileName) {
-        Gson gson = new Gson();
-        AccommodationAdapter adapter = null;
-        try {
-            InputStream is = context.openFileInput(fileName);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            //Create a new adapter
-            adapter = gson.fromJson(reader, adapterClass);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return adapter;
-    }
 }

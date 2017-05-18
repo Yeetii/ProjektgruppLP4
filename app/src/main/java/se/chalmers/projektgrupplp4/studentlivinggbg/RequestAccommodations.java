@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 
 import java.io.FileOutputStream;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
+
 /**
  * Created by PG on 17/04/2017.
  */

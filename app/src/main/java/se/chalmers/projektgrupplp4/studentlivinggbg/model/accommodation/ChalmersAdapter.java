@@ -1,13 +1,8 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * Created by PG on 20/04/2017.
