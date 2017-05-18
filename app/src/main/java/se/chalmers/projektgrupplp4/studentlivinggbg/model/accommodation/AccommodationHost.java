@@ -16,6 +16,14 @@ public enum AccommodationHost {
                 return "ERROR";
         }
 
+        public String toStringShort(){
+                switch(name()){
+                        case "SGS": return "SGS";
+                        case "CHALMERS": return "Chalmers";
+                }
+                return "ERROR";
+        }
+
         static public AccommodationHost parseString(String string){
                 switch(string){
                         case "SGS Studentbostäder":      return SGS;
@@ -44,4 +52,15 @@ public enum AccommodationHost {
                         return "";}
         }
 
+        public static String toStringListShort(ArrayList<AccommodationHost> hostsArray){
+                try{
+                        String result = "";
+                        for(AccommodationHost host: hostsArray){
+                                result = result + host.toStringShort() + ", ";
+                        }
+                        if(!result.equals("")){return result.substring(0, result.length() - 2);}
+                        return result;                }
+                catch(Exception e){
+                        return "";}
+        }
 }

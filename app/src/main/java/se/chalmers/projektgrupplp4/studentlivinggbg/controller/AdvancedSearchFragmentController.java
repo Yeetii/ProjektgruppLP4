@@ -90,7 +90,7 @@ public class AdvancedSearchFragmentController {
             }catch(Exception e){}
 
         }
-        if(lastSearch.getMaxPrice() < 1){seekBarMaxPrice.setProgress(15000);}
+        if(lastSearch.getMaxPrice() < 1){seekBarMaxPrice.setProgress(10000);}
         if(lastSearch.getMaxArea() < 1){seekBarMaxArea.setProgress(100);}
         if(lastSearch.getDaysUpploaded() < 0){seekBarDaysUpploaded.setProgress(7);}
         if(lastSearch.getDaysLeft() < 0){seekBarDaysLeft.setProgress(7);}
@@ -158,8 +158,8 @@ public class AdvancedSearchFragmentController {
     }
 
     private void initMax() {
-        seekBarMinPrice.setMax(15000);
-        seekBarMaxPrice.setMax(15000);
+        seekBarMinPrice.setMax(10000);
+        seekBarMaxPrice.setMax(10000);
         seekBarMinArea.setMax(100);
         seekBarMaxArea.setMax(100);
         seekBarDaysUpploaded.setMax(7);
