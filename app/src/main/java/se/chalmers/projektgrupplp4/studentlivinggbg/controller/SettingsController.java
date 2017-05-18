@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 import android.app.Activity;
 import android.media.audiofx.BassBoost;
 import android.support.design.widget.BottomNavigationView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -53,6 +54,18 @@ public class SettingsController {
                 } else {
                     //TODO disable push notifications
                 }
+            }
+        });
+        resetDatebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO reset database
+            }
+        });
+        clearSearchWatchers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO clear all searchWatchers
             }
         });
 
