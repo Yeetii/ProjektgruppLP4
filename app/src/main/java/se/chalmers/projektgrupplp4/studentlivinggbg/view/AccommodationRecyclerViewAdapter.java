@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**

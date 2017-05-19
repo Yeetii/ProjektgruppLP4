@@ -23,7 +23,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestAccommodation
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
@@ -139,8 +139,7 @@ class DatabaseUpdater implements Observer {
 
         Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
         ImageModel<Drawable> imageModel = ImageModel.getInstance();
-        imageModel.setHelper(new ImageHandler(context));
-        imageModel.getAndSaveImages(false, newAccommodations);
+        new ImageHandler(context).getAndSaveImages(false, newAccommodations);
 
         counter++;
         //Only do some things when both SGS and Chalmers are done.

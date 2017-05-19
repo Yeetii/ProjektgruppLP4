@@ -17,7 +17,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
 /**
  * Created by PG on 28/04/2017.
@@ -136,7 +135,6 @@ public class SearchActivityController {
             controller.activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
-                      ImageModel.getInstance().getAndSaveImages(true, accommodations);
                       AccommodationsSorter.sortByPrice(accommodations, false);
                       Accommodation.setNewAccommodationList(accommodations);
                       controller.recyclerAdapter.refresh();

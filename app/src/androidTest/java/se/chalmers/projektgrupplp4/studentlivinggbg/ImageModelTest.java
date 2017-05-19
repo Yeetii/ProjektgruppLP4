@@ -11,7 +11,7 @@ import java.util.Random;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModelHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 

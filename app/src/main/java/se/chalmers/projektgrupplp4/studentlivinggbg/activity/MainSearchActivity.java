@@ -11,7 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeMan
 import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
@@ -50,11 +50,10 @@ public class MainSearchActivity extends ActivityWithNavigation {
         new SearchHandler();
         new SettingsModel();
         ImageHandler imageHandler = new ImageHandler(getApplicationContext());
-        ImageModel.<Drawable>getInstance().setHelper(imageHandler);
-        loadDatabase(getApplicationContext());
+        loadDatabase(getApplicationContext(), imageHandler);
     }
 
-    private void loadDatabase(final Context context) {
+    private void loadDatabase(final Context context,final ImageHandler imageHandler) {
         //Throws error if not done in a thread.
         new Thread(new Runnable() {
             @Override
@@ -73,7 +72,7 @@ public class MainSearchActivity extends ActivityWithNavigation {
                 db.close();
 
                 Long currentTime = System.currentTimeMillis();
-                ImageModel.getInstance().getAndSaveImages(true, Accommodation.getAccommodations());
+                imageHandler.getAndSaveImages(true, temp);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
                 SearchActivityController.updateAccommodations(temp);
             }
