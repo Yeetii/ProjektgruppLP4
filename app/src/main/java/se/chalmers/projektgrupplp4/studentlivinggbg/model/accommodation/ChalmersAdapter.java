@@ -155,6 +155,6 @@ public class ChalmersAdapter extends AccommodationAdapter {
             }
             infoString = infoString.substring(infoString.indexOf(firstStartTag));
             return infoString.substring(infoString.indexOf(secondStartTag) + secondStartTag.length(), infoString.indexOf(endTag));
-        };
+        }
     }
 }

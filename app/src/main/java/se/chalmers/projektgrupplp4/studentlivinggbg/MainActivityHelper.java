@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;

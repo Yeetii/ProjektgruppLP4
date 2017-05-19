@@ -2,8 +2,8 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelper;
 
 /**
  * Created by PG on 07/05/2017.

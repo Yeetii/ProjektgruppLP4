@@ -10,15 +10,14 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
  * Created by PG on 28/04/2017.

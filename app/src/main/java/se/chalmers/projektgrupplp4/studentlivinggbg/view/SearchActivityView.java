@@ -1,12 +1,9 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.AdvancedSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**

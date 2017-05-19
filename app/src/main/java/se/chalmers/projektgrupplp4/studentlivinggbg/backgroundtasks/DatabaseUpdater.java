@@ -16,7 +16,7 @@ import java.util.TimeZone;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.CreateDrawableHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
@@ -77,8 +77,7 @@ class DatabaseUpdater implements Observer {
         if (lastUpdateDay != currentDay) return true;
         if (lastUpdateHour < 6 && currentHour >= 6) return true;
         if (lastUpdateHour < 12 && currentHour >= 12) return true;
-        if (lastUpdateHour < 18 && currentHour >= 18) return true;
-        return false;
+        return lastUpdateHour < 18 && currentHour >= 18;
     }
 
     private void notifyApp(List<Accommodation> accommodations, Context context) {
@@ -139,7 +138,7 @@ class DatabaseUpdater implements Observer {
         List<Accommodation> newAccommodations = fillNewAccommodations(context, inputString);
 
         Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
-        ImageModel<Drawable> imageModel = ImageModel.<Drawable>getInstance();
+        ImageModel<Drawable> imageModel = ImageModel.getInstance();
         imageModel.setHelper(new CreateDrawableHelper(context));
         imageModel.getAndSaveImages(false, newAccommodations);
 

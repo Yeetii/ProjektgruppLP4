@@ -80,7 +80,7 @@ public class ObjectActivity extends ActivityWithNavigation implements ViewPager.
                     uri = Uri.parse("https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%" + accommodation.getObjectNumber());
 
                 } else if (accommodation.getAccommodationHost().equals("Chalmers Studentbostäder")) {
-                    //TODO add procidure for CSB
+                    //TODO add procedure for CSB
                     //intent.putExtra("URL", "https://www.chalmersstudentbostader.se/");
                     uri = Uri.parse("https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%" + accommodation.getObjectNumber());
                 }

@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -43,6 +44,20 @@ public class SettingsController {
                 } else {
                     //TODO disable push notifications
                 }
+            }
+        });
+        resetDatebase = (Button) activity.findViewById(R.id.resetDatabase);
+        resetDatebase.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        clearSearchWatchers = (Button) activity.findViewById(R.id.removeSearchWatchers);
+        clearSearchWatchers.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
