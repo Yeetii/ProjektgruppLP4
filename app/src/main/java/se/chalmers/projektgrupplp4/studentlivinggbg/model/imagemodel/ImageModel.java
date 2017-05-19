@@ -102,5 +102,5 @@ public class ImageModel<ImageType> {
 
     public void setHelper(ImageModelHelper<ImageType> helper) {
         this.helper = helper;
-    };
+    }
 }

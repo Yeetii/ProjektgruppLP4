@@ -37,10 +37,7 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
 
     @Override
     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-        if (isChecked)
-            selected[which] = true;
-        else
-            selected[which] = false;
+        selected[which] = isChecked;
     }
 
     @Override
@@ -138,6 +135,6 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
     }
 
     public interface MultiSpinnerListener {
-        public void onItemsSelected(boolean[] selected);
+        void onItemsSelected(boolean[] selected);
     }
 }

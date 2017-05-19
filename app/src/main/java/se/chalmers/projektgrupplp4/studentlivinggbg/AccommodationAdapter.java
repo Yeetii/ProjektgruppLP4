@@ -36,7 +36,7 @@ public abstract class AccommodationAdapter {
                 accommodations.add(adapterAccommodations.get(i));
             }
         }
-    };
+    }
 
     private boolean isSameAccommodation (Accommodation accommodationOne, Accommodation accommodationTwo) {
         return accommodationOne.getObjectNumber().equals(accommodationTwo.getObjectNumber());

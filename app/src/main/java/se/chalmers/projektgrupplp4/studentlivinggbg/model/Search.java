@@ -76,8 +76,7 @@ public class Search {
         if(!priceMatch(accommodation)){return false;}
         if(!areaMatch(accommodation)){return false;}
         if(!upploadDayMatch(accommodation)){return false;}
-        if(!daysLeftMatch(accommodation)){return false;}
-        return true;
+        return daysLeftMatch(accommodation);
     }
 
     private static String parseDate(String input) {

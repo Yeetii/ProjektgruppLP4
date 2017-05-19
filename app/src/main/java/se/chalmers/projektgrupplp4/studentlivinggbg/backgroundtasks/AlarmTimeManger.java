@@ -40,7 +40,7 @@ public class AlarmTimeManger {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, createdIntent, 0);
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeForAlarm, pendingIntent);
         System.out.println("Next alarm set for: " + timeForAlarm);
-    };
+    }
 
     private long nextUpdateTime() {
         Long lastUpdateTime = Db4oDatabase.getInstance().getTimestamp();
