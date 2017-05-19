@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.TimeZone;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.CreateDrawableHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestSender;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestAccommodations;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -114,7 +114,7 @@ class DatabaseUpdater implements Observer {
             Thread newThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    StringBuffer buffer = NetworkHelper.requestChalmersAccommodation(accommodations.get(finalInt));
+                    StringBuffer buffer = RequestSender.requestChalmersAccommodation(accommodations.get(finalInt));
                     setSearcherChalmers(buffer, accommodations.get(finalInt));
                 }
             });
@@ -139,7 +139,7 @@ class DatabaseUpdater implements Observer {
 
         Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
         ImageModel<Drawable> imageModel = ImageModel.getInstance();
-        imageModel.setHelper(new CreateDrawableHelper(context));
+        imageModel.setHelper(new ImageHandler(context));
         imageModel.getAndSaveImages(false, newAccommodations);
 
         counter++;

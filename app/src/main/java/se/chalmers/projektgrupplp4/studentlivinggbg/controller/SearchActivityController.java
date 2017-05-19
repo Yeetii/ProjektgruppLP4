@@ -10,10 +10,10 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -65,22 +65,22 @@ public class SearchActivityController {
                 List<Accommodation> accommodations = recyclerAdapter.getAccommodations();
                 switch (selected) {
                     case "Pris ↑":
-                        SorterHelper.sortByPrice(accommodations, true);
+                        AccommodationsSorter.sortByPrice(accommodations, true);
                         break;
                     case "Pris ↓":
-                        SorterHelper.sortByPrice(accommodations, false);
+                        AccommodationsSorter.sortByPrice(accommodations, false);
                         break;
                     case "Storlek ↑":
-                        SorterHelper.sortBySize(accommodations, true);
+                        AccommodationsSorter.sortBySize(accommodations, true);
                         break;
                     case "Storlek ↓":
-                        SorterHelper.sortBySize(accommodations, false);
+                        AccommodationsSorter.sortBySize(accommodations, false);
                         break;
                     case "A-Ö":
-                        SorterHelper.sortByAddress(accommodations, false);
+                        AccommodationsSorter.sortByAddress(accommodations, false);
                         break;
                     case "Ö-A":
-                        SorterHelper.sortByAddress(accommodations, true);
+                        AccommodationsSorter.sortByAddress(accommodations, true);
                         break;
                     }
                 recyclerAdapter.notifyDataSetChanged();
@@ -137,7 +137,7 @@ public class SearchActivityController {
                   @Override
                   public void run() {
                       ImageModel.getInstance().getAndSaveImages(true, accommodations);
-                      SorterHelper.sortByPrice(accommodations, false);
+                      AccommodationsSorter.sortByPrice(accommodations, false);
                       Accommodation.setNewAccommodationList(accommodations);
                       controller.recyclerAdapter.refresh();
                   }

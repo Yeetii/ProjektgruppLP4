@@ -53,7 +53,6 @@ public class Accommodation {
     }
 
     public static ArrayList<Accommodation> getFavorites() {
-        System.out.println(getAccommodations());
         ArrayList<Accommodation> result = new ArrayList<>();
         for (Accommodation accommodation: getAccommodations()){
             if(accommodation.getFavorite()) {

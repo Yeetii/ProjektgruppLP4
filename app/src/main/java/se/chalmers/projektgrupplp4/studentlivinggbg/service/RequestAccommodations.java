@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -64,13 +64,13 @@ public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
 
     private StringBuffer sendGet() throws Exception {
         String url = "https://www.chalmersstudentbostader.se/widgets/?actionId=&omraden=&objektTyper=&maxAntalDagarPublicerad=&callback=jQuery172027556341802877515_1492691004676&widgets%5B%5D=alert&widgets%5B%5D=objektfilter%40lagenheter&widgets%5B%5D=objektsummering%40lagenheter&widgets%5B%5D=objektsortering&widgets%5B%5D=objektlistabilder%40lagenheter&objektfilter%40lagenheter.maxyta=130&objektfilter%40lagenheter.maxhyra=14000";
-        return NetworkHelper.sendGetRequest(url);
+        return RequestSender.sendGetRequest(url);
     }
 
 
     // HTTPS POST request
     private StringBuffer sendPost() throws Exception {
-        return NetworkHelper.sendPostRequestToSGS();
+        return RequestSender.sendPostRequestToSGS();
     }
 
 }

@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  * Created by PG on 16/05/2017.
  */
 
-public class SorterHelper {
+public class AccommodationsSorter {
     private static Comparator<Accommodation> priceCompare = new Comparator<Accommodation>() {
             @Override
             public int compare(Accommodation o1, Accommodation o2) {

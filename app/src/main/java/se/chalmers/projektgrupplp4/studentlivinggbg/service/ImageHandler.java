@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 
 import android.content.Context;
@@ -20,11 +20,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModelH
  * Created by PG on 13/05/2017.
  */
 
-public class CreateDrawableHelper implements ImageModelHelper<Drawable> {
+public class ImageHandler implements ImageModelHelper<Drawable> {
     private File directory;
     private Context context;
 
-    public CreateDrawableHelper (Context context) {
+    public ImageHandler(Context context) {
         this.context = context;
         ContextWrapper cw = new ContextWrapper(context);
         directory = cw.getDir("imageDir", Context.MODE_PRIVATE);

@@ -53,7 +53,6 @@ public class RecyclerViewHelper {
                         int position = viewHolder.getAdapterPosition();
                         //Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
                         recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
-                        System.out.println(direction != ItemTouchHelper.LEFT);
                         //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
 
                         recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());

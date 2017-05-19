@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.CreateDrawableHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -50,8 +49,8 @@ public class MainSearchActivity extends ActivityWithNavigation {
     private void initSearchActivity() {
         new SearchHandler();
         new SettingsModel();
-        CreateDrawableHelper createDrawableHelper = new CreateDrawableHelper(getApplicationContext());
-        ImageModel.<Drawable>getInstance().setHelper(createDrawableHelper);
+        ImageHandler imageHandler = new ImageHandler(getApplicationContext());
+        ImageModel.<Drawable>getInstance().setHelper(imageHandler);
         loadDatabase(getApplicationContext());
     }
 

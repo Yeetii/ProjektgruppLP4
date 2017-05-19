@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;

@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -14,7 +14,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  * Created by PG on 10/05/2017.
  */
 
-public class NetworkHelper {
+public class RequestSender {
     public static StringBuffer sendGetRequest(String url) throws Exception {
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();

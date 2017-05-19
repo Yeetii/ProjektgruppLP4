@@ -1,21 +1,14 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ObjectActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHolderObservable;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHolderObserver;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
  * Created by Jonathan on 18/04/2017.

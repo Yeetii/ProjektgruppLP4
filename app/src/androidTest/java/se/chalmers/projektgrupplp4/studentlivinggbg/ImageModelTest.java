@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.test.InstrumentationRegistry;
 
@@ -14,6 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModelHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -26,7 +26,7 @@ public class ImageModelTest {
     @Test
     public void TestDownloadFromServer () {
         ImageModel model = ImageModel.<Drawable>getInstance();
-        ImageModelHelper<Drawable> helper = new CreateDrawableHelper(InstrumentationRegistry.getTargetContext());
+        ImageModelHelper<Drawable> helper = new ImageHandler(InstrumentationRegistry.getTargetContext());
         //Run throw a new random dir to be sure the images are new.
         helper.changeDirectory("testDir" + new Random(10000).nextInt());
         model.setHelper(helper);
