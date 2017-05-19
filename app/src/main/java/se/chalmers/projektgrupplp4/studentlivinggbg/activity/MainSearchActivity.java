@@ -9,7 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityCon
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
-public class MainSearchActivity extends AppCompatActivity {
+public class MainSearchActivity extends ActivityWithNavigation {
     private MainActivityHelper mainActivityHelper;
 
     @Override
@@ -20,6 +20,7 @@ public class MainSearchActivity extends AppCompatActivity {
         SearchActivityView searchActivityView = new SearchActivityView(this, adapter);
         new SearchActivityController(this, searchActivityView, adapter);
         adapter.refresh();
+        initializeNavigationListener();
     }
 
     @Override

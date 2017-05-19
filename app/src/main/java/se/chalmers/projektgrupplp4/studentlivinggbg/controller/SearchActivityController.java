@@ -1,7 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
-import android.app.Activity;
-import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,14 +10,13 @@ import android.widget.Spinner;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityWithNavigation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
@@ -29,13 +26,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 public class SearchActivityController {
     private static SearchActivityController controller;
 
-    private Activity activity;
+    private ActivityWithNavigation activity;
     private SearchView searchView;
     private SearchActivityView activityView;
     private AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
 
-    public SearchActivityController(Activity activity, SearchActivityView activityView, AccommodationRecyclerViewAdapter adapter) {
+    public SearchActivityController(ActivityWithNavigation activity, SearchActivityView activityView, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;
         this.activityView = activityView;
         this.recyclerAdapter = adapter;
@@ -46,12 +43,10 @@ public class SearchActivityController {
     }
 
     private void initListeners() {
-        BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         ImageButton advancedSearch = (ImageButton) activity.findViewById(R.id.advancedSearch);
         searchView = (SearchView) activity.findViewById(R.id.searchField);
 
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
-        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getFirstInstance(activity));
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
@@ -132,7 +127,7 @@ public class SearchActivityController {
     private ImageButton.OnClickListener onClickAdvancedSearch = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            AdvancedSearchActivityView.open(activity);
+            activity.navigateToAdvancedSearch(activity);
         }
     };
 

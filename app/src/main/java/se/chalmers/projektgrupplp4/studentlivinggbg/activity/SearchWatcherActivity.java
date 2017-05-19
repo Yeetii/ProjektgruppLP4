@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
  * Created by PG on 03/04/2017.
  */
 
-public class SearchWatcherActivity extends AppCompatActivity {
+public class SearchWatcherActivity extends ActivityWithNavigation {
     private SearchWatcherView view;
     private SearchWatcherController controller;
 
@@ -28,7 +28,9 @@ public class SearchWatcherActivity extends AppCompatActivity {
         controller = new SearchWatcherController(adapter, view, this);
 
         new AdvancedSearchFragmentView(this);
+        initializeNavigationListener();
     }
+
 
     //Should this be done in the controller?
     @Override

@@ -1,11 +1,8 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.AdvancedSearchActivity;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -13,17 +10,17 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
  * Created by PG on 17/05/2017.
  */
 
-public class NavigationHelper {
-    private static NavigationHelper instance;
+public class ActivitySwitcher {
+    private static ActivitySwitcher instance;
     private Context context;
 
-    private NavigationHelper(Context context) {
+    private ActivitySwitcher(Context context) {
         this.context = context;
     }
 
-    public static NavigationHelper getInstance(Context context) {
+    public static ActivitySwitcher getInstance(Context context) {
         if (instance == null) {
-            instance = new NavigationHelper(context);
+            instance = new ActivitySwitcher(context);
         }
         return instance;
     }

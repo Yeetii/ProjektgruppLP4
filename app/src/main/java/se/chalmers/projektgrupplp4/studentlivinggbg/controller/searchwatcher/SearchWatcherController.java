@@ -2,12 +2,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
@@ -42,7 +40,6 @@ public class SearchWatcherController implements Observer{
     }
 
     private void initializeListeners() {
-        initializeNavigationListener();
         initializeToggleModalListener();
         initializeDoNothingListener();
         initializeModalDoneButtonListener();
@@ -105,13 +102,6 @@ public class SearchWatcherController implements Observer{
                 if (v.getId() == R.id.backgroundModal) toggle();
             }
         });
-    }
-
-
-    private void initializeNavigationListener () {
-        BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
-        navigation.setSelectedItemId(R.id.navigation_notifications);
     }
 
     private void createSearchWatcher(String name){

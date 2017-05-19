@@ -30,7 +30,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
 
-public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
+public class ObjectActivity extends ActivityWithNavigation implements ViewPager.OnPageChangeListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -86,6 +86,7 @@ public class ObjectActivity extends AppCompatActivity implements ViewPager.OnPag
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                initializeNavigationListener();
             }
         });
 

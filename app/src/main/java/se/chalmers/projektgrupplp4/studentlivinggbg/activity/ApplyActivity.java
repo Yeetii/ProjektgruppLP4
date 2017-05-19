@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.ApplyActivityController;
 
-public class ApplyActivity extends AppCompatActivity {
+public class ApplyActivity extends ActivityWithNavigation {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class ApplyActivity extends AppCompatActivity {
 
         //Should be in view but ridiculous to make a class for one line?
         setContentView(R.layout.activity_apply);
+        initializeNavigationListener();
     }
 
 

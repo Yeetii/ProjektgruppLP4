@@ -6,7 +6,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ApplyActivity;
 
 /**
  * Created by Erik on 2017-05-17.

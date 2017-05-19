@@ -10,6 +10,7 @@ import android.view.View;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityWithNavigation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
@@ -22,12 +23,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
-    private Activity activity;
+    private ActivityWithNavigation activity;
     private List<SearchWatcherItem> data;
     private LayoutInflater inflater;
 
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity) {
+    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, ActivityWithNavigation activity) {
         super(context, R.layout.search_watcher_row_item, data);
         this.data = data;
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
