@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -10,6 +10,8 @@ import android.graphics.RectF;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by Jonathan on 09/05/2017.

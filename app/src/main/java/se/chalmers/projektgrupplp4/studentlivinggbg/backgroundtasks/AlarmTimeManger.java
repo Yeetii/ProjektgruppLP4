@@ -8,7 +8,7 @@ import android.content.Intent;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
 
 /**
  * Created by PG on 12/05/2017.

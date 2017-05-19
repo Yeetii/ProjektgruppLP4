@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.fragment;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,10 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityView;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
 public class AdvancedSearchFragment extends Fragment {
 
