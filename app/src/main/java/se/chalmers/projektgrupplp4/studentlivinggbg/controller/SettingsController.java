@@ -56,16 +56,18 @@ public class SettingsController {
                 }
             }
         });
-        resetDatebase.setOnClickListener(new View.OnClickListener() {
+        resetDatebase = (Button) activity.findViewById(R.id.resetDatabase);
+        resetDatebase.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO reset database
+
             }
         });
-        clearSearchWatchers.setOnClickListener(new View.OnClickListener() {
+        clearSearchWatchers = (Button) activity.findViewById(R.id.removeSearchWatchers);
+        clearSearchWatchers.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO clear all searchWatchers
+
             }
         });
 
