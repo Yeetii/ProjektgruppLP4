@@ -31,7 +31,6 @@ public class ActivitySwitcher {
         Intent newActivity = new Intent(context, newActivityClass);
         newActivity.addFlags(FLAG_ACTIVITY_NO_ANIMATION);
         newActivity.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        System.out.println("Navigate away:" + newActivityClass);
         context.startActivity(newActivity);
     }
 }
