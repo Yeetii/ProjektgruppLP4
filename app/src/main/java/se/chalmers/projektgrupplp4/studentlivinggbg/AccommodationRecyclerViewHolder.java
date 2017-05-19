@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,9 @@ import static android.support.v4.content.ContextCompat.startActivity;
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {
+        private Class<? extends Activity> targetClass;
+
+
         TextView txtAddress;
         TextView txtHouseType;
         TextView txtArea;
@@ -28,8 +32,9 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
         int position;
         private RecyclerViewHolderObserver recyclerViewHolderObserver;
 
-        public AccommodationRecyclerViewHolder(View v) {
+        public AccommodationRecyclerViewHolder(View v, final Class<? extends Activity> targetClass) {
             super(v);
+            this.targetClass = targetClass;
             txtAddress = (TextView) v.findViewById(R.id.address);
             txtHouseType = (TextView) v.findViewById(R.id.type);
             txtArea = (TextView) v.findViewById(R.id.area);
@@ -47,10 +52,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, ObjectActivity.class);
-                    intent.putExtra("ARG_POSITION", position);
-                    startActivity(context,intent,null);
+                    ActivitySwitcher.getInstance(v.getContext()).navigate(targetClass);
                     //Toast.makeText(v.getContext(), txtAddress.getText(), Toast.LENGTH_SHORT).show();
                 }
             });

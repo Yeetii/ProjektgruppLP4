@@ -1,14 +1,17 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityWithNavigation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+
+import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 /**
  * Created by PG on 23/04/2017.
@@ -17,12 +20,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 public class SearchWatcherItemController {
     private SearchWatcherItem model;
     private View view;
-    private ActivityWithNavigation activity;
+    private Class<? extends  Activity> targetClass;
+    private Activity activity;
 
-    public SearchWatcherItemController (SearchWatcherItem model, View view, ActivityWithNavigation activity) {
+    public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity, Class<? extends  Activity> targetClass) {
         this.model = model;
         this.view = view;
         this.activity = activity;
+        this.targetClass = targetClass;
         addListeners();
     }
 
@@ -49,7 +54,7 @@ public class SearchWatcherItemController {
             public void onClick (View view) {
                 Search search = model.getSearch();
                 SearchHandler.addToLastSearches(search);
-                activity.navigateToMainActivity(activity);
+                ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });
     }

@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,9 +22,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
 
     private List<Accommodation> dataSet;
+    private Class<? extends Activity> targetActivity;
 
-    public AccommodationRecyclerViewAdapter(List<Accommodation> data) {
+    public AccommodationRecyclerViewAdapter(List<Accommodation> data, Class<? extends Activity> targetActivity) {
         dataSet = new ArrayList<>();
+        this.targetActivity = targetActivity;
         for (Accommodation i : data) {
             dataSet.add(i);
         }
@@ -91,7 +94,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
 
     @Override public AccommodationRecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
-        return new AccommodationRecyclerViewHolder(view);
+        return new AccommodationRecyclerViewHolder(view, targetActivity);
     }
 
 

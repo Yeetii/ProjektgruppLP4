@@ -16,11 +16,15 @@ public class MainSearchActivity extends ActivityWithNavigation {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivityHelper = MainActivityHelper.getInstance(getApplicationContext());
-        AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations());
-        SearchActivityView searchActivityView = new SearchActivityView(this, adapter);
-        new SearchActivityController(this, searchActivityView, adapter);
+        AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), ObjectActivity.class);
+        new SearchActivityView(this, adapter);
+        new SearchActivityController(this, adapter,AdvancedSearchActivity.class);
         adapter.refresh();
-        initializeNavigationListener();
+        try {
+            initializeNavigationListener();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

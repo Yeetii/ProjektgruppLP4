@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,9 +11,9 @@ import android.widget.Spinner;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityWithNavigation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -26,16 +27,16 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 public class SearchActivityController {
     private static SearchActivityController controller;
 
-    private ActivityWithNavigation activity;
+    private Activity activity;
     private SearchView searchView;
-    private SearchActivityView activityView;
     private AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
+    private Class<? extends Activity> targetActivity;
 
-    public SearchActivityController(ActivityWithNavigation activity, SearchActivityView activityView, AccommodationRecyclerViewAdapter adapter) {
+    public SearchActivityController(Activity activity, AccommodationRecyclerViewAdapter adapter, Class<? extends Activity> targetActivity) {
         this.activity = activity;
-        this.activityView = activityView;
         this.recyclerAdapter = adapter;
+        this.targetActivity = targetActivity;
         RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity, adapter);
         recyclerViewHelper.initSwipe();
         initListeners();
@@ -127,7 +128,7 @@ public class SearchActivityController {
     private ImageButton.OnClickListener onClickAdvancedSearch = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            activity.navigateToAdvancedSearch(activity);
+            ActivitySwitcher.getInstance(activity).navigate(targetActivity);
         }
     };
 

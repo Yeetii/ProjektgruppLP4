@@ -14,7 +14,7 @@ public class FavoritesActivity extends ActivityWithNavigation {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites());
+        recyclerViewAdapter = new AccommodationRecyclerViewAdapter(Accommodation.getFavorites(), ObjectActivity.class);
         new FavoritesView(this, recyclerViewAdapter);
         new FavoritesController(this, recyclerViewAdapter);
         initializeNavigationListener();

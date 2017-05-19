@@ -11,7 +11,7 @@ public class AdvancedSearchActivity extends ActivityWithNavigation{
         super.onCreate(savedInstanceState);
 
         new AdvancedSearchActivityView(this);
-        new AdvancedSearchActivityController(this);
+        new AdvancedSearchActivityController(this, MainSearchActivity.class);
         initializeNavigationListener();
     }
 }

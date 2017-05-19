@@ -1,19 +1,21 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by PG on 18/05/2017.
  */
 
-public abstract class ActivityWithNavigation extends AppCompatActivity {
+ abstract class ActivityWithNavigation extends AppCompatActivity {
+    private static Class currentSelected;
+
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -22,10 +24,9 @@ public abstract class ActivityWithNavigation extends AppCompatActivity {
     protected void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setSelectedItemId(R.id.navigation_notifications);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -46,8 +47,9 @@ public abstract class ActivityWithNavigation extends AppCompatActivity {
                     newActivityClass = SettingsActivity.class;
                     break;
             }
-            if (newActivityClass != this.getClass()) {
+            if (newActivityClass != currentSelected) {
                 ActivitySwitcher.getInstance(getApplicationContext()).navigate(newActivityClass);
+                currentSelected = newActivityClass;
                 return true;
             }
 
@@ -55,13 +57,4 @@ public abstract class ActivityWithNavigation extends AppCompatActivity {
         }
 
     };
-
-    public void navigateToMainActivity(Context context) {
-        ActivitySwitcher.getInstance(context).navigateToMainActivity();
-    }
-
-    public void navigateToAdvancedSearch(Context context) {
-        ActivitySwitcher.getInstance(context).navigateToAdvancedSearch();
-
-    }
 }

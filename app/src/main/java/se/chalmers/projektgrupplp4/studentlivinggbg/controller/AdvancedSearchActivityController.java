@@ -7,16 +7,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityWithNavigation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 public class AdvancedSearchActivityController implements Observer{
-    private ActivityWithNavigation activity;
+    private Activity activity;
     private AdvancedSearchFragmentController fragmentController;
+    private Class<? extends Activity> targetClass;
 
     private Button advancedSearchButton;
     private Button createSearchWatcherButton;
@@ -25,8 +26,9 @@ public class AdvancedSearchActivityController implements Observer{
     private Search wannabeSearchWatcher;
 
 
-    public AdvancedSearchActivityController(ActivityWithNavigation activity){
+    public AdvancedSearchActivityController(Activity activity, Class<? extends Activity> targetClass){
         this.activity = activity;
+        this.targetClass = targetClass;
         initListeners();
         this.fragmentController = new AdvancedSearchFragmentController(activity);
     }
@@ -80,7 +82,7 @@ public class AdvancedSearchActivityController implements Observer{
     };
 
     private void returnToMainSearch(){
-        activity.navigateToMainActivity(activity);
+        ActivitySwitcher.getInstance(activity).navigate(targetClass);
     }
 
     private void createSearchWatcher(String name){

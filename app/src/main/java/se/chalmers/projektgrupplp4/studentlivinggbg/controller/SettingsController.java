@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.support.design.widget.BottomNavigationView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;

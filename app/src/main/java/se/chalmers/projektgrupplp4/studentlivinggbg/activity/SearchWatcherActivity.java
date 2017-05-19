@@ -22,7 +22,7 @@ public class SearchWatcherActivity extends ActivityWithNavigation {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcherItem>(), this);
+        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcherItem>(), this, MainSearchActivity.class);
 
         this.view = new SearchWatcherView(this, adapter);
         controller = new SearchWatcherController(adapter, view, this);
