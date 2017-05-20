@@ -44,7 +44,9 @@ public enum AccommodationHost {
                 try{
                         String result = "";
                         for(AccommodationHost host: hostsArray){
-                                result = result + host.toString() + ", ";
+                                if(host != null) {
+                                        result = result + host.toString() + ", ";
+                                }
                         }
                         if(!result.equals("")){return result.substring(0, result.length() - 2);}
                         return result;                }
@@ -56,7 +58,9 @@ public enum AccommodationHost {
                 try{
                         String result = "";
                         for(AccommodationHost host: hostsArray){
-                                result = result + host.toStringShort() + ", ";
+                                if(host != null){
+                                        result = result + host.toStringShort() + ", ";
+                                }
                         }
                         if(!result.equals("")){return result.substring(0, result.length() - 2);}
                         return result;                }
