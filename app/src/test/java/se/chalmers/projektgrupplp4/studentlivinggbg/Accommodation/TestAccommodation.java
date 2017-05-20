@@ -16,6 +16,43 @@ import static org.junit.Assert.*;
 public class TestAccommodation {
 
     @Test
+    public void testSettersAndGetters(){
+
+        String objectNumber = "12";
+        String address = "testgatan1";
+        AccommodationHouseType accommodationHouseType = AccommodationHouseType.COOKING_CABINET;
+        Region region = Region.CENTER;
+        int price = 10000;
+        double area = 100.1;
+        int searchers = 10;
+        String thumbnail = "test";
+        List<Integer> images = new ArrayList<>();
+        images.add(1);
+        String description = "haha";
+        AccommodationHost accommodationHost = AccommodationHost.CHALMERS;
+        boolean isFavorite = false;
+        String upploadDate = "11-11-12";
+        String lastApplyDate = "12-11-12";
+
+        Accommodation accommodation = new Accommodation(objectNumber,address,accommodationHouseType,price,area,searchers,thumbnail,description,accommodationHost, region,upploadDate, lastApplyDate, false);
+
+        assertTrue(accommodation.getFurnitured().equals("nej"));
+        assertTrue(accommodation.getAddress().equals(address));
+        assertTrue(accommodation.getPrice().equals(Integer.toString(price)));
+        assertTrue(accommodation.getArea().equals(Double.toString(area)));
+        assertTrue(accommodation.getSearchers().equals(Integer.toString(searchers)));
+        accommodation.setSearchers(9);
+        assertTrue(accommodation.getSearchers().equals(Integer.toString(9)));
+        assertTrue(accommodation.getImagePath().equals(thumbnail.substring(thumbnail.indexOf("file=") + "file=".length())));
+        assertTrue(accommodation.getThumbnail().equals(thumbnail));
+        assertTrue(accommodation.getDescription().equals(description));
+        assertTrue(accommodation.getAccommodationHost().equals(accommodationHost.toString()));
+        assertTrue(accommodation.getRegion().equals(region.toString()));
+
+
+    }
+
+    @Test
     public void testAddToAccommodations(){
         Accommodation newAccommodationAdd = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", true);
         Accommodation newAccommodationNotAdd = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
