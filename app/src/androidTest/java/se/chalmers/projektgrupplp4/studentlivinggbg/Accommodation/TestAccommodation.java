@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 import static org.junit.Assert.*;
 
-public class AccommodationTest {
+public class TestAccommodation {
 
     @Test
     public void testAddToAccommodations(){

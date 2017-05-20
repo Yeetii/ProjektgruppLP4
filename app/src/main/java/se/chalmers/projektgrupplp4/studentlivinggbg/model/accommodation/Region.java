@@ -44,8 +44,9 @@ public enum Region {
         try{
             String result = "";
             for(Region region: regionArray){
-                result = result + region.toString() + ", ";
-            }
+                if(region != null){
+                    result = result + region.toString() + ", ";
+                }}
             if(!result.equals("")){return result.substring(0, result.length() - 2);}
             return result;
         }
