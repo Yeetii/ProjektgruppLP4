@@ -52,7 +52,9 @@ public enum AccommodationHouseType {
     try{
         String result = "";
         for(AccommodationHouseType houseType: houseTypesArray){
-            result = result + houseType.toString() + ", ";
+            if(houseType != null){
+                result = result + houseType.toString() + ", ";
+            }
         }
         if(!result.equals("")){return result.substring(0, result.length() - 2);}
         return result;    }

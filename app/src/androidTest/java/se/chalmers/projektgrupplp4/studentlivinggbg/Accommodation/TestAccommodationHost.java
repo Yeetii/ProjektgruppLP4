@@ -45,7 +45,7 @@ public class TestAccommodationHost {
     }
 
     @Test
-    public void testToStringList(){
+    public void testStringList(){
         ArrayList<AccommodationHost> newList = new ArrayList<>();
         newList.add(AccommodationHost.SGS);
         newList.add(AccommodationHost.CHALMERS);
