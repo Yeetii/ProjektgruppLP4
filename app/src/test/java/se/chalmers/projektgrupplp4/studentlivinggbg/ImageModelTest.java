@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import android.graphics.drawable.Drawable;
-import android.support.test.InstrumentationRegistry;
+//import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
