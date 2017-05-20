@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.Accommodation;
 
 import org.junit.Test;
 

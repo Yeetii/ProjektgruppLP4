@@ -198,7 +198,7 @@ public class Search {
     }
 
     private boolean daysLeftMatch(Accommodation accommodation) {
-        if(getDaysLeft() == 7 ||getDaysLeft() == -1){return true;}
+        if(getDaysLeft() == 7 || getDaysLeft() == -1){return true;}
         return parseDays(accommodation.getLastApplyDate(), new Date().toString(), getDaysLeft());
     }
 
@@ -282,7 +282,11 @@ public class Search {
     }
 
     private static String parseDateYear(String string) {
-        return string.substring(30,34);
+        try{
+        return string.substring(30,34);}
+        catch(StringIndexOutOfBoundsException e){
+            return string.substring(25, 29);
+        }
     }
 
     private static int daysInMonth(int month, int year) {
