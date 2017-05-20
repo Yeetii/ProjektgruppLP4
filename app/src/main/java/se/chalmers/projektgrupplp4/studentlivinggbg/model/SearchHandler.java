@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
@@ -63,7 +62,7 @@ public class SearchHandler {
         catch(IndexOutOfBoundsException e){
             return new Search("");}}
 
-    public static List<Accommodation> getLastSearchResults(){
-        return getLastSearch().search();
+    public static List<Search> getLastSearches(){
+        return lastSearches;
     }
 }
