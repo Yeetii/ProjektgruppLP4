@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -17,10 +16,20 @@ import static org.junit.Assert.*;
 public class TestSearchHandler {
 
     @Test
-    public void createSearch(){
-        Search search1 = SearchHandler.createSearch("");
-        assertFalse(SearchHandler.getLastSearches().contains(search1));
-        assertFalse(SearchHandler.getLastSearch() == search1);
+    public void testSearchHandler(){
+        SearchHandler searchHandler = new SearchHandler();
+        assertTrue(searchHandler instanceof SearchHandler);
+    }
+
+    @Test
+    public void testCreateSearch(){
+        Search search0 = SearchHandler.createSearch("");
+        assertFalse(SearchHandler.getLastSearches().contains(search0));
+        assertFalse(SearchHandler.getLastSearch() == search0);
+
+        Search search1 = SearchHandler.createSearch("test");
+        assertTrue(SearchHandler.getLastSearches().contains(search1));
+        assertTrue(SearchHandler.getLastSearch() == search1);
 
         Search search2 = SearchHandler.createSearch("", false);
         assertFalse(SearchHandler.getLastSearches().contains(search2));
@@ -40,6 +49,29 @@ public class TestSearchHandler {
                 new ArrayList<Region>(), -1, -1, -1, -1, -1, -1, true);
         assertTrue(SearchHandler.getLastSearches().contains(search5));
         assertTrue(SearchHandler.getLastSearch() == search5);
+    }
+
+    @Test
+    public void testAddToLastSearchers(){
+        SearchHandler.createSearch("test", true);
+
+        for(int i=0; i < 10; i++){
+            SearchHandler.createSearch(String.valueOf(i), true);
+        }
+
+        String mainSearches = "";
+        for(Search search: SearchHandler.getLastSearches()) {
+            mainSearches = mainSearches + search.getMainSearch() + " ";
+        }
+
+        String[] stringArray = mainSearches.split(" ");
+        for(int i=0; i<stringArray.length; i++){
+            assertFalse(stringArray[i].equals("test"));
+        }
+
+        for(int i=1; i < 10; i++){
+            assertTrue(mainSearches.contains(String.valueOf(i)));
+        }
     }
 
 
