@@ -89,6 +89,18 @@ public class TestAccommodation {
     }
 
     @Test
+    public void testSetNewAccommodationList(){
+        Accommodation.getAccommodations().clear();
+        Accommodation newAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        List<Accommodation> accommodationList = new ArrayList<>();
+        accommodationList.add(newAccommodation);
+
+        assertFalse(Accommodation.getAccommodations().contains(newAccommodation));
+        Accommodation.setNewAccommodationList(accommodationList);
+        assertTrue(Accommodation.getAccommodations().contains(newAccommodation));
+    }
+
+    @Test
     public void testTransferFavoriteStatus(){
         List<Accommodation> newAccommodations = new ArrayList<>();
         List<Accommodation> previousAccommodations = new ArrayList<>();
