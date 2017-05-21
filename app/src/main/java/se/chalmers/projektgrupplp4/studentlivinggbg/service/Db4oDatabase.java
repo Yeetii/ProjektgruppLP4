@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.database;
+package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 
 import android.content.Context;

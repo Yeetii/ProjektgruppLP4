@@ -16,7 +16,7 @@ import java.util.TimeZone;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.database.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestSender;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestAccommodations;
