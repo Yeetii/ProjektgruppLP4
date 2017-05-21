@@ -43,14 +43,13 @@ public class ObjectView {
     private ViewPager mViewPager;
 
 
-    public ObjectView (Activity activity) {
+    public ObjectView (Activity activity, FragmentManager supportFragmentManager) {
         this.activity = activity;
         this.activity.setContentView(R.layout.activity_object);
-        ObjectActivity test = (ObjectActivity) activity;
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         //TODO better way to do this??
-        mSectionsPagerAdapter = new SectionsPagerAdapter(test.getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(supportFragmentManager);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) activity.findViewById(R.id.container);
