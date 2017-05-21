@@ -34,8 +34,6 @@
         <activity
             android:name=".activity.AdvancedSearchActivity"
             android:label="@string/title_activity_advanced_search" />
-        <activity android:name=".activity.ApplyActivity">
-            android:label="@string/title_activity_advanced_search"></activity>
 
         <receiver android:name=".backgroundtasks.OnBootReceiver">
             <intent-filter>

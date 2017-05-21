@@ -50,23 +50,14 @@ public class ObjectController {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.google.com");
-                //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                //startActivity(intent);
-                //Intent intent = new Intent(ObjectActivity.this, ApplyActivity.class);
                 Accommodation accommodation = Accommodation.getAccommodations().get(activity.getIntent().getIntExtra("ARG_POSITION",0));
                 if (accommodation.getAccommodationHost().equals("SGS Studentbostäder")) {
-                    //String URL = "https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%" + accommodation.getObjectNumber();
-                    //intent.putExtra("URL", URL);
                     uri = Uri.parse(ObjectActivityModel.getsGSUrl() + accommodation.getObjectNumber());
-
                 } else if (accommodation.getAccommodationHost().equals("Chalmers Studentbostäder")) {
-                    //TODO add procedure for CSB
-                    //intent.putExtra("URL", "https://www.chalmersstudentbostader.se/");
                     uri = Uri.parse(ObjectActivityModel.getChalmersUrl() + accommodation.getObjectNumber());
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 activity.startActivity(intent);
-                //initializeNavigationListener();
             }
         });
 
