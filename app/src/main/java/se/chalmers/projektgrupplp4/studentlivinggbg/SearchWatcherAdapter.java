@@ -76,10 +76,12 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         }
     }
 
-    public void refresh() {
-        data.clear();
-        data.addAll(SearchWatcherModel.getSearchWatcherItems());
-    }
+//    public void refresh() {
+//        data.clear();
+//        data.addAll(SearchWatcherModel.getSearchWatcherItems());
+//        System.out.println("Refreshed with " + data.size());
+//        System.out.println("Model size " + SearchWatcherModel.getSearchWatcherItems().size());
+//    }
 
     @Override
     public long getItemId(int position){

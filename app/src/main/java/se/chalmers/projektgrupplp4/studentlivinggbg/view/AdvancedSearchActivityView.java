@@ -17,7 +17,6 @@ public class AdvancedSearchActivityView {
     public AdvancedSearchActivityView(Activity activity){
         this.activity = activity;
         this.activity.setContentView(R.layout.activity_advanced_search);
-        new AdvancedSearchFragmentView(activity);
     }
 
     public static void open (Activity activity) {

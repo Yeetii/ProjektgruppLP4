@@ -1,13 +1,11 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.NavigationHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.MainSearchActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -34,8 +32,8 @@ public class SearchWatcherItemController implements Observer{
         this.activity = activity;
         //Not the best solution perhaps as new controllers and views are created for the same modal, would singleton be better?
         //Couldn't pass it through constructors
-        this.modalView = new ModalView(activity, model);
-        this.modalController = new ModalController(activity, modalView, this);
+//        this.modalView = new ModalView(activity, model);
+//        this.modalController = new ModalController(activity, modalView, this);
         addListeners();
     }
 
@@ -51,7 +49,7 @@ public class SearchWatcherItemController implements Observer{
         return (new ImageView.OnClickListener () {
             @Override
             public void onClick (View view) {
-                modalController.toggle();
+                modalController.close();
                 model.editSearchWatcher();
             }
         });

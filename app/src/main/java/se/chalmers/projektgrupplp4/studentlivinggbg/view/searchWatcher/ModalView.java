@@ -1,7 +1,8 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -13,9 +14,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
  */
 
 public class ModalView {
-    private Activity activity;
+    private View view;
     private ToggleButton modalButton;
-    private FragmentManager fm;
     private boolean modalVisibility = false;
     private boolean newMode;
     private SearchWatcherItem model;
@@ -23,23 +23,25 @@ public class ModalView {
     private TextView doneText;
     private TextView title;
 
-    public ModalView (Activity activity, boolean newMode){
-        this.activity = activity;
-        this.newMode = newMode;
-        this.fm = activity.getFragmentManager();
-        this.modalButton = new ToggleButton(activity);
+    private ModalView (View view, boolean newMode){
+        this.view = view;
+        this.newMode = true;
 
         initReferences();
     }
 
-    public ModalView(Activity activity, SearchWatcherItem model){
-        this(activity, false);
+    public ModalView (View view){
+        this(view, true);
+    }
+
+    public ModalView(View view, SearchWatcherItem model){
+        this(view, false);
         this.model = model;
     }
 
     private void initReferences() {
-        doneText = (TextView) activity.findViewById(R.id.modalDoneText);
-        title = (TextView) activity.findViewById(R.id.modalTitle);
+        doneText = (TextView) view.findViewById(R.id.modalDoneText);
+        title = (TextView) view.findViewById(R.id.modalTitle);
     }
 
     public void update(){
@@ -64,7 +66,7 @@ public class ModalView {
 
 
     public void hideModal () {
-        fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
+//        fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
         modalVisibility = false;
     }
 
@@ -79,10 +81,6 @@ public class ModalView {
     public void toggleModalVisibility(){
         modalVisibility = !modalVisibility;
         update();
-    }
-
-    public FragmentManager getFm() {
-        return fm;
     }
 
     public SearchWatcherItem getModel() {

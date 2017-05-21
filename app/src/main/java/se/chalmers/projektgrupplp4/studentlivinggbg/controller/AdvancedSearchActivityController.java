@@ -20,6 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
@@ -38,7 +39,7 @@ public class AdvancedSearchActivityController implements Observer{
     public AdvancedSearchActivityController(Activity activity){
         this.activity = activity;
         initListeners();
-        this.fragmentController = new AdvancedSearchFragmentController(activity);
+        this.fragmentController = new AdvancedSearchFragmentController(activity.getWindow().getDecorView().getRootView());
     }
 
     private void initListeners() {
@@ -86,7 +87,7 @@ public class AdvancedSearchActivityController implements Observer{
             //Saves the search and waits for nameDialog to finish
             wannabeSearchWatcher = fragmentController.parseSearchTerms(false);
 //            createNameDialog();
-            new NameDialog(activity, AdvancedSearchActivityController.this);
+            new NameDialog(view, AdvancedSearchActivityController.this);
         }
     };
 

@@ -1,6 +1,8 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.Activity;
+import android.view.View;
+
 import java.util.ArrayList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -13,15 +15,15 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
  */
 
 public class AdvancedSearchFragmentView {
-    private Activity activity;
+    private View view;
 
     //TODO does this follow MVC?
     private ArrayList<String> roomTypeItems = new ArrayList<>();
     private ArrayList<String> areasItems = new ArrayList<>();
     private ArrayList<String> landlordItems = new ArrayList<>();
 
-    public AdvancedSearchFragmentView(Activity activity){
-        this.activity = activity;
+    public AdvancedSearchFragmentView(View view){
+        this.view = view;
         initMultiSpinners();
     }
 
@@ -30,15 +32,15 @@ public class AdvancedSearchFragmentView {
         MultiSpinner areasSpinner;
         MultiSpinner landlordSpinner;
 
-        roomTypeSpinner = (MultiSpinner) activity.findViewById(R.id.roomType_spinner);
-        areasSpinner = (MultiSpinner) activity.findViewById(R.id.areas_spinner);
-        landlordSpinner = (MultiSpinner) activity.findViewById(R.id.landlord_spinner);
+        roomTypeSpinner = (MultiSpinner) view.findViewById(R.id.roomType_spinner);
+        areasSpinner = (MultiSpinner) view.findViewById(R.id.areas_spinner);
+        landlordSpinner = (MultiSpinner) view.findViewById(R.id.landlord_spinner);
         fillLists();
 
 //      TODO Should this get its items from a static methods?
-        roomTypeSpinner.setItems(roomTypeItems, activity.getString(R.string.multiSpinner_roomType));
-        areasSpinner.setItems(areasItems, activity.getString(R.string.multiSpinner_areas));
-        landlordSpinner.setItems(landlordItems, activity.getString(R.string.multiSpinner_landlord));
+        roomTypeSpinner.setItems(roomTypeItems, view.getContext().getString((R.string.multiSpinner_roomType)));
+        areasSpinner.setItems(areasItems, view.getContext().getString(R.string.multiSpinner_areas));
+        landlordSpinner.setItems(landlordItems, view.getContext().getString(R.string.multiSpinner_landlord));
     }
 
 

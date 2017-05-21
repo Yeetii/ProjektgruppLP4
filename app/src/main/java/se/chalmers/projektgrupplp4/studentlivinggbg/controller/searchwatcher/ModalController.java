@@ -1,67 +1,80 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
 
 /**
  * Created by Erik on 2017-05-17.
  */
 
-public class ModalController {
-    private final AdvancedSearchFragmentController fragment;
-    private Activity activity;
-    private ModalView view;
-    private final Observer observer;
+public class ModalController implements Observer{
+    private final AdvancedSearchFragmentController advancedSearchFragmentController;
+    private final Fragment fragment;
+    //    private Fragment fragment;
+    private ModalView modalView;
+    private View view;
+    private SearchWatcherAdapter adapter;
+//    private final Observer observer;
     private Observer listener;
 
-    public ModalController(Activity activity, ModalView view, Observer observer){
-        this.activity = activity;
+    //Adapter needed to notofiy listView when a new searchWatcher is created
+    public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter){
+//        this.fragment = fragment;
         this.view = view;
-        this.observer = observer;
+        this.modalView = modalView;
+        this.fragment = fragment;
+        this.adapter = adapter;
+//        this.observer = observer;
 
-        fragment = new AdvancedSearchFragmentController(activity);
+        this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view);
 
-        initializeToggleModalListener();
+        initializeCloseModalListener();
         initializeDoNothingListener();
         initializeModalDoneButtonListener();
     }
 
-    void toggle() {
-        System.out.println("Toggle");
-        if (view.getModalVisibility()) {
-            view.getFm().beginTransaction().hide(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
+    void close() {
+        System.out.println("Close");
+
+        fragment.getActivity().getFragmentManager().beginTransaction().remove(fragment).commit();
+
+        //OLD CODE MOVE TO OTHER PLACES
+
+        if (modalView.getModalVisibility()) {
+//            modalView.getFm().beginTransaction().hide(modalView.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
         } else {
-            view.getFm().beginTransaction().show(view.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
-            if (!view.getNewMode())
-                fragment.fillFilters(view.getModel().getSearch());
+//            modalView.getFm().beginTransaction().show(modalView.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
+            if (!modalView.getNewMode())
+                advancedSearchFragmentController.fillFilters(modalView.getModel().getSearch());
         }
-        view.toggleModalVisibility();
+        modalView.toggleModalVisibility();
     }
 
     private void initializeModalDoneButtonListener() {
-        ImageButton modalDoneButton = (ImageButton) activity.findViewById(R.id.modalDoneButton);
+        ImageButton modalDoneButton = (ImageButton) view.findViewById(R.id.modalDoneButton);
         modalDoneButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                new NameDialog(activity, listener);
+                new NameDialog(view, ModalController.this);
             }
         });
     }
 
     private void initializeDoNothingListener () {
         //TODO This is super bad code, remove before submit!
-        ConstraintLayout searchWatcherContent = (ConstraintLayout) activity.findViewById(R.id.constraintLayout);
+        ConstraintLayout searchWatcherContent = (ConstraintLayout) view.findViewById(R.id.constraintLayout);
 
         searchWatcherContent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -70,23 +83,33 @@ public class ModalController {
         });
     }
 
-    private void initializeToggleModalListener () {
-        ToggleButton toggleButton = (ToggleButton) activity.findViewById(R.id.modalButton);
-        toggleButton.setOnClickListener(new View.OnClickListener() {
+    private void initializeCloseModalListener() {
+        ImageButton closeButton = (ImageButton) view.findViewById(R.id.modalCloseButton);
+        closeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                toggle();
+                close();
             }
         });
 
-        ConstraintLayout searchWatcherBackground = (ConstraintLayout) activity.findViewById(R.id.backgroundModal);
+        ConstraintLayout searchWatcherBackground = (ConstraintLayout) view.findViewById(R.id.backgroundModal);
         searchWatcherBackground.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (v.getId() == R.id.backgroundModal) toggle();
+                if (v.getId() == R.id.backgroundModal) close();
             }
         });
     }
 
     public Search parseSearchTerms(boolean addToSearchHistory) {
-        return fragment.parseSearchTerms(addToSearchHistory);
+        return advancedSearchFragmentController.parseSearchTerms(addToSearchHistory);
+    }
+
+    //Called by the NameDialog
+    @Override
+    public void update(String updateString) {
+        Search search = parseSearchTerms(false);
+        SearchWatcherModel.createSearchWatcher(updateString, search);
+        adapter.notifyDataSetChanged();
+//        adapter.refresh();
+        close();
     }
 }

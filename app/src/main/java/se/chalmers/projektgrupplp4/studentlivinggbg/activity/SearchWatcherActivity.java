@@ -9,6 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.ModalController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherView;
@@ -18,29 +19,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWat
  */
 
 public class SearchWatcherActivity extends AppCompatActivity {
-    private SearchWatcherView view;
-    private SearchWatcherController controller;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), new ArrayList<SearchWatcherItem>(), this);
+        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), SearchWatcherModel.getSearchWatcherItems(), this);
 
-        this.view = new SearchWatcherView(this, adapter);
-        controller = new SearchWatcherController(adapter, this);
-
-        new AdvancedSearchFragmentView(this);
-    }
-
-    @Override
-    public void onStart () {
-        super.onStart();
-        controller.onStart();
-    }
-
-    @Override
-    public void onBackPressed(){
-        if (controller.onBackPressed())
-            super.onBackPressed();
+        new SearchWatcherView(this, adapter);
+        new SearchWatcherController(adapter, this);
     }
 }

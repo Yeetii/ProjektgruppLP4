@@ -14,10 +14,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
 
 public class AdvancedSearchFragmentController {
-    private Activity activity;
+    private View view;
     private SearchView advancedSearchView;
 
     private SeekBar seekBarMinPrice;
@@ -34,35 +35,36 @@ public class AdvancedSearchFragmentController {
 
 
     //Sets filters to last search
-    public AdvancedSearchFragmentController(Activity activity){
-        this.activity = activity;
+    public AdvancedSearchFragmentController(View view){
+        this.view = view;
+        new AdvancedSearchFragmentView(view);
         initListeners();
         fillFilters();
     }
 
     //Sets filters to provided search
-    public AdvancedSearchFragmentController(Activity activity, Search search){
-        this.activity = activity;
+    public AdvancedSearchFragmentController(View view, Search search){
+        this.view = view;
         initListeners();
         fillFilters(search);
     }
 
     private void initListeners(){
-        seekBarMinPrice = (SeekBar) activity.findViewById(R.id.seekBarMinPrice);
-        seekBarMaxPrice = (SeekBar) activity.findViewById(R.id.seekBarMaxPrice);
-        seekBarMinArea = (SeekBar) activity.findViewById(R.id.seekBarMinArea);
-        seekBarMaxArea = (SeekBar) activity.findViewById(R.id.seekBarMaxArea);
+        seekBarMinPrice = (SeekBar) view.findViewById(R.id.seekBarMinPrice);
+        seekBarMaxPrice = (SeekBar) view.findViewById(R.id.seekBarMaxPrice);
+        seekBarMinArea = (SeekBar) view.findViewById(R.id.seekBarMinArea);
+        seekBarMaxArea = (SeekBar) view.findViewById(R.id.seekBarMaxArea);
 
-        textViewMinPrice = (TextView) activity.findViewById(R.id.textViewMinPrice);
-        textViewMaxPrice = (TextView) activity.findViewById(R.id.textViewMaxPrice);
-        textViewMinArea = (TextView) activity.findViewById(R.id.textViewMinArea);
-        textViewMaxArea = (TextView) activity.findViewById(R.id.textViewMaxArea);
+        textViewMinPrice = (TextView) view.findViewById(R.id.textViewMinPrice);
+        textViewMaxPrice = (TextView) view.findViewById(R.id.textViewMaxPrice);
+        textViewMinArea = (TextView) view.findViewById(R.id.textViewMinArea);
+        textViewMaxArea = (TextView) view.findViewById(R.id.textViewMaxArea);
 
-        houseTypeSpinner = (MultiSpinner) activity.findViewById(R.id.roomType_spinner);
-        regionSpinner = (MultiSpinner) activity.findViewById(R.id.areas_spinner);
-        landlordSpinner = (MultiSpinner) activity.findViewById(R.id.landlord_spinner);
+        houseTypeSpinner = (MultiSpinner) view.findViewById(R.id.roomType_spinner);
+        regionSpinner = (MultiSpinner) view.findViewById(R.id.areas_spinner);
+        landlordSpinner = (MultiSpinner) view.findViewById(R.id.landlord_spinner);
 
-        advancedSearchView = (SearchView) activity.findViewById(R.id.advancedSearchView);
+        advancedSearchView = (SearchView) view.findViewById(R.id.advancedSearchView);
 
         seekBarMinPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMinPrice));
         seekBarMaxPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxPrice));
@@ -171,7 +173,7 @@ public class AdvancedSearchFragmentController {
     private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
         @Override
         public void onClick(View view) {
-            SearchView searchView = (SearchView) activity.findViewById(R.id.searchField);
+            SearchView searchView = (SearchView) view.findViewById(R.id.searchField);
             //switch (view.getId()) {
             //case R.id.searchField:
             searchView.onActionViewExpanded();
