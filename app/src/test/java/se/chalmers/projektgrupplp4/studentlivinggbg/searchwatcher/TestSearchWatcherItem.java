@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.searchwatcher;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
-import static org.junit.Assert.*;
 
 public class TestSearchWatcherItem {
 
