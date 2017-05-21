@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
@@ -29,19 +28,19 @@ public class SearchHandler {
         return result;
     }
 
-    public static Search createSearch(String mainSearch, String address,
+    public static Search createSearch(String mainSearch,
                                       ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
                                       ArrayList<AccommodationHost> possibleAccomodationHosts,
                                       ArrayList<Region> possibleRegions,
-                                      int minPrice, int maxPrice, int minArea, int maxArea, int maxSearchers,
-                                      String upploadDate, String lastApplyDate, boolean addToList){
+                                      int minPrice, int maxPrice, int minArea, int maxArea,
+                                      int daysUpploaded, int daysLeft, boolean addToList){
 
-        Search result = new Search(mainSearch, address,
+        Search result = new Search(mainSearch,
                 possibleAccomodationHouseTypes,
                 possibleAccomodationHosts,
                 possibleRegions,
-                minPrice, maxPrice, minArea, maxArea, maxSearchers,
-                upploadDate, lastApplyDate);
+                minPrice, maxPrice, minArea, maxArea,
+                daysUpploaded, daysLeft);
 
         if(addToList) {
             addToLastSearches(result);
@@ -63,7 +62,7 @@ public class SearchHandler {
         catch(IndexOutOfBoundsException e){
             return new Search("");}}
 
-    public static List<Accommodation> getLastSearchResults(){
-        return Search.search(getLastSearch());
+    public static List<Search> getLastSearches(){
+        return lastSearches;
     }
 }

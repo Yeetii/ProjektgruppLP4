@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.SearchView;
 import android.widget.SeekBar;
@@ -25,9 +24,13 @@ public class AdvancedSearchFragmentController {
     private SeekBar seekBarMaxPrice;
     private SeekBar seekBarMinArea;
     private SeekBar seekBarMaxArea;
+    private SeekBar seekBarDaysUpploaded;
+    private SeekBar seekBarDaysLeft;
     private TextView textViewMinPrice;
     private TextView textViewMaxPrice;
     private TextView textViewMinArea;
+    private TextView textViewDaysUpploaded;
+    private TextView textViewDaysLeft;
     private TextView textViewMaxArea;
     private MultiSpinner houseTypeSpinner;
     private MultiSpinner regionSpinner;
@@ -54,11 +57,15 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice = (SeekBar) view.findViewById(R.id.seekBarMaxPrice);
         seekBarMinArea = (SeekBar) view.findViewById(R.id.seekBarMinArea);
         seekBarMaxArea = (SeekBar) view.findViewById(R.id.seekBarMaxArea);
+        seekBarDaysUpploaded = (SeekBar) view.findViewById(R.id.seekBarDaysUpploaded);
+        seekBarDaysLeft = (SeekBar) view.findViewById(R.id.seekBarDaysLeft);
 
         textViewMinPrice = (TextView) view.findViewById(R.id.textViewMinPrice);
         textViewMaxPrice = (TextView) view.findViewById(R.id.textViewMaxPrice);
         textViewMinArea = (TextView) view.findViewById(R.id.textViewMinArea);
         textViewMaxArea = (TextView) view.findViewById(R.id.textViewMaxArea);
+        textViewDaysUpploaded = (TextView) view.findViewById(R.id.textViewDaysUpploaded);
+        textViewDaysLeft = (TextView) view.findViewById(R.id.textViewDaysLeft);
 
         houseTypeSpinner = (MultiSpinner) view.findViewById(R.id.roomType_spinner);
         regionSpinner = (MultiSpinner) view.findViewById(R.id.areas_spinner);
@@ -70,6 +77,8 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxPrice));
         seekBarMinArea.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMinArea));
         seekBarMaxArea.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxArea));
+        seekBarDaysUpploaded.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysUpploaded));
+        seekBarDaysLeft.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysLeft));
 
         houseTypeSpinner.setListener(new MultiSpinnerListener(AccommodationHouseType.values()));
         regionSpinner.setListener(new MultiSpinnerListener(Region.values()));
@@ -86,16 +95,19 @@ public class AdvancedSearchFragmentController {
         initMax();
 
         if(!search.isEmpty()){
-            //todo These could be more dynamic + dublicated code?
-
             fillSeekBars(search);
-            fillHouseTypeSpinner(search);
-            fillRegionSpinner(search);
-            fillLandlordSpinner(search);
+
+            try {
+                fillHouseTypeSpinner(search);
+                fillRegionSpinner(search);
+                fillLandlordSpinner(search);
+            }catch(Exception e){}
 
         }
-        if(search.getMaxPrice() < 1){seekBarMaxPrice.setProgress(15000);}
+        if(search.getMaxPrice() < 1){seekBarMaxPrice.setProgress(10000);}
         if(search.getMaxArea() < 1){seekBarMaxArea.setProgress(100);}
+        if(search.getDaysUpploaded() < 0){seekBarDaysUpploaded.setProgress(7);}
+        if(search.getDaysLeft() < 0){seekBarDaysLeft.setProgress(7);}
 
         updateTextViews();
     }
@@ -105,12 +117,14 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice.setProgress(lastSearch.getMaxPrice());
         seekBarMinArea.setProgress(lastSearch.getMinArea());
         seekBarMaxArea.setProgress(lastSearch.getMaxArea());
+        seekBarDaysUpploaded.setProgress(lastSearch.getDaysUpploaded());
+        seekBarDaysLeft.setProgress(lastSearch.getDaysLeft());
         advancedSearchView.setQuery(lastSearch.getMainSearch(), true);
     }
 
     private void fillHouseTypeSpinner(Search lastSearch) {
-        houseTypeSpinner.clear();
         try{
+            houseTypeSpinner.clear();
             if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.CORRIDOR)) {houseTypeSpinner.select(0);}
             if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.KITCHENETTE)) {houseTypeSpinner.select(1);}
             if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.COOKING_CABINET)) {houseTypeSpinner.select(2);}
@@ -126,6 +140,7 @@ public class AdvancedSearchFragmentController {
     private void fillRegionSpinner(Search lastSearch) {
         regionSpinner.clear();
         try {
+            regionSpinner.clear();
             if (lastSearch.getPossibleRegions().contains(Region.CENTER)) {
                 regionSpinner.select(0);
             }
@@ -143,8 +158,8 @@ public class AdvancedSearchFragmentController {
     }
 
     private void fillLandlordSpinner(Search lastSearch) {
-        landlordSpinner.clear();
         try {
+            landlordSpinner.clear();
             if (lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.CHALMERS)) {
                 landlordSpinner.select(0);
             }
@@ -157,10 +172,12 @@ public class AdvancedSearchFragmentController {
     }
 
     private void initMax() {
-        seekBarMinPrice.setMax(15000);
-        seekBarMaxPrice.setMax(15000);
+        seekBarMinPrice.setMax(10000);
+        seekBarMaxPrice.setMax(10000);
         seekBarMinArea.setMax(100);
         seekBarMaxArea.setMax(100);
+        seekBarDaysUpploaded.setMax(7);
+        seekBarDaysLeft.setMax(7);
     }
 
     private void updateTextViews() {
@@ -168,6 +185,8 @@ public class AdvancedSearchFragmentController {
         textViewMaxPrice.setText(Integer.toString(seekBarMaxPrice.getProgress()));
         textViewMinArea.setText(Integer.toString(seekBarMinArea.getProgress()));
         textViewMaxArea.setText(Integer.toString(seekBarMaxArea.getProgress()));
+        textViewDaysUpploaded.setText(Integer.toString(seekBarDaysUpploaded.getProgress()));
+        textViewDaysLeft.setText(Integer.toString(seekBarDaysLeft.getProgress()));
     }
     
     private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
@@ -191,12 +210,8 @@ public class AdvancedSearchFragmentController {
         int maxPrice = -1;
         int minArea = -1;
         int maxArea = -1;
-
-        // TODO: implement maxSearchers in AdvancedSearch. Dates? Address-field?
-        int maxSearchers = -1;
-        String upploadDate = "";
-        String lastApplyDate = "";
-        String address = "";
+        int daysUpploaded = -1;
+        int daysLeft = -1;
 
         try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){}
         try{possibleAccommodationHouseTypes = AccommodationHouseType.parseStringList(houseTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
@@ -206,11 +221,12 @@ public class AdvancedSearchFragmentController {
         try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}
         try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
         try{maxArea = seekBarMaxArea.getProgress();}catch(NullPointerException e){}
-        //try{maxSearchers = ???;}catch(NullPointerException e){}
+        try{daysUpploaded = seekBarDaysUpploaded.getProgress();}catch(NullPointerException e){}
+        try{daysLeft = seekBarDaysLeft.getProgress();}catch(NullPointerException e){}
 
-        return SearchHandler.createSearch(mainSearch, address, possibleAccommodationHouseTypes,
+        return SearchHandler.createSearch(mainSearch, possibleAccommodationHouseTypes,
                 possibleAccommodationHosts, possibleRegions, minPrice, maxPrice,
-                minArea, maxArea, maxSearchers, upploadDate, lastApplyDate, addToSearchHistory);
+                minArea, maxArea, daysUpploaded, daysLeft, addToSearchHistory);
     }
 
     //Custom listener that updates a textView with the seekbars progress

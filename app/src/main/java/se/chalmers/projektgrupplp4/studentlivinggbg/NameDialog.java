@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,8 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
  * Created by Erik on 2017-05-15.

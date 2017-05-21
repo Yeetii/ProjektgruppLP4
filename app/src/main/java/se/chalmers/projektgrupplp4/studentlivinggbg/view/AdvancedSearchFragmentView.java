@@ -45,7 +45,7 @@ public class AdvancedSearchFragmentView {
 
 
     private void fillLists(){
-        //TODO: This sohuld be done dynamically
+        //TODO: This should be done dynamically
         roomTypeItems.add(AccommodationHouseType.CORRIDOR.toString());
         roomTypeItems.add(AccommodationHouseType.KITCHENETTE.toString());
         roomTypeItems.add(AccommodationHouseType.COOKING_CABINET.toString());

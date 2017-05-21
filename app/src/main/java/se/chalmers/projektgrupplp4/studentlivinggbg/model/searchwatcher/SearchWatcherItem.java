@@ -1,7 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 
-import android.view.View;
-
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
@@ -23,19 +21,39 @@ public class SearchWatcherItem {
     }
 
     public int checkForMatches(List<Accommodation> newAccommodations){
-        this.newAccommodations = Search.search(search, newAccommodations);
-        return this.newAccommodations.size();
+        try{this.newAccommodations = search.search(newAccommodations);}
+        catch(NullPointerException e){}
+        try{
+            int i = 0;
+            for(Accommodation accommodation: this.newAccommodations){
+                if(accommodation == null){
+                    i++;}
+            }
+                return this.newAccommodations.size()-i;
+        }
+        catch(NullPointerException e){}
+        return 0;
     }
 
 
-    public void test (View view) {
-        System.out.println("Hai");
-    }
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
 
+
+
+    /*
+    todo: remove this?
+    public void test (View view) {
+        System.out.println("Hai");
+    }
+
+    */
+
+
+    /*
     public List<Accommodation> getNewAccommodations() {
         //TODO and reset list?
         return newAccommodations;
     }
+    */
 }

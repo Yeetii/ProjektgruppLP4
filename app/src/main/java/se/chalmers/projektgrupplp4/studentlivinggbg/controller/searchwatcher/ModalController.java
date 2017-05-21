@@ -6,19 +6,19 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
  * Created by Erik on 2017-05-17.
  */
 
-public class ModalController implements Observer{
+public class ModalController implements Observer {
     private final AdvancedSearchFragmentController advancedSearchFragmentController;
     private final Fragment fragment;
     //    private Fragment fragment;

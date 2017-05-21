@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 import android.app.Activity;
 import android.content.Context;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,10 +10,8 @@ import android.view.View;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.SearchWatcherItemView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
 
@@ -27,11 +24,13 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
     private Activity activity;
     private List<SearchWatcherItem> data;
     private LayoutInflater inflater;
+    Class<? extends Activity> targetClass;
 
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity) {
+    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity, Class<? extends Activity> targetClass) {
         super(context, R.layout.search_watcher_row_item, data);
         this.data = data;
+        this.targetClass = targetClass;
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
     }
@@ -46,9 +45,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
-            convertView.setTag(viewHolder);
-
-            new SearchWatcherItemController(dataModel, convertView, activity);
+            new SearchWatcherItemController(dataModel, convertView, activity, targetClass);
 
 
         }else{

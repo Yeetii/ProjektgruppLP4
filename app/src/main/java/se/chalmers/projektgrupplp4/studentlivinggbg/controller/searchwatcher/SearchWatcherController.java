@@ -4,19 +4,13 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.design.widget.BottomNavigationView;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.fragment.SearchWatcherModalFragment;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
 
 /**
  * Created by PG on 21/04/2017.
@@ -25,6 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView
 public class SearchWatcherController{
     private Activity activity;
     private SearchWatcherAdapter adapter;
+    private FragmentManager fragmentManager;
 
     public SearchWatcherController(SearchWatcherAdapter adapter, Activity activity) {
         this.adapter = adapter;
@@ -36,11 +31,13 @@ public class SearchWatcherController{
     private void initializeListeners() {
         initializeNavigationListener();
         initializeNewSWListener();
+//        initializeDoNothingListener();
     }
 
     private void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
+        //TODO SOMETHING
+//        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
         navigation.setSelectedItemId(R.id.navigation_notifications);
     }
 
@@ -49,9 +46,8 @@ public class SearchWatcherController{
         newSWButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = activity.getFragmentManager();
+                fragmentManager = activity.getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
                 SearchWatcherModalFragment fragment = new SearchWatcherModalFragment();
                 fragment.setAdapter(adapter);
                 fragmentTransaction.add(R.id.searchWatcherView, fragment);

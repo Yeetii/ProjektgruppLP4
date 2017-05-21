@@ -3,21 +3,27 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.ChalmersAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.CreateDrawableHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.NetworkHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RequestAccommodations;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SGSAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestSender;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestAccommodations;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
@@ -71,8 +77,7 @@ class DatabaseUpdater implements Observer {
         if (lastUpdateDay != currentDay) return true;
         if (lastUpdateHour < 6 && currentHour >= 6) return true;
         if (lastUpdateHour < 12 && currentHour >= 12) return true;
-        if (lastUpdateHour < 18 && currentHour >= 18) return true;
-        return false;
+        return lastUpdateHour < 18 && currentHour >= 18;
     }
 
     private void notifyApp(List<Accommodation> accommodations, Context context) {
@@ -89,11 +94,11 @@ class DatabaseUpdater implements Observer {
     private List<Accommodation> fillNewAccommodations(Context context, String inputString) {
         List<Accommodation> newAccommodations;
         if (inputString.equals("SGS")) {
-            AccommodationAdapter sgsAdapter = AccommodationAdapter.getPopulatedAdapter(SGSAdapter.class, context, "SGSData");
+            AccommodationAdapter sgsAdapter = getPopulatedAdapter(SGSAdapter.class, context, "SGSData");
             newAccommodations = sgsAdapter.getAccommodations();
             sgsAccommodations = newAccommodations;
         } else {
-            AccommodationAdapter chalmersAdapter = AccommodationAdapter.getPopulatedAdapter(ChalmersAdapter.class, context, "ChalmersData");
+            AccommodationAdapter chalmersAdapter = getPopulatedAdapter(ChalmersAdapter.class, context, "ChalmersData");
             newAccommodations = chalmersAdapter.getAccommodations();
             chalmersAccommodations = newAccommodations;
             getAndSetAmountOfSearchersChalmers(chalmersAccommodations);
@@ -109,7 +114,7 @@ class DatabaseUpdater implements Observer {
             Thread newThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    StringBuffer buffer = NetworkHelper.requestChalmersAccommodation(accommodations.get(finalInt));
+                    StringBuffer buffer = RequestSender.requestChalmersAccommodation(accommodations.get(finalInt));
                     setSearcherChalmers(buffer, accommodations.get(finalInt));
                 }
             });
@@ -133,9 +138,8 @@ class DatabaseUpdater implements Observer {
         List<Accommodation> newAccommodations = fillNewAccommodations(context, inputString);
 
         Accommodation.transferFavoriteStatus(previousAccommodations, newAccommodations);
-        ImageModel<Drawable> imageModel = ImageModel.<Drawable>getInstance();
-        imageModel.setHelper(new CreateDrawableHelper(context));
-        imageModel.getAndSaveImages(false, newAccommodations);
+        ImageModel<Drawable> imageModel = ImageModel.getInstance();
+        new ImageHandler(context).getAndSaveImages(false, newAccommodations);
 
         counter++;
         //Only do some things when both SGS and Chalmers are done.
@@ -165,6 +169,21 @@ class DatabaseUpdater implements Observer {
         AlarmTimeManger.getInstance().createNextAlarm(context);
         db.close();
 
+    }
+
+    private static AccommodationAdapter getPopulatedAdapter(Class<? extends AccommodationAdapter> adapterClass,
+                                                           Context context, String fileName) {
+        Gson gson = new Gson();
+        AccommodationAdapter adapter = null;
+        try {
+            InputStream is = context.openFileInput(fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            //Create a new adapter
+            adapter = gson.fromJson(reader, adapterClass);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return adapter;
     }
 
     private void setSearcherChalmers(StringBuffer stringBuffer, Accommodation accommodation) {

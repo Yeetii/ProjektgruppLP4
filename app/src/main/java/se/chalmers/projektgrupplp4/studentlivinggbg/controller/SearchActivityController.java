@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,16 +10,13 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.AccommodationRecyclerViewAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.BottomNavigationListener;
-import se.chalmers.projektgrupplp4.studentlivinggbg.RecyclerViewHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SorterHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelper;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.imagemodel.ImageModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityView;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
  * Created by PG on 28/04/2017.
@@ -31,14 +27,14 @@ public class SearchActivityController {
 
     private Activity activity;
     private SearchView searchView;
-    private SearchActivityView activityView;
     private AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
+    private Class<? extends Activity> targetActivity;
 
-    public SearchActivityController(Activity activity, SearchActivityView activityView, AccommodationRecyclerViewAdapter adapter) {
+    public SearchActivityController(Activity activity, AccommodationRecyclerViewAdapter adapter, Class<? extends Activity> targetActivity) {
         this.activity = activity;
-        this.activityView = activityView;
         this.recyclerAdapter = adapter;
+        this.targetActivity = targetActivity;
         RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity, adapter);
         recyclerViewHelper.initSwipe();
         initListeners();
@@ -46,12 +42,10 @@ public class SearchActivityController {
     }
 
     private void initListeners() {
-        BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         ImageButton advancedSearch = (ImageButton) activity.findViewById(R.id.advancedSearch);
         searchView = (SearchView) activity.findViewById(R.id.searchField);
 
         advancedSearch.setOnClickListener(onClickAdvancedSearch);
-        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getFirstInstance(activity));
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
@@ -70,22 +64,22 @@ public class SearchActivityController {
                 List<Accommodation> accommodations = recyclerAdapter.getAccommodations();
                 switch (selected) {
                     case "Pris ↑":
-                        SorterHelper.sortByPrice(accommodations, true);
+                        AccommodationsSorter.sortByPrice(accommodations, true);
                         break;
                     case "Pris ↓":
-                        SorterHelper.sortByPrice(accommodations, false);
+                        AccommodationsSorter.sortByPrice(accommodations, false);
                         break;
                     case "Storlek ↑":
-                        SorterHelper.sortBySize(accommodations, true);
+                        AccommodationsSorter.sortBySize(accommodations, true);
                         break;
                     case "Storlek ↓":
-                        SorterHelper.sortBySize(accommodations, false);
+                        AccommodationsSorter.sortBySize(accommodations, false);
                         break;
                     case "A-Ö":
-                        SorterHelper.sortByAddress(accommodations, false);
+                        AccommodationsSorter.sortByAddress(accommodations, false);
                         break;
                     case "Ö-A":
-                        SorterHelper.sortByAddress(accommodations, true);
+                        AccommodationsSorter.sortByAddress(accommodations, true);
                         break;
                     }
                 recyclerAdapter.notifyDataSetChanged();
@@ -132,7 +126,7 @@ public class SearchActivityController {
     private ImageButton.OnClickListener onClickAdvancedSearch = new ImageButton.OnClickListener() {
         @Override
         public void onClick(View view) {
-            AdvancedSearchActivityView.open(activity);
+            ActivitySwitcher.getInstance(activity).navigate(targetActivity);
         }
     };
 
@@ -141,7 +135,7 @@ public class SearchActivityController {
             controller.activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
-                      ImageModel.getInstance().getAndSaveImages(true, accommodations);
+                      AccommodationsSorter.sortByPrice(accommodations, false);
                       Accommodation.setNewAccommodationList(accommodations);
                       controller.recyclerAdapter.refresh();
                   }

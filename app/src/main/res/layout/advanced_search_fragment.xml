@@ -220,7 +220,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textViewUpploadDate"
+            android:id="@+id/textViewDaysUpploaded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView6"
@@ -234,15 +234,15 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textViewUpploadDate"
-            android:layout_alignBottom="@+id/textViewUpploadDate"
+            android:layout_alignBaseline="@+id/textViewDaysUpploaded"
+            android:layout_alignBottom="@+id/textViewDaysUpploaded"
             android:layout_marginLeft="0dp"
-            android:layout_toEndOf="@+id/textViewUpploadDate"
+            android:layout_toEndOf="@+id/textViewDaysUpploaded"
             android:text=" dagar sen"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/textViewDaysLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView11"
@@ -255,10 +255,10 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView19"
-            android:layout_alignBottom="@+id/textView19"
+            android:layout_alignBaseline="@+id/textViewDaysLeft"
+            android:layout_alignBottom="@+id/textViewDaysLeft"
             android:layout_marginLeft="0dp"
-            android:layout_toEndOf="@+id/textView19"
+            android:layout_toEndOf="@+id/textViewDaysLeft"
             android:text=" dagar kvar"
             android:textSize="16sp" />
 
@@ -275,7 +275,7 @@
 
 
             <SeekBar
-                android:id="@+id/seekBarUpploadDate"
+                android:id="@+id/seekBarDaysUpploaded"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -285,7 +285,7 @@
                 android:paddingTop="2dp" />
 
             <SeekBar
-                android:id="@+id/seekBarLastApplyDate"
+                android:id="@+id/seekBarDaysLeft"
                 android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView6"

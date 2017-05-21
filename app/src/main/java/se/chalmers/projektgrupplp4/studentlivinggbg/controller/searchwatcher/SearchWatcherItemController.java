@@ -4,29 +4,30 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.ImageView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.NavigationHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchWatcher.ModalView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
  * Created by PG on 23/04/2017.
  */
 
-public class SearchWatcherItemController implements Observer{
+public class SearchWatcherItemController implements Observer {
     private SearchWatcherItem model;
     private View view;
+    private Class<? extends  Activity> targetClass;
     private Activity activity;
     private ModalController modalController;
     private ModalView modalView;
     private AdvancedSearchFragmentController fragment;
 
 
-    public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity) {
+    public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity, Class<? extends  Activity> targetClass) {
         this.model = model;
         this.view = view;
         this.activity = activity;
@@ -34,6 +35,7 @@ public class SearchWatcherItemController implements Observer{
         //Couldn't pass it through constructors
 //        this.modalView = new ModalView(activity, model);
 //        this.modalController = new ModalController(activity, modalView, this);
+        this.targetClass = targetClass;
         addListeners();
     }
 
@@ -61,7 +63,7 @@ public class SearchWatcherItemController implements Observer{
             public void onClick (View view) {
                 Search search = model.getSearch();
                 SearchHandler.addToLastSearches(search);
-                NavigationHelper.getInstance(activity).navigateToMainActivity();
+                ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });
     }

@@ -18,19 +18,21 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/textViewAddressLabel"
+        android:id="@+id/textViewSearchLabel"
         style="@style/AppTheme.SearchWatcherItemText"
-        android:layout_width="wrap_content"
+        android:layout_width="32dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="32dp"
-        android:text="Adress: "
+        android:text="Sök: "
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textViewSearch"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintVertical_bias="0.517" />
 
     <TextView
-        android:id="@+id/textViewAddress"
+        android:id="@+id/textViewSearch"
         style="@style/AppTheme.SearchWatcherItemText"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -43,14 +45,14 @@
     <TextView
         android:id="@+id/textViewHouseTypeLabel"
         style="@style/AppTheme.SearchWatcherItemText"
-        android:layout_width="wrap_content"
+        android:layout_width="32dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="21dp"
         android:layout_marginTop="52dp"
         android:text="Typ: "
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textViewHouseType"
+        android:layout_marginRight="0dp" />
 
     <TextView
         android:id="@+id/textViewHouseType"
