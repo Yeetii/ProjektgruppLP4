@@ -3,9 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by PG on 15/04/2017.
- */
 
 public class SGSAdapter extends AccommodationAdapter {
     //Has to use SGS variable names

@@ -25,18 +25,37 @@ public class SearchWatcherItem {
     public int checkForMatches(List<Accommodation> newAccommodations){
         try{this.newAccommodations = search.search(newAccommodations);}
         catch(NullPointerException e){}
-        return this.newAccommodations.size();
+        try{
+            int i = 0;
+            for(Accommodation accommodation: this.newAccommodations){
+                if(accommodation == null){
+                    i++;}
+            }
+                return this.newAccommodations.size()-i;
+        }
+        catch(NullPointerException e){}
+        return 0;
     }
 
 
-    public void test (View view) {
-        System.out.println("Hai");
-    }
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
 
+
+
+    /*
+    todo: remove this?
+    public void test (View view) {
+        System.out.println("Hai");
+    }
+
+    */
+
+
+    /*
     public List<Accommodation> getNewAccommodations() {
         //TODO and reset list?
         return newAccommodations;
     }
+    */
 }

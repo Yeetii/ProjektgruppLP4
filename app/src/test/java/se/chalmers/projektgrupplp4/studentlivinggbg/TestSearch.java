@@ -2,6 +2,8 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 
 import org.junit.Test;
+import static org.junit.Assert.*;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
-import static org.junit.Assert.*;
+
 
 public class TestSearch {
 
