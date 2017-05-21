@@ -6,16 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.widget.Button;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.ObjectController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.ObjectView;
 
 public class ObjectActivity extends ActivityWithNavigation {
-
-
-    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

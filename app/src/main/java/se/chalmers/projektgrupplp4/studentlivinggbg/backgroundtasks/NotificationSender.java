@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
