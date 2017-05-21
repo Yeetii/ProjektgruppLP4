@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -20,12 +21,15 @@ public class SearchWatcherItemController {
     private Class<? extends  Activity> targetClass;
     private Activity activity;
 
+    private ConstraintLayout layout;
+
     public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity, Class<? extends  Activity> targetClass) {
         this.model = model;
         this.view = view;
         this.activity = activity;
         this.targetClass = targetClass;
         addListeners();
+
     }
 
     private void addListeners() {
@@ -34,6 +38,14 @@ public class SearchWatcherItemController {
 
         ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
         searchButton.setOnClickListener(getSearchSearchWatcherListener());
+
+        layout = (ConstraintLayout) activity.findViewById(R.id.row_item);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private ImageView.OnClickListener getEditSearchWatcherListener() {
@@ -55,4 +67,6 @@ public class SearchWatcherItemController {
             }
         });
     }
+
+
 }

@@ -10,11 +10,12 @@ public class SearchWatcherItem {
     public String title;
     private Search search;
     private List<Accommodation> newAccommodations;
-
+    private boolean expanded;
 
     public SearchWatcherItem(String title, Search search) {
         this.title = title;
         this.search = search;
+        this.expanded = false;
     }
 
     public void editSearchWatcher () {
@@ -41,8 +42,15 @@ public class SearchWatcherItem {
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
 
-
-
+    public boolean isExpanded() {
+        return expanded;
+    }
+    public void setExpanded () {
+        expanded = true;
+    }
+    public void resetExpanded() {
+        expanded = false;
+    }
     /*
     todo: remove this?
     public void test (View view) {

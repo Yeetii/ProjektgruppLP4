@@ -44,12 +44,21 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
         System.out.println("Making list item " + position + " with title" + dataModel.getTitle());
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
+            if (dataModel.isExpanded()) {
+                convertView = inflater.inflate(R.layout.search_watcher_row_item_expanded, null);
+            } else {
+                convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
+            }
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
             new SearchWatcherItemController(dataModel, convertView, activity, targetClass);
 
 
         }else{
+            /*if (dataModel.isExpanded()) {
+                convertView = inflater.inflate(R.layout.search_watcher_row_item_expanded, null);
+            } else {
+                convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
+            }*/
             viewHolder = (SearchWatcherItemView) convertView.getTag();
         }
 
@@ -63,7 +72,13 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
 
         int position=(Integer) v.getTag();
         SearchWatcherItem tappedSearch = getItem(position);
+        //TODO Access the controller?
 
+        if (tappedSearch.isExpanded()) {
+            tappedSearch.resetExpanded();
+        } else {
+            tappedSearch.setExpanded();
+        }
 
         switch (v.getId())
         {
