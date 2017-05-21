@@ -1,13 +1,14 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
@@ -15,6 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherView;
 
 /**
@@ -72,7 +74,9 @@ public class SearchWatcherController implements Observer{
 
             @Override
             public void onClick(View view) {
-                new NameDialog(activity, SearchWatcherController.this );
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                NameDialog nameDialog = new NameDialog(builder, activity);
+                new NameDialogController(builder, nameDialog, SearchWatcherController.this);
             }
         });
     }

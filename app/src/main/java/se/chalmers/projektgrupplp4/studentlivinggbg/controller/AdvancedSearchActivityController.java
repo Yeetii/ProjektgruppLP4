@@ -1,18 +1,17 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.support.design.widget.BottomNavigationView;
+import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.SearchView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
-import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 public class AdvancedSearchActivityController implements Observer{
     private Activity activity;
@@ -34,7 +33,6 @@ public class AdvancedSearchActivityController implements Observer{
     }
 
     private void initListeners() {
-        BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
         ImageButton cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
         advancedSearchButton = (Button) activity.findViewById(R.id.advancedSearchButton);
         createSearchWatcherButton = (Button) activity.findViewById(R.id.advancedSearchCreateSearchWatcherButton);
@@ -43,18 +41,7 @@ public class AdvancedSearchActivityController implements Observer{
         advancedSearchButton.setOnClickListener(onAdvancedSearchListener);
         createSearchWatcherButton.setOnClickListener(onCreateSearchWatcherListener);
     }
-    
-    private SearchView.OnClickListener onClickListenerSearch = new SearchView.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            SearchView searchView = (SearchView) activity.findViewById(R.id.searchField);
-            //switch (view.getId()) {
-            //case R.id.searchField:
-            searchView.onActionViewExpanded();
-            //       break;
-            //}
-        }
-    };
+
 
     private ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
         @Override
@@ -76,9 +63,15 @@ public class AdvancedSearchActivityController implements Observer{
         public void onClick(View view) {
             //Saves the search and waits for nameDialog to finish
             wannabeSearchWatcher = fragmentController.parseSearchTerms(false);
-//            createNameDialog();
-            new NameDialog(activity, AdvancedSearchActivityController.this);
+            createNameDialog();
+
         }
+    };
+
+    private void createNameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        NameDialog nameDialog = new NameDialog(builder, activity);
+        new NameDialogController(builder, nameDialog, this);
     };
 
     private void returnToMainSearch(){
