@@ -10,7 +10,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
@@ -107,7 +109,9 @@ public class ModalController implements Observer {
     @Override
     public void update(String updateString) {
         Search search = parseSearchTerms(false);
-        SearchWatcherModel.createSearchWatcher(updateString, search);
+        SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(updateString, search);
+        Db4oDatabase.getInstance().store(sw);
+
         adapter.notifyDataSetChanged();
 //        adapter.refresh();
         close();
