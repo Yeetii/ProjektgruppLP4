@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.widget.ListView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcherAdapter;
 
 /**
  * Created by PG on 21/04/2017.

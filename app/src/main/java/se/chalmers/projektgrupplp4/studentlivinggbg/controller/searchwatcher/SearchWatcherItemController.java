@@ -50,11 +50,28 @@ public class SearchWatcherItemController implements Observer {
         ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
         searchButton.setOnClickListener(getSearchSearchWatcherListener());
 
-        layout = (ConstraintLayout) view.findViewById(R.id.row_item);
-        layout.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(toggleExpanded());
+    }
+
+    private View.OnClickListener toggleExpanded() {
+        return (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO Make the code more efficient.
 
+                if (model.isExpanded()) {
+                    model.resetExpanded();
+                } else {
+                    model.setExpanded();
+                }
+
+                switch (v.getId())
+                {
+                    case R.id.searchWithSearchWatcherButton:
+                        //TODO not used atm
+//                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
+                        break;
+                }
             }
         });
     }

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.ModalController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
