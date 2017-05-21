@@ -7,9 +7,6 @@ import java.util.List;
 public class SGSAdapter extends AccommodationAdapter {
     //Has to use SGS variable names
     private SGSJsonAccommodation[] Result;
-    private String ObjectMainGroupDescription;
-    private int ObjectMainGroupNo;
-    private int TotalCount;
 
     @Override
     public List<Accommodation> getAccommodations() {
@@ -43,72 +40,17 @@ public class SGSAdapter extends AccommodationAdapter {
 
 
     private class SGSJsonAccommodation {
-        private String AreaNo;
-        private String ArriveMarketPlace; //Actually timestamp
-        private String ArriveMarketPlaceDateString;
-        private String BoardNo;
-        private int CompanyNo;
         private int CountInterest;
         private String Description;
-        private String DesiredFreeFrom; //Timepstamp
-        private String DesiredFreeFromString;
-        private String EndPeriodMP;
         private String EndPeriodMPDateString;
-        private String EntranceNo;
         private String FirstEstateImageUrl;
-        private String FirstInfoText;
-        private String FirstInfoTextShort;
-        private String FreeFrom;
-        private String HouseFormNo;
-        private String HouseForms;
-        private String HouseNo;
-        private String InterestOpens;
-        private String InterestOpensDateString;
-        private boolean IsTradingAdvertisement;
-        private String Latitude;
-        private String Longitude;
-        private String MapUrl;
-        private String MarketPlaceDescription;
-        private int MarketPlaceNo;
         private String ObjectArea;
         private int ObjectAreaSort;
-        private String ObjectFloor;
-        private String ObjectMainGroupDescription;
-        private int ObjectMainGroupNo;
         private String ObjectNo;
-        private String ObjectSubDescription;
-        private String ObjectSubGroupDescription;
-        private int ObjectSubGroupNo;
-        private ArrayList<String> ObjectTags;
         private String ObjectTypeDescription;
-        private String PlaceName;
-        private String Properties;
-        private int PropertyNo;
         private String PublishingDate;
-        private String PublishingDateString;
-        private int QueueCutShow;
-        private String QueueDate;
-        private String QueueDateString;
-        private int QueuePoints;
-        private int QueuePositionCut;
-        private boolean RankUpInSearchResult;
-        private String RentPerMonth;
         private int RentPerMonthSort;
-        private String RowId;
-        private String SeekAreaDescription;
-        private int SeekAreaNo;
-        private String SeekAreaUrl;
-        private String SellerNote;
-        private String StatusDescriptionClient;
         private String Street;
-        private String StreetChar;
-        private String StreetName;
-        private int StreetNo;
-        private String SyndicateHouseFormDescriptionGrouped;
-        private String SyndicateMarketPlaceImageAlt;
-        private int SyndicateNo;
-        private String SyndicatePropertyDescriptionGrouped;
-        private int UseFilter;
 
         public String getPublishingDate() {return parseDate(PublishingDate);}
 
