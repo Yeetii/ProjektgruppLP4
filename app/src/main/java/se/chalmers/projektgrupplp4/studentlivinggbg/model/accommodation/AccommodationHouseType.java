@@ -4,7 +4,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 
 public enum AccommodationHouseType {
-    //TODO Change to package private when no longer neccessary for tesing
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
     FOUR_ROOMS, UNKNOWN;

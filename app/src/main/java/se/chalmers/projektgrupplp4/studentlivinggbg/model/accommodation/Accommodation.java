@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Accommodation {
-    //TODO Change to package private when no longer neccessary for tesing
 
     static List<Accommodation> accommodations;
 

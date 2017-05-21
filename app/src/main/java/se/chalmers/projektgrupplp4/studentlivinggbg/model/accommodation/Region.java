@@ -4,7 +4,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 
 public enum Region {
-    //TODO Change to package private when no longer neccessary for tesing
 
     NORTH, EAST, WEST, CENTER;
 

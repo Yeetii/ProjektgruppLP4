@@ -50,14 +50,14 @@ public class SettingsController {
         resetDatebase.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO reset database
             }
         });
         clearSearchWatchers = (Button) activity.findViewById(R.id.removeSearchWatchers);
         clearSearchWatchers.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TODO remove searchWatchers
             }
         });
 
