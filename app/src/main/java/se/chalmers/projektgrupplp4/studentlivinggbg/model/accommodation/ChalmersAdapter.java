@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by PG on 20/04/2017.
+ * This class converts the response from a get request to Chalmers to a java object.
  */
 
 public class ChalmersAdapter extends AccommodationAdapter {
@@ -15,7 +16,8 @@ public class ChalmersAdapter extends AccommodationAdapter {
     public List<Accommodation> getAccommodations() {
         return html.getAccommodations();
     }
-
+    //The response uses variable names that are not allow in java so we have to rename them to make
+    //them usable.
     public static byte[] getFormattedBytes(StringBuffer buffer) throws UnsupportedEncodingException {
         Long timestamp = System.currentTimeMillis();
         //Remove the jquery start and ");" at the end.
