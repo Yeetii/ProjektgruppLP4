@@ -37,8 +37,7 @@ public class TestSearchWatcherModel {
         List<Accommodation> accommodationList1 = new ArrayList<>();
         Accommodation accommodation1 = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
         accommodationList1.add(accommodation1);
-        int a = SearchWatcherModel.updateWatchers(accommodationList1);
-        assertTrue(a == 0);
+        assertTrue(SearchWatcherModel.updateWatchers(accommodationList1) == 0);
 
     }
 }
