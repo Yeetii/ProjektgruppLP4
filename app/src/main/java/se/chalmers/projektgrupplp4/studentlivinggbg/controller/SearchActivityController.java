@@ -12,7 +12,6 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -35,8 +34,8 @@ public class SearchActivityController {
         this.activity = activity;
         this.recyclerAdapter = adapter;
         this.targetActivity = targetActivity;
-        RecyclerViewHelper recyclerViewHelper = new RecyclerViewHelper(activity, adapter);
-        recyclerViewHelper.initSwipe();
+        RecyclerViewHelperController recyclerViewHelperController = new RecyclerViewHelperController(activity, adapter);
+        recyclerViewHelperController.initSwipe();
         initListeners();
         controller = this;
     }
