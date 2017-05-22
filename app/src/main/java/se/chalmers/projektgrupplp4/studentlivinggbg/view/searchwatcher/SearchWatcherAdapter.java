@@ -49,8 +49,6 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
             views.add(viewHolder);
             observer.update(null);
-
-
         }else{
             viewHolder = (SearchWatcherItemView) convertView.getTag();
         }

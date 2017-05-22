@@ -1,47 +1,36 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalFragment;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 
 /**
  * Created by PG on 23/04/2017.
  */
 
-public class SearchWatcherItemController implements Observer {
+public class SearchWatcherItemController {
     private SearchWatcherItem model;
     private View view;
     private Class<? extends  Activity> targetClass;
     private Activity activity;
-    private ModalController modalController;
-    private ModalView modalView;
-    private AdvancedSearchFragmentController fragment;
+    private SearchWatcherAdapter adapter;
 
-
-    private ConstraintLayout layout;
-
-    public SearchWatcherItemController (SearchWatcherItemView view, Activity activity, Class<? extends  Activity> targetClass) {
+    public SearchWatcherItemController (SearchWatcherItemView view, Activity activity, Class<? extends  Activity> targetClass, SearchWatcherAdapter adapter) {
         this.model = view.getModel();
         this.view = view.getView();
+        this.adapter = adapter;
         this.activity = activity;
-        //Not the best solution perhaps as new controllers and views are created for the same modal, would singleton be better?
-        //Couldn't pass it through constructors
-//        this.modalView = new ModalView(activity, model);
-//        this.modalController = new ModalController(activity, modalView, this);
         this.targetClass = targetClass;
         addListeners();
-
     }
 
     private void addListeners() {
@@ -81,7 +70,7 @@ public class SearchWatcherItemController implements Observer {
         return (new ImageView.OnClickListener () {
             @Override
             public void onClick (View view) {
-                modalController.close();
+                SearchWatcherModalFragment.newSearchWatcherModalFragment(activity, adapter, R.id.searchWatcherView, model);
                 model.editSearchWatcher();
             }
         });
@@ -96,11 +85,5 @@ public class SearchWatcherItemController implements Observer {
                 ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });
-    }
-
-    //Called by Modal
-    @Override
-    public void update(String updateString) {
-
     }
 }
