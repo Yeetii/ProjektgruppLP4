@@ -11,12 +11,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 public class SearchWatcherView {
     private Activity activity;
-    private SearchWatcherAdapter adapter;
 
-    public SearchWatcherView (Activity activity, SearchWatcherAdapter adapter) {
+    public SearchWatcherView (Activity activity) {
         this.activity = activity;
         initializeView();
+    }
 
+    public void setAdapter (SearchWatcherAdapter adapter) {
         ListView listView = (ListView) activity.findViewById(R.id.listView);
         listView.setAdapter(adapter);
     }

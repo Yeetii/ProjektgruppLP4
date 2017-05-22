@@ -39,6 +39,7 @@ public class SearchWatcherController implements Observer{
 
     private void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) activity.findViewById(R.id.navigation);
+        System.out.println(navigation);
         //TODO SOMETHING
 //        navigation.setOnNavigationItemSelectedListener(BottomNavigationListener.getInstance());
         navigation.setSelectedItemId(R.id.navigation_notifications);
