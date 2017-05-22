@@ -47,6 +47,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
                 convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             }
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
+            views.add(viewHolder);
             observer.update(null);
 
 
