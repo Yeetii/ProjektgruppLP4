@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
@@ -78,7 +80,8 @@ public class AdvancedSearchActivityController implements Observer{
 
     private void createSearchWatcher(String name){
         System.out.println("Creating SW " + name);
-        SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
+        SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
+        Db4oDatabase.getInstance().store(sw);
     }
 
     //Called from NameDialog

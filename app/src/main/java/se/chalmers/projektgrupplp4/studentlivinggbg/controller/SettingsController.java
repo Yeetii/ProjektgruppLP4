@@ -40,6 +40,7 @@ public class SettingsController {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+
                     //TODO activate push notifications
                 } else {
                     //TODO disable push notifications

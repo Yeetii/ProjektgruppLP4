@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 
 public class SearchWatcherModel {
@@ -14,7 +13,6 @@ public class SearchWatcherModel {
     public static SearchWatcherItem createSearchWatcher(String name, Search search){
         SearchWatcherItem sWItem = new SearchWatcherItem(name, search);
         searchWatcherItems.add(sWItem);
-        Db4oDatabase.getInstance().store(sWItem);
         System.out.println("Creating " + name + " " + search + " " + searchWatcherItems.size());
         return sWItem;
     }
