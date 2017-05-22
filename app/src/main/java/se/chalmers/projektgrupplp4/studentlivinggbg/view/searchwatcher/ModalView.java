@@ -2,10 +2,8 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
 /**
  * Created by Erik on 2017-05-17.

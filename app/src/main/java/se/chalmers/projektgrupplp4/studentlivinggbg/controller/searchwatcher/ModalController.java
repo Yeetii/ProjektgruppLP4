@@ -26,18 +26,14 @@ public class ModalController implements Observer {
     private View view;
     private SearchWatcherAdapter adapter;
     private SearchWatcherItem model;
-//    private final Observer observer;
-    private Observer listener;
 
     //Adapter needed to notify listView when a new searchWatcher is created
     public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
-//        this.fragment = fragment;
         this.view = view;
         this.modalView = modalView;
         this.fragment = fragment;
         this.adapter = adapter;
         this.model = model;
-//        this.observer = observer;
 
         this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view);
 
@@ -63,7 +59,7 @@ public class ModalController implements Observer {
             @Override
             public void onClick(View view) {
                 if (editMode()){
-                    model.setSearch(parseSearchTerms(false));
+                    model.setSearch(parseSearchTerms());
                     close();
                 }else {
                     new NameDialog(view, ModalController.this);
@@ -99,17 +95,16 @@ public class ModalController implements Observer {
         });
     }
 
-    public Search parseSearchTerms(boolean addToSearchHistory) {
-        return advancedSearchFragmentController.parseSearchTerms(addToSearchHistory);
+    public Search parseSearchTerms() {
+        return advancedSearchFragmentController.parseSearchTerms(false);
     }
 
     //Called by the NameDialog
     @Override
     public void update(String updateString) {
-        Search search = parseSearchTerms(false);
+        Search search = parseSearchTerms();
         SearchWatcherModel.createSearchWatcher(updateString, search);
         adapter.notifyDataSetChanged();
-//        adapter.refresh();
         close();
     }
 
