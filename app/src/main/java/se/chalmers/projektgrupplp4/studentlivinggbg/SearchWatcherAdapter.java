@@ -49,7 +49,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
                 convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             }
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
-            new SearchWatcherItemController(dataModel, convertView, activity, targetClass);
+            new SearchWatcherItemController(dataModel, convertView, activity, this, targetClass);
 
 
         }else{

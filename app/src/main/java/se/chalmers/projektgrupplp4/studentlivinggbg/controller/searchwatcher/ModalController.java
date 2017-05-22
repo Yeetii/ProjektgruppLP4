@@ -23,44 +23,34 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView
 public class ModalController implements Observer {
     private final AdvancedSearchFragmentController advancedSearchFragmentController;
     private final Fragment fragment;
-    //    private Fragment fragment;
     private ModalView modalView;
     private View view;
     private SearchWatcherAdapter adapter;
-//    private final Observer observer;
-    private Observer listener;
+    private SearchWatcherItem model;
 
-    //Adapter needed to notofiy listView when a new searchWatcher is created
-    public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter){
-//        this.fragment = fragment;
+    //Adapter needed to notify listView when a new searchWatcher is created
+    public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
         this.view = view;
         this.modalView = modalView;
         this.fragment = fragment;
         this.adapter = adapter;
-//        this.observer = observer;
+        this.model = model;
 
         this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view);
 
         initializeCloseModalListener();
         initializeDoNothingListener();
         initializeModalDoneButtonListener();
+
+        if (editMode()){
+            System.out.println("FIlling from modal with real studd" + model.getSearch().getMaxPrice());
+            advancedSearchFragmentController.fillFilters(model.getSearch());
+            modalView.update(!editMode());
+        }
     }
 
-    void close() {
-        System.out.println("Close");
-
+    public void close() {
         fragment.getActivity().getFragmentManager().beginTransaction().remove(fragment).commit();
-
-        //OLD CODE MOVE TO OTHER PLACES
-
-        if (modalView.getModalVisibility()) {
-//            modalView.getFm().beginTransaction().hide(modalView.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
-        } else {
-//            modalView.getFm().beginTransaction().show(modalView.getFm().findFragmentById(R.id.searchWatcherModal)).commit();
-            if (!modalView.getNewMode())
-                advancedSearchFragmentController.fillFilters(modalView.getModel().getSearch());
-        }
-        modalView.toggleModalVisibility();
     }
 
     private void initializeModalDoneButtonListener() {
@@ -69,7 +59,12 @@ public class ModalController implements Observer {
 
             @Override
             public void onClick(View view) {
-                new NameDialog(view, ModalController.this);
+                if (editMode()){
+                    model.setSearch(parseSearchTerms());
+                    close();
+                }else {
+                    new NameDialog(view, ModalController.this);
+                }
             }
         });
     }
@@ -101,19 +96,21 @@ public class ModalController implements Observer {
         });
     }
 
-    public Search parseSearchTerms(boolean addToSearchHistory) {
-        return advancedSearchFragmentController.parseSearchTerms(addToSearchHistory);
+    public Search parseSearchTerms() {
+        return advancedSearchFragmentController.parseSearchTerms(false);
     }
 
     //Called by the NameDialog
     @Override
     public void update(String updateString) {
-        Search search = parseSearchTerms(false);
+        Search search = parseSearchTerms();
         SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(updateString, search);
         Db4oDatabase.getInstance().store(sw);
-
         adapter.notifyDataSetChanged();
-//        adapter.refresh();
         close();
+    }
+
+    public boolean editMode(){
+        return model != null;
     }
 }
