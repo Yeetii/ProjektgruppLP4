@@ -13,28 +13,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class ModalView {
     private View view;
-    private ToggleButton modalButton;
-    private boolean modalVisibility = false;
-    private boolean newMode;
-    private SearchWatcherItem model;
-
     private TextView doneText;
     private TextView title;
 
-    private ModalView (View view, boolean newMode){
+    public ModalView (View view){
         this.view = view;
-        this.newMode = true;
 
         initReferences();
-    }
-
-    public ModalView (View view){
-        this(view, true);
-    }
-
-    public ModalView(View view, SearchWatcherItem model){
-        this(view, false);
-        this.model = model;
     }
 
     private void initReferences() {
@@ -42,8 +27,7 @@ public class ModalView {
         title = (TextView) view.findViewById(R.id.modalTitle);
     }
 
-    public void update(){
-        System.out.println(newMode);
+    public void update(boolean newMode){
         if (newMode){
             newMode();
         }else{
@@ -54,37 +38,9 @@ public class ModalView {
     private void editMode(){
         doneText.setText("Spara");
         title.setText("Redigera bevakning");
-
-
     }
     private void newMode(){
         doneText.setText("Skapa");
         title.setText("Skapa bevakning");
-    }
-
-
-    public void hideModal () {
-//        fm.beginTransaction().hide(fm.findFragmentById(R.id.searchWatcherModal)).commit();
-        modalVisibility = false;
-    }
-
-    public ToggleButton getModalButton() {
-        return modalButton;
-    }
-
-    public boolean getModalVisibility() {
-        return modalVisibility;
-    }
-
-    public void toggleModalVisibility(){
-        modalVisibility = !modalVisibility;
-        update();
-    }
-
-    public SearchWatcherItem getModel() {
-        return model;
-    }
-    public boolean getNewMode(){
-        return newMode;
     }
 }

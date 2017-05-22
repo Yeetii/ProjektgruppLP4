@@ -40,6 +40,10 @@ public class SearchWatcherItem {
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
 
+    public void setSearch(Search search){
+        this.search = search;
+    }
+
     public boolean isExpanded() {
         return expanded;
     }

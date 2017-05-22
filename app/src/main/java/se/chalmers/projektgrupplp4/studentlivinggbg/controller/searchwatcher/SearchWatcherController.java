@@ -2,15 +2,13 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.design.widget.BottomNavigationView;
-import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.fragment.SearchWatcherModalFragment;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalFragment;
 
 /**
  * Created by PG on 21/04/2017.
@@ -46,12 +44,18 @@ public class SearchWatcherController{
         newSWButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentManager = activity.getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                SearchWatcherModalFragment fragment = new SearchWatcherModalFragment();
-                fragment.setAdapter(adapter);
-                fragmentTransaction.add(R.id.searchWatcherView, fragment);
-                fragmentTransaction.addToBackStack("tag").commit();
+                SearchWatcherModalFragment.newSearchWatcherModalFragment(activity, adapter, R.id.searchWatcherView);
+//                FragmentManager fragmentManager = activity.getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                SearchWatcherModalFragment fragment = new SearchWatcherModalFragment();
+//                fragment.setAdapter(adapter);
+//                fragmentTransaction.add(R.id.searchWatcherView, fragment);
+//                //Adds the fragment to the back button history among other things
+//                fragment-Transaction.addToBackStack("SearchWatcherModal").commit();
+//
+                //Doens't work when creating view and controller here but works in the Fragment TODO ficxxxx
+//                ModalView modalView = new ModalView(fragment.getView());
+//                new ModalController(fragment.getView(), modalView, fragment, adapter);
             }
         });
     }

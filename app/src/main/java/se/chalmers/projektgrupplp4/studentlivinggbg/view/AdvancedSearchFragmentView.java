@@ -3,7 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 import android.app.Activity;
 import android.view.View;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
@@ -46,6 +49,10 @@ public class AdvancedSearchFragmentView {
 
     private void fillLists(){
         //TODO: This should be done dynamically
+
+//        AccommodationHouseType[] accommodationHouseTypes = AccommodationHouseType.values();
+//        ArrayList<AccommodationHouseType> aHTArrayList = new ArrayList<> (Arrays.asList(accommodationHouseTypes));
+
         roomTypeItems.add(AccommodationHouseType.CORRIDOR.toString());
         roomTypeItems.add(AccommodationHouseType.KITCHENETTE.toString());
         roomTypeItems.add(AccommodationHouseType.COOKING_CABINET.toString());
