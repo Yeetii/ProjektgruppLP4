@@ -9,10 +9,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
 public class AdvancedSearchActivityView {
-    private Activity activity;
 
     public AdvancedSearchActivityView(Activity activity){
-        this.activity = activity;
-        this.activity.setContentView(R.layout.activity_advanced_search);
+        activity.setContentView(R.layout.activity_advanced_search);
     }
 }

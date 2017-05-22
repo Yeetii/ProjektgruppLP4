@@ -11,8 +11,8 @@ public class SGSAdapter extends AccommodationAdapter {
     @Override
     public List<Accommodation> getAccommodations() {
         List<Accommodation> accommodations = new ArrayList<>();
-        for (int i = 0; i < Result.length; i++) {
-            accommodations.add(convertAccommodation(Result[i]));
+        for (SGSJsonAccommodation aResult : Result) {
+            accommodations.add(convertAccommodation(aResult));
         }
 
         return accommodations;

@@ -316,7 +316,7 @@ public class Search {
     public boolean isEmpty() {
 
         try {
-            return this == null || (this.getMainSearch().equals("") &&
+            return (this.getMainSearch().equals("") &&
                     this.getPossibleAccommodationHosts().isEmpty() &&
                     this.getPossibleAccomodationHouseTypes().isEmpty() &&
                     (this.getMaxArea() == -1) &&

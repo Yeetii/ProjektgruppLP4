@@ -22,8 +22,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
 
-    private List<Accommodation> dataSet;
-    private Class<? extends Activity> targetActivity;
+    private final List<Accommodation> dataSet;
+    private final Class<? extends Activity> targetActivity;
 
     public AccommodationRecyclerViewAdapter(List<Accommodation> data, Class<? extends Activity> targetActivity) {
         dataSet = new ArrayList<>();
@@ -31,10 +31,10 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         for (Accommodation i : data) {
             dataSet.add(i);
         }
-        this.registerAdapterDataObserver(this);
+        this.registerAdapterDataObserver();
     }
 
-    private void registerAdapterDataObserver(AccommodationRecyclerViewAdapter accommodationRecyclerViewAdapter) {
+    private void registerAdapterDataObserver() {
         //Updates the object view to the last search, not optimal as it needs manual adjustment for example in favourite view
         ObjectActivityModel.setAccommodations(dataSet);
     }

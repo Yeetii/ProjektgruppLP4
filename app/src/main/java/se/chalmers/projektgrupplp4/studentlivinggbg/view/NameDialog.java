@@ -12,11 +12,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
 public class NameDialog {
-    private View dialogView;
-    private AlertDialog.Builder builder;
+    private final View dialogView;
 
     public NameDialog(AlertDialog.Builder builder, Activity activity) {
-        this.builder = builder;
         builder.setMessage("Välj ett namn för din bevakning.").setTitle("Skapa bevaking");
         LayoutInflater inflater = activity.getLayoutInflater();
         dialogView = inflater.inflate(R.layout.dialog_search_watcher_name, null);

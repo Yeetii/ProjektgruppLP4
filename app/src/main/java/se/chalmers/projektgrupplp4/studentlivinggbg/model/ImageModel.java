@@ -9,7 +9,7 @@ public class ImageModel<ImageType> {
 
     public static <T> ImageModel<T> getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new ImageModel<T>();
+            INSTANCE = new ImageModel<>();
         }
         return INSTANCE;
     }

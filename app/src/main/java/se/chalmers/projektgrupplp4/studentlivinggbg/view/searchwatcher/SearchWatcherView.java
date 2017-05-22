@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
 public class SearchWatcherView {
-    private Activity activity;
+    private final Activity activity;
 
     public SearchWatcherView (Activity activity) {
         this.activity = activity;

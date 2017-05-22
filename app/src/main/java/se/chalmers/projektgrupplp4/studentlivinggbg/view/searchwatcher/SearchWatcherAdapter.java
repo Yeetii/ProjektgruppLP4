@@ -22,14 +22,16 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
 
-    private LayoutInflater inflater;
-    private Observer observer;
+    private final LayoutInflater inflater;
+//    private final Class<? extends Activity> targetClass;
+    private final Observer observer;
     private List<SearchWatcherItemView> views = new ArrayList<>();
 
 
     public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Observer observer) {
         super(context, R.layout.search_watcher_row_item, data);
         this.observer = observer;
+//        this.targetClass = targetClass;
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

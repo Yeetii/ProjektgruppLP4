@@ -18,11 +18,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
  */
 
 public class SearchWatcherItemController {
-    private SearchWatcherItem model;
-    private View view;
-    private Class<? extends  Activity> targetClass;
-    private Activity activity;
-    private SearchWatcherAdapter adapter;
+    private final SearchWatcherItem model;
+    private final View view;
+    private final Class<? extends  Activity> targetClass;
+    private final Activity activity;
+    private final SearchWatcherAdapter adapter;
 
     public SearchWatcherItemController (SearchWatcherItemView view, Activity activity, Class<? extends  Activity> targetClass, SearchWatcherAdapter adapter) {
         this.model = view.getModel();
@@ -40,11 +40,16 @@ public class SearchWatcherItemController {
         ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
         searchButton.setOnClickListener(getSearchSearchWatcherListener());
 
+//<<<<<<< HEAD
         view.setOnClickListener(toggleExpanded());
     }
 
     private View.OnClickListener toggleExpanded() {
         return (new View.OnClickListener() {
+//=======
+//        ConstraintLayout layout = (ConstraintLayout) view.findViewById(R.id.row_item);
+//        layout.setOnClickListener(new View.OnClickListener() {
+//>>>>>>> bra
             @Override
             public void onClick(View v) {
                 //TODO Make the code more efficient.

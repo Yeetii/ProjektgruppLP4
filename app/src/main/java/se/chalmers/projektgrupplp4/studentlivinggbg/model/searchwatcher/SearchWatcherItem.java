@@ -5,7 +5,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 public class SearchWatcherItem {
-    public String title;
+    private String title;
     private Search search;
     private List<Accommodation> newAccommodations;
     private boolean expanded;

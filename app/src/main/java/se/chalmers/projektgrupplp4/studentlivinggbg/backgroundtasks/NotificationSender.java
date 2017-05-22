@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivi
  */
 
 public class NotificationSender {
-    static int highestId = 0;
+    private static int highestId = 0;
     public static void sendNotification (Context context, int matches){
         //In case we want to update the notification, access it with mId.
         int mId = ++highestId;

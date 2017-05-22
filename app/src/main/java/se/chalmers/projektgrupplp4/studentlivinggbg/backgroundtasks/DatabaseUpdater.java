@@ -80,7 +80,7 @@ class DatabaseUpdater implements Observer {
         return lastUpdateHour < 18 && currentHour >= 18;
     }
 
-    private void notifyApp(List<Accommodation> accommodations, Context context) {
+    private void notifyApp(List<Accommodation> accommodations) {
         SearchActivityController.updateAccommodations(accommodations);
     }
 
@@ -154,7 +154,7 @@ class DatabaseUpdater implements Observer {
         SearchWatcherModel.getSearchWatcherItems().clear();
         SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
         //Gets accommodations that weren't in the old database
-        List<Accommodation> uniqueNewAccommoadations = new ArrayList<Accommodation>(newAccommodations);
+        List<Accommodation> uniqueNewAccommoadations = new ArrayList<>(newAccommodations);
         uniqueNewAccommoadations.removeAll(previousAccommodations);
 
         int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
@@ -164,7 +164,7 @@ class DatabaseUpdater implements Observer {
         }
 
 
-        notifyApp(newAccommodations, context);
+        notifyApp(newAccommodations);
 
         AlarmTimeManger.getInstance().createNextAlarm(context);
         db.close();

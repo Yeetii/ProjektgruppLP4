@@ -6,22 +6,22 @@ import java.util.List;
 
 public class Accommodation {
 
-    static List<Accommodation> accommodations;
+    private static List<Accommodation> accommodations;
 
-    private String objectNumber;
-    private String address;
-    private AccommodationHouseType accommodationHouseType;
-    private Region region;
-    private int price;
-    private double area;
+    private final String objectNumber;
+    private final String address;
+    private final AccommodationHouseType accommodationHouseType;
+    private final Region region;
+    private final int price;
+    private final double area;
     private int searchers;
-    private String thumbnail;
+    private final String thumbnail;
     private List<Integer> images;
-    private String description;
-    private AccommodationHost accommodationHost;
+    private final String description;
+    private final AccommodationHost accommodationHost;
     private boolean isFavorite = false;
-    private String upploadDate;
-    private String lastApplyDate;
+    private final String upploadDate;
+    private final String lastApplyDate;
 
 
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
@@ -63,8 +63,7 @@ public class Accommodation {
 
     private static void initAccommodations() {
         try{
-            if(accommodations != null && accommodations.size() >= 0){}
-            else{
+            if(accommodations == null || accommodations.size() <= 0){
                 accommodations = new ArrayList<>();
             }
         }catch(Exception e){

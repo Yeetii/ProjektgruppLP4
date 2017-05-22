@@ -10,17 +10,17 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 
 public class SearchWatcherItemView {
-    private TextView txtTitle;
-    private TextView txtSearchLabel;
-    private TextView txtSearch;
-    private TextView txtHouseTypeLabel;
-    private TextView txtHouseType;
-    private TextView txtArea;
-    private TextView txtAreaLabel;
-    private TextView txtPrice;
-    private TextView txtPriceLabel;
     private boolean controllerAttached = false;
     private View view;
+    private final TextView txtTitle;
+    private final TextView txtSearchLabel;
+    private final TextView txtSearch;
+    private final TextView txtHouseTypeLabel;
+    private final TextView txtHouseType;
+    private final TextView txtArea;
+    private final TextView txtAreaLabel;
+    private final TextView txtPrice;
+    private final TextView txtPriceLabel;
 
     private SearchWatcherItem model;
 

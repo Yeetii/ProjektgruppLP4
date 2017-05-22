@@ -22,19 +22,13 @@ public class ObjectController {
 
     private Activity activity;
 
-    private Button applyButton;
-    /**
-     * The {@link ViewPager} that will AccommodationHost the section contents.
-     */
-    private ViewPager mViewPager;
-
     public ObjectController (Activity activity) {
         this.activity = activity;
         initListeners();
     }
 
     private void initListeners () {
-        applyButton = (Button) activity.findViewById(R.id.button);
+        Button applyButton = (Button) activity.findViewById(R.id.button);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +62,10 @@ public class ObjectController {
             }
         });
 
-        mViewPager = (ViewPager) activity.findViewById(R.id.container);
+        /*
+      The {@link ViewPager} that will AccommodationHost the section contents.
+     */
+        ViewPager mViewPager = (ViewPager) activity.findViewById(R.id.container);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

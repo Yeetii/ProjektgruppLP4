@@ -11,18 +11,18 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
 public class SearchActivityView {
-    private Activity activity;
-    private RecyclerView recyclerView;
+    private final Activity activity;
+    private final RecyclerView recyclerView;
 
     public SearchActivityView (Activity activity, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;
         activity.setContentView(R.layout.activity_main_search);
         this.recyclerView = (RecyclerView) activity.findViewById(R.id.list);
-        initLayoutManager(adapter);
+        initLayoutManager();
         recyclerView.setAdapter(adapter);
     }
 
-    private void initLayoutManager(AccommodationRecyclerViewAdapter adapter) {
+    private void initLayoutManager() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);

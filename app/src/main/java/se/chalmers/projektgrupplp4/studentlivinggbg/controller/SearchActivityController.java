@@ -24,11 +24,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 public class SearchActivityController {
     private static SearchActivityController controller;
 
-    private Activity activity;
+    private final Activity activity;
     private SearchView searchView;
-    private AccommodationRecyclerViewAdapter recyclerAdapter;
+    private final AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
-    private Class<? extends Activity> targetActivity;
+    private final Class<? extends Activity> targetActivity;
 
     public SearchActivityController(Activity activity, AccommodationRecyclerViewAdapter adapter, Class<? extends Activity> targetActivity) {
         this.activity = activity;
@@ -53,7 +53,7 @@ public class SearchActivityController {
                 "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
         };
         sort = (Spinner) activity.findViewById(R.id.sort);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_spinner_dropdown_item, arraySpinner);
         sort.setAdapter(adapter);
         sort.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {

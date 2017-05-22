@@ -65,8 +65,8 @@ public class TestSearchHandler {
         }
 
         String[] stringArray = mainSearches.split(" ");
-        for(int i=0; i<stringArray.length; i++){
-            assertFalse(stringArray[i].equals("test"));
+        for (String aStringArray : stringArray) {
+            assertFalse(aStringArray.equals("test"));
         }
 
         for(int i=1; i < 10; i++){

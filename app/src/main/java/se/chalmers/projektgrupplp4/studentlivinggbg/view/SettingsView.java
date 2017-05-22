@@ -12,7 +12,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 public class SettingsView {
 
-    private Activity activity;
+    private final Activity activity;
     private CheckBox pushNotifications;
 
     public SettingsView (Activity activity) {

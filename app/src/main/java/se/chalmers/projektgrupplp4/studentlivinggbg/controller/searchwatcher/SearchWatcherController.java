@@ -18,9 +18,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalF
  */
 
 public class SearchWatcherController implements Observer{
-    private Activity activity;
-    private SearchWatcherAdapter adapter;
     private Class<? extends Activity> targetClass;
+    private final Activity activity;
+    private SearchWatcherAdapter adapter;
 
     public SearchWatcherController(Activity activity,  Class<? extends Activity> targetClass) {
         this.activity = activity;
@@ -31,7 +31,6 @@ public class SearchWatcherController implements Observer{
     private void initializeListeners() {
         initializeNavigationListener();
         initializeNewSWListener();
-//        initializeDoNothingListener();
     }
 
     private void initializeNavigationListener () {
@@ -48,17 +47,6 @@ public class SearchWatcherController implements Observer{
             @Override
             public void onClick(View view) {
                 SearchWatcherModalFragment.newSearchWatcherModalFragment(activity, adapter, R.id.searchWatcherView);
-//                FragmentManager fragmentManager = activity.getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                SearchWatcherModalFragment fragment = new SearchWatcherModalFragment();
-//                fragment.setAdapter(adapter);
-//                fragmentTransaction.add(R.id.searchWatcherView, fragment);
-//                //Adds the fragment to the back button history among other things
-//                fragment-Transaction.addToBackStack("SearchWatcherModal").commit();
-//
-                //Doens't work when creating view and controller here but works in the Fragment TODO ficxxxx
-//                ModalView modalView = new ModalView(fragment.getView());
-//                new ModalController(fragment.getView(), modalView, fragment, adapter);
             }
         });
     }
@@ -73,7 +61,6 @@ public class SearchWatcherController implements Observer{
                 new SearchWatcherItemController(view, activity, targetClass, adapter);
             }
         }
-
     }
 
     public void setAdapter(SearchWatcherAdapter adapter) {

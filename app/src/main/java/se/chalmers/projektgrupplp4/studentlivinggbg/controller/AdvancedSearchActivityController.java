@@ -16,12 +16,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 public class AdvancedSearchActivityController implements Observer{
-    private Activity activity;
-    private AdvancedSearchFragmentController fragmentController;
-    private Class<? extends Activity> targetClass;
-
-    private Button advancedSearchButton;
-    private Button createSearchWatcherButton;
+    private final Activity activity;
+    private final AdvancedSearchFragmentController fragmentController;
+    private final Class<? extends Activity> targetClass;
 
     //While waiting for a name to become a SearchWatcher
     private Search wannabeSearchWatcher;
@@ -36,8 +33,8 @@ public class AdvancedSearchActivityController implements Observer{
 
     private void initListeners() {
         ImageButton cancelButton = (ImageButton) activity.findViewById(R.id.cancel);
-        advancedSearchButton = (Button) activity.findViewById(R.id.advancedSearchButton);
-        createSearchWatcherButton = (Button) activity.findViewById(R.id.advancedSearchCreateSearchWatcherButton);
+        Button advancedSearchButton = (Button) activity.findViewById(R.id.advancedSearchButton);
+        Button createSearchWatcherButton = (Button) activity.findViewById(R.id.advancedSearchCreateSearchWatcherButton);
 
         cancelButton.setOnClickListener(onClickListener);
         advancedSearchButton.setOnClickListener(onAdvancedSearchListener);
@@ -72,7 +69,7 @@ public class AdvancedSearchActivityController implements Observer{
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         NameDialog nameDialog = new NameDialog(builder, activity);
         new NameDialogController(builder, nameDialog, this);
-    };
+    }
 
     private void returnToMainSearch(){
         ActivitySwitcher.getInstance(activity).navigate(targetClass);
