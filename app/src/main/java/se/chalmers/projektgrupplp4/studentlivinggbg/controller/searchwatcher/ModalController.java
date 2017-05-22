@@ -1,12 +1,14 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
@@ -61,7 +63,7 @@ public class ModalController implements Observer {
                     model.setSearch(parseSearchTerms());
                     close();
                 }else {
-                    new NameDialog(view, ModalController.this);
+                    createNameDialog();
                 }
             }
         });
@@ -110,5 +112,11 @@ public class ModalController implements Observer {
 
     public boolean editMode(){
         return model != null;
+    }
+
+    private void createNameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getActivity());
+        NameDialog nameDialog = new se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog(builder, fragment.getActivity());
+        new NameDialogController(builder, nameDialog, this);
     }
 }
