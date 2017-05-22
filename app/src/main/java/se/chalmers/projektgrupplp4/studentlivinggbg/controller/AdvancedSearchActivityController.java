@@ -62,6 +62,7 @@ public class AdvancedSearchActivityController implements Observer{
         public void onClick(View view) {
             //Saves the search and waits for nameDialog to finish
             wannabeSearchWatcher = fragmentController.parseSearchTerms(false);
+            createNameDialog();
         }
     };
 

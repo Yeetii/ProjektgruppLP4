@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
  */
 
 public class NameDialogController {
-    public NameDialogController(AlertDialog.Builder builder, final NameDialog nameDialog, final Observer observer) {
+    public NameDialogController(final AlertDialog.Builder builder, final NameDialog nameDialog, final Observer observer) {
         builder.setPositiveButton(R.string.dialogSearchWatcherOk, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
@@ -21,5 +21,7 @@ public class NameDialogController {
                 observer.update(text.getText().toString());
             }
         });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
