@@ -15,16 +15,16 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {
-        private Class<? extends Activity> targetClass;
+        private final Class<? extends Activity> targetClass;
 
 
-        TextView txtAddress;
-        TextView txtHouseType;
-        TextView txtArea;
-        TextView txtPrice;
-        TextView txtLastApplyDate;
-        ImageView favoriteButton;
-        ImageView image;
+        final TextView txtAddress;
+        final TextView txtHouseType;
+        final TextView txtArea;
+        final TextView txtPrice;
+        final TextView txtLastApplyDate;
+        final ImageView favoriteButton;
+        final ImageView image;
         Accommodation current;
         int position;
         private RecyclerViewHolderObserver recyclerViewHolderObserver;

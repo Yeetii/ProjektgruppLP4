@@ -14,7 +14,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 public class ActivitySwitcher {
     private static ActivitySwitcher instance;
-    private Context context;
+    private final Context context;
 
     private ActivitySwitcher(Context context) {
         this.context = context;

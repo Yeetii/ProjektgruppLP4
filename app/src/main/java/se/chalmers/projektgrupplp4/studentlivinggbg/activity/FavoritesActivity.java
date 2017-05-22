@@ -8,7 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
 public class FavoritesActivity extends ActivityWithNavigation {
-    AccommodationRecyclerViewAdapter recyclerViewAdapter;
+    private AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

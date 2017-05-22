@@ -2,9 +2,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg;
 
 import com.google.gson.Gson;
 
-import junit.framework.AssertionFailedError;
-
-import org.junit.Assert;
 import org.junit.Test;
 import static  org.junit.Assert.*;
 
@@ -14,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapter;
 

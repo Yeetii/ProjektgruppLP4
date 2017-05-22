@@ -11,8 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
  */
 
 public class SearchWatcherView {
-    private Activity activity;
-    private SearchWatcherAdapter adapter;
+    private final Activity activity;
 
     public SearchWatcherView (Activity activity, SearchWatcherAdapter adapter) {
         this.activity = activity;

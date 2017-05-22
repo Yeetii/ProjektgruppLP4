@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name=".activity.FavoritesActivity"
-            android:label="@string/title_favorites"></activity>
+            android:label="@string/title_favorites" />
         <activity
             android:name=".activity.AdvancedSearchActivity"
             android:label="@string/title_activity_advanced_search" />
@@ -44,7 +44,7 @@
 
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
     </application>
 
 </manifest>

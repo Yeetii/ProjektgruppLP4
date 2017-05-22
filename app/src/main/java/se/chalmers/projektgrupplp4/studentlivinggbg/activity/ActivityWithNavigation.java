@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +14,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
  abstract class ActivityWithNavigation extends AppCompatActivity {
     private static Class currentSelected;
-
-    @Override
-    protected void onCreate(Bundle savedInstance) {
-        super.onCreate(savedInstance);
-    }
 
     protected void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

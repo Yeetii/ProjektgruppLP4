@@ -15,8 +15,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 public class FavoritesView {
     private RecyclerView recyclerView;
-    private AccommodationRecyclerViewAdapter recyclerViewAdapter;
-    private Activity activity;
+    private final AccommodationRecyclerViewAdapter recyclerViewAdapter;
+    private final Activity activity;
 
     public FavoritesView(Activity activity, AccommodationRecyclerViewAdapter adapter) {
         this.activity = activity;

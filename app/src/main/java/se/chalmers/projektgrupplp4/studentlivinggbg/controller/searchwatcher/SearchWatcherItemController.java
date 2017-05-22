@@ -7,26 +7,22 @@ import android.widget.ImageView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalFragment;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
  * Created by PG on 23/04/2017.
  */
 
 public class SearchWatcherItemController {
-    private SearchWatcherItem model;
-    private View view;
-    private Class<? extends  Activity> targetClass;
-    private Activity activity;
-    private SearchWatcherAdapter adapter;
-    private ConstraintLayout layout;
+    private final SearchWatcherItem model;
+    private final View view;
+    private final Class<? extends  Activity> targetClass;
+    private final Activity activity;
+    private final SearchWatcherAdapter adapter;
 
     public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity, SearchWatcherAdapter adapter, Class<? extends  Activity> targetClass) {
         this.model = model;
@@ -45,7 +41,7 @@ public class SearchWatcherItemController {
         ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
         searchButton.setOnClickListener(getSearchSearchWatcherListener());
 
-        layout = (ConstraintLayout) view.findViewById(R.id.row_item);
+        ConstraintLayout layout = (ConstraintLayout) view.findViewById(R.id.row_item);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

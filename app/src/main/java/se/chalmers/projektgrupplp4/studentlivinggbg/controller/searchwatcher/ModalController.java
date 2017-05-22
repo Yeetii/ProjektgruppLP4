@@ -23,15 +23,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView
 public class ModalController implements Observer {
     private final AdvancedSearchFragmentController advancedSearchFragmentController;
     private final Fragment fragment;
-    private ModalView modalView;
-    private View view;
-    private SearchWatcherAdapter adapter;
-    private SearchWatcherItem model;
+    private final View view;
+    private final SearchWatcherAdapter adapter;
+    private final SearchWatcherItem model;
 
     //Adapter needed to notify listView when a new searchWatcher is created
     public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
         this.view = view;
-        this.modalView = modalView;
         this.fragment = fragment;
         this.adapter = adapter;
         this.model = model;

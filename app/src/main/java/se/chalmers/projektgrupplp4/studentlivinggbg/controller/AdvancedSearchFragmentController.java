@@ -17,7 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentV
 
 
 public class AdvancedSearchFragmentController {
-    private View view;
+    private final View view;
     private SearchView advancedSearchView;
 
     private SeekBar seekBarMinPrice;
@@ -232,7 +232,7 @@ public class AdvancedSearchFragmentController {
     //Custom listener that updates a textView with the seekbars progress
     private class OnSeekBarChangeListenerText implements SeekBar.OnSeekBarChangeListener {
 
-        private TextView text;
+        private final TextView text;
 
         OnSeekBarChangeListenerText(TextView text){
             this.text = text;

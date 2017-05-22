@@ -15,9 +15,9 @@ public class SearchHandler {
 
     public static Search createSearch(String mainSearch){
         Search result = new Search(mainSearch);
-        if(mainSearch == null || mainSearch.isEmpty() || mainSearch.equals("") || mainSearch.length() <= 0) {}
-        else{
-        addToLastSearches(result);}
+        if (!(mainSearch == null || mainSearch.isEmpty() || mainSearch.equals("") || mainSearch.length() <= 0)) {
+            addToLastSearches(result);
+        }
         return result;
     }
 

@@ -27,8 +27,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 public class ImageHandler {
     private File directory;
-    private Context context;
-    private List<Thread> threads = new LinkedList<>();
+    private final Context context;
+    private final List<Thread> threads = new LinkedList<>();
 
     public ImageHandler(Context context) {
         this.context = context;

@@ -59,7 +59,7 @@ public class TestSearchWatcherItem {
         SearchWatcherItem searchWatcherItem = new SearchWatcherItem("title",  search);
 
         assertTrue(searchWatcherItem.getTitle().equals("title"));
-        assertTrue(searchWatcherItem.getSearch().getMainSearch() == search.getMainSearch());
+        assertTrue(searchWatcherItem.getSearch().getMainSearch().equals(search.getMainSearch()));
     }
 
 }

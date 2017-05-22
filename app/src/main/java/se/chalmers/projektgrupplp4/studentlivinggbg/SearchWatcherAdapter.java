@@ -21,15 +21,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implements View.OnClickListener{
 
-    private Activity activity;
-    private List<SearchWatcherItem> data;
-    private LayoutInflater inflater;
-    Class<? extends Activity> targetClass;
+    private final Activity activity;
+    private final LayoutInflater inflater;
+    private final Class<? extends Activity> targetClass;
 
 
     public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity, Class<? extends Activity> targetClass) {
         super(context, R.layout.search_watcher_row_item, data);
-        this.data = data;
         this.targetClass = targetClass;
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
@@ -94,9 +92,4 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> implem
 //        System.out.println("Refreshed with " + data.size());
 //        System.out.println("Model size " + SearchWatcherModel.getSearchWatcherItems().size());
 //    }
-
-    @Override
-    public long getItemId(int position){
-            return super.getItemId(position);
-    }
 }

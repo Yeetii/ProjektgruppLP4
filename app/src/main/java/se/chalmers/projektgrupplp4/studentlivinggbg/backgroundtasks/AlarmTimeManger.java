@@ -16,9 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 public class AlarmTimeManger {
     private static final AlarmTimeManger INSTANCE = new AlarmTimeManger();
-    private Calendar calendar = Calendar.getInstance();
-    private long updateInterval = AlarmManager.INTERVAL_DAY / 2; //Should update every 6h
-    private long updateIntervalInHours = 6;
+    private final Calendar calendar = Calendar.getInstance();
 
 
     private AlarmTimeManger () {
@@ -46,6 +44,7 @@ public class AlarmTimeManger {
         Long lastUpdateTime = Db4oDatabase.getInstance().getTimestamp();
         long currentTime = System.currentTimeMillis();
 
+        long updateInterval = AlarmManager.INTERVAL_DAY / 2;
         if (lastUpdateTime == null || lastUpdateTime > currentTime ||
                 (lastUpdateTime + updateInterval < currentTime)) {
             return currentTime;
@@ -65,6 +64,7 @@ public class AlarmTimeManger {
             amountOfMin = 60 - calendar.get(Calendar.MINUTE);
         }
 
+        long updateIntervalInHours = 6;
         if (calendar.get(Calendar.HOUR) % updateIntervalInHours != 0) {
             amountOfHours += updateIntervalInHours - (calendar.get(Calendar.HOUR) % updateIntervalInHours);
         } else if (calendar.get(Calendar.HOUR) == currentHour) {

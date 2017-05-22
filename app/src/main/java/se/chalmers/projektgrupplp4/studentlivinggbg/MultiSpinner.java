@@ -44,7 +44,7 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         StringBuffer spinnerBuffer = new StringBuffer();
         boolean someUnselected = false;
         for (int i = 0; i < items.size(); i++) {
-            if (selected[i] == true) {
+            if (selected[i]) {
                 spinnerBuffer.append(items.get(i));
                 spinnerBuffer.append(", ");
             } else {
@@ -59,9 +59,9 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         } else {
             spinnerText = defaultText;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item,
-                new String[] { spinnerText });
+                new String[]{spinnerText});
         setAdapter(adapter);
         listener.onItemsSelected(selected);
     }

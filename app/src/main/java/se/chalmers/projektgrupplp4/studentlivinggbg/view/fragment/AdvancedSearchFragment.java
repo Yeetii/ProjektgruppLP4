@@ -12,7 +12,6 @@ public class AdvancedSearchFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View inflatedView = inflater.inflate(R.layout.advanced_search_fragment, container, false);
-        return inflatedView;
+        return inflater.inflate(R.layout.advanced_search_fragment, container, false);
     }
 }

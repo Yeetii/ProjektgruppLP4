@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ObjectActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -25,31 +24,26 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 public class ObjectView {
 
-    private Activity activity;
-
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-
     /**
      * The {@link ViewPager} that will AccommodationHost the section contents.
      */
-    private ViewPager mViewPager;
+    private final ViewPager mViewPager;
 
 
     public ObjectView (Activity activity, FragmentManager supportFragmentManager) {
-        this.activity = activity;
-        this.activity.setContentView(R.layout.activity_object);
+        activity.setContentView(R.layout.activity_object);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         //TODO better way to do this??
-        mSectionsPagerAdapter = new SectionsPagerAdapter(supportFragmentManager);
+        /*
+      The {@link android.support.v4.view.PagerAdapter} that will provide
+      fragments for each of the sections. We use a
+      {@link FragmentPagerAdapter} derivative, which will keep every
+      loaded fragment in memory. If this becomes too memory intensive, it
+      may be best to switch to a
+      {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(supportFragmentManager);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) activity.findViewById(R.id.container);

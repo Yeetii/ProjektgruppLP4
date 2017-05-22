@@ -15,14 +15,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelperView;
 
 public class RecyclerViewHelperController {
 
-    private Activity activity;
+    private final AccommodationRecyclerViewAdapter recyclerViewAdapter;
 
-    private AccommodationRecyclerViewAdapter recyclerViewAdapter;
-
-    private RecyclerViewHelperView recyclerViewHelperView;
+    private final RecyclerViewHelperView recyclerViewHelperView;
 
     public RecyclerViewHelperController (Activity activity, AccommodationRecyclerViewAdapter adapter) {
-        this.activity = activity;
         this.recyclerViewAdapter = adapter;
         this.recyclerViewHelperView = new RecyclerViewHelperView(activity);
     }

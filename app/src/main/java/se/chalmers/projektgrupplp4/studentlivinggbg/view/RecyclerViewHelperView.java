@@ -19,7 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 public class RecyclerViewHelperView {
 
-    private Activity activity;
+    private final Activity activity;
 
     public RecyclerViewHelperView(Activity activity) {
         this.activity = activity;

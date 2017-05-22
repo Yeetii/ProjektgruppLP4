@@ -13,9 +13,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Chalmers
  */
 
 public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
-    private Context context;
+    private final Context context;
     private boolean sendSGS;
-    private Observer observer;
+    private final Observer observer;
 
 
     public RequestAccommodations (boolean isSGS, Context context, Observer observer) {
