@@ -90,16 +90,17 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
 
         // all selected by default
         selected = new boolean[items.size()];
-        for (int i = 0; i < selected.length; i++)
+        for (int i = 0; i < selected.length; i++){
             selected[i] = true;
+        }
 
         // all text on the spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[] {allText});
         setAdapter(adapter);
     }
 
-    public ArrayList<String> getSelectedItems(){
-        ArrayList<String> result = new ArrayList<>();
+    public List<String> getSelectedItems(){
+        List<String> result = new ArrayList<>();
         for(int i=0; i<items.size(); i++){
             if(selected[i]){
                 result.add(items.get(i));
@@ -117,8 +118,8 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
     }
 
     public void selectAll(){
-        for(boolean object: selected){
-            object = true;
+        for(int i = 0; i < selected.length; i ++){
+            selected[i] = true;
         }
     }
 

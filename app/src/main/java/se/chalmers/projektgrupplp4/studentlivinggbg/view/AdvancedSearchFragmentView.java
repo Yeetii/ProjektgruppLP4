@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -18,9 +19,9 @@ public class AdvancedSearchFragmentView {
     private final View view;
 
     //TODO does this follow MVC?
-    private final ArrayList<String> roomTypeItems = new ArrayList<>();
-    private final ArrayList<String> areasItems = new ArrayList<>();
-    private final ArrayList<String> landlordItems = new ArrayList<>();
+    private final List<String> roomTypeItems = new ArrayList<>();
+    private final List<String> areasItems = new ArrayList<>();
+    private final List<String> landlordItems = new ArrayList<>();
 
     public AdvancedSearchFragmentView(View view){
         this.view = view;

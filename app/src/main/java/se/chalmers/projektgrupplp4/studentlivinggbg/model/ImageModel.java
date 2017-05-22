@@ -1,10 +1,11 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class ImageModel<ImageType> {
-    private HashMap<String, ImageType> mainImages;
+    private Map<String, ImageType> mainImages;
     private static ImageModel INSTANCE;
 
     public static <T> ImageModel<T> getInstance() {

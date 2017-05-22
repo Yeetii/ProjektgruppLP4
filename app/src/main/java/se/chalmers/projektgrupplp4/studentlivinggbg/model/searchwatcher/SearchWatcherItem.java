@@ -7,7 +7,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 public class SearchWatcherItem {
     private String title;
     private Search search;
-    private List<Accommodation> newAccommodations;
     private boolean expanded;
 
     public SearchWatcherItem(String title, Search search) {
@@ -22,15 +21,13 @@ public class SearchWatcherItem {
     }
 
     public int checkForMatches(List<Accommodation> newAccommodations){
-        try{this.newAccommodations = search.search(newAccommodations);}
-        catch(NullPointerException e){}
         try{
             int i = 0;
-            for(Accommodation accommodation: this.newAccommodations){
+            for(Accommodation accommodation: newAccommodations){
                 if(accommodation == null){
                     i++;}
             }
-                return this.newAccommodations.size()-i;
+                return newAccommodations.size()-i;
         }
         catch(NullPointerException e){}
         return 0;

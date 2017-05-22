@@ -76,7 +76,6 @@ public class AdvancedSearchActivityController implements Observer{
     }
 
     private void createSearchWatcher(String name){
-        System.out.println("Creating SW " + name);
         SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
         Db4oDatabase.getInstance().store(sw);
     }

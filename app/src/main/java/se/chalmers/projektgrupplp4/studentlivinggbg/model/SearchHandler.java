@@ -29,9 +29,9 @@ public class SearchHandler {
     }
 
     public static Search createSearch(String mainSearch,
-                                      ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
-                                      ArrayList<AccommodationHost> possibleAccomodationHosts,
-                                      ArrayList<Region> possibleRegions,
+                                      List<AccommodationHouseType> possibleAccomodationHouseTypes,
+                                      List<AccommodationHost> possibleAccomodationHosts,
+                                      List<Region> possibleRegions,
                                       int minPrice, int maxPrice, int minArea, int maxArea,
                                       int daysUpploaded, int daysLeft, boolean addToList){
 

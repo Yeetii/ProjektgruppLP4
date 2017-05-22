@@ -2,6 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public enum Region {
 
@@ -31,15 +32,15 @@ public enum Region {
         return null;
     }
 
-    public static ArrayList<Region> parseStringList(ArrayList<String> stringList){
-        ArrayList<Region> result = new ArrayList<>();
+    public static List<Region> parseStringList(List<String> stringList){
+        List<Region> result = new ArrayList<>();
         for(String string: stringList){
             result.add(parseString(string));
         }
         return result;
     }
 
-    public static String toStringList(ArrayList<Region> regionArray){
+    public static String toStringList(List<Region> regionArray){
         try{
             String result = "";
             for(Region region: regionArray){

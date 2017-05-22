@@ -5,6 +5,7 @@ import android.widget.SearchView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -203,9 +204,9 @@ public class AdvancedSearchFragmentController {
 
     public Search parseSearchTerms(boolean addToSearchHistory){
         String mainSearch = "";
-        ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
-        ArrayList<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();
-        ArrayList<Region> possibleRegions = new ArrayList<>();
+        List<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
+        List<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();
+        List<Region> possibleRegions = new ArrayList<>();
         int minPrice = -1;
         int maxPrice = -1;
         int minArea = -1;

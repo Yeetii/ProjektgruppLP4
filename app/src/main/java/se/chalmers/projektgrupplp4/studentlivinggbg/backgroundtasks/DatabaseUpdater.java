@@ -192,7 +192,7 @@ class DatabaseUpdater implements Observer {
         String findString = "intresseanmälts av ";
         if (response.contains(findString)) {
             response = response.substring(response.indexOf(findString) + findString.length());
-            response = response.substring(0, response.indexOf(" "));
+            response = response.substring(0, response.indexOf(' '));
             amount = Integer.parseInt(response);
         }
         accommodation.setSearchers(amount);

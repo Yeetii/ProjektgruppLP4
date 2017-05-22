@@ -51,8 +51,8 @@ public class Accommodation {
         accommodations.add(this);
     }
 
-    public static ArrayList<Accommodation> getFavorites() {
-        ArrayList<Accommodation> result = new ArrayList<>();
+    public static List<Accommodation> getFavorites() {
+        List<Accommodation> result = new ArrayList<>();
         for (Accommodation accommodation: getAccommodations()){
             if(accommodation.getFavorite()) {
                 result.add(accommodation);

@@ -13,9 +13,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 public class Search {
 
     private String mainSearch = "";
-    private ArrayList<AccommodationHouseType> possibleAccommodationHouseTypes;
-    private ArrayList<AccommodationHost> possibleAccommodationHosts;
-    private ArrayList<Region> possibleRegions;
+    private List<AccommodationHouseType> possibleAccommodationHouseTypes;
+    private List<AccommodationHost> possibleAccommodationHosts;
+    private List<Region> possibleRegions;
     private int minPrice = -1;
     private int maxPrice = -1;
     private int minArea = -1;
@@ -29,9 +29,9 @@ public class Search {
 
 
     public Search(String mainSearch,
-                  ArrayList<AccommodationHouseType> possibleAccomodationHouseTypes,
-                  ArrayList<AccommodationHost> possibleAccomodationHosts,
-                  ArrayList<Region> possibleRegions,
+                  List<AccommodationHouseType> possibleAccomodationHouseTypes,
+                  List<AccommodationHost> possibleAccomodationHosts,
+                  List<Region> possibleRegions,
                   int minPrice, int maxPrice, int minArea, int maxArea,
                   int daysUpploaded, int daysLeft) {
 
@@ -55,15 +55,15 @@ public class Search {
         return mainSearch;
     }
 
-    public ArrayList<AccommodationHouseType> getPossibleAccomodationHouseTypes() {
+    public List<AccommodationHouseType> getPossibleAccomodationHouseTypes() {
         return possibleAccommodationHouseTypes;
     }
 
-    public ArrayList<AccommodationHost> getPossibleAccommodationHosts() {
+    public List<AccommodationHost> getPossibleAccommodationHosts() {
         return possibleAccommodationHosts;
     }
 
-    public ArrayList<Region> getPossibleRegions() {
+    public List<Region> getPossibleRegions() {
         return possibleRegions;
     }
 
@@ -227,10 +227,8 @@ public class Search {
             }
             return false;
         }
-        if(higherYear == lowerYear+1){
-            if(higherMonth == 1 && lowerMonth == 12){
-                return (31+higherDay-lowerDay) <= daysDelta;
-            }
+        if(higherYear == lowerYear+1 && higherMonth == 1 && lowerMonth == 12){
+            return (31+higherDay-lowerDay) <= daysDelta;
         }
         return false;
 

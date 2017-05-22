@@ -41,7 +41,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
                     newActivityClass = SettingsActivity.class;
                     break;
             }
-            if (newActivityClass != currentSelected) {
+            if (!newActivityClass.equals(currentSelected)) {
                 ActivitySwitcher.getInstance(getApplicationContext()).navigate(newActivityClass);
                 currentSelected = newActivityClass;
                 return true;

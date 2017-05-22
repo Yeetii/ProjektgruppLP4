@@ -2,6 +2,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public enum AccommodationHouseType {
 
@@ -39,15 +40,15 @@ public enum AccommodationHouseType {
         return null;
     }
 
-    public static ArrayList<AccommodationHouseType> parseStringList(ArrayList<String> stringList){
-        ArrayList<AccommodationHouseType> result = new ArrayList<>();
+    public static List<AccommodationHouseType> parseStringList(List<String> stringList){
+        List<AccommodationHouseType> result = new ArrayList<>();
         for(String string: stringList){
             result.add(parseString(string));
         }
         return result;
     }
 
-    public static String toStringList(ArrayList<AccommodationHouseType> houseTypesArray){
+    public static String toStringList(List<AccommodationHouseType> houseTypesArray){
     try{
         String result = "";
         for(AccommodationHouseType houseType: houseTypesArray){

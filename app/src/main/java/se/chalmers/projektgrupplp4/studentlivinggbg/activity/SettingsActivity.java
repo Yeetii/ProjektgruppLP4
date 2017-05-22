@@ -10,7 +10,7 @@ public class SettingsActivity extends ActivityWithNavigation {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SettingsView settingsView = new SettingsView(this);
+        new SettingsView(this);
         new SettingsController(this);
         initializeNavigationListener();
 

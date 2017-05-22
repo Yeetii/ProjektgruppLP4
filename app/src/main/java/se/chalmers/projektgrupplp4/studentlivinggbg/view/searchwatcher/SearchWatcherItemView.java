@@ -89,16 +89,16 @@ public class SearchWatcherItemView {
             boolean b = model.getSearch().getMinArea() < 1 && (model.getSearch().getMaxArea() == 100 || model.getSearch().getMaxArea() == -1);
 
             if(a || b){
-                txtArea.setText(String.valueOf(model.getSearch().getMinArea())+
-                        "-"+String.valueOf(model.getSearch().getMaxArea()));
+                txtArea.setText(model.getSearch().getMinArea() +
+                        "-" + model.getSearch().getMaxArea());
             }
 
             else if(model.getSearch().getMinArea() < 1 && model.getSearch().getMaxArea() > -1){
-                txtArea.setText("< "+String.valueOf(model.getSearch().getMaxArea()));
+                txtArea.setText("< " + model.getSearch().getMaxArea());
             }
 
             else if(model.getSearch().getMinArea() > -1 && model.getSearch().getMaxArea() == 100 && model.getSearch().getMaxArea() != -1){
-                txtArea.setText("> "+String.valueOf(model.getSearch().getMinArea()));
+                txtArea.setText("> " + model.getSearch().getMinArea());
             }
 
         }catch(NullPointerException e){
@@ -114,16 +114,16 @@ public class SearchWatcherItemView {
             boolean b = model.getSearch().getMinPrice() < 1 && (model.getSearch().getMaxPrice() == 10000 || model.getSearch().getMaxPrice() == -1);
 
             if(a || b){
-                txtPrice.setText(String.valueOf(model.getSearch().getMinPrice())+
-                        "-"+String.valueOf(model.getSearch().getMaxPrice()));
+                txtPrice.setText(model.getSearch().getMinPrice() +
+                        "-"+ model.getSearch().getMaxPrice());
             }
 
             else if(model.getSearch().getMinPrice() < 1 && model.getSearch().getMaxPrice() > -1){
-                txtPrice.setText("< "+String.valueOf(model.getSearch().getMaxPrice()));
+                txtPrice.setText("< " + model.getSearch().getMaxPrice());
             }
 
             else if(model.getSearch().getMinPrice() > -1 && model.getSearch().getMaxPrice() == 10000 && model.getSearch().getMaxPrice() != -1){
-                txtPrice.setText("> "+String.valueOf(model.getSearch().getMinPrice()));
+                txtPrice.setText("> " + model.getSearch().getMinPrice());
             }
 
         }catch(NullPointerException e){

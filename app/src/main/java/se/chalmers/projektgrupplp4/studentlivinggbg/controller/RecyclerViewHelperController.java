@@ -33,15 +33,14 @@ public class RecyclerViewHelperController {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
 
-                if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN){
-                    if (recyclerViewAdapter != null) {
-                        int position = viewHolder.getAdapterPosition();
-                        //Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
-                        recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
-                        //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
+                if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN && recyclerViewAdapter != null){
+                    int position = viewHolder.getAdapterPosition();
+                    //Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
+                    recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
+                    //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
 
-                        recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
-                    }
+                    recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+
                 }
             }
 

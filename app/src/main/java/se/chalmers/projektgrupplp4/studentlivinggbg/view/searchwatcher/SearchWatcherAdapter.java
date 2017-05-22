@@ -86,9 +86,4 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
     public List<SearchWatcherItemView> getViews() {
         return views;
     }
-
-    @Override
-    public long getItemId(int position){
-            return super.getItemId(position);
-    }
 }
