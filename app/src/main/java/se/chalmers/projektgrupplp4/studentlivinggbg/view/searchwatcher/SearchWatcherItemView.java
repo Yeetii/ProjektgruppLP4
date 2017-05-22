@@ -19,12 +19,15 @@ public class SearchWatcherItemView {
     private TextView txtAreaLabel;
     private TextView txtPrice;
     private TextView txtPriceLabel;
+    private boolean controllerAttached = false;
+    private View view;
 
     private SearchWatcherItem model;
 
 
     public SearchWatcherItemView(SearchWatcherItem model, View convertView) {
         this.model = model;
+        this.view = convertView;
 
         this.txtTitle = (TextView) convertView.findViewById(R.id.textViewTitle);
         this.txtSearch = (TextView) convertView.findViewById(R.id.textViewSearch);
@@ -127,6 +130,22 @@ public class SearchWatcherItemView {
             txtPrice.setText("");
             txtPriceLabel.setText("");
         }
+    }
+
+    public void setControllerAttached () {
+        controllerAttached = true;
+    }
+
+    public boolean isControllerAttached() {
+        return controllerAttached;
+    }
+
+    public SearchWatcherItem getModel () {
+        return model;
+    }
+
+    public View getView () {
+        return view;
     }
 
 }

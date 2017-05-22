@@ -7,23 +7,27 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.List;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchWatcherAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.fragment.SearchWatcherModalFragment;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 
 /**
  * Created by PG on 21/04/2017.
  */
 
-public class SearchWatcherController{
+public class SearchWatcherController implements Observer{
     private Activity activity;
     private SearchWatcherAdapter adapter;
     private FragmentManager fragmentManager;
+    private Class<? extends Activity> targetClass;
 
-    public SearchWatcherController(SearchWatcherAdapter adapter, Activity activity) {
-        this.adapter = adapter;
+    public SearchWatcherController(Activity activity,  Class<? extends Activity> targetClass) {
         this.activity = activity;
-
+        this.targetClass = targetClass;
         initializeListeners();
     }
 
@@ -53,5 +57,22 @@ public class SearchWatcherController{
                 fragmentTransaction.addToBackStack("tag").commit();
             }
         });
+    }
+
+    @Override
+    public void update(String updateString) {
+        if (adapter == null) return;
+        List<SearchWatcherItemView> views = adapter.getViews();
+        for (int i = 0; i < views.size(); i++) {
+            SearchWatcherItemView view = views.get(i);
+            if (!view.isControllerAttached()) {
+                new SearchWatcherItemController(view, activity, targetClass);
+            }
+        }
+
+    }
+
+    public void setAdapter(SearchWatcherAdapter adapter) {
+        this.adapter = adapter;
     }
 }

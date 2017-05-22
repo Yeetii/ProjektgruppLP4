@@ -13,6 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 
 /**
  * Created by PG on 23/04/2017.
@@ -30,9 +31,9 @@ public class SearchWatcherItemController implements Observer {
 
     private ConstraintLayout layout;
 
-    public SearchWatcherItemController (SearchWatcherItem model, View view, Activity activity, Class<? extends  Activity> targetClass) {
-        this.model = model;
-        this.view = view;
+    public SearchWatcherItemController (SearchWatcherItemView view, Activity activity, Class<? extends  Activity> targetClass) {
+        this.model = view.getModel();
+        this.view = view.getView();
         this.activity = activity;
         //Not the best solution perhaps as new controllers and views are created for the same modal, would singleton be better?
         //Couldn't pass it through constructors

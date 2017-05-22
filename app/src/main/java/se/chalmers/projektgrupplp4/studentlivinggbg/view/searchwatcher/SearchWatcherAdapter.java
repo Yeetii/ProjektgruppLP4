@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.view;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher.SearchWatcherItemController;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
 
@@ -22,16 +22,15 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
 
-    private Activity activity;
     private LayoutInflater inflater;
-    private Class<? extends Activity> targetClass;
+    private Observer observer;
+    private List<SearchWatcherItemView> views = new ArrayList<>();
 
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Activity activity, Class<? extends Activity> targetClass) {
+    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Observer observer) {
         super(context, R.layout.search_watcher_row_item, data);
-        this.targetClass = targetClass;
+        this.observer = observer;
         inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.activity = activity;
     }
 
     @Override
@@ -48,7 +47,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
                 convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             }
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
-            new SearchWatcherItemController(dataModel, convertView, activity, targetClass);
+            observer.update(null);
 
 
         }else{
@@ -83,6 +82,9 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
         }
     }
     */
+    public List<SearchWatcherItemView> getViews() {
+        return views;
+    }
 
     @Override
     public long getItemId(int position){
