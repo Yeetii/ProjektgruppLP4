@@ -1,25 +1,28 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
+
 /**
  * Inspired by: http://stackoverflow.com/a/6022474/1521064
  */
-public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner implements
-        OnMultiChoiceClickListener, DialogInterface.OnCancelListener {
+public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
 
     private List<String> items;
     private boolean[] selected;
     private String defaultText;
     private MultiSpinnerListener listener;
+    private AlertDialog.Builder builder;
+    private Observer observer;
+    private DialogInterface.OnMultiChoiceClickListener onMultiChoiceListener;
 
     public MultiSpinner(Context context) {
         super(context);
@@ -33,12 +36,14 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         super(arg0, arg1, arg2);
     }
 
-    @Override
     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
         selected[which] = isChecked;
     }
 
-    @Override
+    public void setObserver (Observer observer) {
+        this.observer = observer;
+    }
+
     public void onCancel(DialogInterface dialog) {
         // refresh text on spinner
         StringBuffer spinnerBuffer = new StringBuffer();
@@ -68,18 +73,10 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
 
     @Override
     public boolean performClick() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMultiChoiceItems(
-                items.toArray(new CharSequence[items.size()]), selected, this);
-        builder.setPositiveButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        builder.setOnCancelListener(this);
+        builder = new AlertDialog.Builder(getContext());
+        observer.update("Builder added");
+        //This one is really unclear since it does both view and controller stuff in the same method.
+        builder.setMultiChoiceItems(items.toArray(new CharSequence[items.size()]), selected, onMultiChoiceListener);
         builder.show();
         return true;
     }
@@ -133,7 +130,15 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner imp
         }
     }
 
+    public void setOnMultiChoiceListener(DialogInterface.OnMultiChoiceClickListener onMultiChoiceListener) {
+        this.onMultiChoiceListener = onMultiChoiceListener;
+    }
+
     public interface MultiSpinnerListener {
         void onItemsSelected(boolean[] selected);
+    }
+
+    public AlertDialog.Builder getBuilder () {
+        return builder;
     }
 }

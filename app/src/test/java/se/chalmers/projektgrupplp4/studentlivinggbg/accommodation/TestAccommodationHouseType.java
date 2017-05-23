@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.accommodation;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 
@@ -51,7 +52,7 @@ public class TestAccommodationHouseType {
         stringList.add("4-rum och kök");
         stringList.add("errorString");
 
-        ArrayList<AccommodationHouseType> newList = AccommodationHouseType.parseStringList(stringList);
+        List<AccommodationHouseType> newList = AccommodationHouseType.parseStringList(stringList);
 
         assertTrue(newList.get(0) == AccommodationHouseType.CORRIDOR);
         assertTrue(newList.get(1) == AccommodationHouseType.KITCHENETTE);

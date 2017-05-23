@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.accommodation;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
@@ -38,7 +39,7 @@ public class TestRegion {
         stringList.add("Centrum");
         stringList.add("errorString");
 
-        ArrayList<Region> newList = Region.parseStringList(stringList);
+        List<Region> newList = Region.parseStringList(stringList);
 
         assertTrue(newList.get(0) == Region.NORTH);
         assertTrue(newList.get(1) == Region.EAST);

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.MultiSpinner;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -81,9 +81,9 @@ public class AdvancedSearchFragmentController {
         seekBarDaysUpploaded.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysUpploaded));
         seekBarDaysLeft.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysLeft));
 
-        houseTypeSpinner.setListener(new MultiSpinnerListener(AccommodationHouseType.values()));
-        regionSpinner.setListener(new MultiSpinnerListener(Region.values()));
-        landlordSpinner.setListener(new MultiSpinnerListener(AccommodationHost.values()));
+        new MultiSpinnerController(houseTypeSpinner, AccommodationHouseType.values());
+        new MultiSpinnerController(regionSpinner, Region.values());
+        new MultiSpinnerController(landlordSpinner, AccommodationHost.values());
     }
 
     private void fillFilters() {
@@ -252,26 +252,6 @@ public class AdvancedSearchFragmentController {
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
 
-        }
-    }
-
-    private class MultiSpinnerListener implements MultiSpinner.MultiSpinnerListener{
-
-        private Enum[] terms;
-
-        MultiSpinnerListener(Enum[] terms) {
-            this.terms = terms;
-        }
-
-        @Override
-        public void onItemsSelected(boolean[] selected) {
-            //TODO do something with the terms that match with selected
-            int i = 0;
-            for (boolean b : selected){
-                if (b)
-                    System.out.println(terms[i]);
-                i++;
-            }
         }
     }
 }

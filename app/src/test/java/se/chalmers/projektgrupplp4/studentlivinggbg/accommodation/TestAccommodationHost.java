@@ -3,6 +3,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.accommodation;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 
@@ -37,7 +38,7 @@ public class TestAccommodationHost {
         stringList.add("Chalmers Studentbostäder");
         stringList.add("errorString");
 
-        ArrayList<AccommodationHost> newList = AccommodationHost.parseStringList(stringList);
+        List<AccommodationHost> newList = AccommodationHost.parseStringList(stringList);
 
         assertTrue(newList.get(0) == AccommodationHost.SGS);
         assertTrue(newList.get(1) == AccommodationHost.CHALMERS);
