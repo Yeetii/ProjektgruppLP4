@@ -1,20 +1,19 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 public class SettingsModel {
 
     public static void setPushNotificationsEnabled() {
         IsEnabled.setEnabled();
-        Db4oDatabase.getInstance().delete(IsEnabled.class);
-        Db4oDatabase.getInstance().store(IsEnabled.class);
+        //Db4oDatabase.getInstance().delete(IsEnabled.class);
+        //Db4oDatabase.getInstance().store(IsEnabled.class);
 
     }
 
     public static void resetPushNotificationsEnabled() {
         IsEnabled.resetEnabled();
-        Db4oDatabase.getInstance().delete(IsEnabled.class);
-        Db4oDatabase.getInstance().store(IsEnabled.class);
+        //Db4oDatabase.getInstance().delete(IsEnabled.class);
+        //Db4oDatabase.getInstance().store(IsEnabled.class);
     }
 
     public static boolean isPushNotificationsEnabled() {
