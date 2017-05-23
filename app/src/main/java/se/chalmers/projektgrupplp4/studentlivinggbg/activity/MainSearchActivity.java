@@ -19,6 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 public class MainSearchActivity extends ActivityWithNavigation {
     private static boolean firstTime = true;
+    private static ActivityObserver observer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +61,8 @@ public class MainSearchActivity extends ActivityWithNavigation {
                 db.setContext(context);
                 List<Accommodation> temp = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
-                if (temp.size() == 0) {
-                    AlarmTimeManger.getInstance().setUpInstantAlarm(context);
+                if (temp.size() == 0 && observer != null) {
+                    observer.update(MainSearchActivity.this);
                 }
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
@@ -84,6 +85,10 @@ public class MainSearchActivity extends ActivityWithNavigation {
             db.store(Accommodation.getAccommodations().get(i));
         }
         db.close();
+    }
+
+    public static void setObserver (ActivityObserver observer) {
+        MainSearchActivity.observer = observer;
     }
 
 }

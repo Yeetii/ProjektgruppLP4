@@ -1,5 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -8,13 +9,14 @@ import android.content.Intent;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
  * Created by PG on 12/05/2017.
  */
 
-public class AlarmTimeManger {
+public class AlarmTimeManger implements ActivityObserver {
     private static final AlarmTimeManger INSTANCE = new AlarmTimeManger();
     private final Calendar calendar = Calendar.getInstance();
 
@@ -75,5 +77,10 @@ public class AlarmTimeManger {
 
     void createNextAlarm(Context context) {
         createAlarm(nextUpdateTime(), context);
+    }
+
+    @Override
+    public void update(Activity activity) {
+        setUpInstantAlarm(activity);
     }
 }
