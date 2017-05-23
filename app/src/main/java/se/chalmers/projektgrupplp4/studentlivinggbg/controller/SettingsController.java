@@ -29,14 +29,18 @@ public class SettingsController {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-
+                    SettingsModel.resetPushNotificationsEnabled();
                     //TODO activate push notifications
                 } else {
+                    SettingsModel.setPushNotificationsEnabled();
                     //TODO disable push notifications
                 }
             }
         });
         Button resetDatebase = (Button) activity.findViewById(R.id.resetDatabase);
+        SettingsModel.isPushNotificationsEnabled();
+        pushNotifications.setChecked(SettingsModel.isPushNotificationsEnabled());
+        resetDatebase = (Button) activity.findViewById(R.id.resetDatabase);
         resetDatebase.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
