@@ -22,6 +22,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 public class ObjectController {
 
     private Activity activity;
+    private Accommodation current;
 
     public ObjectController (Activity activity) {
         this.activity = activity;
@@ -34,11 +35,10 @@ public class ObjectController {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.google.com");
-                Accommodation accommodation = Accommodation.getAccommodations().get(activity.getIntent().getIntExtra("ARG_POSITION",0));
-                if (accommodation.getAccommodationHost().equals("SGS Studentbostäder")) {
-                    uri = Uri.parse(ObjectActivityModel.getsGSUrl() + accommodation.getObjectNumber());
-                } else if (accommodation.getAccommodationHost().equals("Chalmers Studentbostäder")) {
-                    uri = Uri.parse(ObjectActivityModel.getChalmersUrl() + accommodation.getObjectNumber());
+                if (current.getAccommodationHost().equals("SGS Studentbostäder")) {
+                    uri = Uri.parse(ObjectActivityModel.getsGSUrl() + current.getObjectNumber());
+                } else if (current.getAccommodationHost().equals("Chalmers Studentbostäder")) {
+                    uri = Uri.parse(ObjectActivityModel.getChalmersUrl() + current.getObjectNumber());
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 activity.startActivity(intent);
@@ -75,7 +75,8 @@ public class ObjectController {
 
             @Override
             public void onPageSelected(int position) {
-                activity.setTitle(ObjectActivityModel.getAccommodations().get(position).getAddress());
+                current = ObjectActivityModel.getAccommodations().get(position);
+                activity.setTitle(current.getAddress());
 
             }
 
@@ -84,6 +85,7 @@ public class ObjectController {
 
             }
         });
+        current = ObjectActivityModel.getAccommodations().get(ObjectActivityModel.getStartPosition());
         mViewPager.setCurrentItem(activity.getIntent().getIntExtra("ARG_POSITION", ObjectActivityModel.getStartPosition()));
 
     }
