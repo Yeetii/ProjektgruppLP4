@@ -16,11 +16,6 @@ public class SearchWatcherItem {
         this.expanded = false;
     }
 
-    public void editSearchWatcher () {
-        //TODO: Add functionality
-        System.out.println("Currently does nothing");
-    }
-
     public int checkForMatches(List<Accommodation> newAccommodations){
         try{
             int i = 0;

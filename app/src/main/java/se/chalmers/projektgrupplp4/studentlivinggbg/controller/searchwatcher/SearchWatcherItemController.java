@@ -41,7 +41,6 @@ public class SearchWatcherItemController implements ViewCreationObserver{
         ImageView searchButton = (ImageView) view.findViewById(R.id.searchWithSearchWatcherButton);
         searchButton.setOnClickListener(getSearchSearchWatcherListener());
 
-//<<<<<<< HEAD
         view.setOnClickListener(toggleExpanded());
     }
 
@@ -77,7 +76,6 @@ public class SearchWatcherItemController implements ViewCreationObserver{
             @Override
             public void onClick (View view) {
                 ModalView.newSearchWatcherModalFragment(activity, SearchWatcherItemController.this, R.id.searchWatcherView);
-                model.editSearchWatcher();
             }
         });
     }
