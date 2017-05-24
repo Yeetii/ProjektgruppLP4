@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ObjectActivity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
@@ -83,7 +84,7 @@ public class ObjectController {
 
             }
         });
-        mViewPager.setCurrentItem(activity.getIntent().getIntExtra("ARG_POSITION", 0));
+        mViewPager.setCurrentItem(activity.getIntent().getIntExtra("ARG_POSITION", ObjectActivityModel.getStartPosition()));
 
     }
 

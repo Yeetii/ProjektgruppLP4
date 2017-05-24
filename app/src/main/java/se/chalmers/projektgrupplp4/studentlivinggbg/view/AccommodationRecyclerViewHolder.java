@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -15,9 +16,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {
-        private final Class<? extends Activity> targetClass;
-
-
         final TextView txtAddress;
         final TextView txtHouseType;
         final TextView txtArea;
@@ -31,7 +29,6 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
 
         public AccommodationRecyclerViewHolder(View v, final Class<? extends Activity> targetClass) {
             super(v);
-            this.targetClass = targetClass;
             txtAddress = (TextView) v.findViewById(R.id.address);
             txtHouseType = (TextView) v.findViewById(R.id.type);
             txtArea = (TextView) v.findViewById(R.id.area);
@@ -49,6 +46,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
+                    ObjectActivityModel.setStartPosition(position);
                     ActivitySwitcher.getInstance(v.getContext()).navigate(targetClass);
                     //Toast.makeText(v.getContext(), txtAddress.getText(), Toast.LENGTH_SHORT).show();
                 }

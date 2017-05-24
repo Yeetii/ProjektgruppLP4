@@ -48,7 +48,7 @@ public class SearchActivityController {
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
-
+        //TODO: This seems like view things to me.
         final String[] arraySpinner = new String[] {
                 "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
         };
