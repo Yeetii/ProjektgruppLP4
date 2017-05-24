@@ -106,6 +106,7 @@ public class ModalController implements Observer {
         Search search = parseSearchTerms();
         SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(updateString, search);
         Db4oDatabase.getInstance().store(sw);
+        Db4oDatabase.getInstance().close();
         adapter.notifyDataSetChanged();
         close();
     }
