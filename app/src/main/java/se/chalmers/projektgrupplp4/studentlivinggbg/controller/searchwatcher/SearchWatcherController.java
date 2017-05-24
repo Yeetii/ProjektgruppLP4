@@ -8,16 +8,17 @@ import android.widget.ImageButton;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.ViewCreationObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalFragment;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
  * Created by PG on 21/04/2017.
  */
 
-public class SearchWatcherController implements Observer{
+public class SearchWatcherController implements Observer, ViewCreationObserver{
     private Class<? extends Activity> targetClass;
     private final Activity activity;
     private SearchWatcherAdapter adapter;
@@ -46,7 +47,8 @@ public class SearchWatcherController implements Observer{
         newSWButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SearchWatcherModalFragment.newSearchWatcherModalFragment(activity, adapter, R.id.searchWatcherView);
+                //Controller for the modal is created via observer callback in viewCreated because the view hasn't been created at this point
+                ModalView.newSearchWatcherModalFragment(activity, SearchWatcherController.this, R.id.searchWatcherView);
             }
         });
     }
@@ -65,5 +67,10 @@ public class SearchWatcherController implements Observer{
 
     public void setAdapter(SearchWatcherAdapter adapter) {
         this.adapter = adapter;
+    }
+
+    @Override
+    public void viewCreated(View view, ModalView modalFragment) {
+        new ModalController(view, modalFragment, adapter, null);
     }
 }
