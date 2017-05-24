@@ -17,14 +17,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 public class TestSearchWatcherItem {
 
     @Test
-    public void testEditSearchWatcher(){
-        SearchWatcherItem searchWatcherItem = new SearchWatcherItem("", new Search(""));
-
-        //TODO: After editSearchWatcher has been implemented
-        searchWatcherItem.editSearchWatcher();
-    }
-
-    @Test
     public void testCheckForMatches(){
         List<Accommodation> accommodationList1 = new ArrayList<>();
         SearchWatcherItem searchWatcherItem1 = new SearchWatcherItem("", new Search(""));
