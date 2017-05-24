@@ -1,4 +1,4 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.view;
+package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher;
 
 import android.view.View;
 

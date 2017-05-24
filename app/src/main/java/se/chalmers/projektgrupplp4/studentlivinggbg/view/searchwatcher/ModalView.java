@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.ViewCreationObserver;
 
 /**
  * Created by Erik on 2017-05-19.
