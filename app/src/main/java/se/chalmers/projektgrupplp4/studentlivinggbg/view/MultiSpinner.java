@@ -45,19 +45,19 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
     }
 
     public void onCancel(DialogInterface dialog) {
+        int amountOfUnselected = 0;
         // refresh text on spinner
         StringBuffer spinnerBuffer = new StringBuffer();
-        boolean someUnselected = false;
         for (int i = 0; i < items.size(); i++) {
             if (selected[i]) {
                 spinnerBuffer.append(items.get(i));
                 spinnerBuffer.append(", ");
             } else {
-                someUnselected = true;
+                amountOfUnselected++;
             }
         }
         String spinnerText;
-        if (someUnselected) {
+        if (amountOfUnselected > 0 && amountOfUnselected != selected.length) {
             spinnerText = spinnerBuffer.toString();
             if (spinnerText.length() > 2)
                 spinnerText = spinnerText.substring(0, spinnerText.length() - 2);
