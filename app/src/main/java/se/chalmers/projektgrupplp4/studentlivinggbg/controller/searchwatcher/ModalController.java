@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller.searchwatcher;
 
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,6 +8,7 @@ import android.widget.ImageButton;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
@@ -16,7 +16,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
  * Created by Erik on 2017-05-17.
@@ -24,13 +23,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView
 
 public class ModalController implements Observer {
     private final AdvancedSearchFragmentController advancedSearchFragmentController;
-    private final Fragment fragment;
+    private final ModalView fragment;
     private final View view;
     private final SearchWatcherAdapter adapter;
     private final SearchWatcherItem model;
 
     //Adapter needed to notify listView when a new searchWatcher is created
-    public ModalController(View view, ModalView modalView, Fragment fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
+    public ModalController(View view, ModalView fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
         this.view = view;
         this.fragment = fragment;
         this.adapter = adapter;
@@ -45,7 +44,7 @@ public class ModalController implements Observer {
         if (editMode()){
             System.out.println("FIlling from modal with real studd" + model.getSearch().getMaxPrice());
             advancedSearchFragmentController.fillFilters(model.getSearch());
-            modalView.update(!editMode());
+            fragment.update(!editMode());
         }
     }
 

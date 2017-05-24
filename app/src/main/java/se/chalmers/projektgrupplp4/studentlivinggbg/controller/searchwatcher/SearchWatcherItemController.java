@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.ImageView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherModalFragment;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.ViewCreationObserver;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -17,7 +18,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
  * Created by PG on 23/04/2017.
  */
 
-public class SearchWatcherItemController {
+public class SearchWatcherItemController implements ViewCreationObserver{
     private final SearchWatcherItem model;
     private final View view;
     private final Class<? extends  Activity> targetClass;
@@ -75,7 +76,7 @@ public class SearchWatcherItemController {
         return (new ImageView.OnClickListener () {
             @Override
             public void onClick (View view) {
-                SearchWatcherModalFragment.newSearchWatcherModalFragment(activity, adapter, R.id.searchWatcherView, model);
+                ModalView.newSearchWatcherModalFragment(activity, SearchWatcherItemController.this, R.id.searchWatcherView);
                 model.editSearchWatcher();
             }
         });
@@ -90,5 +91,10 @@ public class SearchWatcherItemController {
                 ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });
+    }
+
+    @Override
+    public void viewCreated(View view, ModalView modalFragment) {
+        new ModalController(view, modalFragment, adapter, model);
     }
 }
