@@ -18,15 +18,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 public class AdvancedSearchActivityController implements Observer{
     private final Activity activity;
     private final AdvancedSearchFragmentController fragmentController;
-    private final Class<? extends Activity> targetClass;
 
     //While waiting for a name to become a SearchWatcher
     private Search wannabeSearchWatcher;
 
 
-    public AdvancedSearchActivityController(Activity activity, Class<? extends Activity> targetClass){
+    public AdvancedSearchActivityController(Activity activity){
         this.activity = activity;
-        this.targetClass = targetClass;
         initListeners();
         this.fragmentController = new AdvancedSearchFragmentController(activity.getWindow().getDecorView().getRootView());
     }
@@ -73,7 +71,7 @@ public class AdvancedSearchActivityController implements Observer{
     }
 
     private void returnToMainSearch(){
-        ActivitySwitcher.getInstance(activity).navigate(targetClass);
+        activity.finish();
     }
 
     private void createSearchWatcher(String name){
