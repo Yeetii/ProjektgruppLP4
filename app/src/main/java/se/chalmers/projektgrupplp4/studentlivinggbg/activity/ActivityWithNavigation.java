@@ -1,5 +1,9 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +17,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
  */
 
  abstract class ActivityWithNavigation extends AppCompatActivity {
-    private static Class currentSelected;
+    private Activity activity;
+    @Override
+    public void onResume() {
+        activity = this;
+        super.onResume();
+    }
 
     protected void initializeNavigationListener () {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -26,6 +35,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Class newActivityClass = null;
+
 
             switch (item.getItemId()) {
                 case R.id.navigation_search:
@@ -41,9 +51,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
                     newActivityClass = SettingsActivity.class;
                     break;
             }
-            if (!newActivityClass.equals(currentSelected)) {
+            if (!newActivityClass.equals(activity.getClass())) {
                 ActivitySwitcher.getInstance(getApplicationContext()).navigate(newActivityClass);
-                currentSelected = newActivityClass;
                 return true;
             }
 
