@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewHolder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelperView;
@@ -35,12 +36,10 @@ public class RecyclerViewHelperController {
 
                 if (direction != ItemTouchHelper.UP && direction != ItemTouchHelper.DOWN && recyclerViewAdapter != null){
                     int position = viewHolder.getAdapterPosition();
-                    //Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
-                    recyclerViewAdapter.setFavorite(position, direction != ItemTouchHelper.LEFT);
-                    //accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
+                    Accommodation accommodation = recyclerViewAdapter.getAccommodations().get(position);
+                    accommodation.setFavorite(direction != ItemTouchHelper.LEFT);
 
                     recyclerViewAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
-
                 }
             }
 
