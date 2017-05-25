@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.ObjectController;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.ObjectView;
 
 public class ObjectActivity extends ActivityWithNavigation {
@@ -45,6 +46,12 @@ public class ObjectActivity extends ActivityWithNavigation {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStop() {
+        Db4oDatabase.getInstance().saveAllAccommodations();
+        super.onStop();
     }
 
 }

@@ -40,9 +40,9 @@ public class MainSearchActivity extends ActivityWithNavigation {
     }
 
     @Override
-    protected void onDestroy() {
-        saveDatabase();
-        super.onDestroy();
+    protected void onStop() {
+        Db4oDatabase.getInstance().saveAllAccommodations();
+        super.onStop();
     }
 
     private void initSearchActivity() {
@@ -76,15 +76,6 @@ public class MainSearchActivity extends ActivityWithNavigation {
                 SearchActivityController.updateAccommodations(temp);
             }
         }).start();
-    }
-
-    private void saveDatabase() {
-        Db4oDatabase db = Db4oDatabase.getInstance();
-        db.deleteAll(Accommodation.class);
-        for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
-            db.store(Accommodation.getAccommodations().get(i));
-        }
-        db.close();
     }
 
     public static void setObserver (ActivityObserver observer) {

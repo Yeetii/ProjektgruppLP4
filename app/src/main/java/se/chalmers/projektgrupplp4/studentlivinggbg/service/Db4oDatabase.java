@@ -137,4 +137,12 @@ public class Db4oDatabase {
         this.context = context;
     }
 
+    public void saveAllAccommodations() {
+        deleteAll(Accommodation.class);
+        for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
+            store(Accommodation.getAccommodations().get(i));
+        }
+        close();
+    }
+
 }
