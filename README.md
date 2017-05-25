@@ -9,3 +9,12 @@ There's two ways to install Studentliving Gothenburg.
 2. Cloning this repo and running it through android studios, either in an emulator or on an android device.
 
 Running the app on an actual android device is prefered over running it on an emulator as there are some bugs when running in an emulator.
+
+## Contributors
+
+| Nick | Name |
+| ------ | -------------- |
+| FlexTerror | John Segerstedt |
+| PeterGardenas | Peter Gärdenäs |
+| Schurickan | Jonathan Gildevall |
+| Yeetii  | Erik Magnusson |
