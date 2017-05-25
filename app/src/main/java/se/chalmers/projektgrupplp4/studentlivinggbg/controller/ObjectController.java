@@ -23,6 +23,7 @@ public class ObjectController {
 
     private Activity activity;
     private Accommodation current;
+    private FloatingActionButton fab;
 
     public ObjectController (Activity activity) {
         this.activity = activity;
@@ -45,13 +46,14 @@ public class ObjectController {
             }
         });
 
-        //Todo Implement favorites
-        FloatingActionButton fab = (FloatingActionButton) activity.findViewById(R.id.fab);
+        fab = (FloatingActionButton) activity.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Lägger till som favorit", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                boolean newFavouriteStatus = toggleFabImage();
+                current.setFavorite(newFavouriteStatus);
             }
         });
 
@@ -77,6 +79,7 @@ public class ObjectController {
             public void onPageSelected(int position) {
                 current = ObjectActivityModel.getAccommodations().get(position);
                 activity.setTitle(current.getAddress());
+                setFabImage(current.getFavorite());
 
             }
 
@@ -88,6 +91,16 @@ public class ObjectController {
         current = ObjectActivityModel.getAccommodations().get(ObjectActivityModel.getStartPosition());
         mViewPager.setCurrentItem(activity.getIntent().getIntExtra("ARG_POSITION", ObjectActivityModel.getStartPosition()));
 
+    }
+
+    private boolean toggleFabImage() {
+        boolean favourite = !current.getFavorite();
+        setFabImage(favourite);
+        return favourite;
+    }
+    private void setFabImage(boolean isFavourite){
+        int drawable = isFavourite ? R.drawable.favorite_on : R.drawable.favorite_off;
+        fab.setImageResource(drawable);
     }
 
 

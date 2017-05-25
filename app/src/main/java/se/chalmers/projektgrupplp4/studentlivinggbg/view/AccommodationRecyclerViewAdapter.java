@@ -39,17 +39,6 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         ObjectActivityModel.setAccommodations(dataSet);
     }
 
-    public void clear () {
-        dataSet.clear();
-    }
-
-    public void addAll (List<Accommodation> dataSet) {
-        for (Accommodation i : dataSet) {
-            this.dataSet.add(i);
-        }
-        notifyDataSetChanged();
-    }
-
     public void setFavorite (int position, boolean value) {
         Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).setFavorite(value);
     }
