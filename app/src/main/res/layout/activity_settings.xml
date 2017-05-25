@@ -8,33 +8,33 @@
     android:orientation="vertical"
     tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.activity.SettingsActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="455dp"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-            <CheckBox
-                android:id="@+id/pushNotifications"
-                android:layout_width="200dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.07"
-                android:text="Push-notiser" />
+        <CheckBox
+            android:id="@+id/pushNotifications"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.07"
+            android:text="Push-notiser" />
 
-            <Button
-                android:id="@+id/resetDatabase"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Återställ databas" />
+        <Button
+            android:id="@+id/resetDatabase"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Återställ databas" />
 
-            <Button
-                android:id="@+id/removeSearchWatchers"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:elevation="0dp"
-                android:text="Ta bort bevakningar" />
+        <Button
+            android:id="@+id/removeSearchWatchers"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:text="Ta bort bevakningar" />
 
-        </LinearLayout>
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
