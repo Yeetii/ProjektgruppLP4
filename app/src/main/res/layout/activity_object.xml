@@ -72,7 +72,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="top|right"
-        app:srcCompat="@android:drawable/btn_star_big_off"
+        app:srcCompat="@drawable/favorite_off"
         app:useCompatPadding="false" />
 
 </android.support.design.widget.CoordinatorLayout>
