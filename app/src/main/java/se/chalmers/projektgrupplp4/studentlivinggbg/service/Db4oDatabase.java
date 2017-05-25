@@ -6,6 +6,7 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -20,6 +21,7 @@ public class Db4oDatabase {
 
     private static ObjectContainer oc = null;
     private Context context;
+    private Thread thread;
 
 
     public static Db4oDatabase getInstance() {
@@ -139,11 +141,29 @@ public class Db4oDatabase {
     }
 
     public void saveAllAccommodations() {
-        deleteAll(Accommodation.class);
-        for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
-            store(Accommodation.getAccommodations().get(i));
-        }
-        close();
+        /*
+            Not threading slows down navigation too much. Having several threads active simultaneously
+            create crashes since the database might be closed unexpectedly. This is not an optimal
+            solution but it works.
+         */
+        if (thread != null) thread.interrupt();
+
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    deleteAll(Accommodation.class);
+                    for (int i = 0; i < Accommodation.getAccommodations().size(); i++) {
+                        store(Accommodation.getAccommodations().get(i));
+                    }
+                    close();
+                } catch (RuntimeException e) {
+                    e.printStackTrace();
+                    close();
+                }
+            }
+        });
+        thread.start();
     }
 
 }
