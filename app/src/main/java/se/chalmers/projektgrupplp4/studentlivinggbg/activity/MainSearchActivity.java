@@ -6,7 +6,6 @@ import android.os.Bundle;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;

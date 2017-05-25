@@ -193,7 +193,7 @@ public class Search {
 
     private boolean upploadDayMatch(Accommodation accommodation) {
         if(getDaysUpploaded() == 7 || getDaysUpploaded() == -1){return true;}
-        return parseDays(new Date().toString(), accommodation.getUpploadDate(), getDaysUpploaded());
+        return parseDays(new Date().toString(), accommodation.getUploadDate(), getDaysUpploaded());
     }
 
     private boolean daysLeftMatch(Accommodation accommodation) {

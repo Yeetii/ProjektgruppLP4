@@ -70,7 +70,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder imp
         try{
             recyclerViewHolderObserver.update(this);}
         catch(Exception e){
-            System.out.print("Exception thrown in notifyObservers() in AccomodationRecyclerViewHolder)");
+            System.out.print("Exception thrown in notifyObservers() in AccommodationRecyclerViewHolder)");
         }}
 
 

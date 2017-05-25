@@ -8,12 +8,6 @@
     android:orientation="vertical"
     tools:context="se.chalmers.projektgrupplp4.studentlivinggbg.activity.SettingsActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,7 +17,7 @@
             <CheckBox
                 android:id="@+id/pushNotifications"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="0.07"
                 android:text="Push-notiser" />
 
@@ -41,8 +35,6 @@
                 android:text="Ta bort bevakningar" />
 
         </LinearLayout>
-
-    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"

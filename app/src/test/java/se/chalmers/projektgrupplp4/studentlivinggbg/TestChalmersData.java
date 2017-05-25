@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -25,9 +24,9 @@ import static org.junit.Assert.assertTrue;
 
 public class TestChalmersData {
 
-    String dirPath = "app/src/test/java/se/chalmers/projektgrupplp4/studentlivinggbg/resources/";
-    String chalmersFileName = "ChalmersData.txt";
-    String chalmersUnmodifiedFileName = "ChalmersDataUnmodified.txt";
+    private String dirPath = "app/src/test/java/se/chalmers/projektgrupplp4/studentlivinggbg/resources/";
+    private String chalmersFileName = "ChalmersData.txt";
+    private String chalmersUnmodifiedFileName = "ChalmersDataUnmodified.txt";
 
 
     @Test
@@ -36,7 +35,7 @@ public class TestChalmersData {
         createAccommodations();
     }
 
-    public void formatData () {
+    private void formatData() {
         File inputFile = new File(dirPath + chalmersUnmodifiedFileName);
         File outputFile = new File(dirPath + chalmersFileName);
 
@@ -70,7 +69,7 @@ public class TestChalmersData {
 
     }
 
-    public void createAccommodations() {
+    private void createAccommodations() {
         File dataFile = new File(dirPath + chalmersFileName);
         FileInputStream is = null;
         try {

@@ -1,9 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +21,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
         super.onResume();
     }
 
-    protected void initializeNavigationListener () {
+    void initializeNavigationListener() {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

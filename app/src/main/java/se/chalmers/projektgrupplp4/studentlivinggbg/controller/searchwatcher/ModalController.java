@@ -50,7 +50,7 @@ public class ModalController implements Observer {
         }
     }
 
-    public void close() {
+    private void close() {
         fragment.getActivity().getFragmentManager().beginTransaction().remove(fragment).commit();
     }
 
@@ -106,7 +106,7 @@ public class ModalController implements Observer {
         });
     }
 
-    public Search parseSearchTerms() {
+    private Search parseSearchTerms() {
         return advancedSearchFragmentController.parseSearchTerms(false);
     }
 
@@ -121,7 +121,7 @@ public class ModalController implements Observer {
         close();
     }
 
-    public boolean editMode(){
+    private boolean editMode(){
         return model != null;
     }
 

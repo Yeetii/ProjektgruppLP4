@@ -92,13 +92,13 @@ public class ImageHandler {
         threads.add(thread);
     }
 
-    public Drawable createImage(InputStream is, String path) {
+    private Drawable createImage(InputStream is, String path) {
         Drawable drawable = Drawable.createFromStream(is, path);
         saveToInternalStorage(path, drawable);
         return drawable;
     }
 
-    public void loadImage(String path) {
+    private void loadImage(String path) {
         try {
             File imageFile = new File(directory, path);
             Drawable image = Drawable.createFromStream(new FileInputStream(imageFile), path);
