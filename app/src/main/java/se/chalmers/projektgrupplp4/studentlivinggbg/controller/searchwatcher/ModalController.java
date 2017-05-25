@@ -70,6 +70,7 @@ public class ModalController implements Observer {
                         db.store(items.get(i));
                     }
                     db.close();
+                    adapter.notifyDataSetChanged();
                     close();
                 }else {
                     createNameDialog();
