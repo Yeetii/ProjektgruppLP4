@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
@@ -23,9 +26,51 @@ import static org.junit.Assert.assertTrue;
 public class TestChalmersData {
 
     String dirPath = "app/src/test/java/se/chalmers/projektgrupplp4/studentlivinggbg/resources/";
-    String chalmersFileName = "";
+    String chalmersFileName = "ChalmersData.txt";
+    String chalmersUnmodifiedFileName = "ChalmersDataUnmodified.txt";
+
+
     @Test
-    public void chalmersData () {
+    public void chalmersData() {
+        formatData();
+        createAccommodations();
+    }
+
+    public void formatData () {
+        File inputFile = new File(dirPath + chalmersUnmodifiedFileName);
+        File outputFile = new File(dirPath + chalmersFileName);
+
+        FileOutputStream os = null;
+        FileInputStream is = null;
+        try {
+            is = new FileInputStream(inputFile);
+            os = new FileOutputStream(outputFile);
+
+        } catch (FileNotFoundException e) {
+            assertFalse(true);
+        }
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+
+        try {
+            StringBuffer sb=new StringBuffer();
+            String line;
+            while ((line=reader.readLine()) != null) {
+                sb.append(line);
+            }
+            reader.close();
+            os.write(ChalmersAdapter.getFormattedBytes(sb));
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            assertFalse(true);
+        }
+
+
+    }
+
+    public void createAccommodations() {
         File dataFile = new File(dirPath + chalmersFileName);
         FileInputStream is = null;
         try {
@@ -35,6 +80,7 @@ public class TestChalmersData {
         }
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
         Gson gson = new Gson();
         ChalmersAdapter adapter = gson.fromJson(reader,ChalmersAdapter.class);
         for (int i = 0;i<adapter.getAccommodations().size();i++) {
