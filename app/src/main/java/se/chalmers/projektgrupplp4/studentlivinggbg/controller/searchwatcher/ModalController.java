@@ -5,6 +5,8 @@ import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.List;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
@@ -59,7 +61,15 @@ public class ModalController implements Observer {
             @Override
             public void onClick(View view) {
                 if (editMode()){
+                    //Not an optimal solution but it might be tricky to write a safe delete method.
+                    Db4oDatabase db = Db4oDatabase.getInstance();
+                    db.deleteAll(SearchWatcherItem.class);
                     model.setSearch(parseSearchTerms());
+                    List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+                    for (int i = 0; i < items.size(); i++) {
+                        db.store(items.get(i));
+                    }
+                    db.close();
                     close();
                 }else {
                     createNameDialog();

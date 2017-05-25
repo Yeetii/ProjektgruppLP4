@@ -95,7 +95,8 @@ public class Db4oDatabase {
         return null;
     }
 
-    public <T> void delete(T exercise) {
+
+    private  <T> void delete(T exercise) {
         db().delete(exercise);
     }
 
