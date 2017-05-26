@@ -88,11 +88,6 @@ public class ChalmersAdapter extends AccommodationAdapter {
             return Integer.parseInt(priceString);
         }
 
-        private String parseDate(String dateString){
-            //eventually todo
-            return dateString;
-        }
-
         private AccommodationHouseType parseHouseType (String houseTypeString) {
             switch (houseTypeString) {
                 case "1 rum och kök":

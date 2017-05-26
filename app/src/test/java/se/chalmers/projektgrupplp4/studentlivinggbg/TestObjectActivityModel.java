@@ -26,6 +26,8 @@ public class TestObjectActivityModel {
         assertFalse(ObjectActivityModel.getAccommodations().contains(accommodation));
         ObjectActivityModel.setAccommodations(accommodationList);
         assertTrue(ObjectActivityModel.getAccommodations().contains(accommodation));
+        ObjectActivityModel.setStartPosition(1);
+        assertTrue(ObjectActivityModel.getStartPosition()==1);
     }
 
     @Test

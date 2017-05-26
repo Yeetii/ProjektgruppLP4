@@ -28,6 +28,9 @@ public class TestSearchWatcherItem {
         accommodationList1.add(accommodation1);
         assertTrue(searchWatcherItem1.checkForMatches(accommodationList1) == 1);
 
+        searchWatcherItem1.setSearch(new Search(""));
+        assertNotNull(searchWatcherItem1.getSearch());
+
 
 
 

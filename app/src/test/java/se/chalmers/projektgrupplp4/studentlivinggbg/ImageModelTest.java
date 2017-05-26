@@ -1,6 +1,18 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg;
 
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import org.junit.Test;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
+
+import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by PG on 15/05/2017.
@@ -9,6 +21,31 @@ import org.junit.Test;
 public class ImageModelTest {
     @Test
     public void TestDownloadFromServer () {
+
+        ImageModel<Drawable> imageModel = ImageModel.getInstance();
+        imageModel.addImage("", new Drawable() {
+            @Override
+            public void draw(@NonNull Canvas canvas) {
+
+            }
+
+            @Override
+            public void setAlpha(@IntRange(from = 0, to = 255) int alpha) {
+
+            }
+
+            @Override
+            public void setColorFilter(@Nullable ColorFilter colorFilter) {
+
+            }
+
+            @Override
+            public int getOpacity() {
+                return PixelFormat.OPAQUE;
+            }
+        });
+        assertNotNull(imageModel.getMainImage(""));
+
 
         //"ImageModelHelper" is missing
 

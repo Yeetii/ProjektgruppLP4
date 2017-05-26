@@ -43,15 +43,6 @@ public class SearchWatcherItem {
         this.search = search;
     }
 
-    public boolean isExpanded() {
-        return expanded;
-    }
-    public void setExpanded () {
-        expanded = true;
-    }
-    public void resetExpanded() {
-        expanded = false;
-    }
 
 
     /*

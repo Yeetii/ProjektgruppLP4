@@ -42,11 +42,8 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
         System.out.println("Making list item " + position + " with title" + dataModel.getTitle());
 
         if (convertView == null) {
-            if (dataModel.isExpanded()) {
-                convertView = inflater.inflate(R.layout.search_watcher_row_item_expanded, null);
-            } else {
-                convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
-            }
+
+            convertView = inflater.inflate(R.layout.search_watcher_row_item, null);
             viewHolder = new SearchWatcherItemView(dataModel, convertView);
             views.add(viewHolder);
             observer.update(null);

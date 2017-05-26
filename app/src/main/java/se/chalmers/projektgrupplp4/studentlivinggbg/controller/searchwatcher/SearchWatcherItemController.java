@@ -54,12 +54,6 @@ public class SearchWatcherItemController implements ViewCreationObserver{
             public void onClick(View v) {
                 //TODO Make the code more efficient.
 
-                if (model.isExpanded()) {
-                    model.resetExpanded();
-                } else {
-                    model.setExpanded();
-                }
-
                 switch (v.getId())
                 {
                     case R.id.searchWithSearchWatcherButton:
