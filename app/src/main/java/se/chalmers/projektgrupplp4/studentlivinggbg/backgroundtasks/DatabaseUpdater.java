@@ -48,7 +48,7 @@ class DatabaseUpdater implements Observer {
         Long lastUpdateTime = db.getTimestamp();
 
         if (lastUpdateTime == null || lastUpdateTime > System.currentTimeMillis() ||
-                checkIfItShouldUpdate(lastUpdateTime)) {
+                checkIfItShouldUpdate(lastUpdateTime)  || db.findAll(Accommodation.class).size() == 0) {
             getNewData(context);
         } else {
             AlarmTimeManger.getInstance().createNextAlarm(context);

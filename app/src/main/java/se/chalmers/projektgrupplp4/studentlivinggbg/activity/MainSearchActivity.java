@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -19,7 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 public class MainSearchActivity extends ActivityWithNavigation {
     private static boolean firstTime = true;
     private static ActivityObserver observer;
-    AccommodationRecyclerViewAdapter adapter;
+    private AccommodationRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,34 +60,39 @@ public class MainSearchActivity extends ActivityWithNavigation {
     }
 
     private void loadDatabase(final Context context,final ImageHandler imageHandler) {
+        final Db4oDatabase db = Db4oDatabase.getInstance();
+        db.setContext(context);
+
+        List<SettingsModel> items = db.findAll(SettingsModel.class);
+        if (items.size() > 0 && items.get(0).getDefaultSort() != null) {
+            SettingsModel.setSettingsModel(items.get(0));
+        } else {
+            SettingsModel model = new SettingsModel();
+            SettingsModel.setSettingsModel(model);
+            model.setDefaultSort("Pris ↓");
+            db.store(model);
+        }
+        System.out.println("...");
+
+        db.close();
+
         //Throws error if not done in a thread.
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Db4oDatabase db = Db4oDatabase.getInstance();
-                db.setContext(context);
-                List<Accommodation> temp = db.findAll(Accommodation.class);
+                List<Accommodation> accommodations = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
-                if (temp.size() == 0 && observer != null) {
+                if (accommodations.size() == 0 && observer != null) {
                     observer.update(MainSearchActivity.this);
                 }
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
                 SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
 
-                List<SettingsModel> items = db.findAll(SettingsModel.class);
-                if (items.size() > 0) {
-                    SettingsModel.setSettingsModel(items.get(0));
-                } else {
-                    SettingsModel.setSettingsModel(new SettingsModel());
-                }
-
-                db.close();
-
                 Long currentTime = System.currentTimeMillis();
-                imageHandler.getAndSaveImages(true, temp);
+                imageHandler.getAndSaveImages(true, accommodations);
                 System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
-                SearchActivityController.updateAccommodations(temp);
+                SearchActivityController.updateAccommodations(accommodations);
             }
         }).start();
     }

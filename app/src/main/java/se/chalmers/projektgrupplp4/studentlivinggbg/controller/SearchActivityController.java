@@ -10,7 +10,9 @@ import android.widget.Spinner;
 
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
@@ -23,12 +25,16 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 public class SearchActivityController {
     private static SearchActivityController controller;
+    private static String selectedSorter;
 
     private final Activity activity;
     private SearchView searchView;
     private final AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
     private final Class<? extends Activity> targetActivity;
+    final String[] arraySpinner = new String[] {
+            "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
+    };
 
     public SearchActivityController(Activity activity, AccommodationRecyclerViewAdapter adapter, Class<? extends Activity> targetActivity) {
         this.activity = activity;
@@ -48,10 +54,6 @@ public class SearchActivityController {
         searchView.setIconifiedByDefault(true);
         searchView.setOnClickListener(onClickListener);
         searchView.setOnQueryTextListener(onQueryTextListener);
-        //TODO: This seems like view things to me.
-        final String[] arraySpinner = new String[] {
-                "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
-        };
         sort = (Spinner) activity.findViewById(R.id.sort);
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_spinner_dropdown_item, arraySpinner);
@@ -60,28 +62,37 @@ public class SearchActivityController {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = (String) sort.getSelectedItem();
-                List<Accommodation> accommodations = recyclerAdapter.getAccommodations();
+                List<Accommodation> accommodations = recyclerAdapter.getAccommodations(); //To get instant result
+                List<Accommodation> allAccommodations = Accommodation.getAccommodations(); //To change in other views
                 switch (selected) {
                     case "Pris ↑":
                         AccommodationsSorter.sortByPrice(accommodations, true);
+                        AccommodationsSorter.sortByPrice(allAccommodations, true);
                         break;
                     case "Pris ↓":
                         AccommodationsSorter.sortByPrice(accommodations, false);
+                        AccommodationsSorter.sortByPrice(allAccommodations, false);
                         break;
                     case "Storlek ↑":
                         AccommodationsSorter.sortBySize(accommodations, true);
+                        AccommodationsSorter.sortBySize(allAccommodations, true);
                         break;
                     case "Storlek ↓":
                         AccommodationsSorter.sortBySize(accommodations, false);
+                        AccommodationsSorter.sortBySize(allAccommodations, false);
                         break;
                     case "A-Ö":
                         AccommodationsSorter.sortByAddress(accommodations, false);
+                        AccommodationsSorter.sortByAddress(allAccommodations, false);
                         break;
                     case "Ö-A":
                         AccommodationsSorter.sortByAddress(accommodations, true);
+                        AccommodationsSorter.sortByAddress(allAccommodations, true);
                         break;
                     }
+                selectedSorter = selected;
                 recyclerAdapter.notifyDataSetChanged();
+                storeDefaultSelector(selectedl);
 
             }
 
@@ -90,6 +101,16 @@ public class SearchActivityController {
 
             }
         });
+        selectSorter();
+    }
+
+    private void storeDefaultSelector(String selected) {
+        SettingsModel model = SettingsModel.getInstance();
+        model.setDefaultSort(selected);
+        Db4oDatabase db = Db4oDatabase.getInstance();
+        db.deleteAll(SettingsModel.class);
+        db.store(model);
+        db.close();
     }
 
     private SearchView.OnClickListener onClickListener = new SearchView.OnClickListener() {
@@ -129,13 +150,24 @@ public class SearchActivityController {
         }
     };
 
+    private void selectSorter() {
+        if (selectedSorter == null) selectedSorter = SettingsModel.getInstance().getDefaultSort();
+        for (int i = 0; i < arraySpinner.length; i++) {
+            if (selectedSorter.equals(arraySpinner[i])) {
+                sort.setSelection(i);
+                break;
+            }
+        }
+
+    }
+
     public static void updateAccommodations(final List<Accommodation> accommodations) {
         if (controller != null) {
             controller.activity.runOnUiThread(new Runnable() {
                   @Override
                   public void run() {
-                      AccommodationsSorter.sortByPrice(accommodations, false);
                       Accommodation.setNewAccommodationList(accommodations);
+                      controller.selectSorter();
                       controller.recyclerAdapter.refresh();
                   }
               }
