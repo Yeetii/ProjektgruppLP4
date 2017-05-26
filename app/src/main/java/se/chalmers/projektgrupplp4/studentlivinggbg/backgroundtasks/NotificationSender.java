@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
+import java.util.List;
+
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivity;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
  * Created by Erik on 2017-05-14.
@@ -17,6 +21,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.SearchWatcherActivi
 public class NotificationSender {
     private static int highestId = 0;
     public static void sendNotification (Context context, int matches){
+
+        //Check if push notifications are enabled.
+        Db4oDatabase db = Db4oDatabase.getInstance();
+        List<SettingsModel> models = db.findAll(SettingsModel.class);
+        if (models.size() == 0 || !models.get(0).isPushEnabled()) return;
+        
         //In case we want to update the notification, access it with mId.
         int mId = ++highestId;
         NotificationCompat.Builder mBuilder =

@@ -68,6 +68,13 @@ public class MainSearchActivity extends ActivityWithNavigation {
                 SearchWatcherModel.getSearchWatcherItems().clear();
                 SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
 
+                List<SettingsModel> items = db.findAll(SettingsModel.class);
+                if (items.size() > 0) {
+                    SettingsModel.setSettingsModel(items.get(0));
+                } else {
+                    SettingsModel.setSettingsModel(new SettingsModel());
+                }
+
                 db.close();
 
                 Long currentTime = System.currentTimeMillis();
