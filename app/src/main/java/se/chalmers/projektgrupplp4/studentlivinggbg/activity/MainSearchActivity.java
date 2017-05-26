@@ -72,8 +72,6 @@ public class MainSearchActivity extends ActivityWithNavigation {
             model.setDefaultSort("Pris ↓");
             db.store(model);
         }
-        System.out.println("...");
-
         db.close();
 
         //Throws error if not done in a thread.
