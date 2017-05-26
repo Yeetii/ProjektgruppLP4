@@ -92,7 +92,7 @@ public class SearchActivityController {
                     }
                 selectedSorter = selected;
                 recyclerAdapter.notifyDataSetChanged();
-                storeDefaultSelector(selectedl);
+                storeDefaultSelector(selected);
 
             }
 
