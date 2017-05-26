@@ -94,17 +94,18 @@ public class MainSearchActivity extends ActivityWithNavigation {
         }
 
         //Also needs network but the rest of the application does not need to wait for this.
+        final Db4oDatabase db = Db4oDatabase.getInstance();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<Accommodation> accommodations = Db4oDatabase.getInstance().findAll(Accommodation.class);
+                List<Accommodation> accommodations = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
                 if (accommodations.size() == 0 && observer != null) {
                     observer.update(MainSearchActivity.this);
                 }
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
-                SearchWatcherModel.getSearchWatcherItems().addAll(Db4oDatabase.getInstance().<SearchWatcherItem>findAll(SearchWatcherItem.class));
+                SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
 
                 Long currentTime = System.currentTimeMillis();
                 imageHandler.getAndSaveImages(true, accommodations);
