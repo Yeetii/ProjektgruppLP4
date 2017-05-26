@@ -39,18 +39,11 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         ObjectActivityModel.setAccommodations(dataSet);
     }
 
-    public void setFavorite (int position, boolean value) {
-        Accommodation.getAccommodations().get(Accommodation.getAccommodations().indexOf(this.dataSet.get(position))).setFavorite(value);
-    }
-
-
     private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
         int drawable = viewHolder.isFavorite() ? R.drawable.favorite_off : R.drawable.favorite_on;
         viewHolder.favoriteButton.setImageResource(drawable);
         viewHolder.getCurrent().setFavorite(!viewHolder.isFavorite());
     }
-
-
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {

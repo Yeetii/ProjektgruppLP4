@@ -37,7 +37,7 @@ public class ModalView extends Fragment{
         this.observer = observer;
     }
     //Using constructor method because it needs more parameters than a standard fragment, maybe not best solution?
-    public static ModalView newSearchWatcherModalFragment(Activity activity, ViewCreationObserver observer, int viewID){
+    public static void newSearchWatcherModalFragment(Activity activity, ViewCreationObserver observer, int viewID){
         FragmentManager fragmentManager = activity.getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ModalView fragment = new ModalView();
@@ -45,7 +45,6 @@ public class ModalView extends Fragment{
         fragmentTransaction.add(viewID, fragment);
         //Adds the fragment to the back button history among other things
         fragmentTransaction.addToBackStack("SearchWatcherModal").commit();
-        return fragment;
     }
 
     private void initReferences() {

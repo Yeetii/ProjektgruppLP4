@@ -3,7 +3,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.MultiSpinner;
 

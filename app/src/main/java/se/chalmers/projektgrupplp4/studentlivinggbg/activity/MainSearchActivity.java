@@ -6,7 +6,6 @@ import android.os.Bundle;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
@@ -20,6 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 public class MainSearchActivity extends ActivityWithNavigation {
     private static boolean firstTime = true;
     private static ActivityObserver observer;
+    AccommodationRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainSearchActivity extends ActivityWithNavigation {
             firstTime = false;
             initSearchActivity();
         }
-        AccommodationRecyclerViewAdapter adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), ObjectActivity.class);
+        adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), ObjectActivity.class);
         new SearchActivityView(this, adapter);
         new SearchActivityController(this, adapter,AdvancedSearchActivity.class);
         adapter.refresh();
@@ -43,6 +43,12 @@ public class MainSearchActivity extends ActivityWithNavigation {
     protected void onStop() {
         Db4oDatabase.getInstance().saveAllAccommodations();
         super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.refresh();
     }
 
     private void initSearchActivity() {

@@ -20,13 +20,13 @@ public class Accommodation {
     private final String description;
     private final AccommodationHost accommodationHost;
     private boolean isFavorite = false;
-    private final String upploadDate;
+    private final String uploadDate;
     private final String lastApplyDate;
 
 
     public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
                          int price, double area, int searchers, String thumbnail, String description, AccommodationHost accommodationHost,
-                         Region region, String upploadDate, String lastApplyDate, boolean addToAccommodations) {
+                         Region region, String uploadDate, String lastApplyDate, boolean addToAccommodations) {
         this.objectNumber = objectNumber;
         this.address=address;
         this.accommodationHouseType = accommodationHouseType;
@@ -37,7 +37,7 @@ public class Accommodation {
         this.description = description;
         this.accommodationHost = accommodationHost;
         this.region=region;
-        this.upploadDate=upploadDate;
+        this.uploadDate = uploadDate;
         this.lastApplyDate=lastApplyDate;
 
         initAccommodations();
@@ -112,7 +112,7 @@ public class Accommodation {
          searchers = amount;
     }
 
-    public String getUpploadDate(){return upploadDate;}
+    public String getUploadDate(){return uploadDate;}
 
     public String getLastApplyDate(){return lastApplyDate;}
 

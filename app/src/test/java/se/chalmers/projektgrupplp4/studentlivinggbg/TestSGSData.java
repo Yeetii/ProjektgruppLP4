@@ -18,8 +18,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapt
  */
 
 public class TestSGSData {
-    String dirPath = "app/src/test/java/se/chalmers/projektgrupplp4/studentlivinggbg/resources/";
-    String sgsFileName = "SGSData.txt";
+    private String dirPath = "app/src/test/java/se/chalmers/projektgrupplp4/studentlivinggbg/resources/";
+    private String sgsFileName = "SGSData.txt";
 
 
     @Test

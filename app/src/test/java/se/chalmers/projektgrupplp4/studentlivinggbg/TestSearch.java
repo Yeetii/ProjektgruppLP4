@@ -55,7 +55,7 @@ public class TestSearch {
 
     }
 
-    public String parseDateMonth(String string, boolean addMonth) {
+    private String parseDateMonth(String string, boolean addMonth) {
         string = string.substring(4,7);
 
         switch(string){

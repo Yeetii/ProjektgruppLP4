@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher;
 
-import android.app.Activity;
 import android.content.Context;
 
 import android.view.LayoutInflater;

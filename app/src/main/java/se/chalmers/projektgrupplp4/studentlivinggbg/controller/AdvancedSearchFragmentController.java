@@ -25,12 +25,12 @@ public class AdvancedSearchFragmentController {
     private SeekBar seekBarMaxPrice;
     private SeekBar seekBarMinArea;
     private SeekBar seekBarMaxArea;
-    private SeekBar seekBarDaysUpploaded;
+    private SeekBar seekBarDaysUploaded;
     private SeekBar seekBarDaysLeft;
     private TextView textViewMinPrice;
     private TextView textViewMaxPrice;
     private TextView textViewMinArea;
-    private TextView textViewDaysUpploaded;
+    private TextView textViewDaysUploaded;
     private TextView textViewDaysLeft;
     private TextView textViewMaxArea;
     private MultiSpinner houseTypeSpinner;
@@ -58,14 +58,14 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice = (SeekBar) view.findViewById(R.id.seekBarMaxPrice);
         seekBarMinArea = (SeekBar) view.findViewById(R.id.seekBarMinArea);
         seekBarMaxArea = (SeekBar) view.findViewById(R.id.seekBarMaxArea);
-        seekBarDaysUpploaded = (SeekBar) view.findViewById(R.id.seekBarDaysUpploaded);
+        seekBarDaysUploaded = (SeekBar) view.findViewById(R.id.seekBarDaysUploaded);
         seekBarDaysLeft = (SeekBar) view.findViewById(R.id.seekBarDaysLeft);
 
         textViewMinPrice = (TextView) view.findViewById(R.id.textViewMinPrice);
         textViewMaxPrice = (TextView) view.findViewById(R.id.textViewMaxPrice);
         textViewMinArea = (TextView) view.findViewById(R.id.textViewMinArea);
         textViewMaxArea = (TextView) view.findViewById(R.id.textViewMaxArea);
-        textViewDaysUpploaded = (TextView) view.findViewById(R.id.textViewDaysUpploaded);
+        textViewDaysUploaded = (TextView) view.findViewById(R.id.textViewDaysUploaded);
         textViewDaysLeft = (TextView) view.findViewById(R.id.textViewDaysLeft);
 
         houseTypeSpinner = (MultiSpinner) view.findViewById(R.id.roomType_spinner);
@@ -78,7 +78,7 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxPrice));
         seekBarMinArea.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMinArea));
         seekBarMaxArea.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewMaxArea));
-        seekBarDaysUpploaded.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysUpploaded));
+        seekBarDaysUploaded.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysUploaded));
         seekBarDaysLeft.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysLeft));
 
         new MultiSpinnerController(houseTypeSpinner, AccommodationHouseType.values());
@@ -107,7 +107,8 @@ public class AdvancedSearchFragmentController {
         }
         if(search.getMaxPrice() < 1){seekBarMaxPrice.setProgress(10000);}
         if(search.getMaxArea() < 1){seekBarMaxArea.setProgress(100);}
-        if(search.getDaysUpploaded() < 0){seekBarDaysUpploaded.setProgress(7);}
+        if(search.getDaysUpploaded() < 0){
+            seekBarDaysUploaded.setProgress(7);}
         if(search.getDaysLeft() < 0){seekBarDaysLeft.setProgress(7);}
 
         updateTextViews();
@@ -118,7 +119,7 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice.setProgress(lastSearch.getMaxPrice());
         seekBarMinArea.setProgress(lastSearch.getMinArea());
         seekBarMaxArea.setProgress(lastSearch.getMaxArea());
-        seekBarDaysUpploaded.setProgress(lastSearch.getDaysUpploaded());
+        seekBarDaysUploaded.setProgress(lastSearch.getDaysUpploaded());
         seekBarDaysLeft.setProgress(lastSearch.getDaysLeft());
         advancedSearchView.setQuery(lastSearch.getMainSearch(), true);
     }
@@ -177,7 +178,7 @@ public class AdvancedSearchFragmentController {
         seekBarMaxPrice.setMax(10000);
         seekBarMinArea.setMax(100);
         seekBarMaxArea.setMax(100);
-        seekBarDaysUpploaded.setMax(7);
+        seekBarDaysUploaded.setMax(7);
         seekBarDaysLeft.setMax(7);
     }
 
@@ -186,7 +187,7 @@ public class AdvancedSearchFragmentController {
         textViewMaxPrice.setText(Integer.toString(seekBarMaxPrice.getProgress()));
         textViewMinArea.setText(Integer.toString(seekBarMinArea.getProgress()));
         textViewMaxArea.setText(Integer.toString(seekBarMaxArea.getProgress()));
-        textViewDaysUpploaded.setText(Integer.toString(seekBarDaysUpploaded.getProgress()));
+        textViewDaysUploaded.setText(Integer.toString(seekBarDaysUploaded.getProgress()));
         textViewDaysLeft.setText(Integer.toString(seekBarDaysLeft.getProgress()));
     }
     
@@ -222,7 +223,7 @@ public class AdvancedSearchFragmentController {
         try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}
         try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
         try{maxArea = seekBarMaxArea.getProgress();}catch(NullPointerException e){}
-        try{daysUpploaded = seekBarDaysUpploaded.getProgress();}catch(NullPointerException e){}
+        try{daysUpploaded = seekBarDaysUploaded.getProgress();}catch(NullPointerException e){}
         try{daysLeft = seekBarDaysLeft.getProgress();}catch(NullPointerException e){}
 
         return SearchHandler.createSearch(mainSearch, possibleAccommodationHouseTypes,
