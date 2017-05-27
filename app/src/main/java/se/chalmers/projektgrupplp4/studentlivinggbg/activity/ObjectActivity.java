@@ -10,6 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.ObjectView;
 
 /**
+ * @author
  * Used by: FavoritesActivity, MainSearchActivity, activity_object.xml,
  * Uses: Db4oDatabase, ObjectController, ObjectView,
  * Responsibility: Creating the activity which displays an accommodation.

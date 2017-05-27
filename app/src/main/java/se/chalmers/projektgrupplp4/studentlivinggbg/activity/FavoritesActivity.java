@@ -9,6 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
 /**
+ * @author
  * Used by: ActivityWithNavigation, activity_favorites.xml,
  * Uses: Db4oDatabase, AccommodationRecyclerViewAdapter, ObjectActivity, FavoritesController,
  * Accommodation, FavoritesView
