@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
 import com.google.gson.Gson;
@@ -32,7 +33,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
  * Revised by: Erik Magnusson
  * Used by: AlarmReciver
  * Uses: AlarmTimeManger, AccommodationAdapter, ChalmersAdapter, ImageHandler, Db4oDatabase, RequestSender,
- * Observer, RequestAccommodations, SGSAdapter, SearchActivityController, Accommodation, ImageModel,
+ * Observer, RequestAccommodations, SGSAdapter, Accommodation, ImageModel,
  * SearchWatcherItem, SearchWatcherModel, NortificationSender.
  * Responsibilty: Fetches and sets all the accommodation data used in the application.
  */
@@ -86,8 +87,10 @@ class DatabaseUpdater implements Observer {
         return lastUpdateHour < 18 && currentHour >= 18;
     }
 
-    private void notifyApp(List<Accommodation> accommodations) {
-        SearchActivityController.updateAccommodations(accommodations);
+    private void notifyApp(Context context) {
+        Intent i = new Intent("se.chalmers.projektgrupplp4.studentlivinggbg.UPDATE_ACCOMMODATIONS");
+        i.putExtra("RequestCode", "UPDATE_ACCOMMODATIONS");
+        context.sendBroadcast(i);
     }
 
     private void getNewData (Context context) {
@@ -170,8 +173,7 @@ class DatabaseUpdater implements Observer {
         }
 
 
-        notifyApp(newAccommodations);
-
+        notifyApp(context);
         AlarmTimeManger.getInstance().createNextAlarm(context);
         db.close();
 

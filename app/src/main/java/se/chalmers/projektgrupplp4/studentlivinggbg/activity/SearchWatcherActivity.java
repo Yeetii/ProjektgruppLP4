@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 /**
  * @author Erik Magnusson
  * Revised by: Peter Gärdenäs
- * Used by: ActivityWithNavigation, NotificationSender.
+ * Used by: ActivityWithNavigation, ActivityReceiver.
  * Uses: SearchWatcherController, SearchWatcherModel, SearchWatcherAdapter, SearchWatcherView, MainSearchActivity
  * Responsibility: Creating the search watcher activity.
  */

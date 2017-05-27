@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * @author Peter Gärdenäs
- * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity,
+ * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity, ActivityReceiver
  * MainSearchActivity, ModalController, NortificationsSender, ObjectActivity, SearchActivityContoller,
  * SettingsController
  * Uses: Accommodation

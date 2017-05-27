@@ -17,7 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 /**
  * @author Erik Magnusson
  * Used by: DatabaseUpdater
- * Uses: SettingsModel, Db4oDatabase, SearchWatcherActivity.
+ * Uses: SettingsModel, Db4oDatabase
  * Responsibilty: Send a push nortification about new accommodations matching searchwatchers.
  */
 
@@ -29,7 +29,7 @@ public class NotificationSender {
         Db4oDatabase db = Db4oDatabase.getInstance();
         List<SettingsModel> models = db.findAll(SettingsModel.class);
         if (models.size() == 0 || !models.get(0).isPushEnabled()) return;
-        
+
         //In case we want to update the notification, access it with mId.
         int mId = ++highestId;
         NotificationCompat.Builder mBuilder =
@@ -37,18 +37,14 @@ public class NotificationSender {
                 .setSmallIcon(R.drawable.house_image3)
                 .setContentTitle("Studentbostäder Göteborg")
                 .setContentText(matches +  " nya matchningar på dina bevakningar.");
-        // Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(context, SearchWatcherActivity.class);
 
-        // The stack builder object will contain an artificial back stack for the started Activity.
-        // This ensures that navigating backward from the Activity leads out of your application to the Home screen.
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        // Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(SearchWatcherActivity.class);
-        // Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
+        //Sends an event to the application when clicked
+        final Intent broadcastIntent = new Intent("se.chalmers.projektgrupplp4.studentlivinggbg.OPEN_SEARCH_WATCHER");
+        broadcastIntent.putExtra("RequestCode", "OPEN_SEARCH_WATCHER");
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mBuilder.setContentIntent(pendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(mId, mBuilder.build());
     }

@@ -10,7 +10,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 /**
  * @author Peter Gärdenäs
  * Used by: AccommodationResycleViewHolder, ActivityWithNavigation, SearchActivityController,
- * SearchWatcherItemController
+ * SearchWatcherItemController, ActivityReceiver
  * Uses: (None).
  * Responsibilty: Navigates between activities when not using the bottom navigation bar.
  */

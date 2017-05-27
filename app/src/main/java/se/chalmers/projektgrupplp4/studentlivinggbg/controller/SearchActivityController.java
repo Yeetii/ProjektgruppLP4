@@ -22,7 +22,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 /**
  * @author Peter Gärdenäs
  * revised by John Segerstedt, Jonathan Gildevall
- * Used by: DatabaseUpdater, MainSearchActivty
+ * Used by: MainSearchActivty, ActivityReceiver
  * Uses: SettingsModel, ActivitySwircher, Db4oDatabase, AccommodationRecyclerViewAdapter, AccommodationsSorter,
  * Accommodation, SearchHandler, RecyclerViewHelperController.
  * Responsibilty: Contoller for the MainSearchActivity (and since MainSearchActivity is kind of the main activity
