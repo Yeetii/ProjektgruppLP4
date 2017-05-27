@@ -53,7 +53,11 @@ public class TestSearch {
         List<Accommodation> search2Result = search2.search(accommodations);
 
 
-        assertTrue(search1.search() == Accommodation.getAccommodations());
+        List<Accommodation> allAccommodations = search1.search();
+        List<Accommodation> search1Result = Accommodation.getAccommodations();
+
+
+        assertTrue(allAccommodations.size() == search1Result.size());
         assertTrue(search2Result.get(0) == newAccommodation && search2Result.size() == 1);
 
     }
