@@ -9,7 +9,11 @@ import android.view.ViewGroup;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
+<<<<<<< HEAD
+ * @author Erik Magnusson
+=======
  * @author
+>>>>>>> e434245e464b4c07dbe1780621ee36db2378a40e
  */
 
 public class AdvancedSearchFragment extends Fragment {

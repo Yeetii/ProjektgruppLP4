@@ -95,8 +95,6 @@ public class AdvancedSearchFragmentController {
     }
 
     public void fillFilters(Search search){
-
-        System.out.println("Filling filters" + search.getMaxPrice());
         initMax();
 
         if(!search.isEmpty()){

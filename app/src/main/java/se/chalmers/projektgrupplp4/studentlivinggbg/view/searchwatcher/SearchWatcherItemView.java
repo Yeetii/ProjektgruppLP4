@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -76,9 +77,9 @@ public class SearchWatcherItemView {
             if(model.getSearch().getPossibleAccomodationHouseTypes().size() == 1){
                 txtHouseType.setText(model.getSearch().getPossibleAccomodationHouseTypes().get(0).toString());
             }else if(model.getSearch().getPossibleRegions().size() < 3){
-                txtHouseType.setText(Region.toStringList(model.getSearch().getPossibleRegions()));
+                txtHouseType.setText(EnumHelper.toString(model.getSearch().getPossibleRegions()));
             }else{
-                txtHouseType.setText(AccommodationHost.toStringListShort(model.getSearch().getPossibleAccommodationHosts()));
+                txtHouseType.setText(AccommodationHost.toStringShort(model.getSearch().getPossibleAccommodationHosts()));
             }
         }catch(NullPointerException e){
             txtHouseType.setText("");

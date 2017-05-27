@@ -82,7 +82,7 @@ public class TestAccommodationHouseType {
         newList.add(AccommodationHouseType.UNKNOWN);
         newList.add(null);
 
-        String test = AccommodationHouseType.toStringList(newList);
+        String test = AccommodationHouseType.toString(newList);
 
         assertTrue(test.equals(
                 "Enkelrum med gruppkök, Enkelrum med kokvrå, Enkelrum med kokskåp, 1-rum och kök, " +

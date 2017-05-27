@@ -162,7 +162,7 @@ class DatabaseUpdater implements Observer {
         List<Accommodation> uniqueNewAccommoadations = new ArrayList<>(newAccommodations);
         uniqueNewAccommoadations.removeAll(previousAccommodations);
 
-        int mathces = SearchWatcherModel.updateWatchers(uniqueNewAccommoadations);
+        int mathces = SearchWatcherModel.checkForMatches(uniqueNewAccommoadations);
 
         if (mathces > 0){
             NotificationSender.sendNotification(context, mathces);

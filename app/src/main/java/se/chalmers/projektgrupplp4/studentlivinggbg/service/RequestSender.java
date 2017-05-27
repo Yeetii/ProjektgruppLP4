@@ -31,7 +31,7 @@ public class RequestSender {
 
         //add reuqest headers
         con.setRequestMethod("POST");
-        con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        con.setRequestProperty("Content-EnumType", "application/x-www-form-urlencoded");
         con.setRequestProperty("X-Momentum-API-KEY", "u15fJ8yRMCIu////+aEYR7+XJwj1hiE9gIXfoo/eje4=");
         con.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
         con.setRequestProperty("Accept", "application/json,text/*");

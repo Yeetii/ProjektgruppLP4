@@ -7,9 +7,7 @@ import java.util.List;
 /**
  * @author John
  */
-
-
-public enum AccommodationHouseType {
+public enum AccommodationHouseType implements EnumType {
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
     FOUR_ROOMS, UNKNOWN;
@@ -51,19 +49,5 @@ public enum AccommodationHouseType {
             result.add(parseString(string));
         }
         return result;
-    }
-
-    public static String toStringList(List<AccommodationHouseType> houseTypesArray){
-    try{
-        String result = "";
-        for(AccommodationHouseType houseType: houseTypesArray){
-            if(houseType != null){
-                result = result + houseType.toString() + ", ";
-            }
-        }
-        if(!result.equals("")){return result.substring(0, result.length() - 2);}
-        return result;    }
-    catch(Exception e){
-        return "";}
     }
 }

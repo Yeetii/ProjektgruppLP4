@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * @author John
  */
-
-public enum Region {
+public enum Region implements EnumType {
 
     NORTH, EAST, WEST, CENTER;
 
@@ -42,19 +41,5 @@ public enum Region {
             result.add(parseString(string));
         }
         return result;
-    }
-
-    public static String toStringList(List<Region> regionArray){
-        try{
-            String result = "";
-            for(Region region: regionArray){
-                if(region != null){
-                    result = result + region.toString() + ", ";
-                }}
-            if(!result.equals("")){return result.substring(0, result.length() - 2);}
-            return result;
-        }
-        catch(Exception e){
-            return "";}
     }
 }

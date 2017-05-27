@@ -16,7 +16,6 @@ public class SearchWatcherModel {
     public static SearchWatcherItem createSearchWatcher(String name, Search search){
         SearchWatcherItem sWItem = new SearchWatcherItem(name, search);
         searchWatcherItems.add(sWItem);
-        System.out.println("Creating " + name + " " + search + " " + searchWatcherItems.size());
         return sWItem;
     }
 
@@ -24,7 +23,7 @@ public class SearchWatcherModel {
         return searchWatcherItems;}
 
 
-    public static int updateWatchers(List<Accommodation> newAccommodations){
+    public static int checkForMatches(List<Accommodation> newAccommodations){
         int matches = 0;
         for (SearchWatcherItem sWItem : searchWatcherItems){
             matches += sWItem.checkForMatches(newAccommodations);

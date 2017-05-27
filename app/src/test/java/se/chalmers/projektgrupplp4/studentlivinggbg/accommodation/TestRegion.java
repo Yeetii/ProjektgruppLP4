@@ -60,7 +60,7 @@ public class TestRegion {
         newList.add(Region.CENTER);
         newList.add(null);
 
-        assertTrue(Region.toStringList(newList).equals("Norr, Öster, Väster, Centrum"));
+        assertTrue(Region.toString(newList).equals("Norr, Öster, Väster, Centrum"));
     }
 
 }

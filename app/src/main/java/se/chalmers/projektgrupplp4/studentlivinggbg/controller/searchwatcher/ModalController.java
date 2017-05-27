@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
-
 import java.util.List;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
@@ -20,7 +18,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
+<<<<<<< HEAD
+ * @author Erik Magnusson, Peter Gärdenäs
+ * Responsibility: Controller for SearchWatcherModal
+ * Used by: SearchWatcherController, SearchWatcherItemController
+ * Uses: NameDialogController, NameDialog, SearchWatcherAdapter, AdvancedSearchFragmentController, Search, SearchWatcherItem, SearchWatcherModel, Db40Databasee, Observer
+=======
  * @author Erik
+>>>>>>> e434245e464b4c07dbe1780621ee36db2378a40e
  */
 
 public class ModalController implements Observer {
@@ -44,7 +49,6 @@ public class ModalController implements Observer {
         initializeModalDoneButtonListener();
 
         if (editMode()){
-            System.out.println("FIlling from modal with real studd" + model.getSearch().getMaxPrice());
             advancedSearchFragmentController.fillFilters(model.getSearch());
             fragment.update(!editMode());
         }
@@ -79,13 +83,13 @@ public class ModalController implements Observer {
         });
     }
 
+    //Just used so the modal doesn't close if you touch it
     private void initializeDoNothingListener () {
         //TODO This is super bad code, remove before submit!
         ConstraintLayout searchWatcherContent = (ConstraintLayout) view.findViewById(R.id.constraintLayout);
 
         searchWatcherContent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Don't do anything!");
             }
         });
     }
