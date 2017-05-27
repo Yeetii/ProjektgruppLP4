@@ -24,7 +24,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
  * and Jonathan redid it as an RecyclerView
  */
 
-public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
+public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private final List<Accommodation> dataSet;
     private final Class<? extends Activity> targetActivity;
@@ -44,9 +44,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     }
 
     private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
-        int drawable = viewHolder.isFavorite() ? R.drawable.favorite_off : R.drawable.favorite_on;
-        viewHolder.favoriteButton.setImageResource(drawable);
-        viewHolder.getCurrent().setFavorite(!viewHolder.isFavorite());
+
     }
 
     @Override
@@ -54,7 +52,6 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         AccommodationRecyclerViewHolder viewHolder = (AccommodationRecyclerViewHolder) holder;
         final Accommodation accommodation = dataSet.get(position);
 
-        viewHolder.add(this);
         viewHolder.txtAddress.setText(accommodation.getAddress());
         viewHolder.txtHouseType.setText(accommodation.getAccommodationHouseType());
         viewHolder.txtArea.setText(accommodation.getArea());
@@ -82,12 +79,6 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     @Override public AccommodationRecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
         return new AccommodationRecyclerViewHolder(view, targetActivity);
-    }
-
-
-    @Override
-    public void update(AccommodationRecyclerViewHolder viewHolder) {
-        toggleFavoriteStatus(viewHolder);
     }
 
     public void refresh() {
