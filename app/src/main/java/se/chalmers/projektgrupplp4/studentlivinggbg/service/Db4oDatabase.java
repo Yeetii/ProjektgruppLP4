@@ -13,6 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * @author Peter Gärdenäs
+ * Revised by: Erik Magnusson
  * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity,
  * MainSearchActivity, ModalController, NortificationsSender, ObjectActivity, SearchActivityContoller,
  * SettingsController
@@ -112,7 +113,7 @@ public class Db4oDatabase {
         }
     }
 
-    public Db4oDatabase initDametaBase(Context context) {
+    public Db4oDatabase initDataBase(Context context) {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.setContext(context);
         return db;

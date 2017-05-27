@@ -39,7 +39,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings" />

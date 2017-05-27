@@ -18,12 +18,11 @@ public class SearchActivityView {
     private final Activity activity;
     private final RecyclerView recyclerView;
 
-    public SearchActivityView (Activity activity, AccommodationRecyclerViewAdapter adapter) {
+    public SearchActivityView (Activity activity) {
         this.activity = activity;
         activity.setContentView(R.layout.activity_main_search);
         this.recyclerView = (RecyclerView) activity.findViewById(R.id.list);
         initLayoutManager();
-        recyclerView.setAdapter(adapter);
     }
 
     private void initLayoutManager() {

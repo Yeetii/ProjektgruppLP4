@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-@author
+@author Erik Magnusson
 revised by John
 responsibility Present the user with advanced search filters
 used by AdvancedSearchFragment.java
