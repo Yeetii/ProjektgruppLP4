@@ -8,12 +8,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 public class SearchWatcherItem {
     private String title;
     private Search search;
-    private boolean expanded;
 
     public SearchWatcherItem(String title, Search search) {
         this.title = title;
         this.search = search;
-        this.expanded = false;
     }
 
     public int checkForMatches(List<Accommodation> newAccommodations){
@@ -42,13 +40,4 @@ public class SearchWatcherItem {
     public void setSearch(Search search){
         this.search = search;
     }
-
-
-
-    /*
-    public List<Accommodation> getNewAccommodations() {
-        //TODO and reset list?
-        return newAccommodations;
-    }
-    */
 }
