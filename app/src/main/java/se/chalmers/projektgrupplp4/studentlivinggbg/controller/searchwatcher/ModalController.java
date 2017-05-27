@@ -44,7 +44,6 @@ public class ModalController implements Observer {
         initializeModalDoneButtonListener();
 
         if (editMode()){
-            System.out.println("FIlling from modal with real studd" + model.getSearch().getMaxPrice());
             advancedSearchFragmentController.fillFilters(model.getSearch());
             fragment.update(!editMode());
         }
@@ -85,7 +84,6 @@ public class ModalController implements Observer {
 
         searchWatcherContent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Don't do anything!");
             }
         });
     }

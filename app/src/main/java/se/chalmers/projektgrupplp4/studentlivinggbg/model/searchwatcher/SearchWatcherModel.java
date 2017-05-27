@@ -13,7 +13,6 @@ public class SearchWatcherModel {
     public static SearchWatcherItem createSearchWatcher(String name, Search search){
         SearchWatcherItem sWItem = new SearchWatcherItem(name, search);
         searchWatcherItems.add(sWItem);
-        System.out.println("Creating " + name + " " + search + " " + searchWatcherItems.size());
         return sWItem;
     }
 
