@@ -6,6 +6,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SettingsControlle
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SettingsView;
 
 /**
+ * @author Jonathan Gildevall
  * Used by: ActivityWithNavigation, activity_settings.xml.
  * Uses: SettingsController, SettingsView
  * Responsibility: Creating the settings activity.

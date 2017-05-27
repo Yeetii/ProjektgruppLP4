@@ -12,6 +12,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelperView;
 
 /**
  * Created by Jonathan on 22/05/2017.
+ * @author Jonathan
  */
 
 public class RecyclerViewHelperController {

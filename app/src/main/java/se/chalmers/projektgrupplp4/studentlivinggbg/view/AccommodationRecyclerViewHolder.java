@@ -13,6 +13,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * Created by Jonathan on 18/04/2017.
+ * @author John
+ * revised by Jonathan
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {

@@ -20,6 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * Created by Jonathan on 21/05/2017.
+ * @author Jonathan
  */
 
 public class ObjectView {
