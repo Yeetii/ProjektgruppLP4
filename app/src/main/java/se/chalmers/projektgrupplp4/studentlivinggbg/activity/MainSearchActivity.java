@@ -11,7 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
+import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
@@ -38,7 +38,7 @@ public class MainSearchActivity extends ActivityWithNavigation {
             initSearchActivity();
         }
         adapter = new AccommodationRecyclerViewAdapter(Accommodation.getAccommodations(), ObjectActivity.class);
-        new SearchActivityView(this, adapter);
+        new SearchActivityView(this);
         new SearchActivityController(this, adapter,AdvancedSearchActivity.class);
         adapter.refresh();
         try {

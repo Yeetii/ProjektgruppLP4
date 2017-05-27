@@ -5,13 +5,14 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewHolder;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelperView;
 
 /**
  * @author Jonathan Gildevall
+ * Revised by: Erik Magnusson
  * Uses: Accommodation, AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder, RecyclerViewHelperView
  * Used by: FavoritesActivity, SearchActivityController
  * Responsibility: Controller for the accommodations display in the list views.
@@ -26,8 +27,16 @@ public class RecyclerViewHelperController {
     public RecyclerViewHelperController (Activity activity, AccommodationRecyclerViewAdapter adapter) {
         this.recyclerViewAdapter = adapter;
         this.recyclerViewHelperView = new RecyclerViewHelperView(activity);
+        initAdapter(activity, adapter);
+        initSwipe();
     }
-    public void initSwipe() {
+
+    private void initAdapter(Activity activity, AccommodationRecyclerViewAdapter adapter) {
+        RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.list);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initSwipe() {
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
