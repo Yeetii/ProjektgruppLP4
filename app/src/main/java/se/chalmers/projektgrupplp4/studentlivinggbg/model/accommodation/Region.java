@@ -4,7 +4,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Region {
+public enum Region implements Type{
 
     NORTH, EAST, WEST, CENTER;
 

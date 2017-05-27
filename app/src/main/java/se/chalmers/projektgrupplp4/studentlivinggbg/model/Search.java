@@ -151,7 +151,7 @@ public class Search {
     private boolean houseTypeMatch(Accommodation accommodation) {
         if(getPossibleAccomodationHouseTypes().size() == 0){return true;}
         try{return getPossibleAccomodationHouseTypes().toString().equals("") ||
-                AccommodationHouseType.toStringList(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
+                AccommodationHouseType.toString(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
         catch(NullPointerException e){return true;}
     }
 

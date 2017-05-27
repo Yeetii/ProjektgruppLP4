@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
-
 import java.util.List;
-
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.NameDialogController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
@@ -20,7 +18,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
- * Created by Erik on 2017-05-17.
+ * @author Erik Magnusson, Peter Gärdenäs
+ * Responsibility: Controller for SearchWatcherModal
+ * Used by: SearchWatcherController, SearchWatcherItemController
+ * Uses: NameDialogController, NameDialog, SearchWatcherAdapter, AdvancedSearchFragmentController, Search, SearchWatcherItem, SearchWatcherModel, Db40Databasee, Observer
  */
 
 public class ModalController implements Observer {
@@ -78,6 +79,7 @@ public class ModalController implements Observer {
         });
     }
 
+    //Just used so the modal doesn't close if you touch it
     private void initializeDoNothingListener () {
         //TODO This is super bad code, remove before submit!
         ConstraintLayout searchWatcherContent = (ConstraintLayout) view.findViewById(R.id.constraintLayout);
