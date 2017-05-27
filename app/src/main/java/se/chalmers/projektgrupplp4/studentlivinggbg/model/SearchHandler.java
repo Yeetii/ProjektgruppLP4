@@ -7,6 +7,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
+/**
+ * @author John
+ */
+
 public class SearchHandler {
 
     static private List<Search> lastSearches = new ArrayList<>();

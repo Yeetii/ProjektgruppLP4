@@ -11,6 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
  * Created by PG on 07/05/2017.
+ * @author Peter
  */
 
 public class FavoritesView {

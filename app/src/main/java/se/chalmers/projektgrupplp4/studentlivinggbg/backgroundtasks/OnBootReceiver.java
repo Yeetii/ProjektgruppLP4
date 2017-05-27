@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * Created by PG on 04/05/2017.
+ * @author Peter
  */
 
 public class OnBootReceiver extends BroadcastReceiver {

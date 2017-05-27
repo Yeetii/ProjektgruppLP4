@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
- * Created by PG on 18/05/2017.
+ * @author Peter
  */
 
  abstract class ActivityWithNavigation extends AppCompatActivity {

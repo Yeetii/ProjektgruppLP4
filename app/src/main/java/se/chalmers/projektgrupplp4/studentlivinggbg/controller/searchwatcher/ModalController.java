@@ -20,7 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
- * Created by Erik on 2017-05-17.
+ * @author Erik
  */
 
 public class ModalController implements Observer {

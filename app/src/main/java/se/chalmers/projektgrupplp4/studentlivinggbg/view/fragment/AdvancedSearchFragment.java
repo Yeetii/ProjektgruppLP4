@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
+/**
+ * @author
+ */
+
 public class AdvancedSearchFragment extends Fragment {
 
     @Override

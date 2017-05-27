@@ -4,6 +4,11 @@ import android.os.Bundle;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityView;
 
+/**
+ * @author
+ */
+
+
 public class AdvancedSearchActivity extends ActivityWithNavigation{
 
     @Override

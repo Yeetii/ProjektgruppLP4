@@ -1,6 +1,10 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 
+/**
+ * @author
+ */
+
 public class SettingsModel {
     private static SettingsModel instance = null;
     private boolean pushEnabled = true;

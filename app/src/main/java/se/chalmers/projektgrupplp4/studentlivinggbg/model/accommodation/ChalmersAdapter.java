@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by PG on 20/04/2017.
+ * @author Peter
  * This class converts the response from a get request to Chalmers to a java object.
  */
 

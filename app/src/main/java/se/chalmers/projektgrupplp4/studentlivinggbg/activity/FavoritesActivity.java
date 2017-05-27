@@ -8,6 +8,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.FavoritesControll
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
+/**
+ * @author
+ */
+
 public class FavoritesActivity extends ActivityWithNavigation {
 
     @Override

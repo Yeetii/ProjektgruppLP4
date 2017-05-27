@@ -8,7 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherView;
 
 /**
- * Created by PG on 03/04/2017.
+ * @author Peter
  */
 
 public class SearchWatcherActivity extends ActivityWithNavigation {

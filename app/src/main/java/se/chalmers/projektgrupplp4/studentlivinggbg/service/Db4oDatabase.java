@@ -15,6 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * Created by PG on 11/04/2017.
+ * @author Peter
  * Reusing a lot from https://dzone.com/articles/using-db4o-android-application
  */
 

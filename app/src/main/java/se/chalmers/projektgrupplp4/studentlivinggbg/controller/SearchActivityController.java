@@ -20,7 +20,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 
 /**
- * Created by PG on 28/04/2017.
+ * @author Peter
+ * revised by John
  */
 
 public class SearchActivityController {

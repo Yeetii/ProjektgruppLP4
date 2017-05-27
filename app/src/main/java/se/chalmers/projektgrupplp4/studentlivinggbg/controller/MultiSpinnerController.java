@@ -7,7 +7,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.MultiSpinner;
 
 /**
- * Created by PG on 23/05/2017.
+ * @author Peter
  */
 
 public class MultiSpinnerController implements Observer {
