@@ -8,12 +8,15 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherView;
 
 /**
- * Created by PG on 03/04/2017.
+ * @author Erik Magnusson
+ * Revised by: Peter Gärdenäs
+ * Used by: ActivityWithNavigation, NotificationSender.
+ * Uses: SearchWatcherController, SearchWatcherModel, SearchWatcherAdapter, SearchWatcherView, MainSearchActivity
+ * Responsibility: Creating the search watcher activity.
  */
 
+
 public class SearchWatcherActivity extends ActivityWithNavigation {
-    private SearchWatcherView view;
-    private SearchWatcherController controller;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

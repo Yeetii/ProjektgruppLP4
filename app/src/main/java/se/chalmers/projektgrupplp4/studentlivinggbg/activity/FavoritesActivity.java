@@ -8,6 +8,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.controller.FavoritesControll
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.FavoritesView;
 
+/**
+ * Used by: ActivityWithNavigation, activity_favorites.xml,
+ * Uses: Db4oDatabase, AccommodationRecyclerViewAdapter, ObjectActivity, FavoritesController,
+ * Accommodation, FavoritesView
+ * Responsibility: Creating the Favorites activity.
+ */
+
 public class FavoritesActivity extends ActivityWithNavigation {
 
     @Override
