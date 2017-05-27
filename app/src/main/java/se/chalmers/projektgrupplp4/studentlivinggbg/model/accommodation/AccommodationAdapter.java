@@ -3,10 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.List;
 
 /**
- * @author
+ * @author Peter Gärdenäs
  * Used by: ChalmersAdapter, SGSAdapter, DatabaseUpdater
  * Uses: Accommodation
- * Responsibility:
+ * Responsibility: Interface for AccommodatinsAdapter.
  */
 
 public abstract class AccommodationAdapter {

@@ -7,8 +7,8 @@ import java.util.Map;
 /**
  * @author Peter Gärdenäs
  * Used by: AccommodationRecyclerViewAdapter, DatabaseUpdater, ImageHandler, ImageModel, ObjectView
- * Uses:
- * Responsibility:
+ * Uses: (None).
+ * Responsibility: Holds images so they only need to be loaded once per session.
  */
 
 public class ImageModel<ImageType> {

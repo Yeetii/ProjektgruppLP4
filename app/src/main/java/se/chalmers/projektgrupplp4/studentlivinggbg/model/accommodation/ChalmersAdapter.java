@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
  * Used by: DatabaseUpdater, RequestAccommodations
  * Uses: Accommodation, AccommodationAdapter, Region, AccommodationHost, AccommodationHouseType
  * Responsibility: This class converts the response from a get request to Chalmers to a java object.

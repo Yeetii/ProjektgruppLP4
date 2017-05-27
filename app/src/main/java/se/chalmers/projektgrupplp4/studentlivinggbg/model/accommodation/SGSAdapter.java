@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
  * Used by: DatabaseUpdater
  * Uses: Accommodation, AccommodationAdapter, Region, AccommodationHost, AccommodationHouseType
  * Responsibility: Converting SGS data to Accommodation form

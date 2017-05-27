@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * @author John
+ * Revised by: Peter Gärdenäs
  * Used by: AccommodationAdapter, AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder,
  * AccommodationsSorter, ChalmersAdapter, DatabaseUpdater, Db4oDatabase, FavoritesActivity, FavoritesView,
  * ImageHandler, MainSearchActivity, ObjectActivityModel, ObjectController, ObjectView,

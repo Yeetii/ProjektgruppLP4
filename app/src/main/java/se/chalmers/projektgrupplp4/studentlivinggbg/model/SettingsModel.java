@@ -2,10 +2,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 
 /**
- * @author
+ * @author Peter Gärdenäs
  * Used by: Db4oDatabase, MainSearchActivity, NotificationSender, SearchActivityController, SettingsController
- * Uses:
- * Responsibility: Settings
+ * Uses: (None)
+ * Responsibility: Holds users settings
  */
 
 public class SettingsModel {
