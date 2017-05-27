@@ -16,8 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 
 /**
- * Created by PG on 03/04/2017.
- * @author Peter
+ * @author Peter Gärdenäs
  */
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {

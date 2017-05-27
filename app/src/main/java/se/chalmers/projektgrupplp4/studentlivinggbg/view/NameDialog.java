@@ -9,7 +9,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by Erik on 2017-05-15.
- * @author Erik
+ * @author Erik Magnusson
+ * Revised by: Peter Gärdenäs
  */
 
 public class NameDialog {

@@ -8,7 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by PG on 28/04/2017.
- * @author Peter
+ * @author Peter Gärdenäs
  */
 
 public class SearchActivityView {

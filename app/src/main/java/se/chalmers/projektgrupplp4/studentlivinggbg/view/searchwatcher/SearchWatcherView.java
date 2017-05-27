@@ -6,8 +6,7 @@ import android.widget.ListView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
- * Created by PG on 21/04/2017.
- * @author Peter
+ * @author Peter Gärdenäs
  */
 
 public class SearchWatcherView {
