@@ -22,8 +22,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by PG on 13/05/2017.
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: DatabaseUpdater, MainSearchActivity
+ * Uses: ImageModel, Accommodation
+ * Responsibility: Saves and loads all accommodation images.
  */
 
 public class ImageHandler {

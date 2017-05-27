@@ -8,9 +8,11 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 /**
- * Created by PG on 17/05/2017.
- * @author Peter
- * Needed to avoid circular dependencies.
+ * @author Peter Gärdenäs
+ * Used by: AccommodationResycleViewHolder, ActivityWithNavigation, SearchActivityController,
+ * SearchWatcherItemController
+ * Uses: (None).
+ * Responsibilty: Navigates between activities when not using the bottom navigation bar.
  */
 
 public class ActivitySwitcher {

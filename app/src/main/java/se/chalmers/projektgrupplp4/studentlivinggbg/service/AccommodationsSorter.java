@@ -7,7 +7,10 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: SerchActivityController
+ * Uses: Accommodation
+ * Responsibility: Sorts acoommodations by attribute.
  */
 
 public class AccommodationsSorter {

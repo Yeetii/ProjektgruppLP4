@@ -6,17 +6,18 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by PG on 11/04/2017.
- * @author Peter
- * Reusing a lot from https://dzone.com/articles/using-db4o-android-application
+ * @author Peter Gärdenäs
+ * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity,
+ * MainSearchActivity, ModalController, NortificationsSender, ObjectActivity, SearchActivityContoller,
+ * SettingsController
+ * Uses: Accommodation
+ * Responsbility: Saves and gets all Java objects used between sessions.
  */
 
 public class Db4oDatabase {

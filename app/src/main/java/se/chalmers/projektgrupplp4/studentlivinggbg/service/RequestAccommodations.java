@@ -9,8 +9,10 @@ import java.io.FileOutputStream;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.ChalmersAdapter;
 
 /**
- * Created by PG on 17/04/2017.
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: DatabaseUpdater
+ * Uses: RequestSender, Observer, ChalmersAdapter
+ * Responsibility: Calls RequestSender to fetch data from server and then writes it to disc.
  */
 
 public class RequestAccommodations extends AsyncTask<String, Integer, Void> {

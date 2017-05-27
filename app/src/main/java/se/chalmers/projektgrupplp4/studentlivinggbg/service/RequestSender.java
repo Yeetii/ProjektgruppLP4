@@ -11,8 +11,10 @@ import javax.net.ssl.HttpsURLConnection;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by PG on 10/05/2017.
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: DatabaseUpdater, RequestAccommodations
+ * Uses: Accommodation
+ * Responsibility: Fetches accommodation data from server.
  */
 
 public class RequestSender {

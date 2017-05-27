@@ -1,8 +1,12 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.service;
 
 /**
- * Created by PG on 15/05/2017.
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: AdvancedSearchActivityController, DatabaseUpdater, ModalController, Multispinner,
+ * MultispinnerController, NameDialogController, RequestAccommodations, SearchWatcerAdapter,
+ * SearchWatcherController.
+ * Uses: (None).
+ * Responsibility: An observer.
  */
 
 public interface Observer {
