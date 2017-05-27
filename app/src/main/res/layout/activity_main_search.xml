@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+@author
+revised by
+responsibility Contain the normal list of accommodations and provide basic controls for the user
+used by SearchActivityView.java
+uses content_search.xml
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

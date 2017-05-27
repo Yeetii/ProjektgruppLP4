@@ -1,3 +1,10 @@
+<!--
+@author
+revised by
+responsibility Contain the advanced_search_fragment
+used by ObjectView.java
+uses
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
