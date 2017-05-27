@@ -13,7 +13,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: DatabaseUpdater, OnBootRecieve
+ * Uses: ActivityObserver, Db4oDatabase, AlarmReceiver.
+ * Responsibilty: Sets up the next time for the database to be fetched.
  */
 public class AlarmTimeManger implements ActivityObserver {
     private static final AlarmTimeManger INSTANCE = new AlarmTimeManger();

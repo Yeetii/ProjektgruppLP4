@@ -28,7 +28,12 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: AlarmReciver
+ * Uses: AlarmTimeManger, AccommodationAdapter, ChalmersAdapter, ImageHandler, Db4oDatabase, RequestSender,
+ * Observer, RequestAccommodations, SGSAdapter, SearchActivityController, Accommodation, ImageModel,
+ * SearchWatcherItem, SearchWatcherModel, NortificationSender.
+ * Responsibilty: Fetches and sets all the accommodation data used in the application.
  */
 
 class DatabaseUpdater implements Observer {

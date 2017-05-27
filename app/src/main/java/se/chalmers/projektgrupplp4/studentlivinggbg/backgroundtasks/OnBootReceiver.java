@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: (None).
+ * Uses: AlarmTimeManger.
+ * Responsibilty: Receives a event when the mobile is booted, starts an alarm so
+ * the background tasks starts.
  */
 
 public class OnBootReceiver extends BroadcastReceiver {
