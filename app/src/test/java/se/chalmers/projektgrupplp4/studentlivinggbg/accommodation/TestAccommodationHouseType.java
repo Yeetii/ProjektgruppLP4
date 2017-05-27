@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 
 import static org.junit.Assert.*;
 
@@ -82,7 +83,7 @@ public class TestAccommodationHouseType {
         newList.add(AccommodationHouseType.UNKNOWN);
         newList.add(null);
 
-        String test = AccommodationHouseType.toString(newList);
+        String test = EnumHelper.toString(newList);
 
         assertTrue(test.equals(
                 "Enkelrum med gruppkök, Enkelrum med kokvrå, Enkelrum med kokskåp, 1-rum och kök, " +

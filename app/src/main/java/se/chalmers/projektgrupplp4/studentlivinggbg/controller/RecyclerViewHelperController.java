@@ -11,8 +11,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerVi
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.RecyclerViewHelperView;
 
 /**
- * Created by Jonathan on 22/05/2017.
- * @author Jonathan
+ * @author Jonathan Gildevall
+ * Uses: Accommodation, AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder, RecyclerViewHelperView
+ * Used by: FavoritesActivity, SearchActivityController
+ * Responsibility: Controller for the accommodations display in the list views.
  */
 
 public class RecyclerViewHelperController {

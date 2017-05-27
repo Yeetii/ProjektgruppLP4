@@ -17,8 +17,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
 /**
- * @author
- * revised by John
+ * @author Erik Magnusson
+ * revised by John Segerstedt
+ * Used by: AdvancedSearchController, ModalController
+ * Uses MultiSpinerController, MultiSpinner, Search, SearchHandler, AccommodationHost,
+ * AccomodationHouseType, Region, AdvancedSearchFragmentView.
+ * Responsibility: Controller for Advanced search fragement, handling the user actions when setting
+ * different attributes in advanced search.
  */
 
 public class AdvancedSearchFragmentController {

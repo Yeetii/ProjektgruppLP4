@@ -16,6 +16,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 /**
  * @author
+ * Used by: AdvancedSearchActivity
+ * Uses: NameDialogController, AdvancedSearchFragmentController, SearchWatcherItem, Db4oDatabse,
+ * Observer, Search, SearchWatcherModel, NameDialog
+ * Responsibility: Cotroller for AdvancedSearch, does not handle user actions setting the attributes
+ * for the search but rather the done/close button etc.
  */
 
 public class AdvancedSearchActivityController implements Observer{

@@ -15,7 +15,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: SearchWatcherController
+ * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchHandler, SearchWatcherItem,
+ * SearchWatcerAdapter, SearchWatcherItemView
+ * Responsibility: controller for each invduall SearchWatcherItem.
  */
 
 public class SearchWatcherItemController implements ViewCreationObserver{

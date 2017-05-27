@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 
 import static org.junit.Assert.*;
 
@@ -55,7 +56,7 @@ public class TestAccommodationHost {
         newList.add(AccommodationHost.CHALMERS);
         newList.add(null);
 
-        assertTrue(AccommodationHost.toString(newList).equals("SGS Studentbostäder, Chalmers Studentbostäder"));
+        assertTrue(EnumHelper.toString(newList).equals("SGS Studentbostäder, Chalmers Studentbostäder"));
     }
 
     @Test

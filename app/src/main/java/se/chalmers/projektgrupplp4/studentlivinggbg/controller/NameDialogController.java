@@ -9,7 +9,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 /**
- * @author Peter
+ * @author Erik Magnusson
+ * Revised by: Peter Gärdenäs
+ * Used by: AdvancedSearchActivityContoller, ModalController
+ * Uses: Observer, NameDialog
+ * Responsibility: Sets the ok button on the NameDialog
  */
 
 public class NameDialogController {

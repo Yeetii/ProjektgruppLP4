@@ -15,8 +15,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by Jonathan on 21/05/2017.
- * @author Jonathan
+ * @author Jonathan Gildevall
+ * Used by: ObjectActivity
+ * Uses: ObjectActivityModel, Accommodation
+ * Responsibility: Controller for the object activity.
  */
 
 public class ObjectController {

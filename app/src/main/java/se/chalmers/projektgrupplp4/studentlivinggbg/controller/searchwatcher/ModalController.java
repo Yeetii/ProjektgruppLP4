@@ -18,14 +18,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
-<<<<<<< HEAD
  * @author Erik Magnusson, Peter Gärdenäs
  * Responsibility: Controller for SearchWatcherModal
  * Used by: SearchWatcherController, SearchWatcherItemController
- * Uses: NameDialogController, NameDialog, SearchWatcherAdapter, AdvancedSearchFragmentController, Search, SearchWatcherItem, SearchWatcherModel, Db40Databasee, Observer
-=======
- * @author Erik
->>>>>>> e434245e464b4c07dbe1780621ee36db2378a40e
+ * Uses: NameDialogController, NameDialog, SearchWatcherAdapter, AdvancedSearchFragmentController,
+ * Search, SearchWatcherItem, SearchWatcherModel, Db40Databasee, Observer
  */
 
 public class ModalController implements Observer {

@@ -6,20 +6,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
- * Created by Jonathan on 17/05/2017.
- * @author Jonathan
- * revised by Peter
+ * @author Jonathan Gildevall
+ * revised by Peter Gärdenäs
+ * Used by: SettingsActivity
+ * Uses: SettingsModel, SearchWatcherItem, SearchWathcerModel, Db4oDatabse
+ * Responsibilty: Controller for settings.
  */
 
 public class SettingsController {

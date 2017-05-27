@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 import static org.junit.Assert.*;
@@ -60,7 +61,7 @@ public class TestRegion {
         newList.add(Region.CENTER);
         newList.add(null);
 
-        assertTrue(Region.toString(newList).equals("Norr, Öster, Väster, Centrum"));
+        assertTrue(EnumHelper.toString(newList).equals("Norr, Öster, Väster, Centrum"));
     }
 
 }
