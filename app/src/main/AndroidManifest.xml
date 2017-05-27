@@ -38,14 +38,13 @@
                 <action android:name="se.chalmers.projektgrupplp4.studentlivinggbg.FETCH_ACTION" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver><receiver android:name=".activity.ActivityReceiver">
+        </receiver>
+        <receiver android:name=".activity.ActivityReceiver">
         <intent-filter>
             <action android:name="se.chalmers.projektgrupplp4.studentlivinggbg.OPEN_SEARCH_WATCHER" />
             <action android:name="se.chalmers.projektgrupplp4.studentlivinggbg.UPDATE_ACCOMMODATIONS" />
         </intent-filter>
     </receiver>
-
-
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings" />

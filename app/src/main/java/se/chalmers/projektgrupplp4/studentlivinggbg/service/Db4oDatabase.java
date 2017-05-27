@@ -13,9 +13,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * @author Peter Gärdenäs
- * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity, ActivityReceiver
- * MainSearchActivity, ModalController, NortificationsSender, ObjectActivity, SearchActivityContoller,
- * SettingsController
+ *  Revised by: Erik Magnusson
+ * Used by: AdvancedSearchActivityController, AlarmTimeManger, DatabaseUpdater, FavoritesActivity,
+ * ActivityReceiver, MainSearchActivity, ModalController, NortificationsSender, ObjectActivity,
+ * SearchActivityContoller, SettingsController
  * Uses: Accommodation
  * Responsbility: Saves and gets all Java objects used between sessions.
  */

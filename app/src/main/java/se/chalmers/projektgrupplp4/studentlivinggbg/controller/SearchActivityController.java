@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,7 +14,6 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
@@ -46,8 +46,7 @@ public class SearchActivityController {
         this.activity = activity;
         this.recyclerAdapter = adapter;
         this.targetActivity = targetActivity;
-        RecyclerViewHelperController recyclerViewHelperController = new RecyclerViewHelperController(activity, adapter);
-        recyclerViewHelperController.initSwipe();
+        new RecyclerViewHelperController(activity, adapter);
         initListeners();
         controller = this;
     }
@@ -126,9 +125,6 @@ public class SearchActivityController {
         }
     };
 
-
-
-
     private SearchView.OnQueryTextListener onQueryTextListener = new SearchView.OnQueryTextListener(){
 
         @Override
@@ -164,7 +160,6 @@ public class SearchActivityController {
                 break;
             }
         }
-
     }
 
     public static void updateAccommodations(final List<Accommodation> accommodations) {

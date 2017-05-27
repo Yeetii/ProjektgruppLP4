@@ -10,6 +10,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 /**
  * @author Erik Magnusson
  * Revised by: Peter Gärdenäs
+ * Used by: AdvancedSearchActicvityController, ModalController, NameDialogController
+ * Uses: dialog_search_watcher_name
+ * Responsibility: View for the advanced search name dialog
  */
 
 public class NameDialog {

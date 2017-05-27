@@ -15,6 +15,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 /**
  * Created by Erik on 2017-05-19.
  * @author Erik
+ * Used by: ModalController, SearchWatcherController, SearchWatcherItemController, ViewCreationObserver, ModalView
+ * Uses: search_watcher_modal
+ * Responsibility: Handle the presenting of the searchWatcher modal panel
  */
 
 public class ModalView extends Fragment{

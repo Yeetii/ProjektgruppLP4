@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 @author Peter Gärdenäs
-revised by
+revised by Erik Magnusson
 responsibility Present the user with a pop-out of the advanced search view
 used by ModalView.java
 uses

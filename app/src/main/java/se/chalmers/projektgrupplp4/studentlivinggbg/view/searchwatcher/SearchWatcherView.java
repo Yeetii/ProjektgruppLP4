@@ -7,6 +7,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * @author Peter Gärdenäs
+ * Used by: SearchWatcherActivity
+ * Uses: search_watcher
+ * Responsibility: View for SearchWatcher page
  */
 
 public class SearchWatcherView {

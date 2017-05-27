@@ -1,11 +1,12 @@
-package se.chalmers.projektgrupplp4.studentlivinggbg.view;
+package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,28 +14,31 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewHolder;
 
 /**
  * Created by Jonathan on 16/04/2017.
  * @author John
- * Revised by Jonathan
+ * Revised by Jonathan, Erik
  * John made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
+ * Used by: FavoritesActivity, FavoritesView, MainSearchActivity, RecyclerViewHelperController, SearchActivityController, SearchActivtyView
+ * Uses: Search, SearchHandler, Accommodation, ImageModel, ObjectActivityModel, row_item
+ * Responsibility: Adapter for the recyclerView that displays the accommodations
  */
 
-public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {
+public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private final List<Accommodation> dataSet;
     private final Class<? extends Activity> targetActivity;
+    private View view;
 
     public AccommodationRecyclerViewAdapter(List<Accommodation> data, Class<? extends Activity> targetActivity) {
         dataSet = new ArrayList<>();
+        dataSet.addAll(data);
         this.targetActivity = targetActivity;
-        for (Accommodation i : data) {
-            dataSet.add(i);
-        }
         this.registerAdapterDataObserver();
     }
 
@@ -43,31 +47,38 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
         ObjectActivityModel.setAccommodations(dataSet);
     }
 
-    private void toggleFavoriteStatus(AccommodationRecyclerViewHolder viewHolder) {
-        int drawable = viewHolder.isFavorite() ? R.drawable.favorite_off : R.drawable.favorite_on;
-        viewHolder.favoriteButton.setImageResource(drawable);
-        viewHolder.getCurrent().setFavorite(!viewHolder.isFavorite());
-    }
-
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        AccommodationRecyclerViewHolder viewHolder = (AccommodationRecyclerViewHolder) holder;
+        final AccommodationRecyclerViewHolder viewHolder = (AccommodationRecyclerViewHolder) holder;
         final Accommodation accommodation = dataSet.get(position);
 
-        viewHolder.add(this);
-        viewHolder.txtAddress.setText(accommodation.getAddress());
-        viewHolder.txtHouseType.setText(accommodation.getAccommodationHouseType());
-        viewHolder.txtArea.setText(accommodation.getArea());
-        viewHolder.txtPrice.setText(accommodation.getPrice());
-        viewHolder.txtLastApplyDate.setText(accommodation.getLastApplyDate());
-        if(accommodation.getFavorite()) {
-            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_on);
-        } else {
-            viewHolder.favoriteButton.setImageResource(R.drawable.favorite_off);
-        }
-        viewHolder.image.setImageDrawable(ImageModel.<Drawable>getInstance().getMainImage(accommodation.getImagePath()));
-        viewHolder.current = accommodation;
-        viewHolder.position = position;
+        viewHolder.setCurrent(accommodation);
+        viewHolder.setButton(viewHolder.isFavorite());
+        viewHolder.setPosition(position);
+        viewHolder.whenBound();
+
+        initButtonListener(viewHolder);
+        initViewListener(viewHolder);
+    }
+
+    private void initViewListener(final AccommodationRecyclerViewHolder viewHolder) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                ObjectActivityModel.setStartPosition(viewHolder.getAdapterPosition());
+                ActivitySwitcher.getInstance(v.getContext()).navigate(targetActivity);
+            }
+        });
+    }
+
+    private void initButtonListener(final AccommodationRecyclerViewHolder viewHolder) {
+        ImageView favoriteButton = (ImageView) view.findViewById(R.id.favoriteButton);
+
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                viewHolder.getCurrent().setFavorite(!viewHolder.isFavorite());
+                viewHolder.setButton(viewHolder.isFavorite());
+            }
+        });
     }
 
     public List<Accommodation> getAccommodations() {
@@ -80,14 +91,8 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter imple
     }
 
     @Override public AccommodationRecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        final View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
+        view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
         return new AccommodationRecyclerViewHolder(view, targetActivity);
-    }
-
-
-    @Override
-    public void update(AccommodationRecyclerViewHolder viewHolder) {
-        toggleFavoriteStatus(viewHolder);
     }
 
     public void refresh() {

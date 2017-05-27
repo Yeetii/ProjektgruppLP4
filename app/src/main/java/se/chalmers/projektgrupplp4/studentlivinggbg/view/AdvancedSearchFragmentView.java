@@ -16,6 +16,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
  * Created by Erik on 2017-05-15.
  * @author Erik
  * Revised by John
+ * Used by: AdvancedSearchFragmentController
+ * Uses: AccommodationHost, EnumHelper, Region, AccommodationHouseType
+ * Responsibility: View for advanced search fragment
  */
 
 public class AdvancedSearchFragmentView {

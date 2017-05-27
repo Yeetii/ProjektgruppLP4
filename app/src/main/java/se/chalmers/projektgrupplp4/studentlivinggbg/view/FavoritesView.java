@@ -11,23 +11,23 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
  * @author
- * Revised by: Peter Gärdenäs
+ * Revised by: Peter Gärdenäs, Erik Magnusson
+ * Used by: FavoritesActivity
+ * Uses: Accommodation, ObjectActivityModel
+ * Responsibility: View for Favorites page
  */
 
 public class FavoritesView {
     private RecyclerView recyclerView;
-    private final AccommodationRecyclerViewAdapter recyclerViewAdapter;
     private final Activity activity;
 
-    public FavoritesView(Activity activity, AccommodationRecyclerViewAdapter adapter) {
+    public FavoritesView(Activity activity) {
         this.activity = activity;
-        this.recyclerViewAdapter = adapter;
         activity.setContentView(R.layout.activity_favorites);
         //Updates the list of objects that are swipeable to
         ObjectActivityModel.setAccommodations(Accommodation.getFavorites());
         initLayoutManger();
         setSelectedNavigationItem();
-        initRecycleAdapter();
     }
 
     private void initLayoutManger() {
@@ -35,10 +35,6 @@ public class FavoritesView {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-    }
-
-    private void initRecycleAdapter() {
-        recyclerView.setAdapter(recyclerViewAdapter);
     }
 
     private void setSelectedNavigationItem () {

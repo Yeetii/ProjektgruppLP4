@@ -10,6 +10,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * @author Erik Magnusson
+ * Used by: activity_advanced_search, search_watcher_modal
+ * Uses: advanced_search_fragment
+ * Responsibility: inflate the advanced search fragment
  */
 
 public class AdvancedSearchFragment extends Fragment {

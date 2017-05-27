@@ -11,6 +11,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * @author John
+ * Used by: SearchWatcherAdapter, SearchWatcherController, SearchWatcherItemController
+ * Uses: AccommodationHost, EnumHelper, Region, SearchWatcherItem;
+ * Responsibility: View for SearchWatcherItems
  */
 
 public class SearchWatcherItemView {
