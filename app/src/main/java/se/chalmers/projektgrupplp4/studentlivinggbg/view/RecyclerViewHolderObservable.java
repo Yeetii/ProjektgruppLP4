@@ -1,7 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
 /**
- * Created by PG on 11/04/2017.
+ * @author John
  */
 
 interface RecyclerViewHolderObservable {

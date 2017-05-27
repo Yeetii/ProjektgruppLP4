@@ -9,7 +9,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 /**
- * Created by PG on 21/05/2017.
+ * @author Peter
  */
 
 public class NameDialogController {

@@ -13,9 +13,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
- * Created by PG on 12/05/2017.
+ * @author Peter
  */
-
 public class AlarmTimeManger implements ActivityObserver {
     private static final AlarmTimeManger INSTANCE = new AlarmTimeManger();
     private final Calendar calendar = Calendar.getInstance();

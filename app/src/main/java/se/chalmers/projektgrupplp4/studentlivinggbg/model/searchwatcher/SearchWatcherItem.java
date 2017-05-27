@@ -5,6 +5,10 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
+/**
+ * @author
+ */
+
 public class SearchWatcherItem {
     private String title;
     private Search search;

@@ -28,7 +28,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 
 /**
- * Created by PG on 12/05/2017.
+ * @author Peter
  */
 
 class DatabaseUpdater implements Observer {

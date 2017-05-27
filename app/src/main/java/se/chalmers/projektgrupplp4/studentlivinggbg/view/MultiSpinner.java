@@ -13,6 +13,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
 /**
  * Inspired by: http://stackoverflow.com/a/6022474/1521064
+ * @author
+ * Revised by John
  */
 public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
 

@@ -11,6 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchActivityV
  * Responsibility: Creating the advanced search activity.
  */
 
+
 public class AdvancedSearchActivity extends ActivityWithNavigation{
 
     @Override

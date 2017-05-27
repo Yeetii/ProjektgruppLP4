@@ -4,6 +4,9 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
+/**
+ * @author
+ */
 
 public class ObjectActivityModel {
     static private List<Accommodation> accommodations = Accommodation.getAccommodations();

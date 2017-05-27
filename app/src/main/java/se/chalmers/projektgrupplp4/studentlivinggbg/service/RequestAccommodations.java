@@ -10,6 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Chalmers
 
 /**
  * Created by PG on 17/04/2017.
+ * @author Peter
  */
 
 public class RequestAccommodations extends AsyncTask<String, Integer, Void> {

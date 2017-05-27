@@ -16,6 +16,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 
+/**
+ * @author John
+ */
 
 public class TestSearch {
 

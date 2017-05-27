@@ -12,6 +12,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * Created by Erik on 2017-05-15.
+ * @author Erik
+ * Revised by John
  */
 
 public class AdvancedSearchFragmentView {

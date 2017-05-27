@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
- * Created by Erik on 2017-05-14.
+ * @author Erik
  */
 
 public class NotificationSender {

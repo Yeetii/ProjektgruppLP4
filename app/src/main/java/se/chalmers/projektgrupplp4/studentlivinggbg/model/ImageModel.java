@@ -3,6 +3,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Peter
+ */
 
 public class ImageModel<ImageType> {
     private Map<String, ImageType> mainImages;

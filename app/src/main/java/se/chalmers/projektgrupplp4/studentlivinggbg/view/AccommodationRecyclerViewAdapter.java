@@ -18,7 +18,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
  * Created by Jonathan on 16/04/2017.
- * @author Jonathan
+ * @author John
+ * Revised by Jonathan
+ * John made the original ListvVew implementation
+ * and Jonathan redid it as an RecyclerView
  */
 
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {

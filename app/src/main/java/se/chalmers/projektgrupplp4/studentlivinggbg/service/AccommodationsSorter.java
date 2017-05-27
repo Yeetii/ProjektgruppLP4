@@ -7,7 +7,7 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by PG on 16/05/2017.
+ * @author Peter
  */
 
 public class AccommodationsSorter {
