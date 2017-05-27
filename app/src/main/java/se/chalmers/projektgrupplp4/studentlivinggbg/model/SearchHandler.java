@@ -9,6 +9,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * @author John
+ * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchFragmentController,
+ * MainSearchActivity, SearchActivityController, SearchWatcherItemController
+ * Uses: AccommodationHost, AccommodationHouseType, Region, Search
+ * Responsibility: Holds searchterms for filtering Accommodations
  */
 
 public class SearchHandler {

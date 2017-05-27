@@ -6,6 +6,13 @@ import java.util.List;
 
 /**
  * @author John
+ * Used by: AccommodationAdapter, AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder,
+ * AccommodationsSorter, ChalmersAdapter, DatabaseUpdater, Db4oDatabase, FavoritesActivity, FavoritesView,
+ * ImageHandler, MainSearchActivity, ObjectActivityModel, ObjectController, ObjectView,
+ * RecyclerViewHelperController, RequestSender, SGSAdapter, Search, SearchActivityController,
+ * SearchWatcherItem, SearchWatcherModel, SettingsController
+ * Uses: Region, AccommodationHost, AccommodationHouseType
+ * Responsibility: Represents an accommodation
  */
 
 public class Accommodation {

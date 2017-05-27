@@ -6,6 +6,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * @author
+ * Used by: AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder, FavoritesView,
+ * ObjectActivityModel, ObjectController, ObjectView
+ * Uses: Accommodation
+ * Responsibility: Holds data for the ObjectActivity
  */
 
 public class ObjectActivityModel {

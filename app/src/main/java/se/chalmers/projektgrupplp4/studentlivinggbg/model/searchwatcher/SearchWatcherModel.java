@@ -7,6 +7,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 /**
  * @author
+ * Used by: AdvancedSearchActivityController, DatabaseUpdater, MainSearchActivity, ModalController,
+ * SearchWatcherActivity, SettingsController
+ * Uses: Accommodation, Search, SearchWatcherItem
+ * Responsibility: Holding all SearchWatcherItems that are shown in SearchWatcherActivity
  */
 
 public class SearchWatcherModel {

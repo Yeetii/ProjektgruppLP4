@@ -3,6 +3,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 /**
  * @author
+ * Used by: Db4oDatabase, MainSearchActivity, NotificationSender, SearchActivityController, SettingsController
+ * Uses:
+ * Responsibility: Settings
  */
 
 public class SettingsModel {

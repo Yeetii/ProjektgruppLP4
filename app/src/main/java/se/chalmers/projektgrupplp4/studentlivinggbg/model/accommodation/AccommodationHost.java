@@ -1,11 +1,13 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author John
+ * Used by: Accommodation, AdvancedSearchFragmentController, AdvancedSearchFragmentView,
+ * ChalmersAdapter, SGSAdapter, Search, SearchHandler, SearchWatcherItemView
+ * Uses: EnumType
  */
 public enum AccommodationHost implements EnumType {
         SGS, CHALMERS;

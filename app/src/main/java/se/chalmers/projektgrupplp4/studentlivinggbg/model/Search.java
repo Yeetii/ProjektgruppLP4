@@ -2,7 +2,6 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -15,6 +14,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * @author John
+ * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchActivityController, AdvancedSearchFragmentController,
+ * ModalController, SearchHandler, SearchWatcherItem, SearchWatcherItemController, SearchWatcherModel
+ * Uses: Accommodation, AccommodationHost, AccommodationHouseType, EnumHelper, Region
+ * Responsibility: Holds searchterms for filtering Accommodations
  */
 
 public class Search {

@@ -6,6 +6,10 @@ import java.util.List;
 
 /**
  * @author John
+ * Used by: Accommodation, AdvancedSearchFragmentController, AdvancedSearchFragmentView,
+ * ChalmersAdapter, SGSAdapter, Search, SearchHandler, SearchWatcherItemView
+ * Uses: EnumType
+ * Responsibility: Enum for different housing areas
  */
 public enum Region implements EnumType {
 

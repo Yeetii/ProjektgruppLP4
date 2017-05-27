@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * @author Peter
+ * Used by: DatabaseUpdater
+ * Uses: Accommodation, AccommodationAdapter, Region, AccommodationHost, AccommodationHouseType
+ * Responsibility: Converting SGS data to Accommodation form
  */
 
 public class SGSAdapter extends AccommodationAdapter {

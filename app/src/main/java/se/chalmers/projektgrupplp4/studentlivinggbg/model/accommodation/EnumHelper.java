@@ -3,7 +3,12 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author Erik Magnusson
+ * Used by: AdvancedSearchFragmentView, Search, SearchWatcherItemView
+ * Uses: EnumType
+ * Responsibility: Generalized methods for enums
+ */
 
 
 public class EnumHelper {

@@ -6,7 +6,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 /**
- * @author
+ * @author Erik Magnusson
+ * Used by: AdvancedSearchActivityController, DatabaseUpdater, MainSearchActivity, ModalController,
+ * SearchWatcherAdapter, SearchWatcherItemController, SearchWatcherItemView, SearchWatcherModel, SettingsController
+ * Uses: Accommodation, Search
+ * Responsibility: Holding a search that can be performed automaticly
  */
 
 public class SearchWatcherItem {

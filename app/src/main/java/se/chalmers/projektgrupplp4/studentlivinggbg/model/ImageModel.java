@@ -3,8 +3,12 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
- * @author Peter
+ * @author Peter Gärdenäs
+ * Used by: AccommodationRecyclerViewAdapter, DatabaseUpdater, ImageHandler, ImageModel, ObjectView
+ * Uses:
+ * Responsibility:
  */
 
 public class ImageModel<ImageType> {

@@ -6,7 +6,12 @@ import java.util.List;
 
 /**
  * @author John
+ * Used by: Accommodation, AccommodationHouseType, AdvancedSearchFragmentController,
+ * AdvancedSearchFragmentView, ChalmersAdapter, Search, SearchHandler
+ * Uses: EnumType
+ * Responsibility: Enum for accommodation house type.
  */
+
 public enum AccommodationHouseType implements EnumType {
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
