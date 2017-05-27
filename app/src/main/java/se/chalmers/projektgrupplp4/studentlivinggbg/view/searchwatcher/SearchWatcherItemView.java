@@ -28,6 +28,7 @@ public class SearchWatcherItemView {
     private final TextView txtAreaLabel;
     private final TextView txtPrice;
     private final TextView txtPriceLabel;
+    private final TextView txtMatches;
 
     private SearchWatcherItem model;
 
@@ -45,6 +46,7 @@ public class SearchWatcherItemView {
         this.txtAreaLabel = (TextView) convertView.findViewById(R.id.textViewAreaLabel);
         this.txtPrice = (TextView) convertView.findViewById(R.id.textViewPrice);
         this.txtPriceLabel = (TextView) convertView.findViewById(R.id.textViewPriceLabel);
+        txtMatches = (TextView) convertView.findViewById(R.id.textViewMatches);
 
         convertView.setTag(this);
     }
@@ -56,6 +58,7 @@ public class SearchWatcherItemView {
         updateAccommodationHouseType();
         updateArea();
         updatePrice();
+        updateMatches();
     }
 
     private void updateTitle () {
@@ -136,6 +139,14 @@ public class SearchWatcherItemView {
         }catch(NullPointerException e){
             txtPrice.setText("");
             txtPriceLabel.setText("");
+        }
+    }
+
+    private void updateMatches() {
+        try{
+            txtMatches.setText("" + model.getNewMatches().size());
+        }catch(NullPointerException e){
+            txtMatches.setText("" + 0);
         }
     }
 

@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.List;
+
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ViewCreationObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
@@ -57,8 +62,8 @@ public class SearchWatcherItemController implements ViewCreationObserver{
 //>>>>>>> bra
             @Override
             public void onClick(View v) {
-                //TODO Make the code more efficient.
-
+                //TODO Actually implement accordion, this is temp code to test searchwatcher number
+                model.getNewMatches().add(Accommodation.getAccommodations().get(0));
                 switch (v.getId())
                 {
                     case R.id.searchWithSearchWatcherButton:
@@ -83,6 +88,17 @@ public class SearchWatcherItemController implements ViewCreationObserver{
         return (new ImageView.OnClickListener () {
             @Override
             public void onClick (View view) {
+                //Remove new searches from searchWatcher
+                Db4oDatabase db = Db4oDatabase.getInstance();
+                db.deleteAll(SearchWatcherItem.class);
+                model.getNewMatches().clear();
+                List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+                for (int i = 0; i < items.size(); i++) {
+                    db.store(items.get(i));
+                }
+                db.close();
+
+                //Perform search and move to searchActivity
                 Search search = model.getSearch();
                 SearchHandler.addToLastSearches(search);
                 ActivitySwitcher.getInstance(activity).navigate(targetClass);
