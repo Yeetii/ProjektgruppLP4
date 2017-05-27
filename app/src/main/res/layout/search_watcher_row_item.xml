@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-@author John
+@author Peter Gärdenäs
 revised by John
 responsibility Present the user with a list item of a search object
 used by SearchWatcherAdapter.java

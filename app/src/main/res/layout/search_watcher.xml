@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-@author Erik
-revised by
+@author Peter Gärdenäs
+revised by Erik Magnusson
 responsibility Show the user the veiw where he can find his searchwatchers + add new + edit them
 used by SearchWatcherView.java SearchWatcherAdapter.java ModelView.java NameDialog.java
 uses
