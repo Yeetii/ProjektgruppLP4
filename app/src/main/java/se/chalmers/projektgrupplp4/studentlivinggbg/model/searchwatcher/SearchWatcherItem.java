@@ -8,6 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 public class SearchWatcherItem {
     private String title;
     private Search search;
+    private List<Accommodation> newMatches;
 
     public SearchWatcherItem(String title, Search search) {
         this.title = title;
@@ -20,13 +21,15 @@ public class SearchWatcherItem {
             List<Accommodation> result = new ArrayList<>();
             for(Accommodation accommodation: newAccommodations){
                 if(accommodation == null){
-                    i++;}
-                else if(search.search(newAccommodations).contains(accommodation)){
+                    i++;
+                } else if(search.search(newAccommodations).contains(accommodation)){
                     result.add(accommodation);
                 }
             }
             if(result.size() > 0){
-            return result.size();}
+                newMatches = result;
+                return result.size();
+            }
             return newAccommodations.size()-i;
         }
         catch(NullPointerException e){}
@@ -36,6 +39,13 @@ public class SearchWatcherItem {
 
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
+    public List<Accommodation> getNewMatches(){
+        return newMatches;
+    }
+
+    public void resetNewMatches(){
+        newMatches.clear();
+    }
 
     public void setSearch(Search search){
         this.search = search;

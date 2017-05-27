@@ -21,7 +21,7 @@ public class SearchWatcherModel {
         return searchWatcherItems;}
 
 
-    public static int updateWatchers(List<Accommodation> newAccommodations){
+    public static int checkForMatches(List<Accommodation> newAccommodations){
         int matches = 0;
         for (SearchWatcherItem sWItem : searchWatcherItems){
             matches += sWItem.checkForMatches(newAccommodations);
