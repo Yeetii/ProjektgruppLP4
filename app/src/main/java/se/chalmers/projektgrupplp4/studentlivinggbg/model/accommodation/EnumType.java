@@ -7,6 +7,4 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
  */
 
 //Needed for generic methods in EnumHelper
-public interface EnumType {
-
-}
+public interface EnumType { }
