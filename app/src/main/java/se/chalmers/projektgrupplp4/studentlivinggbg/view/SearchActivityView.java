@@ -9,6 +9,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 /**
  * Created by PG on 28/04/2017.
  * @author Peter Gärdenäs
+ * Used by: MainSearchActivity
+ * Uses: activity_main_search
+ * Responsibility: View for the search/home page
  */
 
 public class SearchActivityView {

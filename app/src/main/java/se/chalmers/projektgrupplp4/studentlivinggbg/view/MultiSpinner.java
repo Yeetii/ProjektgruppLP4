@@ -15,6 +15,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
  * Inspired by: http://stackoverflow.com/a/6022474/1521064
  * @author Erik Magnusson
  * Revised by John, Peter Gärdenäs
+ * Used by: AdvancedSearchFragmentController, AdvancedSearchFragmentView, MultiSpinnerController, advanced_search_fragment, styles
+ * Uses: Observer
+ * Responsibility: View for SearchWatcherItems
  */
 public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
 

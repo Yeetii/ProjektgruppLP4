@@ -17,6 +17,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 /**
  * @author Peter Gärdenäs
+ * Used by: ModalController, SearchWatcherActivity, SearchWatcherController, SearchWatcherItemController, SearchWatcherView
+ * Uses: SearchWatcherItem, Observer, search_watcher_row_item
+ * Responsibility: inflate the advanced search fragment
  */
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {

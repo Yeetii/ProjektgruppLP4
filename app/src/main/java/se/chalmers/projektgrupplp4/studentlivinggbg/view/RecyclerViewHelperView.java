@@ -16,6 +16,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 /**
  * Created by Jonathan on 09/05/2017.
  * @author Jonathan
+ * Used by: RecyclerViewHelperController
+ * Uses:
+ * Responsibility: View for recyclerview interaction
  */
 
 public class RecyclerViewHelperView {

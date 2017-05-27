@@ -22,6 +22,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
  * Revised by Jonathan
  * John made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
+ * Used by: FavoritesActivity, FavoritesView, MainSearchActivity, RecyclerViewHelperController, SearchActivityController, SearchActivtyView
+ * Uses: Search, SearchHandler, Accommodation, ImageModel, ObjectActivityModel, row_item
+ * Responsibility: Adapter for the recyclerView that displays the accommodations
  */
 
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {

@@ -112,7 +112,7 @@ public class Db4oDatabase {
         }
     }
 
-    public Db4oDatabase initDataBase(Context context) {
+    public Db4oDatabase initDametaBase(Context context) {
         Db4oDatabase db = Db4oDatabase.getInstance();
         db.setContext(context);
         return db;

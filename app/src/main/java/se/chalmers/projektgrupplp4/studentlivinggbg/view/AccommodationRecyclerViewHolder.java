@@ -17,6 +17,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  * revised by Jonathan
  * John made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
+ * Used by: AccommodationRecyclerViewAdapter, RecyclerViewHelperController, RecyclerViewHolderObserver
+ * Uses: ObjectActivityModel, ActivitySwitcher, Accommodation
+ * Responsibility: View for row items
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder implements RecyclerViewHolderObservable {

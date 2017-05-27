@@ -12,6 +12,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 /**
  * @author
  * Revised by: Peter Gärdenäs
+ * Used by: FavoritesActivity
+ * Uses: Accommodation, ObjectActivityModel
+ * Responsibility: View for Favorites page
  */
 
 public class FavoritesView {
