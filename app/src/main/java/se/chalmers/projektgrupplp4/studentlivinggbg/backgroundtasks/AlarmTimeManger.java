@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,16 +8,15 @@ import android.content.Intent;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.activity.ActivityObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
  * @author Peter Gärdenäs
- * Used by: DatabaseUpdater, OnBootRecieve
- * Uses: ActivityObserver, Db4oDatabase, AlarmReceiver.
+ * Used by: DatabaseUpdater
+ * Uses: Db4oDatabase, AlarmReceiver.
  * Responsibilty: Sets up the next time for the database to be fetched.
  */
-public class AlarmTimeManger implements ActivityObserver {
+public class AlarmTimeManger {
     private static final AlarmTimeManger INSTANCE = new AlarmTimeManger();
     private final Calendar calendar = Calendar.getInstance();
 
@@ -29,10 +27,6 @@ public class AlarmTimeManger implements ActivityObserver {
 
     public static AlarmTimeManger getInstance() {
         return INSTANCE;
-    }
-
-    public void setUpInstantAlarm(Context context) {
-        createAlarm(System.currentTimeMillis() + 30, context);
     }
 
     private void createAlarm(Long timeForAlarm, Context context){
@@ -79,10 +73,5 @@ public class AlarmTimeManger implements ActivityObserver {
 
     void createNextAlarm(Context context) {
         createAlarm(nextUpdateTime(), context);
-    }
-
-    @Override
-    public void update(Activity activity) {
-        setUpInstantAlarm(activity);
     }
 }

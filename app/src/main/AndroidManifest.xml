@@ -33,18 +33,12 @@
         <activity
             android:name=".activity.AdvancedSearchActivity"
             android:label="@string/title_activity_advanced_search" />
-
-        <receiver android:name=".backgroundtasks.OnBootReceiver">
+        <receiver android:name=".backgroundtasks.AlarmReceiver">
             <intent-filter>
+                <action android:name="se.chalmers.projektgrupplp4.studentlivinggbg.FETCH_ACTION" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".backgroundtasks.ApplicationFirstTimeLaunchReviver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_FIRST_LAUNCH" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".backgroundtasks.AlarmReceiver" />
 
         <activity
             android:name=".activity.SettingsActivity"

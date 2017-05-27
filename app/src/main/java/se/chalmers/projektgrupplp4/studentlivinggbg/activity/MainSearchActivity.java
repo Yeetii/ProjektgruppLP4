@@ -1,6 +1,7 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -27,7 +28,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 public class MainSearchActivity extends ActivityWithNavigation {
     private static boolean firstTime = true;
-    private static ActivityObserver observer;
     private AccommodationRecyclerViewAdapter adapter;
 
     @Override
@@ -100,8 +100,10 @@ public class MainSearchActivity extends ActivityWithNavigation {
             public void run() {
                 List<Accommodation> accommodations = db.findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
-                if (accommodations.size() == 0 && observer != null) {
-                    observer.update(MainSearchActivity.this);
+                if (accommodations.size() == 0) {
+                    //Broadcast an event to fetch new data.
+                    Intent i = new Intent("se.chalmers.projektgrupplp4.studentlivinggbg.FETCH_ACTION");
+                    sendBroadcast(i);
                 }
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
@@ -113,10 +115,6 @@ public class MainSearchActivity extends ActivityWithNavigation {
                 SearchActivityController.updateAccommodations(accommodations);
             }
         }).start();
-    }
-
-    public static void setObserver (ActivityObserver observer) {
-        MainSearchActivity.observer = observer;
     }
 
 }
