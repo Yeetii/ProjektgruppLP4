@@ -11,13 +11,14 @@ import java.util.List;
 
 public class ChalmersAdapter extends AccommodationAdapter {
     private htmlObject html;
-
+    //Used
     @Override
     public List<Accommodation> getAccommodations() {
         return html.getAccommodations();
     }
     //The response uses variable names that are not allow in java so we have to rename them to make
     //them usable.
+    //Used
     public static byte[] getFormattedBytes(StringBuffer buffer) throws UnsupportedEncodingException {
         Long timestamp = System.currentTimeMillis();
         //Remove the jquery start and ");" at the end.
@@ -43,7 +44,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
         private String objectFilter;
         private String objectSummary;
         private String objectSorter;
-
+        //Used
         public List<Accommodation> getAccommodations() {
             List<Accommodation> accommodations = new ArrayList<>();
             String infoString = objectSummaryImages;
@@ -55,7 +56,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
 
             return accommodations;
         }
-
+        //Used
         private Accommodation parseAccommodation(String infoString) {
             String objectNumber = getAttribute(infoString, "object number");
             String street = getAttribute(infoString, "street");
@@ -71,23 +72,23 @@ public class ChalmersAdapter extends AccommodationAdapter {
             String lastApplyDate = "";
             return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS, Region.CENTER, upploadDate, lastApplyDate, false);
         }
-
+        //Used
         private double parseArea (String areaString) {
             return Double.parseDouble(areaString);
         }
-
+        //Used
         private String createThumbnail (String fistStep) {
             fistStep = fistStep.replaceAll("amp;", "");
             fistStep = "https://" + fistStep;
             fistStep += "&width=700&height=500";
             return fistStep;
         }
-
+        //Used
         private int parsePrice(String priceString) {
             priceString = priceString.replaceAll("\\s+", "");
             return Integer.parseInt(priceString);
         }
-
+        //Used
         private AccommodationHouseType parseHouseType (String houseTypeString) {
             switch (houseTypeString) {
                 case "1 rum och kök":
@@ -105,7 +106,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
             System.out.println("Should add to switch!: " + houseTypeString);
             return AccommodationHouseType.UNKNOWN;
         }
-
+        //Used
         private String getAttribute(String infoString, String type) {
             String firstStartTag = "";
             String secondStartTag = ">";
