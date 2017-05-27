@@ -57,7 +57,7 @@ public class SettingsController {
             @Override
             public void onClick(View v) {
                 db.deleteAll(SearchWatcherItem.class);
-                SearchWatcherModel.updateWatchers(new ArrayList<Accommodation>());
+                SearchWatcherModel.getSearchWatcherItems().clear();
                 db.close();
             }
         });
