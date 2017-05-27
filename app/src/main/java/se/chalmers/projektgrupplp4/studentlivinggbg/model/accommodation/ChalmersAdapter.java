@@ -22,6 +22,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
     //them usable.
     //Used
     public static byte[] getFormattedBytes(StringBuffer buffer) throws UnsupportedEncodingException {
+        //new htmlObject();
         Long timestamp = System.currentTimeMillis();
         //Remove the jquery start and ");" at the end.
         String string = buffer.substring(buffer.indexOf("{"), buffer.length() - 2);
@@ -37,7 +38,7 @@ public class ChalmersAdapter extends AccommodationAdapter {
         return string.getBytes("UTF-8");
     }
 
-    private class htmlObject {
+    private static class htmlObject {
         private String objectSummaryTotal;
         private String alert;
         private String objectSummaryFast;
