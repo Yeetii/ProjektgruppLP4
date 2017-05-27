@@ -17,6 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 /**
  * Created by PG on 03/04/2017.
+ * @author Peter
  */
 
 public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
@@ -55,30 +56,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
         return convertView;
     }
 
-    //When tapping on a SearchWatcherItem
-    /*
-    This should be done in the controller imo.
-    @Override
-    public void onClick(View v) {
-        int position=(Integer) v.getTag();
-        SearchWatcherItem tappedSearch = getItem(position);
-        //TODO Access the controller?
 
-        if (tappedSearch.isExpanded()) {
-            tappedSearch.resetExpanded();
-        } else {
-            tappedSearch.setExpanded();
-        }
-
-        switch (v.getId())
-        {
-            case R.id.searchWithSearchWatcherButton:
-                //TODO not used atm
-//                AdvancedSearchActivityController.advancedSearchButtonPressed(v);
-                break;
-        }
-    }
-    */
     public List<SearchWatcherItemView> getViews() {
         return views;
     }

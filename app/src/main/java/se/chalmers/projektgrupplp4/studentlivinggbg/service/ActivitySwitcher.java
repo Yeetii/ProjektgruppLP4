@@ -9,6 +9,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
 
 /**
  * Created by PG on 17/05/2017.
+ * @author Peter
  * Needed to avoid circular dependencies.
  */
 

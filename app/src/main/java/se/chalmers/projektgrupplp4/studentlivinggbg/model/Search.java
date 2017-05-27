@@ -1,8 +1,11 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
@@ -10,6 +13,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
+/**
+ * @author John
+ */
 
 public class Search {
 
@@ -199,112 +205,33 @@ public class Search {
 
 
     private static boolean parseDays(String higherDate, String lowerDate, int daysDelta) {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String timeStamp = simpleDateFormat.format(new Date());
+
+
         if(higherDate.length() > lowerDate.length()){
-            higherDate = parseDate(higherDate);
+            higherDate = timeStamp;
         }else{
-            lowerDate = parseDate(lowerDate);
+            lowerDate = timeStamp;
         }
 
-        int higherDay = Integer.valueOf(higherDate.substring(0,2));
-        int lowerDay = Integer.valueOf(lowerDate.substring(0,2));
-        int higherMonth = Integer.valueOf(higherDate.substring(3,5));
-        int lowerMonth = Integer.valueOf(lowerDate.substring(3,5));
-        int higherYear = Integer.valueOf(higherDate.substring(6,10));
-        int lowerYear = Integer.valueOf(lowerDate.substring(6,10));
 
-
-        if(higherYear == lowerYear){
-            if(higherMonth == lowerMonth){
-                return (higherDay - lowerDay) <= daysDelta;
+        try {
+            Date date1 = simpleDateFormat.parse(lowerDate);
+            Date date2 = simpleDateFormat.parse(higherDate);
+            long diff = date2.getTime() - date1.getTime();
+            if(TimeUnit.DAYS.convert(diff, TimeUnit.DAYS) > new Long(daysDelta)){
+                return false;
             }
-            if(higherMonth == lowerMonth+1){
-                return (daysInMonth(higherMonth, higherYear)+higherDay-lowerDay) <= daysDelta;
-            }
-            return false;
-        }
-        if(higherYear == lowerYear+1 && higherMonth == 1 && lowerMonth == 12){
-            return (31+higherDay-lowerDay) <= daysDelta;
-        }
-        return false;
+        } catch (Exception e) {}
+
+        return true;
+
 
     }
 
-
-
-    private static String parseDate(String input) {
-        String result = parseDateDay(input);
-        result = result+"-"+parseDateMonth(input);
-        result = result+"-"+parseDateYear(input);
-        return result;
-    }
-
-    private static String parseDateDay(String string) {
-        return string.substring(8,10);
-    }
-
-    private static String parseDateMonth(String string) {
-        string = string.substring(4,7);
-        switch(string){
-            case "Jan": string = "01";
-                break;
-            case "Feb": string = "02";
-                break;
-            case "Mar": string = "03";
-                break;
-            case "Apr": string = "04";
-                break;
-            case "May": string = "05";
-                break;
-            case "Jun": string = "06";
-                break;
-            case "Jul": string = "07";
-                break;
-            case "Aug": string = "08";
-                break;
-            case "Sep": string = "09";
-                break;
-            case "Oct": string = "10";
-                break;
-            case "Nov": string = "11";
-                break;
-            case "Dec": string = "12";
-                break;
-        }
-        return string;
-    }
-
-    private static String parseDateYear(String string) {
-        try{
-        return string.substring(30,34);}
-        catch(StringIndexOutOfBoundsException e){
-            return string.substring(25, 29);
-        }
-    }
-
-    private static int daysInMonth(int month, int year) {
-        if(month == 2){
-            if(year % 4 == 0){
-                return 29;
-            }else{
-                return 28;
-            }}
-        if(month >= 8){
-            if(month % 2 == 0){
-                return 31;
-            }else{
-                return 30;
-            }
-        }else{
-            if(month % 2 == 0){
-                return 30;
-            }else{
-                return 31;
-            }
-        }
-    }
-
-
-
+    
 
     public boolean isEmpty() {
 

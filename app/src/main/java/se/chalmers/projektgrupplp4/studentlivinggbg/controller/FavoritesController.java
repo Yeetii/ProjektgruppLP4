@@ -5,7 +5,7 @@ import android.app.Activity;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerViewAdapter;
 
 /**
- * Created by PG on 07/05/2017.
+ * @author Peter
  */
 
 public class FavoritesController {

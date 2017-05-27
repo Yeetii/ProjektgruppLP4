@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
 
 /**
- * Created by PG on 23/04/2017.
+ * @author Peter
  */
 
 public class SearchWatcherItemController implements ViewCreationObserver{

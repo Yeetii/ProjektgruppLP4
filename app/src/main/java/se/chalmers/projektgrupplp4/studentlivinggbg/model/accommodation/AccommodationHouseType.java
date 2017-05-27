@@ -4,6 +4,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author John
+ */
 public enum AccommodationHouseType implements EnumType {
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,

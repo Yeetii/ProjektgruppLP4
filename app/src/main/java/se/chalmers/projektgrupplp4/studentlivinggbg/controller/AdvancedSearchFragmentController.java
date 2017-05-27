@@ -16,6 +16,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
+/**
+ * @author
+ * revised by John
+ */
 
 public class AdvancedSearchFragmentController {
     private final View view;

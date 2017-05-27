@@ -7,13 +7,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
+
+/**
+ * @author
+ */
 
 public class AdvancedSearchActivityController implements Observer{
     private final Activity activity;

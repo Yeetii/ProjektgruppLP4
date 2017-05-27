@@ -4,6 +4,9 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author John
+ */
 public enum Region implements EnumType {
 
     NORTH, EAST, WEST, CENTER;

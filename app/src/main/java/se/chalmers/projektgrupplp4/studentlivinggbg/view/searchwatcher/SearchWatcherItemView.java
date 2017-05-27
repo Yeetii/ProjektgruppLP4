@@ -9,6 +9,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
+/**
+ * @author John
+ */
 
 public class SearchWatcherItemView {
     private boolean controllerAttached = false;

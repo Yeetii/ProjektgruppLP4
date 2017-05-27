@@ -3,7 +3,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.activity;
 import android.app.Activity;
 
 /**
- * Created by PG on 23/05/2017.
+ * @author Peter Gärdenäs
+ * Used by: AlarmTimeManger, MainSearchActivity
+ * Responsbility: An observer with acitivity as param to create connection with classes that needs an
+ * acitivty.
  */
 
 public interface ActivityObserver {

@@ -10,7 +10,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
- * Created by PG on 18/05/2017.
+ * @author Peter Gärdenäs
+ * Used by: AdvancedSearchActivity, FavoritesActivity, MainSearchActivity, ObjectActivity,
+ * SearchWatcherActivity, SettingsActivity
+ * Uses: ActivitySwitcher, MainSearchActivity, SettingsActivity, FavoritesActivity, SearchWatcherActivity
+ * Responsibility: Enabling the bottom navigation bar in all activitys.
  */
 
  abstract class ActivityWithNavigation extends AppCompatActivity {

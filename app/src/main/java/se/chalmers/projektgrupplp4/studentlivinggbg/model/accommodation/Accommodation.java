@@ -4,6 +4,10 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author John
+ */
+
 public class Accommodation {
 
     private static List<Accommodation> accommodations;
@@ -16,7 +20,6 @@ public class Accommodation {
     private final double area;
     private int searchers;
     private final String thumbnail;
-    private List<Integer> images;
     private final String description;
     private final AccommodationHost accommodationHost;
     private boolean isFavorite = false;

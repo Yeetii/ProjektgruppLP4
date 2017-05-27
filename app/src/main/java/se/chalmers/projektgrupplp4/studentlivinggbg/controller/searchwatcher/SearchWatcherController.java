@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 
 /**
- * Created by PG on 21/04/2017.
+ * @author Peter
  */
 
 public class SearchWatcherController implements Observer, ViewCreationObserver{

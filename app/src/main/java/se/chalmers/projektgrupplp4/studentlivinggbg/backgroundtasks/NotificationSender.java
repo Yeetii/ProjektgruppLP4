@@ -15,7 +15,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
- * Created by Erik on 2017-05-14.
+ * @author Erik Magnusson
+ * Used by: DatabaseUpdater
+ * Uses: SettingsModel, Db4oDatabase, SearchWatcherActivity.
+ * Responsibilty: Send a push nortification about new accommodations matching searchwatchers.
  */
 
 public class NotificationSender {

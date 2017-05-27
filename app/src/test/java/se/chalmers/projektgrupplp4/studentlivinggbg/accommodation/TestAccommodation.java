@@ -13,6 +13,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author John
+ */
+
 public class TestAccommodation {
 
     @Test

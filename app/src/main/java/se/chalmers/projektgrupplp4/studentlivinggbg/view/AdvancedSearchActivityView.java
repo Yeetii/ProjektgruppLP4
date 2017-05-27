@@ -6,6 +6,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by Erik on 2017-05-05.
+ * @author Erik
  */
 
 public class AdvancedSearchActivityView {

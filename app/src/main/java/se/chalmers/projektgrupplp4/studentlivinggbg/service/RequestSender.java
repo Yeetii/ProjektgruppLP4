@@ -12,6 +12,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * Created by PG on 10/05/2017.
+ * @author Peter
  */
 
 public class RequestSender {

@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 
 /**
- * Created by PG on 07/05/2017.
+ * @author Peter Gärdenäs
+ * Used by: AlarmTimeManger
+ * Uses: DatabaseUpdater
+ * Responsbility: Receives alarms and calls the database to update.
  */
 
 public class AlarmReceiver extends BroadcastReceiver {

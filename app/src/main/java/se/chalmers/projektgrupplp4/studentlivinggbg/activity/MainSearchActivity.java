@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.backgroundtasks.AlarmTimeManger;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
@@ -16,6 +15,15 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerVi
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
+
+/**
+ * @author Peter Gärdenäs
+ * Used by: ActivityWithNavigation, SearchWatcherActivity, activity_main_search.xml, content_search.xml
+ * Uses: ActivityWithNavigation, ImageHandler, Db4oDatabase, SearchHandler, SettingsModel, SearchWatcherItem
+ * SearchWatcherModel, AccommodationRecyclerViewAdapter, SearchActivityController, Accommodation, SearchActivityView,
+ * ObjectActivity, AdvancedSearchActivity
+ * Responsibility: Creating the main activity and initializing the application.
+ */
 
 public class MainSearchActivity extends ActivityWithNavigation {
     private static boolean firstTime = true;
