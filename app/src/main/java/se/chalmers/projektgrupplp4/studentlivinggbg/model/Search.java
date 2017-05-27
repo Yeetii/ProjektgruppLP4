@@ -7,6 +7,7 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 
@@ -45,10 +46,7 @@ public class Search {
         this.maxArea = maxArea;
         this.daysUpploaded = daysUpploaded;
         this.daysLeft = daysLeft;
-
     }
-
-
 
 
     public String getMainSearch() {
@@ -125,9 +123,6 @@ public class Search {
     }
 
 
-
-
-
     private boolean mainSearchMatch(Accommodation accommodation) {
         if(getMainSearch().equals("")){return true;}
 
@@ -149,23 +144,23 @@ public class Search {
     }
 
     private boolean houseTypeMatch(Accommodation accommodation) {
-        if(getPossibleAccomodationHouseTypes().size() == 0){return true;}
-        try{return getPossibleAccomodationHouseTypes().toString().equals("") ||
-                AccommodationHouseType.toString(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
+        try{
+            return getPossibleAccomodationHouseTypes().size() == 0 || getPossibleAccomodationHouseTypes().toString().equals("") ||
+                EnumHelper.toString(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
         catch(NullPointerException e){return true;}
     }
 
     private boolean hostMatch(Accommodation accommodation) {
-        if(getPossibleAccommodationHosts().size() == 0){return true;}
-        try{return  getPossibleAccommodationHosts().toString().equals("") ||
-                AccommodationHost.toStringList(getPossibleAccommodationHosts()).contains(accommodation.getAccommodationHost());}
+        try{
+            return getPossibleAccommodationHosts().size() == 0 || getPossibleAccommodationHosts().toString().equals("") ||
+                EnumHelper.toString(getPossibleAccommodationHosts()).contains(accommodation.getAccommodationHost());}
         catch(NullPointerException e){return true;}
     }
 
     private boolean regionMatch(Accommodation accommodation) {
-        if(getPossibleRegions().size() == 0){return true;}
-        try{return  getPossibleRegions().toString().equals("") ||
-                Region.toStringList(getPossibleRegions()).contains(accommodation.getRegion());}
+        try{
+            return  getPossibleRegions().size() == 0 || getPossibleRegions().toString().equals("") ||
+                EnumHelper.toString(getPossibleRegions()).contains(accommodation.getRegion());}
         catch(NullPointerException e){return true;}
     }
 

@@ -52,7 +52,7 @@ public class TestAccommodationHost {
         newList.add(AccommodationHost.CHALMERS);
         newList.add(null);
 
-        assertTrue(AccommodationHost.toStringList(newList).equals("SGS Studentbostäder, Chalmers Studentbostäder"));
+        assertTrue(AccommodationHost.toString(newList).equals("SGS Studentbostäder, Chalmers Studentbostäder"));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class TestAccommodationHost {
         newList.add(AccommodationHost.CHALMERS);
         newList.add(null);
 
-        assertTrue(AccommodationHost.toStringListShort(newList).equals("SGS, Chalmers"));
+        assertTrue(AccommodationHost.toStringShort(newList).equals("SGS, Chalmers"));
     }
 
 }

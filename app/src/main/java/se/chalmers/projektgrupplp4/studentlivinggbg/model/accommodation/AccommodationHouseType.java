@@ -4,7 +4,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum AccommodationHouseType implements Type{
+public enum AccommodationHouseType implements EnumType {
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
     FOUR_ROOMS, UNKNOWN;
@@ -46,19 +46,5 @@ public enum AccommodationHouseType implements Type{
             result.add(parseString(string));
         }
         return result;
-    }
-
-    public static String toString(List<AccommodationHouseType> houseTypesArray){
-    try{
-        String result = "";
-        for(AccommodationHouseType houseType: houseTypesArray){
-            if(houseType != null){
-                result = result + houseType.toString() + ", ";
-            }
-        }
-        if(!result.equals("")){return result.substring(0, result.length() - 2);}
-        return result;    }
-    catch(Exception e){
-        return "";}
     }
 }

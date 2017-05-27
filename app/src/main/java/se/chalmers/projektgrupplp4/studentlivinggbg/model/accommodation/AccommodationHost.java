@@ -4,7 +4,7 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum AccommodationHost implements Type{
+public enum AccommodationHost implements EnumType {
         SGS, CHALMERS;
 
         //Creating a nice toString() method
@@ -41,21 +41,7 @@ public enum AccommodationHost implements Type{
                 return result;
         }
 
-        public static String toStringList(List<AccommodationHost> hostsArray){
-                try{
-                        String result = "";
-                        for(AccommodationHost host: hostsArray){
-                                if(host != null) {
-                                        result = result + host.toString() + ", ";
-                                }
-                        }
-                        if(!result.equals("")){return result.substring(0, result.length() - 2);}
-                        return result;                }
-                catch(Exception e){
-                        return "";}
-        }
-
-        public static String toStringListShort(List<AccommodationHost> hostsArray){
+        public static String toStringShort(List<AccommodationHost> hostsArray){
                 try{
                         String result = "";
                         for(AccommodationHost host: hostsArray){
