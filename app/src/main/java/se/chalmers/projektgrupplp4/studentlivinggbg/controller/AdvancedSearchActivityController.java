@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 /**
- * @author
+ * @author Erik Magnusson
  * Used by: AdvancedSearchActivity
  * Uses: NameDialogController, AdvancedSearchFragmentController, SearchWatcherItem, Db4oDatabse,
  * Observer, Search, SearchWatcherModel, NameDialog

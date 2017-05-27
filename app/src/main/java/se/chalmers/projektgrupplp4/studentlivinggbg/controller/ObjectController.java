@@ -16,6 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * @author Jonathan Gildevall
+ * Revised by: Erik Magnusson
  * Used by: ObjectActivity
  * Uses: ObjectActivityModel, Accommodation
  * Responsibility: Controller for the object activity.

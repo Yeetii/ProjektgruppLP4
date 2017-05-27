@@ -29,6 +29,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 /**
  * @author Peter Gärdenäs
+ * Revised by: Erik Magnusson
  * Used by: AlarmReciver
  * Uses: AlarmTimeManger, AccommodationAdapter, ChalmersAdapter, ImageHandler, Db4oDatabase, RequestSender,
  * Observer, RequestAccommodations, SGSAdapter, SearchActivityController, Accommodation, ImageModel,

@@ -16,6 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView
 
 /**
  * @author Peter Gärdenäs
+ * Revised by: Erik Magnusson
  * Used by: SearchWatcherActivity
  * Uses: ModalController, SearchWatcherItemController, ViewCreationObserver, Observer, SearchWatcherAdapter
  * SearchWatcherItemView, ModalView

@@ -16,6 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
 
 /**
  * @author Peter Gärdenäs
+ * Revised by: Erik Magnusson
  * Used by: SearchWatcherController
  * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchHandler, SearchWatcherItem,
  * SearchWatcerAdapter, SearchWatcherItemView
