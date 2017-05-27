@@ -16,6 +16,8 @@ import static junit.framework.Assert.assertNotNull;
 
 /**
  * Created by PG on 15/05/2017.
+ * @author Peter
+ * revised by Jonathan
  */
 
 public class ImageModelTest {

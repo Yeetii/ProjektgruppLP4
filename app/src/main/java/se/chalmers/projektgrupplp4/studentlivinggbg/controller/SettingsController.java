@@ -18,6 +18,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 
 /**
  * Created by Jonathan on 17/05/2017.
+ * @author Jonathan
+ * revised by Peter
  */
 
 public class SettingsController {

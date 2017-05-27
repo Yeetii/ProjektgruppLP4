@@ -20,6 +20,8 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Jonathan on 25/05/2017.
+ * @author Jonathan
+ * revised by Peter
  */
 
 public class TestChalmersData {

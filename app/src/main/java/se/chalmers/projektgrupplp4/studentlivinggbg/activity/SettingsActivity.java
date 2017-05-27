@@ -5,6 +5,9 @@ import android.os.Bundle;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SettingsController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.SettingsView;
 
+/**
+ * @author Jonathan
+ */
 public class SettingsActivity extends ActivityWithNavigation {
 
     @Override

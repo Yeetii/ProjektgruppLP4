@@ -18,6 +18,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
  * Created by Jonathan on 16/04/2017.
+ * @author Jonathan
  */
 
 public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter implements RecyclerViewHolderObserver {

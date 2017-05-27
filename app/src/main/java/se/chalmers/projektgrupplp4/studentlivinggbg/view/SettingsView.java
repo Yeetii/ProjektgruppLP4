@@ -8,6 +8,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * Created by Jonathan on 17/05/2017.
+ * @author Jonathan
  */
 
 public class SettingsView {
