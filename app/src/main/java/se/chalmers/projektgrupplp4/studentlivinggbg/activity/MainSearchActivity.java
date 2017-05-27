@@ -68,34 +68,43 @@ public class MainSearchActivity extends ActivityWithNavigation {
     }
 
     private void loadDatabase(final Context context,final ImageHandler imageHandler) {
-        final Db4oDatabase db = Db4oDatabase.getInstance();
-        db.setContext(context);
+        //This activity needs network, unclear why.
+        Thread setUpDatabase = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Db4oDatabase db = Db4oDatabase.getInstance().initDataBase(context);
 
-        List<SettingsModel> items = db.findAll(SettingsModel.class);
-        if (items.size() > 0 && items.get(0).getDefaultSort() != null) {
-            SettingsModel.setSettingsModel(items.get(0));
-        } else {
-            SettingsModel model = new SettingsModel();
-            SettingsModel.setSettingsModel(model);
-            model.setDefaultSort("Pris ↓");
-            db.store(model);
+                List<SettingsModel> items = db.findAll(SettingsModel.class);
+                if (items.size() > 0 && items.get(0).getDefaultSort() != null) {
+                    SettingsModel.setSettingsModel(items.get(0));
+                } else {
+                    SettingsModel model = new SettingsModel();
+                    SettingsModel.setSettingsModel(model);
+                    model.setDefaultSort("Pris ↓");
+                    db.store(model);
+                }
+                db.close();
+            }
+        });
+        try {
+            setUpDatabase.start();
+            setUpDatabase.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        System.out.println("...");
 
-        db.close();
-
-        //Throws error if not done in a thread.
+        //Also needs network but the rest of the application does not need to wait for this.
         new Thread(new Runnable() {
             @Override
             public void run() {
-                List<Accommodation> accommodations = db.findAll(Accommodation.class);
+                List<Accommodation> accommodations = Db4oDatabase.getInstance().findAll(Accommodation.class);
                 //Should happen the first time the user starts the app
                 if (accommodations.size() == 0 && observer != null) {
                     observer.update(MainSearchActivity.this);
                 }
 
                 SearchWatcherModel.getSearchWatcherItems().clear();
-                SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
+                SearchWatcherModel.getSearchWatcherItems().addAll(Db4oDatabase.getInstance().<SearchWatcherItem>findAll(SearchWatcherItem.class));
 
                 Long currentTime = System.currentTimeMillis();
                 imageHandler.getAndSaveImages(true, accommodations);
