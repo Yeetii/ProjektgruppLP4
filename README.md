@@ -8,6 +8,8 @@ There's two ways to install Studentliving Gothenburg.
 * Downloading the apk file in the projects root and [installing it on an android device](http://www.wikihow.tech/Install-APK-Files-on-Android). 
 * Cloning this repo and running it through android studios, either in an emulator or on an android device.
 
+Note that it takes some time for accommodations to show up when you run the app for the first time.
+
 Running the app on an actual android device is prefered over running it on an emulator as there are some bugs when running in an emulator.
 
 ## Contributors
