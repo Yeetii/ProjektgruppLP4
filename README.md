@@ -5,8 +5,8 @@ There's also some more advanced features such as favouriting or creating searche
 ## How to install
 
 There's two ways to install Studentliving Gothenburg. 
-1. Downloading the apk file in the projects root and [installing it on an android device](http://www.wikihow.tech/Install-APK-Files-on-Android). 
-2. Cloning this repo and running it through android studios, either in an emulator or on an android device.
+* Downloading the apk file in the projects root and [installing it on an android device](http://www.wikihow.tech/Install-APK-Files-on-Android). 
+* Cloning this repo and running it through android studios, either in an emulator or on an android device.
 
 Running the app on an actual android device is prefered over running it on an emulator as there are some bugs when running in an emulator.
 
