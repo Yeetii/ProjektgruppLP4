@@ -45,8 +45,6 @@ public class TestSearchWatcher {
         assertTrue(searchWatcherItem2.checkForMatches(accommodationList2) == 0);
 
         accommodationList2.add(accommodation2);
-        System.out.println(searchWatcherItem2.checkForMatches(accommodationList2));
-        System.out.println(searchWatcherItem2.getSearch().search(accommodationList2));
         assertTrue(searchWatcherItem2.checkForMatches(accommodationList2) == 0);
 
     }

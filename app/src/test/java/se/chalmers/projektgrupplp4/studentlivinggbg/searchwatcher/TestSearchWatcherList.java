@@ -15,7 +15,10 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 import static org.junit.Assert.*;
 
+
 public class TestSearchWatcherList {
+
+
 
     @Test
     public void testCreateSearchWatcher(){
@@ -33,9 +36,9 @@ public class TestSearchWatcherList {
 
     @Test
     public void testUpdateWatchers(){
-
+        testCreateSearchWatcher();
         List<Accommodation> accommodationList1 = new ArrayList<>();
-        Accommodation accommodation1 = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation accommodation1 = new Accommodation("", "mainSearch", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
         accommodationList1.add(accommodation1);
         assertTrue(SearchWatcherList.checkForMatches(accommodationList1) == 1);
 

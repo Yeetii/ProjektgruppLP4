@@ -26,12 +26,10 @@ public class SearchWatcher {
 
     public int checkForMatches(List<Accommodation> newAccommodations){
         try{
-            int i = 0;
             List<String> result = new ArrayList<>();
+            List<Accommodation> matches = search.search(newAccommodations);
             for(Accommodation accommodation: newAccommodations){
-                if(accommodation == null){
-                    i++;
-                } else if(search.search(newAccommodations).contains(accommodation)){
+                if(accommodation != null && matches.contains(accommodation)){
                     result.add(accommodation.getObjectNumber());
                 }
             }
@@ -39,7 +37,7 @@ public class SearchWatcher {
                 newMatches.addAll(result);
                 return result.size();
             }
-            return newAccommodations.size()-i;
+            return 0;
         }
         catch(NullPointerException e){
             e.printStackTrace();

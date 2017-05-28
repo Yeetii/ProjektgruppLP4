@@ -114,20 +114,25 @@ public class Search {
 
         for (Accommodation accommodation: accommodations){
             if(matchesWithSearch(accommodation)) {
-                result.add(accommodation);}
+                result.add(accommodation);
+            }
         }
         return result;
     }
 
     private boolean matchesWithSearch(Accommodation accommodation) {
-
+        System.out.println("hem");
         if (accommodation == null){return false;}
+        System.out.println("hem1");
         if(!mainSearchMatch(accommodation)){return false;}
+        System.out.println("hem31");
         if(!houseTypeMatch(accommodation)){return false;}
         if(!hostMatch(accommodation)){return false;}
+        System.out.println("hewm");
         if(!regionMatch(accommodation)){return false;}
         if(!priceMatch(accommodation)){return false;}
         if(!areaMatch(accommodation)){return false;}
+        System.out.println("hewem");
         if(!upploadDayMatch(accommodation)){return false;}
         return daysLeftMatch(accommodation);
     }
