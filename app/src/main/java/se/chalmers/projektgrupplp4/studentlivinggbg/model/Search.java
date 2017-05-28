@@ -121,6 +121,7 @@ public class Search {
 
     private boolean matchesWithSearch(Accommodation accommodation) {
 
+        if (accommodation == null){return false;}
         if(!mainSearchMatch(accommodation)){return false;}
         if(!houseTypeMatch(accommodation)){return false;}
         if(!hostMatch(accommodation)){return false;}
