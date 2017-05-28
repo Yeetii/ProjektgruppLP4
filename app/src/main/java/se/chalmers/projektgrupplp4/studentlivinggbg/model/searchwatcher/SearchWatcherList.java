@@ -6,7 +6,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 
 /**
- * @author
+ * @author Erik
+ * Revised by John
  * Used by: AdvancedSearchActivityController, DatabaseUpdater, MainSearchActivity, ModalController,
  * SearchWatcherActivity, SettingsController
  * Uses: Accommodation, Search, SearchWatcher
