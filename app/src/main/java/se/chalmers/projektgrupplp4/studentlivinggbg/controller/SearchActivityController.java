@@ -17,14 +17,14 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.AccommodationsSorter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
 
 /**
  * @author Peter Gärdenäs
  * revised by John Segerstedt, Jonathan Gildevall
  * Used by: MainSearchActivty, ActivityReceiver
  * Uses: SettingsModel, ActivitySwircher, Db4oDatabase, AccommodationRecyclerViewAdapter, AccommodationsSorter,
- * Accommodation, SearchHandler, RecyclerViewHelperController.
+ * Accommodation, SearchList, RecyclerViewHelperController.
  * Responsibilty: Contoller for the MainSearchActivity (and since MainSearchActivity is kind of the main activity
  * this becomes partly the main controller).
  */
@@ -129,7 +129,7 @@ public class SearchActivityController {
 
         @Override
         public boolean onQueryTextSubmit(String query) {
-            SearchHandler.createSearch(query);
+            SearchList.createSearch(query);
             controller.recyclerAdapter.refresh();
             return false;
         }
@@ -137,7 +137,7 @@ public class SearchActivityController {
         @Override
         public boolean onQueryTextChange(String query) {
             if(query.length()==0){
-                SearchHandler.createSearch("", true);
+                SearchList.createSearch("", true);
                 controller.recyclerAdapter.refresh();
             }
             return false;

@@ -8,7 +8,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ImageHandler;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
@@ -21,7 +21,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
  * @author Peter Gärdenäs
  * Revised by Jonathan
  * Used by: ActivityWithNavigation, SearchWatcherActivity, activity_main_search.xml, content_search.xml
- * Uses: ActivityWithNavigation, ImageHandler, Db4oDatabase, SearchHandler, SettingsModel, SearchWatcherItem
+ * Uses: ActivityWithNavigation, ImageHandler, Db4oDatabase, SearchList, SettingsModel, SearchWatcherItem
  * SearchWatcherModel, AccommodationRecyclerViewAdapter, SearchActivityController, Accommodation, SearchActivityView,
  * ObjectActivity, AdvancedSearchActivity
  * Responsibility: Creating the main activity and initializing the application.
@@ -62,7 +62,7 @@ public class MainSearchActivity extends ActivityWithNavigation {
     }
 
     private void initSearchActivity() {
-        new SearchHandler();
+        new SearchList();
         new SettingsModel();
         ImageHandler imageHandler = new ImageHandler(getApplicationContext());
         loadDatabase(getApplicationContext(), imageHandler);

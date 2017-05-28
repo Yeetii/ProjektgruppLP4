@@ -15,11 +15,11 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
  * Responsibility: Holds searchterms for filtering Accommodations
  */
 
-public class SearchHandler {
+public class SearchList {
 
     static private List<Search> lastSearches = new ArrayList<>();
 
-    public SearchHandler () {}
+    public SearchList () {}
 
     public static Search createSearch(String mainSearch){
         Search result = new Search(mainSearch);

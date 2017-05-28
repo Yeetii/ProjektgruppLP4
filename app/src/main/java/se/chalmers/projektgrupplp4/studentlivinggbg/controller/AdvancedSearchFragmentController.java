@@ -10,7 +10,7 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
@@ -20,7 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentV
  * @author Erik Magnusson
  * revised by John Segerstedt
  * Used by: AdvancedSearchController, ModalController
- * Uses MultiSpinerController, MultiSpinner, Search, SearchHandler, AccommodationHost,
+ * Uses MultiSpinerController, MultiSpinner, Search, SearchList, AccommodationHost,
  * AccomodationHouseType, Region, AdvancedSearchFragmentView.
  * Responsibility: Controller for Advanced search fragement, handling the user actions when setting
  * different attributes in advanced search.
@@ -96,7 +96,7 @@ public class AdvancedSearchFragmentController {
     }
 
     private void fillFilters() {
-        fillFilters(SearchHandler.getLastSearch());
+        fillFilters(SearchList.getLastSearch());
     }
 
     public void fillFilters(Search search){
@@ -233,7 +233,7 @@ public class AdvancedSearchFragmentController {
         try{daysUpploaded = seekBarDaysUploaded.getProgress();}catch(NullPointerException e){}
         try{daysLeft = seekBarDaysLeft.getProgress();}catch(NullPointerException e){}
 
-        return SearchHandler.createSearch(mainSearch, possibleAccommodationHouseTypes,
+        return SearchList.createSearch(mainSearch, possibleAccommodationHouseTypes,
                 possibleAccommodationHosts, possibleRegions, minPrice, maxPrice,
                 minArea, maxArea, daysUpploaded, daysLeft, addToSearchHistory);
     }

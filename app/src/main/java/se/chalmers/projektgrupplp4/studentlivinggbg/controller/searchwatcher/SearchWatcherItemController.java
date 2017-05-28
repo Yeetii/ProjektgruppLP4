@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ViewCreat
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
@@ -23,7 +23,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
  * @author Peter Gärdenäs
  * Revised by: Erik Magnusson
  * Used by: SearchWatcherController
- * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchHandler, SearchWatcherItem,
+ * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchList, SearchWatcherItem,
  * SearchWatcerAdapter, SearchWatcherItemView
  * Responsibility: controller for each invduall SearchWatcherItem.
  */
@@ -100,7 +100,7 @@ public class SearchWatcherItemController implements ViewCreationObserver{
 
                 //Perform search and move to searchActivity
                 Search search = model.getSearch();
-                SearchHandler.addToLastSearches(search);
+                SearchList.addToLastSearches(search);
                 ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });

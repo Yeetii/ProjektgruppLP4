@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author John Segerstedt
  * Used by: Accommodation, AccommodationHouseType, AdvancedSearchFragmentController,
- * AdvancedSearchFragmentView, ChalmersAdapter, Search, SearchHandler
+ * AdvancedSearchFragmentView, ChalmersAdapter, Search, SearchList
  * Uses: EnumType
  * Responsibility: Enum for accommodation house type.
  */
