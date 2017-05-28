@@ -116,7 +116,6 @@ public class SGSAdapter implements AccommodationAdapter {
                 case "Enkelrum med kokskåp":
                     return HouseType.COOKING_CABINET;
             }
-            System.out.println("Should add to switch!: " + ObjectTypeDescription);
             return HouseType.UNKNOWN;
         }
 

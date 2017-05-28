@@ -23,7 +23,7 @@ public class SettingsModel {
 
     public void setPushEnabled(boolean value) {
         pushEnabled = value;
-    };
+    }
 
     public boolean isPushEnabled () {
         return pushEnabled;

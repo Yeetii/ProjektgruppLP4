@@ -34,7 +34,7 @@ public class ChalmersAdapter implements AccommodationAdapter {
         string = string.replaceAll("objektsortering", "objectSorter");
         string = string.replaceAll("objektsummering", "objectSummary");
 
-        System.out.println("Fromat time: " + (System.currentTimeMillis() - timestamp));
+        System.out.println("Format time: " + (System.currentTimeMillis() - timestamp));
         return string.getBytes("UTF-8");
     }
 
@@ -106,7 +106,6 @@ public class ChalmersAdapter implements AccommodationAdapter {
                     return HouseType.TWO_ROOMS_KITCHENETTE;
 
             }
-            System.out.println("Should add to switch!: " + houseTypeString);
             return HouseType.UNKNOWN;
         }
         //Used

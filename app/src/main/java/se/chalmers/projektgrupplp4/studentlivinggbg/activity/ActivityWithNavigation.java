@@ -30,7 +30,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -52,7 +52,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
                     newActivityClass = SettingsActivity.class;
                     break;
             }
-            if (!newActivityClass.equals(activity.getClass())) {
+            if (newActivityClass != null && !newActivityClass.equals(activity.getClass())) {
                 ActivitySwitcher.getInstance(getApplicationContext()).navigate(newActivityClass);
                 return true;
             }

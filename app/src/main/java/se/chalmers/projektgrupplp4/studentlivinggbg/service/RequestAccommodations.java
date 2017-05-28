@@ -49,7 +49,7 @@ public class RequestAccommodations extends AsyncTask<String, Integer, Void> {
         return null;
     }
 
-    private void writeToDisc(StringBuffer response, String fileName) throws Exception {
+    private void writeToDisc(StringBuffer response, String fileName) {
         FileOutputStream outputStream;
         try {
             outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);

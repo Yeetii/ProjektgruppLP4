@@ -112,7 +112,6 @@ public class MainSearchActivity extends ActivityWithNavigation {
 
                 Long currentTime = System.currentTimeMillis();
                 imageHandler.getAndSaveImages(true, accommodations);
-                System.out.println("Find timestamp: " + (System.currentTimeMillis() - currentTime));
                 SearchActivityController.updateAccommodations(accommodations);
             }
         }).start();

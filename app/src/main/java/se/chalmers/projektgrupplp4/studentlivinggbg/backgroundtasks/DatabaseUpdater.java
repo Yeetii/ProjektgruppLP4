@@ -22,7 +22,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestSender;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.RequestAccommodations;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapter;
-import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;

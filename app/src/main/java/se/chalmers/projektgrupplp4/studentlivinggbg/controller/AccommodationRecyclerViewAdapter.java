@@ -54,7 +54,6 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
         viewHolder.setCurrent(accommodation);
         viewHolder.setButton(viewHolder.isFavorite());
-        viewHolder.setPosition(position);
         viewHolder.whenBound();
 
         initButtonListener(viewHolder);
@@ -92,7 +91,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override public AccommodationRecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item,viewGroup, false);
-        return new AccommodationRecyclerViewHolder(view, targetActivity);
+        return new AccommodationRecyclerViewHolder(view);
     }
 
     public void refresh() {

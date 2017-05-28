@@ -18,7 +18,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
  */
 
 public class FavoritesView {
-    private RecyclerView recyclerView;
     private final Activity activity;
 
     public FavoritesView(Activity activity) {
@@ -31,7 +30,7 @@ public class FavoritesView {
     }
 
     private void initLayoutManger() {
-        recyclerView = (RecyclerView) activity.findViewById(R.id.list);
+        RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);

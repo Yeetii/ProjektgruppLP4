@@ -1,6 +1,5 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.view;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,8 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
@@ -20,22 +17,21 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
  * John Segerstedt made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
  * Used by: AccommodationRecyclerViewAdapter, RecyclerViewHelperController, RecyclerViewHolderObserver
- * Uses: ObjectActivityModel, ActivitySwitcher, Accommodation
+ * Uses: Accommodation, ImageModel
  * Responsibility: View for row items
  */
 
 public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
-    final TextView txtAddress;
-    final TextView txtHouseType;
-    final TextView txtArea;
-    final TextView txtPrice;
-    final TextView txtLastApplyDate;
-    final ImageView favoriteButton;
-    final ImageView image;
-    Accommodation current;
-    int position;
+    private final TextView txtAddress;
+    private final TextView txtHouseType;
+    private final TextView txtArea;
+    private final TextView txtPrice;
+    private final TextView txtLastApplyDate;
+    private final ImageView favoriteButton;
+    private final ImageView image;
+    private Accommodation current;
 
-    public AccommodationRecyclerViewHolder(View v, final Class<? extends Activity> targetClass) {
+    public AccommodationRecyclerViewHolder(View v) {
         super(v);
         txtAddress = (TextView) v.findViewById(R.id.address);
         txtHouseType = (TextView) v.findViewById(R.id.type);
@@ -59,10 +55,6 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
     
     public void setCurrent(Accommodation current){
         this.current = current;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
     }
 
     public boolean isFavorite() {

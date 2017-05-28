@@ -42,7 +42,6 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> {
         // Get the data item for this position
         SearchWatcher dataModel = getItem(position);
         SearchWatcherItemView viewHolder;
-        System.out.println("Making list item " + position + " with title" + dataModel.getTitle());
 
         if (convertView == null) {
 

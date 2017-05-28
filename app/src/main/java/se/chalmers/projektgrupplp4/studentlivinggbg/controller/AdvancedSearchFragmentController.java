@@ -109,7 +109,9 @@ public class AdvancedSearchFragmentController {
                 fillHouseTypeSpinner(search);
                 fillRegionSpinner(search);
                 fillLandlordSpinner(search);
-            }catch(Exception e){}
+            }catch(Exception e){
+                e.printStackTrace();
+            }
 
         }
         if(search.getMaxPrice() < 1){seekBarMaxPrice.setProgress(10000);}
@@ -222,16 +224,36 @@ public class AdvancedSearchFragmentController {
         int daysUpploaded = -1;
         int daysLeft = -1;
 
-        try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){}
-        try{possibleAccommodationHouseTypes = HouseType.parseStringList(houseTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
-        try{possibleAccommodationHosts = Host.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){}
-        try{possibleRegions = Region.parseStringList(regionSpinner.getSelectedItems());}catch(NullPointerException e){}
-        try{minPrice = seekBarMinPrice.getProgress();}catch(NullPointerException e){}
-        try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}
-        try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){}
-        try{maxArea = seekBarMaxArea.getProgress();}catch(NullPointerException e){}
-        try{daysUpploaded = seekBarDaysUploaded.getProgress();}catch(NullPointerException e){}
-        try{daysLeft = seekBarDaysLeft.getProgress();}catch(NullPointerException e){}
+        try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{possibleAccommodationHouseTypes = HouseType.parseStringList(houseTypeSpinner.getSelectedItems());}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{possibleAccommodationHosts = Host.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{possibleRegions = Region.parseStringList(regionSpinner.getSelectedItems());}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{minPrice = seekBarMinPrice.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{minArea = seekBarMinArea.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{maxArea = seekBarMaxArea.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{daysUpploaded = seekBarDaysUploaded.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        try{daysLeft = seekBarDaysLeft.getProgress();}catch(NullPointerException e){
+            e.printStackTrace();
+        }
 
         return SearchList.createSearch(mainSearch, possibleAccommodationHouseTypes,
                 possibleAccommodationHosts, possibleRegions, minPrice, maxPrice,

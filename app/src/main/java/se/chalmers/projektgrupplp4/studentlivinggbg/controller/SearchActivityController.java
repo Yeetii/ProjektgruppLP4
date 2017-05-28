@@ -1,7 +1,6 @@
 package se.chalmers.projektgrupplp4.studentlivinggbg.controller;
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,7 +37,7 @@ public class SearchActivityController {
     private final AccommodationRecyclerViewAdapter recyclerAdapter;
     private Spinner sort;
     private final Class<? extends Activity> targetActivity;
-    final String[] arraySpinner = new String[] {
+    private final String[] arraySpinner = new String[] {
             "Pris ↓", "Pris ↑",  "Storlek ↓", "Storlek ↑", "A-Ö", "Ö-A",
     };
 

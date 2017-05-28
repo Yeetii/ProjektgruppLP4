@@ -41,7 +41,7 @@ public class MultiSpinnerController implements Observer {
     private DialogInterface.OnCancelListener onCancelListener = new DialogInterface.OnCancelListener() {
         @Override
         public void onCancel(DialogInterface dialog) {
-            multiSpinner.onCancel(dialog);
+            multiSpinner.onCancel();
         }
     };
 
@@ -55,7 +55,7 @@ public class MultiSpinnerController implements Observer {
     private DialogInterface.OnMultiChoiceClickListener multiChoiceListener = new DialogInterface.OnMultiChoiceClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-            multiSpinner.onClick(dialog, which, isChecked);
+            multiSpinner.onClick(which, isChecked);
         }
     };
 

@@ -41,7 +41,9 @@ public class SearchWatcher {
             }
             return newAccommodations.size()-i;
         }
-        catch(NullPointerException e){}
+        catch(NullPointerException e){
+            e.printStackTrace();
+        }
         return 0;
     }
 

@@ -144,7 +144,9 @@ public class Search {
             try{
                 if((mainSearchSubString.equals("1") ||  mainSearchSubString.equals("2") || mainSearchSubString.equals("3") || mainSearchSubString.equals("4"))&& mainSearchArray[++i].equals("rum")){
                     mainSearchSubString = mainSearchSubString+"-"+"rum";}}
-            catch(ArrayIndexOutOfBoundsException e){}
+            catch(ArrayIndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
             if(!accommodationString.contains(mainSearchSubString)){
                 return false;}
         }
@@ -196,13 +198,11 @@ public class Search {
     }
 
     private boolean upploadDayMatch(Accommodation accommodation) {
-        if(getDaysUpploaded() == 7 || getDaysUpploaded() == -1){return true;}
-        return parseDays(new Date().toString(), accommodation.getUploadDate(), getDaysUpploaded());
+        return getDaysUpploaded() == 7 || getDaysUpploaded() == -1 || parseDays(new Date().toString(), accommodation.getUploadDate(), getDaysUpploaded());
     }
 
     private boolean daysLeftMatch(Accommodation accommodation) {
-        if(getDaysLeft() == 7 || getDaysLeft() == -1){return true;}
-        return parseDays(accommodation.getLastApplyDate(), new Date().toString(), getDaysLeft());
+        return getDaysLeft() == 7 || getDaysLeft() == -1 || parseDays(accommodation.getLastApplyDate(), new Date().toString(), getDaysLeft());
     }
 
 
@@ -224,10 +224,12 @@ public class Search {
             Date date1 = simpleDateFormat.parse(lowerDate);
             Date date2 = simpleDateFormat.parse(higherDate);
             long diff = date2.getTime() - date1.getTime();
-            if(TimeUnit.DAYS.convert(diff, TimeUnit.DAYS) > new Long(daysDelta)){
+            if(TimeUnit.DAYS.convert(diff, TimeUnit.DAYS) > (long) daysDelta){
                 return false;
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return true;
 

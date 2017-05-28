@@ -39,16 +39,15 @@ public class ModalController implements Observer {
         this.adapter = adapter;
         this.model = model;
 
-        this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view);
+        if (editMode()){
+            this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view, model.getSearch());
+        }else
+            this.advancedSearchFragmentController = new AdvancedSearchFragmentController(view, new Search(""));
 
         initializeCloseModalListener();
         initializeDoNothingListener();
         initializeModalDoneButtonListener();
 
-        if (editMode()){
-            advancedSearchFragmentController.fillFilters(model.getSearch());
-        }else
-            advancedSearchFragmentController.fillFilters(new Search(""));
         fragment.update(!editMode());
     }
 

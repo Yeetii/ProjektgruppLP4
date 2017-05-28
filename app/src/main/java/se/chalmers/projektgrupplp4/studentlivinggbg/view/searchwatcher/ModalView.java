@@ -37,7 +37,7 @@ public class ModalView extends Fragment{
         return view;
     }
 
-    public void setObserver(ViewCreationObserver observer) {
+    private void setObserver(ViewCreationObserver observer) {
         this.observer = observer;
     }
     //Using constructor method because it needs more parameters than a standard fragment, maybe not best solution?

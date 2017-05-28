@@ -41,7 +41,7 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
         super(arg0, arg1, arg2);
     }
 
-    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+    public void onClick(int which, boolean isChecked) {
         selected[which] = isChecked;
     }
 
@@ -49,21 +49,21 @@ public class MultiSpinner extends android.support.v7.widget.AppCompatSpinner {
         this.observer = observer;
     }
 
-    public void onCancel(DialogInterface dialog) {
+    public void onCancel() {
         int amountOfUnselected = 0;
         // refresh text on spinner
-        StringBuffer spinnerBuffer = new StringBuffer();
+        StringBuilder spinnerBuilder = new StringBuilder();
         for (int i = 0; i < items.size(); i++) {
             if (selected[i]) {
-                spinnerBuffer.append(items.get(i));
-                spinnerBuffer.append(", ");
+                spinnerBuilder.append(items.get(i));
+                spinnerBuilder.append(", ");
             } else {
                 amountOfUnselected++;
             }
         }
         String spinnerText;
         if (amountOfUnselected > 0 && amountOfUnselected != selected.length) {
-            spinnerText = spinnerBuffer.toString();
+            spinnerText = spinnerBuilder.toString();
             if (spinnerText.length() > 2)
                 spinnerText = spinnerText.substring(0, spinnerText.length() - 2);
         } else {

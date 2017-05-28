@@ -95,6 +95,7 @@ public class Accommodation {
         this.isFavorite = value;
     }
 
+    //Always returns same value because not enough time to implement getting the information
     public String getFurnitured() {return "nej";}
 
     public String getObjectNumber() {return objectNumber;}
