@@ -15,7 +15,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 /**
  * @author John Segerstedt
  * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchActivityController, AdvancedSearchFragmentController,
- * ModalController, SearchList, SearchWatcherItem, SearchWatcherItemController, SearchWatcherModel
+ * ModalController, SearchList, SearchWatcher, SearchWatcherItemController, SearchWatcherList
  * Uses: Accommodation, AccommodationHost, AccommodationHouseType, EnumHelper, Region
  * Responsibility: Holds searchterms for filtering Accommodations
  */

@@ -6,13 +6,13 @@ import android.widget.TextView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * @author John Segerstedt
  * Used by: SearchWatcherAdapter, SearchWatcherController, SearchWatcherItemController
- * Uses: AccommodationHost, EnumHelper, Region, SearchWatcherItem;
+ * Uses: AccommodationHost, EnumHelper, Region, SearchWatcher;
  * Responsibility: View for SearchWatcherItems
  */
 
@@ -30,10 +30,10 @@ public class SearchWatcherItemView {
     private final TextView txtPriceLabel;
     private final TextView txtMatches;
 
-    private SearchWatcherItem model;
+    private SearchWatcher model;
 
 
-    public SearchWatcherItemView(SearchWatcherItem model, View convertView) {
+    public SearchWatcherItemView(SearchWatcher model, View convertView) {
         this.model = model;
         this.view = convertView;
 
@@ -51,7 +51,7 @@ public class SearchWatcherItemView {
         convertView.setTag(this);
     }
 
-    public void updateView (SearchWatcherItem model) {
+    public void updateView (SearchWatcher model) {
         this.model = model;
         updateTitle();
         updateMainSearch();
@@ -158,7 +158,7 @@ public class SearchWatcherItemView {
         return controllerAttached;
     }
 
-    public SearchWatcherItem getModel () {
+    public SearchWatcher getModel () {
         return model;
     }
 

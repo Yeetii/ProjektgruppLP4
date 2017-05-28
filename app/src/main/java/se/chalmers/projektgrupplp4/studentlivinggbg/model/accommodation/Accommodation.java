@@ -11,7 +11,7 @@ import java.util.List;
  * AccommodationsSorter, ChalmersAdapter, DatabaseUpdater, Db4oDatabase, FavoritesActivity, FavoritesView,
  * ImageHandler, MainSearchActivity, ObjectActivityModel, ObjectController, ObjectView,
  * RecyclerViewHelperController, RequestSender, SGSAdapter, Search, SearchActivityController,
- * SearchWatcherItem, SearchWatcherModel, SettingsController, ActivityReceiver
+ * SearchWatcher, SearchWatcherList, SettingsController, ActivityReceiver
  * Uses: Region, AccommodationHost, AccommodationHouseType
  * Responsibility: Represents an accommodation
  */

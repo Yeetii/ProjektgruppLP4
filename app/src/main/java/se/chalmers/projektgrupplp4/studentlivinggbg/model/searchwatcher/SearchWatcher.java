@@ -8,18 +8,18 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 /**
  * @author Erik Magnusson
  * Used by: AdvancedSearchActivityController, DatabaseUpdater, MainSearchActivity, ModalController,
- * SearchWatcherAdapter, SearchWatcherItemController, SearchWatcherItemView, SearchWatcherModel, SettingsController
+ * SearchWatcherAdapter, SearchWatcherItemController, SearchWatcherItemView, SearchWatcherList, SettingsController
  * Uses: Search, Accommodation
  * Responsibility: Holding a search that can be performed automaticly
  */
 
-public class SearchWatcherItem {
+public class SearchWatcher {
     private String title;
     private Search search;
     //Holds objectNumbers of new accommodations
     private List<String> newMatches = new ArrayList<>();
 
-    public SearchWatcherItem(String title, Search search) {
+    public SearchWatcher(String title, Search search) {
         this.title = title;
         this.search = search;
     }

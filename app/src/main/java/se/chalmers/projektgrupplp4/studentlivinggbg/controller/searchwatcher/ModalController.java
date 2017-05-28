@@ -12,8 +12,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.AdvancedSearchFragmentController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 
@@ -22,7 +22,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
  * Responsibility: Controller for SearchWatcherModal
  * Used by: SearchWatcherController, SearchWatcherItemController
  * Uses: NameDialogController, NameDialog, SearchWatcherAdapter, AdvancedSearchFragmentController,
- * Search, SearchWatcherItem, SearchWatcherModel, Db40Databasee, Observer
+ * Search, SearchWatcher, SearchWatcherList, Db40Databasee, Observer
  */
 
 public class ModalController implements Observer {
@@ -30,10 +30,10 @@ public class ModalController implements Observer {
     private final ModalView fragment;
     private final View view;
     private final SearchWatcherAdapter adapter;
-    private final SearchWatcherItem model;
+    private final SearchWatcher model;
 
     //Adapter needed to notify listView when a new searchWatcher is created
-    public ModalController(View view, ModalView fragment, SearchWatcherAdapter adapter, SearchWatcherItem model){
+    public ModalController(View view, ModalView fragment, SearchWatcherAdapter adapter, SearchWatcher model){
         this.view = view;
         this.fragment = fragment;
         this.adapter = adapter;
@@ -65,9 +65,9 @@ public class ModalController implements Observer {
                 if (editMode()){
                     //Not an optimal solution but it might be tricky to write a safe delete method.
                     Db4oDatabase db = Db4oDatabase.getInstance();
-                    db.deleteAll(SearchWatcherItem.class);
+                    db.deleteAll(SearchWatcher.class);
                     model.setSearch(parseSearchTerms());
-                    List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+                    List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
                     for (int i = 0; i < items.size(); i++) {
                         db.store(items.get(i));
                     }
@@ -116,7 +116,7 @@ public class ModalController implements Observer {
     @Override
     public void update(String updateString) {
         Search search = parseSearchTerms();
-        SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(updateString, search);
+        SearchWatcher sw = SearchWatcherList.createSearchWatcher(updateString, search);
         Db4oDatabase.getInstance().store(sw);
         Db4oDatabase.getInstance().close();
         adapter.notifyDataSetChanged();
