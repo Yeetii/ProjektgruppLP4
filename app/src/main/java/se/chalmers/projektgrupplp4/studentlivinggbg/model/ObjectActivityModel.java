@@ -5,7 +5,7 @@ import java.util.List;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * @author
+ * @author Jonathan
  * Used by: AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder, FavoritesView,
  * ObjectActivityModel, ObjectController, ObjectView
  * Uses: Accommodation

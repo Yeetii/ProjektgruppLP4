@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 
 /**
- * @author
+ * @author Jonathan
  * Revised by: Peter Gärdenäs, Erik Magnusson
  * Used by: FavoritesActivity
  * Uses: Accommodation, ObjectActivityModel

@@ -11,6 +11,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.ObjectView;
 
 /**
  * @author Erik Magnusson
+ * Revised by Jonathan
  * Used by: FavoritesActivity, MainSearchActivity, activity_object.xml,
  * Uses: Db4oDatabase, ObjectController, ObjectView,
  * Responsibility: Creating the activity which displays an accommodation.

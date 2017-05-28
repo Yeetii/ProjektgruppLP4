@@ -19,6 +19,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.SearchActivityView;
 
 /**
  * @author Peter Gärdenäs
+ * Revised by Jonathan
  * Used by: ActivityWithNavigation, SearchWatcherActivity, activity_main_search.xml, content_search.xml
  * Uses: ActivityWithNavigation, ImageHandler, Db4oDatabase, SearchHandler, SettingsModel, SearchWatcherItem
  * SearchWatcherModel, AccommodationRecyclerViewAdapter, SearchActivityController, Accommodation, SearchActivityView,
