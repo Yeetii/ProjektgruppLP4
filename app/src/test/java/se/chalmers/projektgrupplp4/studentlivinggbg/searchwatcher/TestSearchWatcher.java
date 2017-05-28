@@ -14,6 +14,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 
 /**
+ * @author John Segerstedt
  * Revised by: Erik
  */
 

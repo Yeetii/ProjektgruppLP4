@@ -15,6 +15,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 
 import static org.junit.Assert.*;
 
+/*
+ * @author John Segerstedt
+ */
 
 public class TestSearchWatcherList {
 

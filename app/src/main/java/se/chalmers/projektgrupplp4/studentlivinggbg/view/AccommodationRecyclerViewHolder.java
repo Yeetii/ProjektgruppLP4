@@ -11,7 +11,6 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
- * Created by Jonathan on 18/04/2017.
  * @author John Segerstedt
  * revised by Jonathan, Erik
  * John Segerstedt made the original ListvVew implementation

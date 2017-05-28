@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SettingsModel;
 
 /**
- * Created by Jonathan on 27/05/2017.
  * @author Jonathan
  */
 
