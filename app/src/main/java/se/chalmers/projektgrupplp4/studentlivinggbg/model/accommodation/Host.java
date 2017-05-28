@@ -9,7 +9,7 @@ import java.util.List;
  * ChalmersAdapter, SGSAdapter, Search, SearchList, SearchWatcherItemView
  * Uses: EnumType
  */
-public enum AccommodationHost implements EnumType {
+public enum Host implements EnumType {
         SGS, CHALMERS;
 
         //Creating a nice toString() method
@@ -30,7 +30,7 @@ public enum AccommodationHost implements EnumType {
                 return "ERROR";
         }
 
-        static public AccommodationHost parseString(String string){
+        static public Host parseString(String string){
                 switch(string){
                         case "SGS Studentbostäder":      return SGS;
                         case "Chalmers Studentbostäder": return CHALMERS;
@@ -38,18 +38,18 @@ public enum AccommodationHost implements EnumType {
                 return null;
         }
 
-        public static List<AccommodationHost> parseStringList(List<String> stringList){
-                List<AccommodationHost> result = new ArrayList<>();
+        public static List<Host> parseStringList(List<String> stringList){
+                List<Host> result = new ArrayList<>();
                 for(String string: stringList){
                         result.add(parseString(string));
                 }
                 return result;
         }
 
-        public static String toStringShort(List<AccommodationHost> hostsArray){
+        public static String toStringShort(List<Host> hostsArray){
                 try{
                         String result = "";
-                        for(AccommodationHost host: hostsArray){
+                        for(Host host: hostsArray){
                                 if(host != null){
                                         result = result + host.toStringShort() + ", ";
                                 }

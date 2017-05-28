@@ -6,13 +6,13 @@ import java.util.List;
 
 /**
  * @author John Segerstedt
- * Used by: Accommodation, AccommodationHouseType, AdvancedSearchFragmentController,
+ * Used by: Accommodation, HouseType, AdvancedSearchFragmentController,
  * AdvancedSearchFragmentView, ChalmersAdapter, Search, SearchList
  * Uses: EnumType
  * Responsibility: Enum for accommodation house type.
  */
 
-public enum AccommodationHouseType implements EnumType {
+public enum HouseType implements EnumType {
 
     CORRIDOR, KITCHENETTE, COOKING_CABINET, ONE_ROOM, TWO_ROOMS, TWO_ROOMS_KITCHENETTE, THREE_ROOMS,
     FOUR_ROOMS, UNKNOWN;
@@ -34,7 +34,7 @@ public enum AccommodationHouseType implements EnumType {
         return "ERROR";
     }
 
-    static public AccommodationHouseType parseString(String string){
+    static public HouseType parseString(String string){
         switch(string){
             case "Enkelrum med gruppkök":   return CORRIDOR;
             case "Enkelrum med kokvrå":     return KITCHENETTE;
@@ -48,8 +48,8 @@ public enum AccommodationHouseType implements EnumType {
         return null;
     }
 
-    public static List<AccommodationHouseType> parseStringList(List<String> stringList){
-        List<AccommodationHouseType> result = new ArrayList<>();
+    public static List<HouseType> parseStringList(List<String> stringList){
+        List<HouseType> result = new ArrayList<>();
         for(String string: stringList){
             result.add(parseString(string));
         }

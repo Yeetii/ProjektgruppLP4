@@ -11,8 +11,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.MultiSpinner;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentView;
 
@@ -20,7 +20,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AdvancedSearchFragmentV
  * @author Erik Magnusson
  * revised by John Segerstedt
  * Used by: AdvancedSearchController, ModalController
- * Uses MultiSpinerController, MultiSpinner, Search, SearchList, AccommodationHost,
+ * Uses MultiSpinerController, MultiSpinner, Search, SearchList, Host,
  * AccomodationHouseType, Region, AdvancedSearchFragmentView.
  * Responsibility: Controller for Advanced search fragement, handling the user actions when setting
  * different attributes in advanced search.
@@ -90,9 +90,9 @@ public class AdvancedSearchFragmentController {
         seekBarDaysUploaded.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysUploaded));
         seekBarDaysLeft.setOnSeekBarChangeListener(new OnSeekBarChangeListenerText(textViewDaysLeft));
 
-        new MultiSpinnerController(houseTypeSpinner, AccommodationHouseType.values());
+        new MultiSpinnerController(houseTypeSpinner, HouseType.values());
         new MultiSpinnerController(regionSpinner, Region.values());
-        new MultiSpinnerController(landlordSpinner, AccommodationHost.values());
+        new MultiSpinnerController(landlordSpinner, Host.values());
     }
 
     private void fillFilters() {
@@ -134,14 +134,14 @@ public class AdvancedSearchFragmentController {
     private void fillHouseTypeSpinner(Search lastSearch) {
         try{
             houseTypeSpinner.clear();
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.CORRIDOR)) {houseTypeSpinner.select(0);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.KITCHENETTE)) {houseTypeSpinner.select(1);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.COOKING_CABINET)) {houseTypeSpinner.select(2);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.ONE_ROOM)) {houseTypeSpinner.select(3);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS)) {houseTypeSpinner.select(4);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.TWO_ROOMS_KITCHENETTE)) {houseTypeSpinner.select(5);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.THREE_ROOMS)) {houseTypeSpinner.select(6);}
-            if (lastSearch.getPossibleAccomodationHouseTypes().contains(AccommodationHouseType.FOUR_ROOMS)) {houseTypeSpinner.select(7);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.CORRIDOR)) {houseTypeSpinner.select(0);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.KITCHENETTE)) {houseTypeSpinner.select(1);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.COOKING_CABINET)) {houseTypeSpinner.select(2);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.ONE_ROOM)) {houseTypeSpinner.select(3);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.TWO_ROOMS)) {houseTypeSpinner.select(4);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.TWO_ROOMS_KITCHENETTE)) {houseTypeSpinner.select(5);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.THREE_ROOMS)) {houseTypeSpinner.select(6);}
+            if (lastSearch.getPossibleAccomodationHouseTypes().contains(HouseType.FOUR_ROOMS)) {houseTypeSpinner.select(7);}
         }catch(Exception e){
             houseTypeSpinner.selectAll();}
     }
@@ -169,10 +169,10 @@ public class AdvancedSearchFragmentController {
     private void fillLandlordSpinner(Search lastSearch) {
         try {
             landlordSpinner.clear();
-            if (lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.CHALMERS)) {
+            if (lastSearch.getPossibleAccommodationHosts().contains(Host.CHALMERS)) {
                 landlordSpinner.select(0);
             }
-            if (lastSearch.getPossibleAccommodationHosts().contains(AccommodationHost.SGS)) {
+            if (lastSearch.getPossibleAccommodationHosts().contains(Host.SGS)) {
                 landlordSpinner.select(1);
             }
         }catch(Exception e){
@@ -212,8 +212,8 @@ public class AdvancedSearchFragmentController {
 
     public Search parseSearchTerms(boolean addToSearchHistory){
         String mainSearch = "";
-        List<AccommodationHouseType> possibleAccommodationHouseTypes = new ArrayList<>();
-        List<AccommodationHost> possibleAccommodationHosts = new ArrayList<>();
+        List<HouseType> possibleAccommodationHouseTypes = new ArrayList<>();
+        List<Host> possibleAccommodationHosts = new ArrayList<>();
         List<Region> possibleRegions = new ArrayList<>();
         int minPrice = -1;
         int maxPrice = -1;
@@ -223,8 +223,8 @@ public class AdvancedSearchFragmentController {
         int daysLeft = -1;
 
         try{mainSearch = advancedSearchView.getQuery().toString();}catch(NullPointerException e){}
-        try{possibleAccommodationHouseTypes = AccommodationHouseType.parseStringList(houseTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
-        try{possibleAccommodationHosts = AccommodationHost.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){}
+        try{possibleAccommodationHouseTypes = HouseType.parseStringList(houseTypeSpinner.getSelectedItems());}catch(NullPointerException e){}
+        try{possibleAccommodationHosts = Host.parseStringList(landlordSpinner.getSelectedItems());}catch(NullPointerException e){}
         try{possibleRegions = Region.parseStringList(regionSpinner.getSelectedItems());}catch(NullPointerException e){}
         try{minPrice = seekBarMinPrice.getProgress();}catch(NullPointerException e){}
         try{maxPrice = seekBarMaxPrice.getProgress();}catch(NullPointerException e){}

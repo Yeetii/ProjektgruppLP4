@@ -3,16 +3,15 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
  * @author John Segerstedt
  * Used by: SearchWatcherAdapter, SearchWatcherController, SearchWatcherItemController
- * Uses: AccommodationHost, EnumHelper, Region, SearchWatcher;
+ * Uses: Host, EnumHelper, Region, SearchWatcher;
  * Responsibility: View for SearchWatcherItems
  */
 
@@ -85,7 +84,7 @@ public class SearchWatcherItemView {
             }else if(model.getSearch().getPossibleRegions().size() < 3){
                 txtHouseType.setText(EnumHelper.toString(model.getSearch().getPossibleRegions()));
             }else{
-                txtHouseType.setText(AccommodationHost.toStringShort(model.getSearch().getPossibleAccommodationHosts()));
+                txtHouseType.setText(Host.toStringShort(model.getSearch().getPossibleAccommodationHosts()));
             }
         }catch(NullPointerException e){
             txtHouseType.setText("");

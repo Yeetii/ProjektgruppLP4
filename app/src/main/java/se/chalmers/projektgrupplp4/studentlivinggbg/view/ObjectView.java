@@ -29,7 +29,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 public class ObjectView {
 
     /**
-     * The {@link ViewPager} that will AccommodationHost the section contents.
+     * The {@link ViewPager} that will Host the section contents.
      */
     private final ViewPager mViewPager;
 

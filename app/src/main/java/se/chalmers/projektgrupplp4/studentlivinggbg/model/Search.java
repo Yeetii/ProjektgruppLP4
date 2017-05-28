@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
@@ -16,15 +16,15 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
  * @author John Segerstedt
  * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchActivityController, AdvancedSearchFragmentController,
  * ModalController, SearchList, SearchWatcher, SearchWatcherItemController, SearchWatcherList
- * Uses: Accommodation, AccommodationHost, AccommodationHouseType, EnumHelper, Region
+ * Uses: Accommodation, Host, HouseType, EnumHelper, Region
  * Responsibility: Holds searchterms for filtering Accommodations
  */
 
 public class Search {
 
     private String mainSearch = "";
-    private List<AccommodationHouseType> possibleAccommodationHouseTypes;
-    private List<AccommodationHost> possibleAccommodationHosts;
+    private List<HouseType> possibleAccommodationHouseTypes;
+    private List<Host> possibleAccommodationHosts;
     private List<Region> possibleRegions;
     private int minPrice = -1;
     private int maxPrice = -1;
@@ -39,8 +39,8 @@ public class Search {
 
 
     public Search(String mainSearch,
-                  List<AccommodationHouseType> possibleAccomodationHouseTypes,
-                  List<AccommodationHost> possibleAccomodationHosts,
+                  List<HouseType> possibleAccomodationHouseTypes,
+                  List<Host> possibleAccomodationHosts,
                   List<Region> possibleRegions,
                   int minPrice, int maxPrice, int minArea, int maxArea,
                   int daysUpploaded, int daysLeft) {
@@ -62,11 +62,11 @@ public class Search {
         return mainSearch;
     }
 
-    public List<AccommodationHouseType> getPossibleAccomodationHouseTypes() {
+    public List<HouseType> getPossibleAccomodationHouseTypes() {
         return possibleAccommodationHouseTypes;
     }
 
-    public List<AccommodationHost> getPossibleAccommodationHosts() {
+    public List<Host> getPossibleAccommodationHosts() {
         return possibleAccommodationHosts;
     }
 

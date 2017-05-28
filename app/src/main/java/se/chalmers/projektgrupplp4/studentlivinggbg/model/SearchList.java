@@ -3,15 +3,15 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
  * @author John Segerstedt
  * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchFragmentController,
  * MainSearchActivity, SearchActivityController, SearchWatcherItemController
- * Uses: AccommodationHost, AccommodationHouseType, Region, Search
+ * Uses: Host, HouseType, Region, Search
  * Responsibility: Holds searchterms for filtering Accommodations
  */
 
@@ -37,8 +37,8 @@ public class SearchList {
     }
 
     public static Search createSearch(String mainSearch,
-                                      List<AccommodationHouseType> possibleAccomodationHouseTypes,
-                                      List<AccommodationHost> possibleAccomodationHosts,
+                                      List<HouseType> possibleAccomodationHouseTypes,
+                                      List<Host> possibleAccomodationHosts,
                                       List<Region> possibleRegions,
                                       int minPrice, int maxPrice, int minArea, int maxArea,
                                       int daysUpploaded, int daysLeft, boolean addToList){
