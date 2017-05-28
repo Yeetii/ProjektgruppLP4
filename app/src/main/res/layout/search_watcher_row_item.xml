@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 @author Peter Gärdenäs
-revised by John
+revised by John Segerstedt
 responsibility Present the user with a list item of a search object
 used by SearchWatcherAdapter.java
 uses
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/row_item"
     android:layout_width="match_parent"
     android:layout_height="80dp"
@@ -143,5 +144,28 @@ uses
         android:src="@drawable/search_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewMatches"
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="99"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/hamButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/AppTheme.SearchWatcherItemText"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Nya: "
+        app:layout_constraintRight_toLeftOf="@+id/textViewMatches"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -22,7 +22,7 @@ public class EnumHelper {
         return result;
     }
 
-    //Written by John, generalized by Erik
+    //Written by John Segerstedt, generalized by Erik
     public static <T extends EnumType> String toString(List<T> list){
         try{
             String result = "";

@@ -1,6 +1,6 @@
 <!--
-@author John
-revised by John
+@author John Segerstedt
+revised by John Segerstedt
 responsibility Show the user some of an accommodations info and allow the user to enter the accommodation's detailed view
 used by SearchWatcherAdapter.java AccommodationRecyclerViewAdapter.java
 uses

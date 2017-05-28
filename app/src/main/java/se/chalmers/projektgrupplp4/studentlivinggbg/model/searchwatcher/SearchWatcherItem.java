@@ -16,7 +16,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 public class SearchWatcherItem {
     private String title;
     private Search search;
-    private List<Accommodation> newMatches;
+    private List<Accommodation> newMatches = new ArrayList<>();
 
     public SearchWatcherItem(String title, Search search) {
         this.title = title;
@@ -35,7 +35,7 @@ public class SearchWatcherItem {
                 }
             }
             if(result.size() > 0){
-                newMatches = result;
+                newMatches.addAll(result);
                 return result.size();
             }
             return newAccommodations.size()-i;
@@ -49,10 +49,6 @@ public class SearchWatcherItem {
     public Search getSearch(){return search;}
     public List<Accommodation> getNewMatches(){
         return newMatches;
-    }
-
-    public void resetNewMatches(){
-        newMatches.clear();
     }
 
     public void setSearch(Search search){

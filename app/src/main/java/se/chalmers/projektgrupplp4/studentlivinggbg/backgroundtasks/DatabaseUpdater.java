@@ -162,21 +162,31 @@ class DatabaseUpdater implements Observer {
         //SearchWatcher stuff
         SearchWatcherModel.getSearchWatcherItems().clear();
         SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
-        //Gets accommodations that weren't in the old database
-        List<Accommodation> uniqueNewAccommoadations = new ArrayList<>(newAccommodations);
-        uniqueNewAccommoadations.removeAll(previousAccommodations);
-
-        int mathces = SearchWatcherModel.checkForMatches(uniqueNewAccommoadations);
-
-        if (mathces > 0){
-            NotificationSender.sendNotification(context, mathces);
-        }
+        checkForSWMatches(previousAccommodations, newAccommodations);
 
 
         notifyApp(context);
         AlarmTimeManger.getInstance().createNextAlarm(context);
         db.close();
 
+    }
+
+    private void checkForSWMatches(List<Accommodation> previousAccommodations, List<Accommodation> newAccommodations) {
+        //Gets accommodations that weren't in the old database
+        List<Accommodation> uniqueNewAccommoadations = new ArrayList<>(newAccommodations);
+        uniqueNewAccommoadations.removeAll(previousAccommodations);
+
+        int matches = SearchWatcherModel.checkForMatches(uniqueNewAccommoadations);
+        if (matches > 0){
+            NotificationSender.sendNotification(context, matches);
+        }
+
+        //Save back to database since checking for new matches changes the searchWatchers
+        db.deleteAll(SearchWatcherItem.class);
+        List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+        for (int i = 0; i < items.size(); i++) {
+            db.store(items.get(i));
+        }
     }
 
     private static AccommodationAdapter getPopulatedAdapter(Class<? extends AccommodationAdapter> adapterClass,

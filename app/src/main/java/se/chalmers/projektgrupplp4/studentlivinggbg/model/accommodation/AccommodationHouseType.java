@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author John
+ * @author John Segerstedt
  * Used by: Accommodation, AccommodationHouseType, AdvancedSearchFragmentController,
  * AdvancedSearchFragmentView, ChalmersAdapter, Search, SearchHandler
  * Uses: EnumType

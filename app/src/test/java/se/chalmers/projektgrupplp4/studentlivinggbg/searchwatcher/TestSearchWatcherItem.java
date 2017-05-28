@@ -13,6 +13,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
 
+/**
+ * Revised by: Erik
+ */
 
 public class TestSearchWatcherItem {
 
@@ -27,13 +30,11 @@ public class TestSearchWatcherItem {
 
         accommodationList1.add(accommodation1);
         assertTrue(searchWatcherItem1.checkForMatches(accommodationList1) == 1);
+        assertTrue(accommodationList1.get(1).equals(searchWatcherItem1.getNewMatches().get(0)));
+        assertTrue(searchWatcherItem1.getNewMatches().size()==1);
 
         searchWatcherItem1.setSearch(new Search(""));
         assertNotNull(searchWatcherItem1.getSearch());
-
-
-
-
 
 
         List<Accommodation> accommodationList2 = new ArrayList<>();

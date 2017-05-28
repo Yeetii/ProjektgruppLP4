@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author John
+ * @author John Segerstedt
  * Used by: Accommodation, AdvancedSearchFragmentController, AdvancedSearchFragmentView,
  * ChalmersAdapter, SGSAdapter, Search, SearchHandler, SearchWatcherItemView
  * Uses: EnumType

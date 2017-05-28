@@ -15,9 +15,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommod
 
 /**
  * Created by Jonathan on 18/04/2017.
- * @author John
+ * @author John Segerstedt
  * revised by Jonathan, Erik
- * John made the original ListvVew implementation
+ * John Segerstedt made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
  * Used by: AccommodationRecyclerViewAdapter, RecyclerViewHelperController, RecyclerViewHolderObserver
  * Uses: ObjectActivityModel, ActivitySwitcher, Accommodation
