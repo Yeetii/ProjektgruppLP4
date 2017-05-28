@@ -16,8 +16,8 @@ public class ObjectActivityModel {
     static private List<Accommodation> accommodations = Accommodation.getAccommodations();
     private static int startPosition;
 
-    static private String sGSUrl = "https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%";
-    static private String chalmersUrl = "https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%";
+    static private String sGSUrl = "https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%3d";
+    static private String chalmersUrl = "https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%3d";
 
 
     public static List<Accommodation> getAccommodations(){
