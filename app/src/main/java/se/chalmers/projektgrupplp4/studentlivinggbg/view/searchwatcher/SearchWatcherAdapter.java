@@ -12,17 +12,17 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 
 
 /**
  * @author Peter Gärdenäs
  * Used by: ModalController, SearchWatcherActivity, SearchWatcherController, SearchWatcherItemController, SearchWatcherView
- * Uses: SearchWatcherItem, Observer, search_watcher_row_item
+ * Uses: SearchWatcher, Observer, search_watcher_row_item
  * Responsibility: inflate the advanced search fragment
  */
 
-public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
+public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcher> {
 
     private final LayoutInflater inflater;
 //    private final Class<? extends Activity> targetClass;
@@ -30,7 +30,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
     private List<SearchWatcherItemView> views = new ArrayList<>();
 
 
-    public SearchWatcherAdapter(Context context, List<SearchWatcherItem> data, Observer observer) {
+    public SearchWatcherAdapter(Context context, List<SearchWatcher> data, Observer observer) {
         super(context, R.layout.search_watcher_row_item, data);
         this.observer = observer;
 //        this.targetClass = targetClass;
@@ -40,7 +40,7 @@ public class SearchWatcherAdapter extends ArrayAdapter<SearchWatcherItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        SearchWatcherItem dataModel = getItem(position);
+        SearchWatcher dataModel = getItem(position);
         SearchWatcherItemView viewHolder;
         System.out.println("Making list item " + position + " with title" + dataModel.getTitle());
 

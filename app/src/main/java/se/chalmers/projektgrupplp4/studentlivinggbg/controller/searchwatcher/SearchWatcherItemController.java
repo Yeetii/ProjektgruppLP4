@@ -7,14 +7,14 @@ import android.widget.ImageView;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ViewCreationObserver;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.ModalView;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherAdapter;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWatcherItemView;
@@ -23,13 +23,13 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.searchwatcher.SearchWat
  * @author Peter Gärdenäs
  * Revised by: Erik Magnusson
  * Used by: SearchWatcherController
- * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchHandler, SearchWatcherItem,
+ * Uses: ViewCreationObserver, ModalView, ActvitySwircher, Search, SearchList, SearchWatcher,
  * SearchWatcerAdapter, SearchWatcherItemView
- * Responsibility: controller for each invduall SearchWatcherItem.
+ * Responsibility: controller for each invduall SearchWatcher.
  */
 
 public class SearchWatcherItemController implements ViewCreationObserver{
-    private final SearchWatcherItem model;
+    private final SearchWatcher model;
     private final View view;
     private final Class<? extends  Activity> targetClass;
     private final Activity activity;
@@ -63,7 +63,7 @@ public class SearchWatcherItemController implements ViewCreationObserver{
             @Override
             public void onClick(View v) {
                 //TODO Actually implement accordion, this is temp code to test searchwatcher number
-                model.getNewMatches().add(Accommodation.getAccommodations().get(0));
+                model.getNewMatches().add(Accommodation.getAccommodations().get(0).getObjectNumber());
                 switch (v.getId())
                 {
                     case R.id.searchWithSearchWatcherButton:
@@ -90,9 +90,9 @@ public class SearchWatcherItemController implements ViewCreationObserver{
             public void onClick (View view) {
                 //Remove new searches from searchWatcher
                 Db4oDatabase db = Db4oDatabase.getInstance();
-                db.deleteAll(SearchWatcherItem.class);
+                db.deleteAll(SearchWatcher.class);
                 model.getNewMatches().clear();
-                List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+                List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
                 for (int i = 0; i < items.size(); i++) {
                     db.store(items.get(i));
                 }
@@ -100,7 +100,7 @@ public class SearchWatcherItemController implements ViewCreationObserver{
 
                 //Perform search and move to searchActivity
                 Search search = model.getSearch();
-                SearchHandler.addToLastSearches(search);
+                SearchList.addToLastSearches(search);
                 ActivitySwitcher.getInstance(activity).navigate(targetClass);
             }
         });

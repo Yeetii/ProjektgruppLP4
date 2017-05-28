@@ -69,7 +69,7 @@ public class ObjectController {
         });
 
         /*
-      The {@link ViewPager} that will AccommodationHost the section contents.
+      The {@link ViewPager} that will Host the section contents.
      */
         ViewPager mViewPager = (ViewPager) activity.findViewById(R.id.container);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

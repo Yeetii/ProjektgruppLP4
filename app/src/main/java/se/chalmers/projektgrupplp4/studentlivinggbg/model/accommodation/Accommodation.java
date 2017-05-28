@@ -11,8 +11,8 @@ import java.util.List;
  * AccommodationsSorter, ChalmersAdapter, DatabaseUpdater, Db4oDatabase, FavoritesActivity, FavoritesView,
  * ImageHandler, MainSearchActivity, ObjectActivityModel, ObjectController, ObjectView,
  * RecyclerViewHelperController, RequestSender, SGSAdapter, Search, SearchActivityController,
- * SearchWatcherItem, SearchWatcherModel, SettingsController, ActivityReceiver
- * Uses: Region, AccommodationHost, AccommodationHouseType
+ * SearchWatcher, SearchWatcherList, SettingsController, ActivityReceiver
+ * Uses: Region, Host, HouseType
  * Responsibility: Represents an accommodation
  */
 
@@ -22,21 +22,21 @@ public class Accommodation {
 
     private final String objectNumber;
     private final String address;
-    private final AccommodationHouseType accommodationHouseType;
+    private final HouseType accommodationHouseType;
     private final Region region;
     private final int price;
     private final double area;
     private int searchers;
     private final String thumbnail;
     private final String description;
-    private final AccommodationHost accommodationHost;
+    private final Host accommodationHost;
     private boolean isFavorite = false;
     private final String uploadDate;
     private final String lastApplyDate;
 
 
-    public Accommodation(String objectNumber, String address, AccommodationHouseType accommodationHouseType,
-                         int price, double area, int searchers, String thumbnail, String description, AccommodationHost accommodationHost,
+    public Accommodation(String objectNumber, String address, HouseType accommodationHouseType,
+                         int price, double area, int searchers, String thumbnail, String description, Host accommodationHost,
                          Region region, String uploadDate, String lastApplyDate, boolean addToAccommodations) {
         this.objectNumber = objectNumber;
         this.address=address;
@@ -128,7 +128,7 @@ public class Accommodation {
     public String getLastApplyDate(){return lastApplyDate;}
 
     public String getImagePath () {
-        if (accommodationHost.equals(AccommodationHost.SGS)) {
+        if (accommodationHost.equals(Host.SGS)) {
             return thumbnail.substring(thumbnail.indexOf("thumbs/") + "thumbs/".length());
         } else {
             return thumbnail.substring(thumbnail.indexOf("file=") + "file=".length());

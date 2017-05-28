@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHost;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.AccommodationHouseType;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelper;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
@@ -17,7 +17,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
  * @author Erik
  * Revised by John Segerstedt
  * Used by: AdvancedSearchFragmentController
- * Uses: AccommodationHost, EnumHelper, Region, AccommodationHouseType
+ * Uses: Host, EnumHelper, Region, HouseType
  * Responsibility: View for advanced search fragment
  */
 
@@ -46,8 +46,8 @@ public class AdvancedSearchFragmentView {
     }
 
     private void fillLists(){
-        roomTypeItems.addAll(EnumHelper.toStringList(Arrays.asList(AccommodationHouseType.values())));
+        roomTypeItems.addAll(EnumHelper.toStringList(Arrays.asList(HouseType.values())));
         areasItems.addAll(EnumHelper.toStringList(Arrays.asList(Region.values())));
-        landlordItems.addAll(EnumHelper.toStringList(Arrays.asList(AccommodationHost.values())));
+        landlordItems.addAll(EnumHelper.toStringList(Arrays.asList(Host.values())));
     }
 }

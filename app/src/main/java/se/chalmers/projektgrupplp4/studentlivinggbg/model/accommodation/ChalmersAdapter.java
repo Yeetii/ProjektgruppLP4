@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Peter Gärdenäs
  * Used by: DatabaseUpdater, RequestAccommodations
- * Uses: Accommodation, AccommodationAdapter, Region, AccommodationHost, AccommodationHouseType
+ * Uses: Accommodation, AccommodationAdapter, Region, Host, HouseType
  * Responsibility: This class converts the response from a get request to Chalmers to a java object.
  */
 
@@ -63,7 +63,7 @@ public class ChalmersAdapter implements AccommodationAdapter {
         private Accommodation parseAccommodation(String infoString) {
             String objectNumber = getAttribute(infoString, "object number");
             String street = getAttribute(infoString, "street");
-            AccommodationHouseType houseType = parseHouseType(getAttribute(infoString, "house type"));
+            HouseType houseType = parseHouseType(getAttribute(infoString, "house type"));
             int price = parsePrice(getAttribute(infoString, "rent"));
             double area = parseArea(getAttribute(infoString, "area"));
             String description = getAttribute(infoString, "description");
@@ -73,7 +73,7 @@ public class ChalmersAdapter implements AccommodationAdapter {
             //String lastApplyDate = parseDate(getAttribute(infoString, "lastApplyDate"));
             String upploadDate = "";
             String lastApplyDate = "";
-            return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, AccommodationHost.CHALMERS, Region.CENTER, upploadDate, lastApplyDate, false);
+            return new Accommodation(objectNumber, street, houseType, price, area, 0, thumbnail, description, Host.CHALMERS, Region.CENTER, upploadDate, lastApplyDate, false);
         }
         //Used
         private double parseArea (String areaString) {
@@ -92,22 +92,22 @@ public class ChalmersAdapter implements AccommodationAdapter {
             return Integer.parseInt(priceString);
         }
         //Used
-        private AccommodationHouseType parseHouseType (String houseTypeString) {
+        private HouseType parseHouseType (String houseTypeString) {
             switch (houseTypeString) {
                 case "1 rum och kök":
-                    return AccommodationHouseType.ONE_ROOM;
+                    return HouseType.ONE_ROOM;
                 case "1 rum med trinett":
-                    return AccommodationHouseType.KITCHENETTE;
+                    return HouseType.KITCHENETTE;
                 case "1 rum och kokvrå":
-                    return AccommodationHouseType.COOKING_CABINET;
+                    return HouseType.COOKING_CABINET;
                 case "2 rum och kök":
-                    return AccommodationHouseType.TWO_ROOMS;
+                    return HouseType.TWO_ROOMS;
                 case "2 rum och kokvrå":
-                    return AccommodationHouseType.TWO_ROOMS_KITCHENETTE;
+                    return HouseType.TWO_ROOMS_KITCHENETTE;
 
             }
             System.out.println("Should add to switch!: " + houseTypeString);
-            return AccommodationHouseType.UNKNOWN;
+            return HouseType.UNKNOWN;
         }
         //Used
         private String getAttribute(String infoString, String type) {

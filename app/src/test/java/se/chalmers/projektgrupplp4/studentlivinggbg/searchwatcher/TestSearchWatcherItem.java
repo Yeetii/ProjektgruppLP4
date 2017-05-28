@@ -30,7 +30,7 @@ public class TestSearchWatcherItem {
 
         accommodationList1.add(accommodation1);
         assertTrue(searchWatcherItem1.checkForMatches(accommodationList1) == 1);
-        assertTrue(accommodationList1.get(1).equals(searchWatcherItem1.getNewMatches().get(0)));
+        assertTrue(accommodationList1.get(1).getObjectNumber().equals(searchWatcherItem1.getNewMatches().get(0)));
         assertTrue(searchWatcherItem1.getNewMatches().size()==1);
 
         searchWatcherItem1.setSearch(new Search(""));

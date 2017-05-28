@@ -12,7 +12,7 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchHandler;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.SearchList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.ActivitySwitcher;
@@ -25,7 +25,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerVi
  * John Segerstedt made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
  * Used by: FavoritesActivity, FavoritesView, MainSearchActivity, RecyclerViewHelperController, SearchActivityController, SearchActivtyView
- * Uses: Search, SearchHandler, Accommodation, ImageModel, ObjectActivityModel, row_item
+ * Uses: Search, SearchList, Accommodation, ImageModel, ObjectActivityModel, row_item
  * Responsibility: Adapter for the recyclerView that displays the accommodations
  */
 
@@ -97,7 +97,7 @@ public class AccommodationRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public void refresh() {
         dataSet.clear();
-        Search lastSearch = SearchHandler.getLastSearch();
+        Search lastSearch = SearchList.getLastSearch();
 
         if (!lastSearch.isEmpty()) {
             dataSet.addAll(lastSearch.search());

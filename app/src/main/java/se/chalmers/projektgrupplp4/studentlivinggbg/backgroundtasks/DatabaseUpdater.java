@@ -25,8 +25,8 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.SGSAdapt
 import se.chalmers.projektgrupplp4.studentlivinggbg.controller.SearchActivityController;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ImageModel;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherList;
 
 /**
  * @author Peter Gärdenäs
@@ -34,7 +34,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
  * Used by: AlarmReciver
  * Uses: AlarmTimeManger, AccommodationAdapter, ChalmersAdapter, ImageHandler, Db4oDatabase, RequestSender,
  * Observer, RequestAccommodations, SGSAdapter, Accommodation, ImageModel,
- * SearchWatcherItem, SearchWatcherModel, NortificationSender.
+ * SearchWatcher, SearchWatcherList, NortificationSender.
  * Responsibilty: Fetches and sets all the accommodation data used in the application.
  */
 
@@ -160,8 +160,8 @@ class DatabaseUpdater implements Observer {
 
 
         //SearchWatcher stuff
-        SearchWatcherModel.getSearchWatcherItems().clear();
-        SearchWatcherModel.getSearchWatcherItems().addAll(db.<SearchWatcherItem>findAll(SearchWatcherItem.class));
+        SearchWatcherList.getSearchWatcherItems().clear();
+        SearchWatcherList.getSearchWatcherItems().addAll(db.<SearchWatcher>findAll(SearchWatcher.class));
         checkForSWMatches(previousAccommodations, newAccommodations);
 
 
@@ -176,14 +176,14 @@ class DatabaseUpdater implements Observer {
         List<Accommodation> uniqueNewAccommoadations = new ArrayList<>(newAccommodations);
         uniqueNewAccommoadations.removeAll(previousAccommodations);
 
-        int matches = SearchWatcherModel.checkForMatches(uniqueNewAccommoadations);
+        int matches = SearchWatcherList.checkForMatches(uniqueNewAccommoadations);
         if (matches > 0){
             NotificationSender.sendNotification(context, matches);
         }
 
         //Save back to database since checking for new matches changes the searchWatchers
-        db.deleteAll(SearchWatcherItem.class);
-        List<SearchWatcherItem> items = SearchWatcherModel.getSearchWatcherItems();
+        db.deleteAll(SearchWatcher.class);
+        List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
         for (int i = 0; i < items.size(); i++) {
             db.store(items.get(i));
         }

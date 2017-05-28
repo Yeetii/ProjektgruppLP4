@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author John Segerstedt
  * Used by: Accommodation, AdvancedSearchFragmentController, AdvancedSearchFragmentView,
- * ChalmersAdapter, SGSAdapter, Search, SearchHandler, SearchWatcherItemView
+ * ChalmersAdapter, SGSAdapter, Search, SearchList, SearchWatcherItemView
  * Uses: EnumType
  * Responsibility: Enum for different housing areas
  */

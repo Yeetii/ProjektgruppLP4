@@ -6,19 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherItem;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Db4oDatabase;
 import se.chalmers.projektgrupplp4.studentlivinggbg.service.Observer;
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherModel;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcherList;
 import se.chalmers.projektgrupplp4.studentlivinggbg.view.NameDialog;
 
 /**
  * @author Erik Magnusson
  * Used by: AdvancedSearchActivity
- * Uses: NameDialogController, AdvancedSearchFragmentController, SearchWatcherItem, Db4oDatabse,
- * Observer, Search, SearchWatcherModel, NameDialog
+ * Uses: NameDialogController, AdvancedSearchFragmentController, SearchWatcher, Db4oDatabse,
+ * Observer, Search, SearchWatcherList, NameDialog
  * Responsibility: Cotroller for AdvancedSearch, does not handle user actions setting the attributes
  * for the search but rather the done/close button etc.
  */
@@ -83,7 +83,7 @@ public class AdvancedSearchActivityController implements Observer{
     }
 
     private void createSearchWatcher(String name){
-        SearchWatcherItem sw = SearchWatcherModel.createSearchWatcher(name, wannabeSearchWatcher);
+        SearchWatcher sw = SearchWatcherList.createSearchWatcher(name, wannabeSearchWatcher);
         Db4oDatabase.getInstance().store(sw);
         Db4oDatabase.getInstance().close();
     }

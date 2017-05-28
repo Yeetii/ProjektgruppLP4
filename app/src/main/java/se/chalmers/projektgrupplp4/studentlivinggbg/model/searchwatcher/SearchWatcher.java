@@ -2,23 +2,24 @@ package se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher;
 
 import java.util.ArrayList;
 import java.util.List;
-import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
 
 /**
  * @author Erik Magnusson
  * Used by: AdvancedSearchActivityController, DatabaseUpdater, MainSearchActivity, ModalController,
- * SearchWatcherAdapter, SearchWatcherItemController, SearchWatcherItemView, SearchWatcherModel, SettingsController
- * Uses: Accommodation, Search
+ * SearchWatcherAdapter, SearchWatcherItemController, SearchWatcherItemView, SearchWatcherList, SettingsController
+ * Uses: Search, Accommodation
  * Responsibility: Holding a search that can be performed automaticly
  */
 
-public class SearchWatcherItem {
+public class SearchWatcher {
     private String title;
     private Search search;
-    private List<Accommodation> newMatches = new ArrayList<>();
+    //Holds objectNumbers of new accommodations
+    private List<String> newMatches = new ArrayList<>();
 
-    public SearchWatcherItem(String title, Search search) {
+    public SearchWatcher(String title, Search search) {
         this.title = title;
         this.search = search;
     }
@@ -26,12 +27,12 @@ public class SearchWatcherItem {
     public int checkForMatches(List<Accommodation> newAccommodations){
         try{
             int i = 0;
-            List<Accommodation> result = new ArrayList<>();
+            List<String> result = new ArrayList<>();
             for(Accommodation accommodation: newAccommodations){
                 if(accommodation == null){
                     i++;
                 } else if(search.search(newAccommodations).contains(accommodation)){
-                    result.add(accommodation);
+                    result.add(accommodation.getObjectNumber());
                 }
             }
             if(result.size() > 0){
@@ -47,7 +48,7 @@ public class SearchWatcherItem {
 
     public String getTitle(){return title;}
     public Search getSearch(){return search;}
-    public List<Accommodation> getNewMatches(){
+    public List<String> getNewMatches(){
         return newMatches;
     }
 

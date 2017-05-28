@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Peter Gärdenäs
  * Used by: DatabaseUpdater
- * Uses: Accommodation, AccommodationAdapter, Region, AccommodationHost, AccommodationHouseType
+ * Uses: Accommodation, AccommodationAdapter, Region, Host, HouseType
  * Responsibility: Converting SGS data to Accommodation form
  */
 
@@ -28,7 +28,7 @@ public class SGSAdapter implements AccommodationAdapter {
         //Get
         String objectNumber = SGSAccommodation.getObjectNumber();
         String street = SGSAccommodation.getStreet();
-        AccommodationHouseType type = SGSAccommodation.getHouseType();
+        HouseType type = SGSAccommodation.getHouseType();
         int price = SGSAccommodation.getRentPerMonthSort();
         double area = SGSAccommodation.getObjectAreaSort();
         int searchers = SGSAccommodation.getCountInterest();
@@ -36,7 +36,7 @@ public class SGSAdapter implements AccommodationAdapter {
         String description = SGSAccommodation.getDescription();
         String upploadDate = SGSAccommodation.getPublishingDate();
         String lastApplyDate = SGSAccommodation.getEndPeriod();
-        AccommodationHost host = AccommodationHost.SGS;
+        Host host = Host.SGS;
         Region region = Region.parseString(SGSAccommodation.getObjectArea());
 
 
@@ -92,32 +92,32 @@ public class SGSAdapter implements AccommodationAdapter {
             return CountInterest;
         }
 
-        public AccommodationHouseType getHouseType () {
+        public HouseType getHouseType () {
             switch (ObjectTypeDescription) {
                 case "1 rum och kokskåp":
-                    return AccommodationHouseType.COOKING_CABINET;
+                    return HouseType.COOKING_CABINET;
                 case "1 rum och kök":
-                    return AccommodationHouseType.ONE_ROOM;
+                    return HouseType.ONE_ROOM;
                 case "1 rum och kokvrå":
-                    return AccommodationHouseType.KITCHENETTE;
+                    return HouseType.KITCHENETTE;
                 case "2 rum och kök":
-                    return AccommodationHouseType.TWO_ROOMS;
+                    return HouseType.TWO_ROOMS;
                 case "2 rum och kokvrå":
-                    return AccommodationHouseType.TWO_ROOMS_KITCHENETTE;
+                    return HouseType.TWO_ROOMS_KITCHENETTE;
                 case "3 rum och kök":
-                    return AccommodationHouseType.THREE_ROOMS;
+                    return HouseType.THREE_ROOMS;
                 case "4 rum och kök":
-                    return AccommodationHouseType.FOUR_ROOMS;
+                    return HouseType.FOUR_ROOMS;
                 case "4 rum och kokvrå":
                     //80 kvadrat men inget kök...
-                    return AccommodationHouseType.FOUR_ROOMS;
+                    return HouseType.FOUR_ROOMS;
                 case "Enkelrum med gruppkök":
-                    return AccommodationHouseType.CORRIDOR;
+                    return HouseType.CORRIDOR;
                 case "Enkelrum med kokskåp":
-                    return AccommodationHouseType.COOKING_CABINET;
+                    return HouseType.COOKING_CABINET;
             }
             System.out.println("Should add to switch!: " + ObjectTypeDescription);
-            return AccommodationHouseType.UNKNOWN;
+            return HouseType.UNKNOWN;
         }
 
         public String getImagePath() {
