@@ -63,7 +63,7 @@ public class SearchWatcherItemController implements ViewCreationObserver{
             @Override
             public void onClick(View v) {
                 //TODO Actually implement accordion, this is temp code to test searchwatcher number
-                model.getNewMatches().add(Accommodation.getAccommodations().get(0));
+                model.getNewMatches().add(Accommodation.getAccommodations().get(0).getObjectNumber());
                 switch (v.getId())
                 {
                     case R.id.searchWithSearchWatcherButton:
