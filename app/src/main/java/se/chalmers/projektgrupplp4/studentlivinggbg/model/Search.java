@@ -13,7 +13,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.EnumHelp
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 /**
- * @author John
+ * @author John Segerstedt
  * Used by: AccommodationRecyclerViewAdapter, AdvancedSearchActivityController, AdvancedSearchFragmentController,
  * ModalController, SearchHandler, SearchWatcherItem, SearchWatcherItemController, SearchWatcherModel
  * Uses: Accommodation, AccommodationHost, AccommodationHouseType, EnumHelper, Region

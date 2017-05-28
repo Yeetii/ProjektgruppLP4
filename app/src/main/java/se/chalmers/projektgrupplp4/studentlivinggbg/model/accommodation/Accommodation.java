@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author John
+ * @author John Segerstedt
  * Revised by: Peter Gärdenäs
  * Used by: AccommodationAdapter, AccommodationRecyclerViewAdapter, AccommodationRecyclerViewHolder,
  * AccommodationsSorter, ChalmersAdapter, DatabaseUpdater, Db4oDatabase, FavoritesActivity, FavoritesView,

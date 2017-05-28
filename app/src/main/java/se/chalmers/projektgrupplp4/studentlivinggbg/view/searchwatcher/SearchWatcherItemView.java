@@ -10,7 +10,7 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWa
 import se.chalmers.projektgrupplp4.studentlivinggbg.R;
 
 /**
- * @author John
+ * @author John Segerstedt
  * Used by: SearchWatcherAdapter, SearchWatcherController, SearchWatcherItemController
  * Uses: AccommodationHost, EnumHelper, Region, SearchWatcherItem;
  * Responsibility: View for SearchWatcherItems

@@ -20,9 +20,9 @@ import se.chalmers.projektgrupplp4.studentlivinggbg.view.AccommodationRecyclerVi
 
 /**
  * Created by Jonathan on 16/04/2017.
- * @author John
+ * @author John Segerstedt
  * Revised by Jonathan, Erik
- * John made the original ListvVew implementation
+ * John Segerstedt made the original ListvVew implementation
  * and Jonathan redid it as an RecyclerView
  * Used by: FavoritesActivity, FavoritesView, MainSearchActivity, RecyclerViewHelperController, SearchActivityController, SearchActivtyView
  * Uses: Search, SearchHandler, Accommodation, ImageModel, ObjectActivityModel, row_item
