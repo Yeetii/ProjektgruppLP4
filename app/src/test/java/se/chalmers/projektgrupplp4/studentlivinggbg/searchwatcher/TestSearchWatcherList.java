@@ -17,14 +17,18 @@ import static org.junit.Assert.*;
 
 /*
  * @author John Segerstedt
+ * Revised by: Peter Gärdenäs, Erik Magnusson
  */
 
 public class TestSearchWatcherList {
 
-
-
     @Test
-    public void testCreateSearchWatcher(){
+    public void testSearchWatchers() {
+        testCreateSearchWatcher();
+        testUpdateWatchers();
+    }
+
+    private void testCreateSearchWatcher(){
         String name = "name";
         Search search = new Search("mainSearch");
 
@@ -37,9 +41,7 @@ public class TestSearchWatcherList {
 
 
 
-    @Test
-    public void testUpdateWatchers(){
-        testCreateSearchWatcher();
+    private void testUpdateWatchers(){
         List<Accommodation> accommodationList1 = new ArrayList<>();
         Accommodation accommodation1 = new Accommodation("", "mainSearch", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
         accommodationList1.add(accommodation1);

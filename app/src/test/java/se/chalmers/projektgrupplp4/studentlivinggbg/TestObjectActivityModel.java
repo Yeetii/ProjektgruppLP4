@@ -35,7 +35,7 @@ public class TestObjectActivityModel {
 
     @Test
     public void testGetters(){
-        assertTrue(ObjectActivityModel.getsGSUrl().equals("https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%"));
-        assertTrue(ObjectActivityModel.getChalmersUrl().equals("https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%"));
+        assertTrue(ObjectActivityModel.getsGSUrl().equals("https://marknad.sgsstudentbostader.se/pgLogin.aspx?rurl=pgObjectInformation.aspx%3Fcompany%3D1%26obj%3d"));
+        assertTrue(ObjectActivityModel.getChalmersUrl().equals("https://www.chalmersstudentbostader.se/login/?returnUrl=https%3A%2F%2Fwww.chalmersstudentbostader.se%2Fsok-ledigt%2Fdetalj%2F%3Frefid%3d"));
     }
 }
