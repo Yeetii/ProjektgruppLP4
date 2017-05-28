@@ -44,7 +44,7 @@ public class AccommodationRecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public void whenBound(){
         txtAddress.setText(current.getAddress());
-        txtHouseType.setText(current.getAccommodationHouseType());
+        txtHouseType.setText(current.getHouseType());
         txtArea.setText(current.getArea());
         txtPrice.setText(current.getPrice());
         txtLastApplyDate.setText(current.getLastApplyDate());

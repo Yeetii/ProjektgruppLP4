@@ -136,8 +136,8 @@ public class Search {
         if(getMainSearch().equals("")){return true;}
 
         String[] mainSearchArray = getMainSearch().toLowerCase().split("\\s+");
-        String accommodationString = (accommodation.getAddress()+" "+accommodation.getAccommodationHouseType()+" "
-                +accommodation.getRegion()+" " +accommodation.getAccommodationHost()).toLowerCase();
+        String accommodationString = (accommodation.getAddress()+" "+accommodation.getHouseType()+" "
+                +accommodation.getRegion()+" " +accommodation.getHost()).toLowerCase();
 
         int i = 0;
         for(String mainSearchSubString: mainSearchArray){
@@ -157,14 +157,14 @@ public class Search {
     private boolean houseTypeMatch(Accommodation accommodation) {
         try{
             return getPossibleAccomodationHouseTypes().size() == 0 || getPossibleAccomodationHouseTypes().toString().equals("") ||
-                EnumHelper.toString(getPossibleAccomodationHouseTypes()).contains(accommodation.getAccommodationHouseType());}
+                EnumHelper.toString(getPossibleAccomodationHouseTypes()).contains(accommodation.getHouseType());}
         catch(NullPointerException e){return true;}
     }
 
     private boolean hostMatch(Accommodation accommodation) {
         try{
             return getPossibleAccommodationHosts().size() == 0 || getPossibleAccommodationHosts().toString().equals("") ||
-                EnumHelper.toString(getPossibleAccommodationHosts()).contains(accommodation.getAccommodationHost());}
+                EnumHelper.toString(getPossibleAccommodationHosts()).contains(accommodation.getHost());}
         catch(NullPointerException e){return true;}
     }
 

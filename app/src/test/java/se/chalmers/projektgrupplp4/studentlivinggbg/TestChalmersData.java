@@ -88,9 +88,9 @@ public class TestChalmersData {
             assertNotNull(adapter.getAccommodations().get(i));
             assertNotNull(adapter.getAccommodations().get(i).getAddress());
             assertNotNull(adapter.getAccommodations().get(i).getObjectNumber());
-            assertNotNull(adapter.getAccommodations().get(i).getAccommodationHost());
-            assertTrue(adapter.getAccommodations().get(i).getAccommodationHost().equals("Chalmers Studentbostäder"));
-            assertNotNull(adapter.getAccommodations().get(i).getAccommodationHouseType());
+            assertNotNull(adapter.getAccommodations().get(i).getHost());
+            assertTrue(adapter.getAccommodations().get(i).getHost().equals("Chalmers Studentbostäder"));
+            assertNotNull(adapter.getAccommodations().get(i).getHouseType());
         }
         //kolla några parametrar
         //System.out.println(adapter.getAccommodations().get(0).getAddress());

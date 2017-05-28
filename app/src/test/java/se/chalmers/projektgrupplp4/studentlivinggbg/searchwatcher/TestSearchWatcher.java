@@ -8,19 +8,22 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.searchwatcher.SearchWatcher;
 
 /**
  * Revised by: Erik
  */
 
-public class TestSearchWatcherItem {
+public class TestSearchWatcher {
 
     @Test
     public void testCheckForMatches(){
         List<Accommodation> accommodationList1 = new ArrayList<>();
-        SearchWatcherItem searchWatcherItem1 = new SearchWatcherItem("", new Search(""));
-        Accommodation accommodation1 = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        SearchWatcher searchWatcherItem1 = new SearchWatcher("", new Search(""));
+        Accommodation accommodation1 = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
 
         accommodationList1.add(null);
         assertTrue(searchWatcherItem1.checkForMatches(accommodationList1) == 0);
@@ -35,13 +38,15 @@ public class TestSearchWatcherItem {
 
 
         List<Accommodation> accommodationList2 = new ArrayList<>();
-        SearchWatcherItem searchWatcherItem2 = new SearchWatcherItem("", new Search("gatan"));
-        Accommodation accommodation2 = new Accommodation("", "fel", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "fel", "fel", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        SearchWatcher searchWatcherItem2 = new SearchWatcher("", new Search("gatan"));
+        Accommodation accommodation2 = new Accommodation("", "fel", HouseType.COOKING_CABINET, 0, 0, 100, "fel", "fel", Host.CHALMERS, Region.CENTER, "", "", false);
 
         accommodationList2.add(null);
         assertTrue(searchWatcherItem2.checkForMatches(accommodationList2) == 0);
 
         accommodationList2.add(accommodation2);
+        System.out.println(searchWatcherItem2.checkForMatches(accommodationList2));
+        System.out.println(searchWatcherItem2.getSearch().search(accommodationList2));
         assertTrue(searchWatcherItem2.checkForMatches(accommodationList2) == 0);
 
     }
@@ -49,7 +54,7 @@ public class TestSearchWatcherItem {
     @Test
     public void testGetters(){
         Search search = new Search("");
-        SearchWatcherItem searchWatcherItem = new SearchWatcherItem("title",  search);
+        SearchWatcher searchWatcherItem = new SearchWatcher("title",  search);
 
         assertTrue(searchWatcherItem.getTitle().equals("title"));
         assertTrue(searchWatcherItem.getSearch().getMainSearch().equals(search.getMainSearch()));

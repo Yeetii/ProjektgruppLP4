@@ -11,6 +11,8 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.Search;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 
@@ -22,11 +24,11 @@ public class TestSearch {
 
     @Test
     public void testSearch(){
-        ArrayList<AccommodationHouseType> houseTypeFilter = new ArrayList<>();
-        houseTypeFilter.add(AccommodationHouseType.COOKING_CABINET);
+        ArrayList<HouseType> houseTypeFilter = new ArrayList<>();
+        houseTypeFilter.add(HouseType.COOKING_CABINET);
 
         Search search1 = new Search("");
-        Search search2 = new Search("", houseTypeFilter, new ArrayList<AccommodationHost>(),
+        Search search2 = new Search("", houseTypeFilter, new ArrayList<Host>(),
                 new ArrayList<Region>(), -1, -1, -1, -1, 6, 6);
 
         Date todayDate = new Date();
@@ -40,9 +42,9 @@ public class TestSearch {
         today = today+"-"+parseDateMonth(todayString, false);
         today = today+"-"+todayString.substring(25,29);
 
-        Accommodation newAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, today, today, false);
-        Accommodation middleAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, notToday, notToday, false);
-        Accommodation oldAccommodation = new Accommodation("test", "", AccommodationHouseType.KITCHENETTE, 0, 0, 20, "", "", AccommodationHost.CHALMERS, Region.CENTER, notToday, notToday, false);
+        Accommodation newAccommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, today, today, false);
+        Accommodation middleAccommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, notToday, notToday, false);
+        Accommodation oldAccommodation = new Accommodation("test", "", HouseType.KITCHENETTE, 0, 0, 20, "", "", Host.CHALMERS, Region.CENTER, notToday, notToday, false);
 
         List<Accommodation> accommodations = new ArrayList<>();
         accommodations.add(newAccommodation);
@@ -104,13 +106,13 @@ public class TestSearch {
     @Test
     public void testIsEmpty(){
         Search search1 = new Search("");
-        Search search2 = new Search("", new ArrayList<AccommodationHouseType>(), new ArrayList<AccommodationHost>(),
+        Search search2 = new Search("", new ArrayList<HouseType>(), new ArrayList<Host>(),
                 new ArrayList<Region>(), -1, -1, -1, -1, -1, -1);
-        Search search3 = new Search("", new ArrayList<AccommodationHouseType>(), new ArrayList<AccommodationHost>(),
+        Search search3 = new Search("", new ArrayList<HouseType>(), new ArrayList<Host>(),
                 new ArrayList<Region>(), -1, -1, -1, -1, 10, -1);
-        Search search4 = new Search("", new ArrayList<AccommodationHouseType>(), new ArrayList<AccommodationHost>(),
+        Search search4 = new Search("", new ArrayList<HouseType>(), new ArrayList<Host>(),
                 new ArrayList<Region>(), -1, -1, 10, -1, -1, -1);
-        Search search5 = new Search("test", new ArrayList<AccommodationHouseType>(), new ArrayList<AccommodationHost>(),
+        Search search5 = new Search("test", new ArrayList<HouseType>(), new ArrayList<Host>(),
                 new ArrayList<Region>(), -1, -1, -1, -1, 6, 6);
 
         assertTrue(search1.isEmpty());

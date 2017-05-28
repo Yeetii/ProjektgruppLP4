@@ -7,6 +7,8 @@ import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.ObjectActivityModel;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 import static org.junit.Assert.*;
@@ -20,7 +22,7 @@ public class TestObjectActivityModel {
     @Test
     public void testTetAccommodations(){
         List<Accommodation> accommodationList = new ArrayList<>();
-        Accommodation accommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", true);
+        Accommodation accommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 0, "", "", Host.CHALMERS, Region.CENTER, "", "", true);
         accommodationList.add(accommodation);
         ObjectActivityModel.getAccommodations().clear();
 

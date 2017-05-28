@@ -89,9 +89,9 @@ public class ObjectView {
             args.putString(ARG_ADDRESS, a.getAddress());
             args.putString(ARG_DESCRIPTION, a.getDescription());
             args.putString(ARG_RENT, a.getPrice());
-            args.putString(ARG_TYPE, a.getAccommodationHouseType());
+            args.putString(ARG_TYPE, a.getHouseType());
             args.putString(ARG_AREA, a.getArea());
-            args.putString(ARG_HOST, a.getAccommodationHost());
+            args.putString(ARG_HOST, a.getHost());
             args.putString(ARG_DATE, a.getLastApplyDate());
             args.putString(ARG_FURNITURED, a.getFurnitured());
             fragment.setImage(ImageModel.<Drawable>getInstance().getMainImage(a.getImagePath()));

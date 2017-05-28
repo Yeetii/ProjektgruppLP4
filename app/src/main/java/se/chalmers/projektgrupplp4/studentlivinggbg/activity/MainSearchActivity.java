@@ -107,8 +107,8 @@ public class MainSearchActivity extends ActivityWithNavigation {
                     sendBroadcast(i);
                 }
 
-                SearchWatcherList.getSearchWatcherItems().clear();
-                SearchWatcherList.getSearchWatcherItems().addAll(db.<SearchWatcher>findAll(SearchWatcher.class));
+                SearchWatcherList.getSearchWatchers().clear();
+                SearchWatcherList.getSearchWatchers().addAll(db.<SearchWatcher>findAll(SearchWatcher.class));
 
                 Long currentTime = System.currentTimeMillis();
                 imageHandler.getAndSaveImages(true, accommodations);

@@ -66,7 +66,7 @@ public class ModalController implements Observer {
                     Db4oDatabase db = Db4oDatabase.getInstance();
                     db.deleteAll(SearchWatcher.class);
                     model.setSearch(parseSearchTerms());
-                    List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
+                    List<SearchWatcher> items = SearchWatcherList.getSearchWatchers();
                     for (int i = 0; i < items.size(); i++) {
                         db.store(items.get(i));
                     }

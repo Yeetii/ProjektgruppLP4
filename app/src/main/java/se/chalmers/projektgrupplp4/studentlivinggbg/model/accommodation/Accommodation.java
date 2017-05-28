@@ -104,7 +104,7 @@ public class Accommodation {
         return address;
     }
 
-    public String getAccommodationHouseType() {
+    public String getHouseType() {
         return accommodationHouseType.toString();
     }
 
@@ -144,7 +144,7 @@ public class Accommodation {
         return description;
     }
 
-    public String getAccommodationHost(){
+    public String getHost(){
         return accommodationHost.toString();
     }
 

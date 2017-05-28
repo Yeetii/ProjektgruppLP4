@@ -23,7 +23,7 @@ public class SearchWatcherList {
         return sWItem;
     }
 
-    public static List<SearchWatcher> getSearchWatcherItems(){
+    public static List<SearchWatcher> getSearchWatchers(){
         return searchWatcherItems;}
 
 

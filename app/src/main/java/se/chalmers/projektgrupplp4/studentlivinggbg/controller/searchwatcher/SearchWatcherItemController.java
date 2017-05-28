@@ -92,7 +92,7 @@ public class SearchWatcherItemController implements ViewCreationObserver{
                 Db4oDatabase db = Db4oDatabase.getInstance();
                 db.deleteAll(SearchWatcher.class);
                 model.getNewMatches().clear();
-                List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
+                List<SearchWatcher> items = SearchWatcherList.getSearchWatchers();
                 for (int i = 0; i < items.size(); i++) {
                     db.store(items.get(i));
                 }

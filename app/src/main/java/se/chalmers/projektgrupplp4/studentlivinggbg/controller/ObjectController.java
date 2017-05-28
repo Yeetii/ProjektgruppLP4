@@ -39,9 +39,9 @@ public class ObjectController {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.google.com");
-                if (current.getAccommodationHost().equals("SGS Studentbostäder")) {
+                if (current.getHost().equals("SGS Studentbostäder")) {
                     uri = Uri.parse(ObjectActivityModel.getsGSUrl() + current.getObjectNumber());
-                } else if (current.getAccommodationHost().equals("Chalmers Studentbostäder")) {
+                } else if (current.getHost().equals("Chalmers Studentbostäder")) {
                     uri = Uri.parse(ObjectActivityModel.getChalmersUrl() + current.getObjectNumber());
                 }
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);

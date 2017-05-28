@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Accommodation;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Host;
+import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.HouseType;
 import se.chalmers.projektgrupplp4.studentlivinggbg.model.accommodation.Region;
 
 import static org.junit.Assert.*;
@@ -22,7 +24,7 @@ public class TestAccommodation {
 
         String objectNumber = "12";
         String address = "testgatan1";
-        AccommodationHouseType accommodationHouseType = AccommodationHouseType.COOKING_CABINET;
+        HouseType accommodationHouseType = HouseType.COOKING_CABINET;
         Region region = Region.CENTER;
         int price = 10000;
         double area = 100.1;
@@ -31,7 +33,7 @@ public class TestAccommodation {
         List<Integer> images = new ArrayList<>();
         images.add(1);
         String description = "haha";
-        AccommodationHost accommodationHost = AccommodationHost.CHALMERS;
+        Host accommodationHost = Host.CHALMERS;
         boolean isFavorite = false;
         String upploadDate = "11-11-12";
         String lastApplyDate = "12-11-12";
@@ -48,7 +50,7 @@ public class TestAccommodation {
         assertTrue(accommodation.getImagePath().equals(thumbnail.substring(thumbnail.indexOf("file=") + "file=".length())));
         assertTrue(accommodation.getThumbnail().equals(thumbnail));
         assertTrue(accommodation.getDescription().equals(description));
-        assertTrue(accommodation.getAccommodationHost().equals(accommodationHost.toString()));
+        assertTrue(accommodation.getHost().equals(accommodationHost.toString()));
         assertTrue(accommodation.getRegion().equals(region.toString()));
 
 
@@ -56,8 +58,8 @@ public class TestAccommodation {
 
     @Test
     public void testAddToAccommodations(){
-        Accommodation newAccommodationAdd = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", true);
-        Accommodation newAccommodationNotAdd = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation newAccommodationAdd = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 0, "", "", Host.CHALMERS, Region.CENTER, "", "", true);
+        Accommodation newAccommodationNotAdd = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 0, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
         List<Accommodation> allAccommodations = Accommodation.getAccommodations();
 
         assertTrue(allAccommodations.contains(newAccommodationAdd));
@@ -83,8 +85,8 @@ public class TestAccommodation {
 
     @Test
     public void testUpdate(){
-        Accommodation newAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
-        Accommodation oldAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 20, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation newAccommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation oldAccommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 20, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
         assertTrue(Integer.valueOf(oldAccommodation.getSearchers()) == 20);
         oldAccommodation.update(newAccommodation);
         assertTrue(Integer.valueOf(oldAccommodation.getSearchers()) == 100);
@@ -93,7 +95,7 @@ public class TestAccommodation {
     @Test
     public void testSetNewAccommodationList(){
         Accommodation.getAccommodations().clear();
-        Accommodation newAccommodation = new Accommodation("", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 0, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation newAccommodation = new Accommodation("", "", HouseType.COOKING_CABINET, 0, 0, 0, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
         List<Accommodation> accommodationList = new ArrayList<>();
         accommodationList.add(newAccommodation);
 
@@ -107,10 +109,10 @@ public class TestAccommodation {
         List<Accommodation> newAccommodations = new ArrayList<>();
         List<Accommodation> previousAccommodations = new ArrayList<>();
 
-        Accommodation accommodation1 = new Accommodation("1", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
-        Accommodation accommodation2 = new Accommodation("2", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
-        Accommodation accommodation3 = new Accommodation("1", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
-        Accommodation accommodation4 = new Accommodation("2", "", AccommodationHouseType.COOKING_CABINET, 0, 0, 100, "", "", AccommodationHost.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation accommodation1 = new Accommodation("1", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation accommodation2 = new Accommodation("2", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation accommodation3 = new Accommodation("1", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
+        Accommodation accommodation4 = new Accommodation("2", "", HouseType.COOKING_CABINET, 0, 0, 100, "", "", Host.CHALMERS, Region.CENTER, "", "", false);
 
         accommodation1.setFavorite(false);
         accommodation2.setFavorite(false);

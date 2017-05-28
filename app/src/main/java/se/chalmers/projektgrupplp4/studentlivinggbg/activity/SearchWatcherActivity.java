@@ -24,7 +24,7 @@ public class SearchWatcherActivity extends ActivityWithNavigation {
         SearchWatcherView view = new SearchWatcherView(this);
 
         SearchWatcherController controller = new SearchWatcherController(this, MainSearchActivity.class);
-        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), SearchWatcherList.getSearchWatcherItems(), controller);
+        SearchWatcherAdapter adapter = new SearchWatcherAdapter(getApplicationContext(), SearchWatcherList.getSearchWatchers(), controller);
         controller.setAdapter(adapter);
         view.setAdapter(adapter);
         controller.update(null);

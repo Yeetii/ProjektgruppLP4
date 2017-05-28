@@ -159,8 +159,8 @@ class DatabaseUpdater implements Observer {
 
 
         //SearchWatcher stuff
-        SearchWatcherList.getSearchWatcherItems().clear();
-        SearchWatcherList.getSearchWatcherItems().addAll(db.<SearchWatcher>findAll(SearchWatcher.class));
+        SearchWatcherList.getSearchWatchers().clear();
+        SearchWatcherList.getSearchWatchers().addAll(db.<SearchWatcher>findAll(SearchWatcher.class));
         checkForSWMatches(previousAccommodations, newAccommodations);
 
 
@@ -182,7 +182,7 @@ class DatabaseUpdater implements Observer {
 
         //Save back to database since checking for new matches changes the searchWatchers
         db.deleteAll(SearchWatcher.class);
-        List<SearchWatcher> items = SearchWatcherList.getSearchWatcherItems();
+        List<SearchWatcher> items = SearchWatcherList.getSearchWatchers();
         for (int i = 0; i < items.size(); i++) {
             db.store(items.get(i));
         }
