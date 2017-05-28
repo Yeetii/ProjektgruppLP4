@@ -11,7 +11,7 @@ import java.util.List;
  * Responsibility: This class converts the response from a get request to Chalmers to a java object.
  */
 
-public class ChalmersAdapter extends AccommodationAdapter {
+public class ChalmersAdapter implements AccommodationAdapter {
     private htmlObject html;
     //Used
     @Override

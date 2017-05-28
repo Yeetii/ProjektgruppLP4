@@ -10,7 +10,7 @@ import java.util.List;
  * Responsibility: Converting SGS data to Accommodation form
  */
 
-public class SGSAdapter extends AccommodationAdapter {
+public class SGSAdapter implements AccommodationAdapter {
     //Has to use SGS variable names
     private SGSJsonAccommodation[] Result;
 

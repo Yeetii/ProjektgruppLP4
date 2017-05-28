@@ -9,7 +9,6 @@ import java.util.List;
  * Responsibility: Interface for AccommodatinsAdapter.
  */
 
-public abstract class AccommodationAdapter {
-
-    public abstract List<Accommodation> getAccommodations();
+public interface AccommodationAdapter {
+    List<Accommodation> getAccommodations();
 }
