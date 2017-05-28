@@ -58,6 +58,7 @@ public class AdvancedSearchFragmentController {
     //Sets filters to provided search
     public AdvancedSearchFragmentController(View view, Search search){
         this.view = view;
+        new AdvancedSearchFragmentView(view);
         initListeners();
         fillFilters(search);
     }
